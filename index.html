@@ -1,0 +1,1878 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ソエギ（SOEGI）｜山形の中小企業の仕事を、AIとITで軽くする</title>
+<meta name="description" content="山形県内の中小企業（従業員5〜50人）向けに、仕事の流れを伺って手間のかかる所を見つけ、AIやITを使った仕組みづくりから社内への定着までをお手伝いしています。1ヶ月3万円（税抜）のお試し導入から。導入前後で時間を測り、続けるかを決められます。">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://withsoegi.jp/">
+<meta property="og:title" content="ソエギ｜山形の中小企業の仕事を、AIとITで軽くする">
+<meta property="og:description" content="山形県内の中小企業（従業員5〜50人）向けに、仕事の流れを伺って手間のかかる所を見つけ、AIやITを使った仕組みづくりから社内への定着までをお手伝いしています。1ヶ月3万円（税抜）のお試し導入から。導入前後で時間を測り、続けるかを決められます。">
+<meta property="og:url" content="https://withsoegi.jp/">
+<meta property="og:image" content="https://withsoegi.jp/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ソエギ">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F5F7F6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131719" media="(prefers-color-scheme: dark)">
+<script>document.documentElement.classList.add('js');document.documentElement.lang='ja';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"ソエギ","alternateName":"SOEGI","url":"https://withsoegi.jp/","telephone":"080-9018-2777","email":"info@withsoegi.jp","areaServed":"山形県","address":{"@type":"PostalAddress","addressRegion":"山形県","addressCountry":"JP"},"openingHours":"Mo-Su 09:00-19:00"}
+</script>
+<style>
+/* ============================================================
+   Tokens
+   ============================================================ */
+:root {
+  color-scheme: light;
+  --paper:#F5F7F6; --surface:#FFFFFF; --sunk:#ECF0EF;
+  --ink:#1D2327; --ink-2:#465056; --ink-3:#5F6A70;
+  --line:#D3DBDE; --line-2:#E4EAEC;
+  --frost:#8CA0AA; --grid:rgba(140,160,170,.17);
+  --beni:#B3243B; --beni-soft:#F7E7EA;
+  --cta:#B3243B; --cta-hover:#931A2E; --on-cta:#FFFFFF;
+  --leaf:#2E7652; --leaf-soft:#E2EFE7;
+  --band:#1D2327; --band-ink:#F2F5F6; --band-ink-2:#B9C3C8; --band-line:#39434A;
+  --shadow:0 1px 2px rgba(29,35,39,.05), 0 12px 32px -12px rgba(29,35,39,.16);
+  --fx-light:255,212,138; --fx-light-a:.34;
+
+  --serif:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho","YuMincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic",Meiryo,sans-serif;
+
+  --ease:cubic-bezier(.22,.8,.24,1);
+  --t-ui:220ms; --t-move:700ms; --t-draw:1100ms;
+
+  --wrap:74rem; --gut:clamp(1rem,4vw,2.5rem);
+  --hd:4rem;
+  --r-lg:18px; --r-md:12px; --r-sm:6px;
+}
+@media (min-width:64rem) { :root { --hd:4.75rem; } }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper:#131719; --surface:#1A1F22; --sunk:#20262A;
+    --ink:#E7ECEE; --ink-2:#BAC3C8; --ink-3:#98A3A9;
+    --line:#313A3F; --line-2:#262D31;
+    --frost:#6F838D; --grid:rgba(111,131,141,.14);
+    --beni:#EF7A8D; --beni-soft:#3A1F25;
+    --cta:#C22F48; --cta-hover:#A8243B;
+    --leaf:#74C89B; --leaf-soft:#1B2C23;
+    --band:#0D1012; --band-ink:#E7ECEE; --band-ink-2:#AAB4BA; --band-line:#2A3237;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 16px 36px -14px rgba(0,0,0,.6);
+    --fx-light:255,222,170; --fx-light-a:.1;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper:#131719; --surface:#1A1F22; --sunk:#20262A;
+  --ink:#E7ECEE; --ink-2:#BAC3C8; --ink-3:#98A3A9;
+  --line:#313A3F; --line-2:#262D31;
+  --frost:#6F838D; --grid:rgba(111,131,141,.14);
+  --beni:#EF7A8D; --beni-soft:#3A1F25;
+  --cta:#C22F48; --cta-hover:#A8243B;
+  --leaf:#74C89B; --leaf-soft:#1B2C23;
+  --band:#0D1012; --band-ink:#E7ECEE; --band-ink-2:#AAB4BA; --band-line:#2A3237;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 16px 36px -14px rgba(0,0,0,.6);
+  --fx-light:255,222,170; --fx-light-a:.1;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--hd) + 1rem); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--sans); font-size: 1rem; line-height: 1.9; letter-spacing: .02em;
+  font-feature-settings: "palt" 0;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+p { margin: 0; }
+h1, h2, h3, h4 { margin: 0; font-weight: 600; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--beni); outline-offset: 3px; border-radius: 4px; }
+.num { font-variant-numeric: tabular-nums; }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gut); }
+.skip { position: absolute; left: 1rem; top: -4rem; z-index: 100; padding: .6rem 1rem; background: var(--surface); border-radius: var(--r-sm); box-shadow: var(--shadow); }
+.skip:focus { top: 1rem; }
+
+/* headings: phrase-aware breaking for Japanese */
+.jp-bal, h2, h3, h4, .res { text-wrap: balance; word-break: auto-phrase; }
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 3rem; padding: .55rem 1.6rem; border-radius: 999px;
+  font-family: var(--sans); font-size: .95rem; font-weight: 700; letter-spacing: .04em; line-height: 1.4;
+  text-decoration: none; text-align: center; cursor: pointer; border: 1px solid transparent;
+  transition: background-color var(--t-ui) ease, border-color var(--t-ui) ease, color var(--t-ui) ease, transform 160ms var(--ease);
+  touch-action: manipulation;
+}
+.btn:active { transform: scale(.98); }
+.btn-cta { background: var(--cta); color: var(--on-cta); }
+.btn-cta:hover { background: var(--cta-hover); }
+.btn-line { background: transparent; border-color: var(--ink); color: var(--ink); }
+.btn-line:hover { background: var(--sunk); }
+.btn-sm { min-height: 2.5rem; padding: .35rem 1.1rem; font-size: .85rem; }
+.btns { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+/* ============================================================
+   Header
+   ============================================================ */
+.hd {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; height: var(--hd);
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t-ui) ease, background-color var(--t-ui) ease;
+}
+.hd.is-scrolled { border-bottom-color: var(--line); background: var(--paper); }
+.hd-in { height: 100%; display: flex; align-items: center; gap: 1.25rem; }
+.brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; margin-right: auto; min-height: 44px; }
+.brand svg { width: 2.25rem; height: 2.25rem; flex: none; }
+.brand b { display: block; font-family: var(--serif); font-size: 1.3rem; font-weight: 700; letter-spacing: .12em; line-height: 1.2; }
+.brand small { display: block; font-size: .7rem; color: var(--ink-3); letter-spacing: .06em; line-height: 1.4; }
+@media (max-width: 26rem) { .brand small { display: none; } }
+@media (min-width: 64rem) { .hd .brand small { display: none; } }
+.hd-cta { white-space: nowrap; }
+
+.gnav ul { display: flex; gap: .25rem; }
+.gnav a {
+  position: relative; display: flex; align-items: center; min-height: 44px; padding: 0 .75rem;
+  font-size: .88rem; font-weight: 500; text-decoration: none; color: var(--ink-2); white-space: nowrap;
+  transition: color var(--t-ui) ease;
+}
+.gnav a::after {
+  content: ""; position: absolute; left: .75rem; right: .75rem; bottom: .55rem; height: 1.5px;
+  background: var(--beni); transform: scaleX(0); transform-origin: left; transition: transform 320ms var(--ease);
+}
+.gnav a:hover { color: var(--ink); }
+.gnav a[aria-current="true"] { color: var(--ink); }
+.gnav a[aria-current="true"]::after { transform: scaleX(1); }
+
+.hd-act { display: flex; align-items: center; gap: 1rem; }
+.hd-tel { display: none; text-decoration: none; text-align: right; line-height: 1.25; }
+.hd-tel b { display: block; font-family: var(--serif); font-size: 1.2rem; font-weight: 700; letter-spacing: .04em; font-variant-numeric: tabular-nums; }
+.hd-tel small { display: block; font-size: .7rem; color: var(--ink-3); }
+.hd-tel:hover b { color: var(--beni); }
+.hd-cta { display: none; }
+.menu-btn {
+  display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; padding: 0 .9rem;
+  background: transparent; border: 1px solid var(--line); border-radius: 999px; cursor: pointer;
+  font-size: .85rem; font-weight: 700;
+}
+.menu-btn i { position: relative; width: 14px; height: 10px; }
+.menu-btn i::before, .menu-btn i::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 1.5px; background: currentColor;
+  transition: transform 260ms var(--ease), top 260ms var(--ease);
+}
+.menu-btn i::before { top: 1px; }
+.menu-btn i::after { top: 7px; }
+.menu-btn[aria-expanded="true"] i::before { top: 4px; transform: rotate(45deg); }
+.menu-btn[aria-expanded="true"] i::after { top: 4px; transform: rotate(-45deg); }
+
+@media (max-width: 63.99rem) {
+  .gnav {
+    position: absolute; left: 0; right: 0; top: var(--hd);
+    background: var(--paper); border-bottom: 1px solid var(--line); box-shadow: var(--shadow);
+    padding: .5rem var(--gut) 1.25rem;
+    opacity: 0; visibility: hidden; transform: translateY(-8px);
+    transition: opacity 200ms ease, transform 280ms var(--ease), visibility 0s linear 280ms;
+  }
+  .gnav.is-open { opacity: 1; visibility: visible; transform: none; transition: opacity 220ms ease, transform 320ms var(--ease), visibility 0s; }
+  .gnav ul { flex-direction: column; gap: 0; }
+  .gnav li { border-bottom: 1px solid var(--line-2); }
+  .gnav a { min-height: 3.25rem; padding: 0 .25rem; font-size: 1rem; color: var(--ink); }
+  .gnav a::after { left: .25rem; right: auto; width: 1.5rem; bottom: .7rem; }
+}
+@media (min-width: 40rem) { .hd-cta { display: inline-flex; } }
+@media (min-width: 52rem) { .hd-tel { display: block; } }
+@media (min-width: 64rem) { .menu-btn { display: none; } }
+@media (min-width: 64rem) and (max-width: 74.99rem) { .hd-tel { display: none; } }
+.hd-tel { white-space: nowrap; }
+
+/* ============================================================
+   Section scaffolding
+   ============================================================ */
+.sec { padding-block: clamp(4.5rem, 10vw, 8rem); }
+/* section fills live on ::before (z -2) so the cursor layer (z -1) can sit between them and the text */
+.sec-white, .news { position: relative; }
+.sec-white::before, .news::before { content: ""; position: absolute; inset: 0; z-index: -2; background: var(--surface); }
+.sec-hd { max-width: 46rem; margin-bottom: clamp(2.25rem, 5vw, 3.75rem); }
+.sec-hd h2 {
+  font-family: var(--serif); font-weight: 600; font-size: clamp(1.75rem, 3.8vw, 2.7rem);
+  line-height: 1.45; letter-spacing: .03em; margin-bottom: 1rem;
+}
+.sec-hd p { color: var(--ink-2); }
+.sec-hd p + p { margin-top: .5rem; }
+.sub-hd { max-width: 46rem; margin: clamp(4rem, 8vw, 6rem) 0 clamp(1.75rem, 4vw, 2.5rem); }
+.sub-hd h3 { font-family: var(--serif); font-size: clamp(1.4rem, 2.8vw, 1.9rem); line-height: 1.5; letter-spacing: .03em; margin-bottom: .75rem; }
+.sub-hd p { color: var(--ink-2); }
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero { position: relative; padding-block: clamp(2.5rem, 7vw, 5.5rem) clamp(3rem, 7vw, 5rem); }
+.hero-in { display: grid; gap: clamp(2.5rem, 5vw, 4rem); align-items: center; }
+@media (min-width: 62rem) { .hero-in { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); } }
+.status {
+  display: inline-flex; align-items: center; gap: .6rem; margin-bottom: 1.5rem;
+  padding: .3rem .9rem .3rem .75rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface);
+  font-size: .8rem; color: var(--ink-2); line-height: 1.6;
+}
+.status i { width: .5rem; height: .5rem; border-radius: 50%; background: var(--leaf); flex: none; box-shadow: 0 0 0 3px var(--leaf-soft); }
+.hero-txt { container-type: inline-size; }
+.h1 {
+  font-family: var(--serif); font-weight: 600; font-size: clamp(1.75rem, 8.4vw, 3.5rem); font-size: clamp(1.6rem, 10cqi, 3.6rem);
+  line-height: 1.34; letter-spacing: .04em; margin-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+.h1 .ln { display: block; overflow: hidden; padding-bottom: .06em; margin-bottom: -.06em; }
+.h1 .ln > span { display: inline-block; white-space: nowrap; }
+.lede { max-width: 34rem; font-size: clamp(1rem, 1.6vw, 1.08rem); line-height: 2; color: var(--ink-2); margin-bottom: 2rem; }
+.hero-note { margin-top: 1.25rem; font-size: .84rem; color: var(--ink-3); word-break: auto-phrase; }
+.hero-note b { color: var(--ink); font-weight: 700; }
+
+/* measure sheet */
+.sheet {
+  position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);
+  box-shadow: var(--shadow); overflow: hidden;
+}
+.sheet-hd { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 1.1rem 1.35rem .9rem; border-bottom: 1px solid var(--line-2); }
+.sheet-hd h2 { font-family: var(--serif); font-size: 1.1rem; letter-spacing: .08em; }
+.sheet-hd span { font-size: .78rem; color: var(--ink-3); }
+.sheet-bd {
+  padding: 1.1rem 1.35rem 1.35rem;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px; background-position: -1px -1px;
+}
+.seg { display: inline-flex; padding: 3px; border-radius: 999px; background: var(--sunk); border: 1px solid var(--line-2); max-width: 100%; }
+.seg button {
+  appearance: none; border: 0; background: transparent; cursor: pointer; border-radius: 999px;
+  min-height: 2.5rem; padding: .3rem 1rem; font-size: .84rem; font-weight: 700; color: var(--ink-2); line-height: 1.35;
+  transition: background-color var(--t-ui) ease, color var(--t-ui) ease, box-shadow var(--t-ui) ease;
+}
+.seg button:hover { color: var(--ink); }
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 0 0 1px var(--line); }
+.sheet .seg { margin-bottom: 1.1rem; }
+@media (max-width: 26rem) { .sheet .seg { display: flex; } .sheet .seg button { flex: 1; padding-inline: .5rem; font-size: .78rem; } }
+
+.mrow { padding: .95rem 0 1rem; border-top: 1px solid var(--line-2); }
+.mrow:first-child { border-top: 0; padding-top: .2rem; }
+.mname { display: block; font-weight: 700; font-size: .95rem; margin-bottom: .45rem; }
+.dimrow { display: grid; grid-template-columns: 3.4em minmax(0, 1fr) 4.6em; align-items: center; gap: .75rem; font-size: .78rem; color: var(--ink-3); line-height: 1.5; }
+.dimrow + .dimrow { margin-top: .2rem; }
+.dimrow .v { text-align: right; font-variant-numeric: tabular-nums; font-size: .9rem; color: var(--ink-2); white-space: nowrap; }
+.dimrow.af .k { color: var(--leaf); font-weight: 700; }
+.dimrow.af .v { color: var(--leaf); font-weight: 700; font-size: 1.05rem; }
+.dim { position: relative; height: 14px; color: var(--frost); }
+.dim::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1.5px; background: currentColor; }
+.dim .l, .dim .r { position: absolute; }
+.dim .l { left: 0; right: 0; top: 50%; height: 1.5px; margin-top: -.75px; background: currentColor; transform-origin: 0 50%; transform: scaleX(var(--p, 1)); }
+.dim .r { inset: 0; transform: translateX(calc((var(--p, 1) - 1) * 100%)); }
+.dim .r::after { content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 1.5px; background: currentColor; }
+.af .dim { color: var(--leaf); }
+.af .dim .l { height: 2.5px; margin-top: -1.25px; }
+.dim .l, .dim .r { transition: transform var(--t-draw) var(--ease); }
+.mdelta { margin-top: .35rem; text-align: right; font-size: .82rem; font-weight: 700; color: var(--leaf); font-variant-numeric: tabular-nums; }
+.sheet-ft { margin-top: .4rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.sheet-ft b { display: block; font-family: var(--serif); font-size: 1.12rem; line-height: 1.6; }
+.sheet-ft small { display: block; margin-top: .15rem; font-size: .8rem; color: var(--ink-3); }
+
+/* news */
+.news { border-block: 1px solid var(--line); }
+.news-in { display: grid; gap: .5rem 2rem; padding-block: 1.1rem; }
+@media (min-width: 48rem) { .news-in { grid-template-columns: 7rem 1fr; } }
+.news h2 { font-family: var(--serif); font-size: 1rem; letter-spacing: .1em; line-height: 2; }
+.news li { display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem 1rem; padding-block: .2rem; font-size: .9rem; }
+.news time { font-size: .84rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.news .tag { font-size: .75rem; font-weight: 700; padding: 0 .6rem; border-radius: var(--r-sm); background: var(--sunk); color: var(--ink-2); }
+
+/* ============================================================
+   Services
+   ============================================================ */
+.entry { display: grid; gap: 0; border-top: 1px solid var(--line); }
+@media (min-width: 52rem) { .entry { grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 0; } }
+.entry > li { padding: 2rem 0; border-bottom: 1px solid var(--line); }
+@media (min-width: 52rem) {
+  .entry > li { padding: .5rem 2.25rem 0; border-bottom: 0; border-left: 1px solid var(--line); }
+  .entry > li:first-child { padding-left: 0; border-left: 0; }
+  .entry > li:last-child { padding-right: 0; }
+}
+.ico { width: 3rem; height: 3rem; color: var(--ink); margin-bottom: 1.1rem; }
+.ico path, .ico rect, .ico circle { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.ico .ac { stroke: var(--beni); }
+.ico .fl { fill: currentColor; stroke: none; }
+.entry h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.6; margin-bottom: .6rem; }
+.entry p { color: var(--ink-2); font-size: .95rem; }
+.entry .res { margin-top: 1.25rem; font-family: var(--serif); font-size: 1.2rem; font-weight: 600; line-height: 1.6; color: var(--ink); }
+
+/* approach: what we do differs per company */
+.approach { display: grid; border-top: 1.5px solid var(--ink); }
+@media (min-width: 52rem) { .approach { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 2rem; } }
+.approach > li { padding: 1.5rem 0; border-bottom: 1px solid var(--line); }
+@media (min-width: 52rem) { .approach > li { border-bottom: 0; padding-bottom: .5rem; } }
+.approach .n { display: block; font-family: var(--serif); font-size: .9rem; font-weight: 600; letter-spacing: .12em; color: var(--beni); margin-bottom: .35rem; }
+.approach h3 { font-family: var(--serif); font-size: 1.3rem; line-height: 1.5; margin-bottom: .5rem; }
+.approach p { color: var(--ink-2); font-size: .93rem; }
+.tools { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: 1.75rem; }
+.tools li.k { background: none; border: 0; padding: 0; }
+.tools .k { font-size: .85rem; font-weight: 700; color: var(--ink-3); margin-right: .25rem; }
+.tools li { font-size: .85rem; line-height: 1.6; padding: .2rem .85rem; border-radius: 999px; background: var(--sunk); border: 1px solid var(--line-2); color: var(--ink-2); }
+
+/* before / after steps: both lists share one grid cell, so switching never shifts the layout */
+.ba-ctl { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; margin-top: 1.5rem; font-size: .9rem; font-weight: 700; }
+.ba-ctl[hidden] { display: none; }
+.ba { margin-top: 1.25rem; }
+.ba:empty { display: none; }
+.ba-meta { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: .4rem; border-bottom: 1px solid var(--line-2); font-size: .8rem; color: var(--ink-3); }
+.ba-meta b { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+.ba-lists { display: grid; }
+.ba-lists > ol { grid-area: 1 / 1; counter-reset: s; }
+.ba-lists li { counter-increment: s; position: relative; padding: .45rem 0 .45rem 2rem; border-bottom: 1px dashed var(--line-2); font-size: .9rem; line-height: 1.7; color: var(--ink-2); }
+.ba-lists li::before {
+  content: counter(s); position: absolute; left: 0; top: .55rem; width: 1.4rem; height: 1.4rem; display: grid; place-items: center;
+  border-radius: 50%; border: 1px solid var(--line); font-size: .72rem; font-weight: 700; line-height: 1; color: var(--ink-3);
+}
+.ba-after li { color: var(--ink); }
+.ba-after li::before { border-color: var(--leaf); color: var(--leaf); }
+.ba-before .tx { background: linear-gradient(var(--ink-3), var(--ink-3)) no-repeat 0 58% / 0% 1px; transition: background-size .2s ease; }
+/* showing "now" */
+.ba-before li { opacity: 1; transform: none; transition: opacity .35s ease calc(160ms + var(--i) * 50ms), transform .45s var(--ease) calc(160ms + var(--i) * 50ms); }
+.ba-after li { opacity: 0; transform: translateY(6px); transition: opacity .15s ease, transform .15s ease; }
+/* showing "after": the old steps are struck through, then give way to the new ones */
+.is-after .ba-before li { opacity: 0; transition: opacity .25s ease calc(380ms + var(--i) * 30ms); }
+.is-after .ba-before .tx { background-size: 100% 1px; transition: background-size .3s var(--ease) calc(var(--i) * 55ms); }
+.is-after .ba-after li { opacity: 1; transform: none; transition: opacity .35s ease calc(560ms + var(--i) * 60ms), transform .5s var(--ease) calc(560ms + var(--i) * 60ms); }
+
+/* four fields as a menu list */
+.fields { border-top: 1.5px solid var(--ink); }
+.field { display: grid; gap: .9rem 2.5rem; padding: 2rem 0; border-bottom: 1px solid var(--line); }
+@media (min-width: 60rem) {
+  .field { grid-template-columns: 17rem minmax(0, 1fr) 11rem; align-items: start; padding: 2.4rem 0; }
+}
+.field h4 { font-family: var(--serif); font-size: 1.3rem; line-height: 1.5; letter-spacing: .03em; }
+.field .cat { display: block; margin-top: .35rem; font-size: .82rem; color: var(--ink-3); }
+.field p { color: var(--ink-2); font-size: .95rem; }
+.ex { margin-top: 1rem; display: grid; gap: .1rem 1.5rem; }
+@media (min-width: 36rem) { .ex { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.ex li { position: relative; padding-left: 1rem; font-size: .9rem; color: var(--ink-2); line-height: 1.85; }
+.ex li::before { content: ""; position: absolute; left: 0; top: .85em; width: .4rem; height: 1px; background: var(--frost); }
+.ex-k { margin-top: 1rem; font-size: .8rem; font-weight: 700; color: var(--ink-3); }
+.price { font-family: var(--serif); font-variant-numeric: tabular-nums; }
+.field .price { font-size: 1.3rem; font-weight: 600; line-height: 1.5; }
+@media (min-width: 60rem) { .field .price { text-align: right; } }
+.field .price small { display: block; font-family: var(--sans); font-size: .78rem; font-weight: 400; color: var(--ink-3); }
+
+/* scope */
+.scope { display: grid; gap: 1.25rem; }
+@media (min-width: 52rem) { .scope { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+.scope > div { padding: 1.6rem 1.5rem 1.2rem; border-radius: var(--r-lg); }
+.scope .ok { background: var(--paper); border: 1px solid var(--line); }
+.scope .ng { background: transparent; border: 1px dashed var(--line); }
+.scope h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: .6rem; }
+.scope li { display: grid; grid-template-columns: 1.25rem 1fr; gap: .7rem; padding: .7rem 0; border-top: 1px solid var(--line-2); font-size: .93rem; color: var(--ink-2); line-height: 1.8; }
+.scope li:first-child { border-top: 0; }
+.scope li svg { width: 1.25rem; height: 1.25rem; margin-top: .25rem; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.scope .ok svg { stroke: var(--leaf); }
+.scope .ng svg { stroke: var(--ink-3); }
+
+/* ============================================================
+   Flow
+   ============================================================ */
+.steps { position: relative; max-width: 56rem; counter-reset: step; }
+.steps::before, .steps::after { content: ""; position: absolute; left: 1.4rem; top: 1.5rem; bottom: 1.5rem; width: 1px; background: var(--line); }
+/* the ink rail is drawn down as the reader scrolls through the steps */
+.steps::after { width: 2px; margin-left: -.5px; background: var(--ink); transform-origin: 50% 0; transform: scaleY(var(--prog, 0)); }
+.step { position: relative; display: grid; grid-template-columns: 2.8rem minmax(0, 1fr); gap: 1.25rem; padding-block: 1.25rem; }
+@media (min-width: 48rem) { .step { gap: 2rem; padding-block: 1.6rem; } }
+.step-n {
+  position: relative; z-index: 1; display: grid; place-items: center; width: 2.8rem; height: 2.8rem; border-radius: 50%;
+  background: var(--paper); border: 1px solid var(--ink); font-family: var(--serif); font-size: 1.2rem; font-weight: 600; line-height: 1;
+}
+.step-n { transition: background-color .35s ease, color .35s ease; }
+.step.is-passed .step-n { background: var(--ink); color: var(--paper); }
+.step.is-key .step-n { box-shadow: 0 0 0 4px var(--beni-soft); border-color: var(--beni); }
+.step h3 { font-size: 1.2rem; font-weight: 700; line-height: 1.6; padding-top: .35rem; }
+.step-meta { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin: .3rem 0 .6rem; font-size: .84rem; color: var(--ink-3); }
+.step-meta b { color: var(--ink); font-weight: 700; margin-left: .35rem; }
+.step p { color: var(--ink-2); font-size: .95rem; }
+.step .you { margin-top: .6rem; font-size: .86rem; color: var(--ink-3); }
+.branch { display: inline-block; margin-top: .75rem; padding: .15rem .75rem; border-radius: var(--r-sm); background: var(--beni-soft); color: var(--beni); font-size: .82rem; font-weight: 700; }
+
+/* ============================================================
+   Six months (scroll scene)
+   ============================================================ */
+.grow { display: grid; gap: 0; }
+@media (min-width: 56rem) { .grow { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(2.5rem, 6vw, 6rem); } }
+.grow-fig {
+  position: sticky; top: var(--hd); z-index: 2; margin: 0;
+  height: 40vh; height: 40svh; min-height: 15rem;
+  display: grid; grid-template-rows: minmax(0, 1fr) auto; align-items: center;
+  background: var(--surface); border-bottom: 1px solid var(--line-2);
+  margin-inline: calc(var(--gut) * -1); padding: .75rem var(--gut) .75rem;
+}
+@media (min-width: 56rem) {
+  .grow-fig { top: calc(var(--hd) + 8vh); height: 70vh; height: 70svh; max-height: 40rem; margin: 0; padding: 0; border: 0; background: transparent; }
+}
+.grow-canvas {
+  position: relative; height: 100%; min-height: 0; border-radius: var(--r-lg);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 20px 20px; background-position: -1px -1px;
+  border: 1px solid var(--line-2);
+}
+.grow-canvas svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.grow-cap { display: flex; align-items: baseline; gap: .75rem; padding-top: .7rem; }
+.grow-cap b { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.grow-cap span { font-size: .85rem; color: var(--ink-3); }
+@media (max-width: 55.99rem) { .grow-cap { padding-top: .4rem; } .grow-cap b { font-size: 1.1rem; } }
+
+.tree .ts { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.tree .tl { fill: var(--leaf-soft); stroke: var(--ink); stroke-width: 1.5; }
+.tree .gr { fill: none; stroke: var(--frost); stroke-width: 1.2; stroke-linecap: round; }
+.tree .rl { fill: none; stroke: var(--frost); stroke-width: 1; }
+.tree .rl-t { fill: var(--ink-3); font-family: var(--sans); font-size: 7px; }
+.tree .sk { stroke: var(--frost); stroke-width: 3.4; stroke-linecap: round; }
+.tree .tie { stroke: var(--frost); stroke-width: 1.6; stroke-linecap: round; }
+.tree .sk-lb { fill: var(--ink-3); font-family: var(--sans); font-size: 8px; }
+.tree .sk-ld { stroke: var(--ink-3); stroke-width: .8; }
+.tree .mk line { stroke: var(--beni); stroke-width: 1; stroke-dasharray: 3 3; }
+.tree .mk path { fill: var(--beni); }
+.tree-g { transform-origin: 120px 214px; transition: transform 1.1s var(--ease); }
+.tp .ts { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .9s var(--ease); }
+.tp.on .ts { stroke-dashoffset: 0; }
+.tp .lv { transform-box: fill-box; transform-origin: center; transform: scale(0); opacity: 0; transition: transform .7s var(--ease) .3s, opacity .35s ease .3s; }
+.tp.on .lv { transform: scale(1); opacity: 1; }
+.stake { transform-origin: 138px 214px; transition: transform 1.2s var(--ease), opacity .9s ease; }
+.stake.gone { transform: translate(40px, 4px) rotate(20deg); opacity: 0; }
+.mk { transition: transform 1.1s var(--ease); }
+.tree.static *, .tree.static { transition: none !important; }
+
+.months { counter-reset: m; }
+.month { position: relative; padding: 2.5rem 0; min-height: 58vh; min-height: 58svh; display: flex; flex-direction: column; justify-content: center; border-bottom: 1px solid var(--line-2); }
+.month:last-child { border-bottom: 0; }
+@media (min-width: 56rem) { .month { min-height: 64vh; min-height: 64svh; padding: 3rem 0; } .month:first-child { padding-top: 12vh; } }
+.month h3 { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem 1rem; margin-bottom: .75rem; font-family: var(--serif); font-size: clamp(1.4rem, 2.6vw, 1.8rem); line-height: 1.4; font-variant-numeric: tabular-nums; }
+.month .tag { font-family: var(--sans); font-size: .8rem; font-weight: 700; padding: .1rem .7rem; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-2); }
+.month .tag.visit { border-color: var(--ink); color: var(--ink); }
+.month p { color: var(--ink-2); max-width: 32rem; }
+.month .fee { margin-top: .75rem; font-size: .85rem; color: var(--ink-3); }
+.month > * { transition: color var(--t-move) ease, opacity var(--t-move) ease; }
+.js .month:not(.is-on) h3, .js .month:not(.is-on) p { color: var(--ink-3); }
+.js .month:not(.is-on) .tag { opacity: .6; }
+
+/* ============================================================
+   Price
+   ============================================================ */
+.notice { max-width: 52rem; margin-bottom: 2rem; padding: 1.2rem 1.4rem; border-radius: var(--r-md); background: var(--beni-soft); color: var(--ink); font-size: .93rem; }
+.notice b { display: block; margin-bottom: .2rem; color: var(--beni); font-size: 1rem; }
+.ptable { width: 100%; border-collapse: collapse; }
+.ptable th, .ptable td { text-align: left; vertical-align: top; padding: 1.1rem 1rem 1.1rem 0; border-bottom: 1px solid var(--line-2); }
+.ptable thead th { font-size: .8rem; font-weight: 700; color: var(--ink-3); padding-block: .6rem; border-bottom: 1.5px solid var(--ink); }
+.ptable tbody th { font-weight: 700; font-size: .98rem; width: 13rem; }
+.ptable td.yen { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; width: 11rem; line-height: 1.6; }
+.ptable td.yen small { font-family: var(--sans); font-size: .78rem; font-weight: 400; color: var(--ink-3); margin-left: .15rem; }
+.ptable td.memo { font-size: .9rem; color: var(--ink-2); padding-right: 0; }
+.ptable tr.grp th { padding: 2rem 0 .6rem; border-bottom: 1px solid var(--line); font-family: var(--serif); font-size: 1.12rem; width: auto; }
+@media (max-width: 47.99rem) {
+  .ptable thead { display: none; }
+  .ptable, .ptable tbody, .ptable tr, .ptable th, .ptable td { display: block; width: auto; }
+  .ptable tr { padding: 1rem 0; border-bottom: 1px solid var(--line-2); }
+  .ptable tr.grp { padding: 1.75rem 0 0; border-bottom: 1px solid var(--line); }
+  .ptable th, .ptable td { padding: 0; border: 0; }
+  .ptable tr.grp th { padding: 0 0 .5rem; border: 0; }
+  .ptable td.yen { margin: .15rem 0 .3rem; }
+}
+.paypath {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .9rem; margin-top: 1.75rem; padding: 1.1rem 1.35rem;
+  border-radius: var(--r-md); background: var(--paper); border: 1px solid var(--line); font-size: .9rem; color: var(--ink-2);
+}
+.paypath b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.paypath svg { width: 1rem; height: 1rem; stroke: var(--frost); fill: none; stroke-width: 1.5; flex: none; }
+.paypath .tot { margin-left: auto; font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); }
+@media (max-width: 40rem) { .paypath .tot { margin-left: 0; width: 100%; padding-top: .5rem; border-top: 1px solid var(--line-2); } }
+
+/* calculator */
+.calc { display: grid; gap: 2rem; padding: clamp(1.4rem, 3vw, 2.25rem); border-radius: var(--r-lg); background: var(--paper); border: 1px solid var(--line); }
+@media (min-width: 56rem) { .calc { grid-template-columns: 1fr 1fr; gap: 3.5rem; } }
+.fld + .fld { margin-top: 1.6rem; }
+.fld-l { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: .9rem; font-weight: 700; margin-bottom: .5rem; }
+.fld-l output, .fld-l .val { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.fld-l .val small { font-family: var(--sans); font-size: .8rem; font-weight: 400; margin-left: .15rem; }
+.hint { margin-top: .35rem; font-size: .8rem; color: var(--ink-3); }
+.calc .seg { display: flex; }
+.calc .seg button { flex: 1; padding-inline: .4rem; font-size: .8rem; }
+input[type="range"] {
+  -webkit-appearance: none; appearance: none; width: 100%; height: 2.75rem; margin: 0; background: transparent; cursor: pointer;
+  --fill: 50%;
+}
+input[type="range"]::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: linear-gradient(to right, var(--ink) var(--fill), var(--line) var(--fill)); }
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 26px; height: 26px; margin-top: -11px; border-radius: 50%;
+  background: var(--surface); border: 2px solid var(--ink); box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  transition: transform 160ms var(--ease);
+}
+input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.12); }
+input[type="range"]::-moz-range-track { height: 4px; border-radius: 4px; background: var(--line); }
+input[type="range"]::-moz-range-progress { height: 4px; border-radius: 4px; background: var(--ink); }
+input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--surface); border: 2px solid var(--ink); }
+input[type="range"]:focus-visible { outline-offset: 0; }
+
+.res-rows { border-top: 1.5px solid var(--ink); }
+.res-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: .8rem 0; border-bottom: 1px solid var(--line-2); font-size: .9rem; color: var(--ink-2); }
+.res-row b { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.res-row b.gr { color: var(--leaf); }
+.res-row b small { font-family: var(--sans); font-size: .8rem; font-weight: 400; margin-left: .1rem; }
+.meter { margin-top: 1.4rem; }
+.meter-track { position: relative; height: .7rem; border-radius: 999px; background: var(--line-2); overflow: hidden; }
+.meter-track i { position: absolute; inset: 0; background: var(--ink); transform-origin: 0 50%; transform: scaleX(.5); transition: transform 600ms var(--ease); border-radius: 999px; }
+.meter-track .mid { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--beni); z-index: 1; }
+.meter-lbl { display: flex; justify-content: space-between; margin-top: .4rem; font-size: .75rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.meter-lbl span:nth-child(2) { color: var(--beni); font-weight: 700; }
+.verdict { margin-top: 1rem; padding: .9rem 1.1rem; border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--line); font-size: .92rem; line-height: 1.85; }
+.fine { max-width: 52rem; margin-top: 1rem; font-size: .8rem; color: var(--ink-3); line-height: 1.85; }
+
+/* compare */
+.cmp { display: grid; gap: 0; border-top: 1px solid var(--line); }
+@media (min-width: 40rem) { .cmp { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2rem; } }
+@media (min-width: 68rem) { .cmp { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 1.25rem; border-top: 0; } }
+.cmp > div { padding: 1.5rem 0; border-bottom: 1px solid var(--line); }
+@media (min-width: 68rem) { .cmp > div { padding: 1.5rem 1.25rem; border: 1px solid transparent; border-top: 1.5px solid var(--ink); border-bottom: 0; } }
+.cmp > div.me { padding: 1.5rem 1.25rem; background: var(--surface); border: 1.5px solid var(--beni); border-radius: var(--r-lg); margin-block: 1rem; }
+@media (min-width: 68rem) { .cmp > div.me { margin: 0; } }
+.cmp h4 { font-size: 1.05rem; font-weight: 700; line-height: 1.6; margin-bottom: .8rem; }
+.cmp .me h4 { color: var(--beni); }
+.cmp dl { margin: 0; display: grid; gap: .7rem; }
+.cmp dt { font-size: .76rem; color: var(--ink-3); }
+.cmp dd { margin: 0; font-size: .9rem; line-height: 1.75; color: var(--ink-2); }
+.cmp .me dd { color: var(--ink); }
+
+/* mid cta */
+.midcta { border-block: 1px solid var(--line); }
+.midcta-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem 2rem; padding-block: 2.25rem; }
+.midcta b { display: block; font-family: var(--serif); font-size: clamp(1.2rem, 2.4vw, 1.5rem); font-weight: 600; line-height: 1.6; }
+.midcta p { font-size: .88rem; color: var(--ink-2); }
+
+/* ============================================================
+   Safety / FAQ
+   ============================================================ */
+.promises { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+@media (min-width: 48rem) { .promises { grid-template-columns: 1fr 1fr; } }
+.promises > div { background: var(--surface); padding: 1.75rem 1.5rem; }
+.promises .ico { width: 2.5rem; height: 2.5rem; margin-bottom: .9rem; }
+.promises h3 { font-size: 1.05rem; font-weight: 700; line-height: 1.65; margin-bottom: .45rem; }
+.promises p { font-size: .92rem; color: var(--ink-2); }
+.aside { margin-top: 1.25rem; padding: 1.25rem 1.5rem; border-radius: var(--r-md); border: 1px solid var(--line); font-size: .92rem; color: var(--ink-2); }
+.aside b { display: block; color: var(--ink); margin-bottom: .2rem; }
+
+.faq { border-top: 1.5px solid var(--ink); max-width: 56rem; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary {
+  list-style: none; display: grid; grid-template-columns: 1.6rem minmax(0, 1fr) 1.25rem; align-items: start; gap: .75rem;
+  padding: 1.25rem 0; cursor: pointer; font-weight: 700; font-size: 1rem; line-height: 1.7;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover .qt { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.faq .qa { font-family: var(--serif); font-size: 1.15rem; line-height: 1.5; }
+.faq .pm { position: relative; width: 1.1rem; height: 1.1rem; margin-top: .35rem; }
+.faq .pm::before, .faq .pm::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1.5px; margin-top: -.75px; background: var(--ink-2); transition: transform 300ms var(--ease); }
+.faq .pm::after { transform: rotate(90deg); }
+.faq details[open] .pm::after { transform: rotate(0deg); }
+.faq-a { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: .75rem; padding: 0 2rem 1.4rem 0; color: var(--ink-2); font-size: .95rem; }
+.faq-a .qa { color: var(--beni); }
+@supports selector(::details-content) {
+  .faq details::details-content { block-size: 0; overflow: hidden; transition: block-size 380ms var(--ease), content-visibility 380ms allow-discrete; }
+  .faq details[open]::details-content { block-size: auto; }
+}
+:root { interpolate-size: allow-keywords; }
+
+/* ============================================================
+   About
+   ============================================================ */
+.about-cols { display: grid; gap: 1.1rem 3rem; }
+@media (min-width: 56rem) { .about-cols { grid-template-columns: 1fr 1fr; } }
+.about-cols p { color: var(--ink-2); font-size: .98rem; line-height: 2; }
+.about-cols > div > p + p { margin-top: 1.1rem; }
+.strengths { display: grid; gap: 1.5rem 2.5rem; margin-top: clamp(3rem, 6vw, 4.5rem); padding-top: 2rem; border-top: 1px solid var(--line); }
+@media (min-width: 52rem) { .strengths { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.strengths h3 { font-family: var(--serif); font-size: 1.2rem; line-height: 1.55; margin-bottom: .5rem; }
+.strengths p { color: var(--ink-2); font-size: .93rem; }
+.origin { display: grid; gap: 2rem; align-items: center; margin-top: clamp(3rem, 6vw, 4.5rem); padding: clamp(1.5rem, 4vw, 2.75rem); border-radius: var(--r-lg); background: var(--paper); border: 1px solid var(--line); }
+@media (min-width: 56rem) { .origin { grid-template-columns: minmax(0, 1fr) 22rem; gap: 3rem; } }
+.origin h3 { font-family: var(--serif); font-size: clamp(1.35rem, 2.6vw, 1.7rem); line-height: 1.5; margin-bottom: .9rem; }
+.origin p { color: var(--ink-2); }
+.origin p + p { margin-top: .75rem; }
+.origin-figs { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.origin-figs figure { margin: 0; }
+.origin-figs .mini { position: relative; display: block; width: 100%; aspect-ratio: 1; padding: 0; border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--line-2); }
+.origin-figs .mini svg { width: 100%; height: 100%; transition: opacity .25s ease; }
+.mini-play { cursor: pointer; transition: border-color var(--t-ui) ease; }
+.mini-play:hover { border-color: var(--ink-3); }
+.mini-play .play {
+  position: absolute; right: .5rem; bottom: .5rem; display: inline-flex; align-items: center; gap: .3rem; padding: .1rem .6rem .1rem .45rem;
+  border-radius: 999px; border: 1px solid var(--line); background: var(--paper); font-size: .72rem; font-weight: 700; color: var(--ink-2); line-height: 1.6;
+  transition: border-color var(--t-ui) ease, color var(--t-ui) ease, opacity var(--t-ui) ease;
+}
+.mini-play .play svg { width: .6rem; height: .6rem; fill: currentColor; }
+.mini-play:hover .play { border-color: var(--ink); color: var(--ink); }
+.mini-play[aria-busy="true"] .play { opacity: 0; }
+.origin-figs figcaption { margin-top: .5rem; text-align: center; font-size: .8rem; color: var(--ink-3); line-height: 1.6; }
+.profile { margin: clamp(3rem, 6vw, 4.5rem) 0 0; border-top: 1.5px solid var(--ink); }
+.profile > div { display: grid; gap: .2rem 2rem; padding: 1rem 0; border-bottom: 1px solid var(--line-2); }
+@media (min-width: 40rem) { .profile > div { grid-template-columns: 9rem 1fr; } }
+.profile dt { font-weight: 700; font-size: .92rem; }
+.profile dd { margin: 0; color: var(--ink-2); font-size: .95rem; }
+.profile ul li { position: relative; padding-left: 1rem; }
+.profile ul li + li { margin-top: .35rem; }
+.profile ul li::before { content: ""; position: absolute; left: 0; top: .9em; width: .45rem; height: 1px; background: var(--frost); }
+
+.ref { display: grid; gap: 2rem; }
+@media (min-width: 56rem) { .ref { grid-template-columns: 1fr 1.1fr; gap: 3rem; } }
+.ref dl { margin: 0; border-top: 1px solid var(--line); }
+.ref dl > div { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; padding: .75rem 0; border-bottom: 1px solid var(--line-2); font-size: .92rem; }
+.ref dt { font-weight: 700; }
+.ref dd { margin: 0; color: var(--ink-2); }
+.lbl { display: block; font-size: .85rem; font-weight: 700; margin-bottom: .5rem; }
+.ref textarea {
+  width: 100%; min-height: 11rem; padding: 1rem 1.1rem; border-radius: var(--r-md); border: 1px solid var(--line);
+  background: var(--paper); color: var(--ink); font: inherit; font-size: .92rem; line-height: 1.9; resize: vertical;
+}
+.copy-row { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: .75rem; }
+.copied { font-size: .84rem; color: var(--leaf); font-weight: 700; }
+
+/* ============================================================
+   Contact band
+   ============================================================ */
+.contact { background: var(--band); color: var(--band-ink); }
+.contact .sec-hd p { color: var(--band-ink-2); }
+.contact-grid { display: grid; gap: 1px; background: var(--band-line); border-block: 1px solid var(--band-line); }
+@media (min-width: 52rem) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+.contact-grid > div { display: flex; flex-direction: column; align-items: flex-start; background: var(--band); padding: 2rem 0; }
+.contact-grid .copy-row { margin-top: auto; padding-top: 1rem; }
+@media (min-width: 52rem) { .contact-grid > div { padding: 2.5rem 2.5rem 2.5rem 0; } .contact-grid > div + div { padding-left: 2.5rem; } }
+.contact h3 { font-size: .9rem; font-weight: 700; color: var(--band-ink-2); margin-bottom: .5rem; }
+.big-tel { display: inline-block; font-family: var(--serif); font-size: clamp(2rem, 6vw, 3.1rem); font-weight: 600; letter-spacing: .04em; line-height: 1.3; text-decoration: none; font-variant-numeric: tabular-nums; }
+.big-mail { display: inline-block; font-family: var(--serif); font-size: clamp(1.35rem, 3.6vw, 1.9rem); font-weight: 600; line-height: 1.4; text-decoration: none; overflow-wrap: anywhere; }
+.big-tel:hover, .big-mail:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
+.contact p { margin-top: .75rem; font-size: .9rem; color: var(--band-ink-2); }
+.contact .btn-line { border-color: var(--band-ink-2); color: var(--band-ink); }
+.contact .btn-line:hover { background: rgba(255,255,255,.08); }
+.contact .copied { color: #9ED9B8; }
+.contact :focus-visible { outline-color: #F29AA8; }
+
+/* cursor: pool of light */
+.cursor-fx { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+
+/* footer */
+.ft { padding-block: 2.25rem calc(2.25rem + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); }
+.ft-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
+.ft .brand { margin: 0; }
+.ft small { font-size: .78rem; color: var(--ink-3); }
+
+/* mobile call bar */
+.cbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 45;
+  display: grid; grid-template-columns: 1fr 1.3fr; gap: .5rem;
+  padding: .5rem .75rem calc(.5rem + env(safe-area-inset-bottom, 0px));
+  background: color-mix(in srgb, var(--paper) 96%, transparent); border-top: 1px solid var(--line);
+  transform: translateY(0); transition: transform 360ms var(--ease);
+}
+.cbar .btn { min-height: 3rem; padding-inline: .5rem; font-size: .9rem; }
+.cbar svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.cbar.is-hidden { transform: translateY(110%); }
+@media (min-width: 40rem) { .cbar { display: none; } }
+@media (max-width: 39.99rem) { body { padding-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px)); } }
+
+/* ============================================================
+   Load choreography (hero only)
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .js .h1 .ln > span { transform: translateY(108%); transition: transform 1s var(--ease); transition-delay: calc(var(--i) * 90ms + 80ms); }
+  .js .ld { opacity: 0; transform: translateY(10px); transition: opacity .8s ease, transform .9s var(--ease); transition-delay: var(--d, 0ms); }
+  .js .sheet.ld { transform: translateY(18px); }
+  .js.is-ready .h1 .ln > span { transform: none; }
+  .js.is-ready .ld { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 1ms !important; transition-delay: 0ms !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+<span id="top"></span>
+<a class="skip" href="#main">本文へ移動</a>
+
+<header class="hd" id="hd">
+  <div class="wrap hd-in">
+    <a class="brand" href="#top" aria-label="ソエギ ページの先頭へ">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M13 52H51" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <path d="M45 52V13" stroke="var(--frost)" stroke-width="4" stroke-linecap="round"/>
+        <path d="M28 52C29 42 27 32 28 21" stroke="currentColor" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+        <path d="M28 41L45 39M28 30L45 28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="35" cy="21" rx="8" ry="4.5" transform="rotate(-35 35 21)" fill="var(--leaf-soft)" stroke="currentColor" stroke-width="2.2"/>
+        <ellipse cx="21" cy="25" rx="8" ry="4.5" transform="rotate(35 21 25)" fill="var(--leaf-soft)" stroke="currentColor" stroke-width="2.2"/>
+      </svg>
+      <span><b>ソエギ</b><small>添え木のように、ひとり立ちまで支える。</small></span>
+    </a>
+    <nav class="gnav" id="gnav" aria-label="ページ内の案内">
+      <ul>
+        <li><a href="#service">頼めること</a></li>
+        <li><a href="#flow">進め方</a></li>
+        <li><a href="#price">料金</a></li>
+        <li><a href="#safety">安心のために</a></li>
+        <li><a href="#about">事業者概要</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+    <div class="hd-act">
+      <a class="hd-tel" href="tel:080-9018-2777"><small>ご相談無料　9:00〜19:00（土日も）</small><b>080-9018-2777</b></a>
+      <a class="btn btn-cta btn-sm hd-cta" href="#contact">無料相談のお申し込み</a>
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="gnav"><i aria-hidden="true"></i>メニュー</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap hero-in">
+      <div class="hero-txt">
+        <p class="status ld" style="--d:0ms"><i aria-hidden="true"></i>無料相談 受付中。お試し導入は2026年11月から順にお受けします</p>
+        <h1 class="h1" id="hero-h">
+          <span class="ln"><span style="--i:0">削減できた時間を、</span></span>
+          <span class="ln"><span style="--i:1">数字で確かめてから</span></span>
+          <span class="ln"><span style="--i:2">続ける。</span></span>
+        </h1>
+        <p class="lede ld" style="--d:420ms">
+          御社の仕事の流れを伺って、手間のかかっている所を一緒に見つけます。いまお使いのExcelやメールを生かしながら、AIを使って御社の仕事に合う仕組みをつくり、社内に根付かせます。はじめに今の作業時間を測り、1ヶ月使ってもう一度測ります。割に合わなければ、そこで終了で構いません。
+        </p>
+        <div class="btns ld" style="--d:520ms">
+          <a class="btn btn-cta" href="#contact">まず話を聞いてもらう（無料）</a>
+          <a class="btn btn-line" href="#price">料金を見る</a>
+        </div>
+        <p class="hero-note ld" style="--d:600ms">料金はすべてこのサイトに載せています。お試し導入 <b>3万円</b>／定着プログラム <b>月5万円</b>（いずれも税抜）</p>
+      </div>
+
+      <div class="sheet ld" id="sheet" style="--d:300ms">
+        <div class="sheet-hd"><h2>計測シート</h2><span>数値は記入例です</span></div>
+        <div class="sheet-bd">
+          <div class="seg" role="group" aria-label="計測シートの切り替え">
+            <button type="button" data-sheet="0" aria-pressed="true">作業にかかる時間</button>
+            <button type="button" data-sheet="1" aria-pressed="false">お客さまを待たせる時間</button>
+          </div>
+          <div id="sheet-rows">
+            <div class="mrow">
+              <span class="mname">見積書の作成</span>
+              <div class="dimrow"><span class="k">導入前</span><div class="dim" style="--p:1"><i class="l"></i><i class="r"></i></div><span class="v">20時間</span></div>
+              <div class="dimrow af"><span class="k">導入後</span><div class="dim" style="--p:.35"><i class="l"></i><i class="r"></i></div><span class="v">7時間</span></div>
+              <div class="mdelta">月13時間短く</div>
+            </div>
+            <div class="mrow">
+              <span class="mname">求人原稿の作成</span>
+              <div class="dimrow"><span class="k">導入前</span><div class="dim" style="--p:1"><i class="l"></i><i class="r"></i></div><span class="v">6時間</span></div>
+              <div class="dimrow af"><span class="k">導入後</span><div class="dim" style="--p:.25"><i class="l"></i><i class="r"></i></div><span class="v">1.5時間</span></div>
+              <div class="mdelta">月4.5時間短く</div>
+            </div>
+            <div class="mrow">
+              <span class="mname">問い合わせ対応</span>
+              <div class="dimrow"><span class="k">導入前</span><div class="dim" style="--p:1"><i class="l"></i><i class="r"></i></div><span class="v">12時間</span></div>
+              <div class="dimrow af"><span class="k">導入後</span><div class="dim" style="--p:.42"><i class="l"></i><i class="r"></i></div><span class="v">5時間</span></div>
+              <div class="mdelta">月7時間短く</div>
+            </div>
+          </div>
+          <div class="sheet-ft" id="sheet-ft"><b>3つ合わせて、月38時間が13.5時間に</b><small>お客さまごとに、この表をおつくりします</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="news">
+    <div class="wrap news-in">
+      <h2>お知らせ</h2>
+      <ul>
+        <li><time datetime="2026-09-01">2026.09.01</time><span class="tag">お知らせ</span><span>ホームページを公開しました。</span></li>
+        <li><time datetime="2026-09-01">2026.09.01</time><span class="tag">受付</span><span>無料相談（60分）の受付を始めました。山形県内はお伺いします。</span></li>
+        <li><time datetime="2026-09-01">2026.09.01</time><span class="tag">受付</span><span>お試し導入は2026年11月から順にお受けします。</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ SERVICE ============ -->
+  <section class="sec sec-white" id="service" aria-labelledby="service-h">
+    <div class="wrap">
+      <div class="sec-hd">
+        <h2 id="service-h" class="jp-bal">やることは、会社ごとに違います</h2>
+        <p>決まった商品を売るのではなく、御社の仕事の流れを伺うところから始めます。手間のかかっている所を見つけ、どう変えるかを設計し、実際に入れて社内に根付かせるまでを、ひとりでお引き受けします。AIもITも、そのための道具です。</p>
+      </div>
+      <ol class="approach">
+        <li><span class="n">01</span><h3>伺う</h3><p>誰が、どの作業に、週に何時間かけているか。現場の方のお話を聞くところから始めます。</p></li>
+        <li><span class="n">02</span><h3>見つける</h3><p>時間がかかる所、ミスが出やすい所、特定の人に頼りきりの所を、一緒に洗い出します。</p></li>
+        <li><span class="n">03</span><h3>設計する</h3><p>どう変えるかを決め、仕組みを組み立てます。AIが合わない作業には、AIは使いません。</p></li>
+        <li><span class="n">04</span><h3>入れて、直す</h3><p>実際の業務で使っていただき、数字を測って直します。手順書を残して根付かせます。</p></li>
+      </ol>
+      <ul class="tools" aria-label="使う道具の例">
+        <li class="k">使う道具の例</li>
+        <li>AIでつくる御社専用の仕組み</li><li>いまお使いのExcel・スプレッドシート</li><li>メール・問い合わせの定型化</li><li>いまお使いのソフトの設定見直し</li>
+      </ul>
+
+      <div class="sub-hd">
+        <h3 class="jp-bal">たとえば、こんな作業から</h3>
+        <p>山形の会社で手間がかかりやすいのは、たとえば次のような作業です。どこから始めるかは、お話を伺ってから決めます。</p>
+        <div class="ba-ctl" hidden>
+          <span id="ba-l">手順を比べる</span>
+          <div class="seg" role="group" aria-labelledby="ba-l">
+            <button type="button" data-bav="0" aria-pressed="true">いま</button>
+            <button type="button" data-bav="1" aria-pressed="false">導入後</button>
+          </div>
+        </div>
+      </div>
+      <ul class="entry">
+        <li>
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="5" width="28" height="38" rx="3"/><path d="M16 14h16M16 20h16M16 26h9"/><path class="ac" d="M27 30l4 4.5 4-4.5M31 34.5V40M28 36.5h6"/></svg>
+          <h3>見積書・請求書</h3>
+          <p>これまでの見積書を読み込ませ、条件をお伝えいただくと、品目と金額の下書きが出てくる形をつくります。いまお使いのExcelやGoogleスプレッドシートのまま使えます。</p>
+          <div class="ba" data-ba="est"></div>
+          <p class="res">書く作業が、確かめる作業に。</p>
+        </li>
+        <li>
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="16" r="5.5"/><path d="M7 34c1.6-5.5 5.4-8.5 10-8.5s8.4 3 10 8.5"/><path class="ac" d="M31 13h10M31 19.5h10M31 26h6"/><path d="M5 41h38"/></svg>
+          <h3>求人原稿・募集文</h3>
+          <p>どんな方に来てほしいかを伺って、ハローワークや求人サイト向けの原稿をつくります。書き方を変えた案を複数お出しするので、選んで直すだけです。</p>
+          <div class="ba" data-ba="job"></div>
+          <p class="res">書けなくて出せない、が無くなる。</p>
+        </li>
+        <li>
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="11" width="36" height="26" rx="3"/><path class="ac" d="M7 13.5l17 12.5 17-12.5"/><path d="M6 43h20"/></svg>
+          <h3>問い合わせ・メール対応</h3>
+          <p>よくあるご質問への返信文を整え、新しい問い合わせにも下書きが出るようにします。どこまで定型にしてよいかを決める作業まで含みます。</p>
+          <div class="ba" data-ba="mail"></div>
+          <p class="res">返信が早く、文面が揃う。</p>
+        </li>
+      </ul>
+
+      <div class="sub-hd">
+        <h3 class="jp-bal">4つの分野でお手伝いしています</h3>
+        <p>どの分野から始めるかは、お話を伺ってから一緒に決めます。どの分野も、進め方は同じです。測って、決めて、また測る。</p>
+      </div>
+      <ul class="fields">
+        <li class="field">
+          <div><h4>手作業を減らす</h4><span class="cat">お試し導入・定着プログラム</span></div>
+          <div>
+            <p>毎回ゼロから書いている、同じことを何度も入力している。そんな作業の流れを見直し、生成AIやExcel、クラウドの道具のうち合うものを組み合わせて短くします。6ヶ月かけて社内に根付かせ、手順書を残します。</p>
+            <p class="ex-k">たとえば</p>
+            <ul class="ex"><li>見積書・請求書の下書き</li><li>求人原稿</li><li>問い合わせへの返信</li><li>データの転記や集計</li></ul>
+          </div>
+          <p class="price">お試し 3万円<small>続ける場合は月5万円（税抜）</small></p>
+        </li>
+        <li class="field">
+          <div><h4>数字を見て、改善を回す</h4><span class="cat">見える化パック</span></div>
+          <div>
+            <p>売上や顧客、問い合わせの記録を整理して、毎月の数字がひと目で分かる形にします。いまお使いのExcelのまま、毎月どの数字を見るかを決めるところから始めます。</p>
+            <p class="ex-k">たとえば</p>
+            <ul class="ex"><li>売上・利益の見える化</li><li>お客さまの傾向の分析</li><li>来月の見込みを数字で立てる</li><li>毎月見る数字を決める</li></ul>
+          </div>
+          <p class="price">5万円〜<small>税抜</small></p>
+        </li>
+        <li class="field">
+          <div><h4>会社に合った道具をつくる</h4><span class="cat">小さなツール</span></div>
+          <div>
+            <p>市販のソフトが合わないところは、御社の仕事に合わせた小さな道具をつくります。見積書や返信の下書きのように、型が決まっている仕事に限ってお引き受けします。</p>
+            <p class="ex-k">たとえば</p>
+            <ul class="ex"><li>見積書や返信の下書きが出る仕組み</li><li>Excel・スプレッドシートの仕組み化</li><li>入力フォームと集計表</li><li>社内向けの小さな道具</li></ul>
+          </div>
+          <p class="price">10万円〜<small>税抜</small></p>
+        </li>
+        <li class="field">
+          <div><h4>社内に「分かる人」を増やす</h4><span class="cat">社内研修・利用ルール</span></div>
+          <div>
+            <p>道具を入れても、使う人がいなければ続きません。御社の書類を題材にしたAIの使い方研修と、社内の利用ルールづくりをお手伝いします。</p>
+            <p class="ex-k">たとえば</p>
+            <ul class="ex"><li>御社の書類を使ったAIの使い方研修</li><li>社内の利用ルールづくり</li><li>操作を録画した説明</li><li>卒業後の相談窓口（保守プラン）</li></ul>
+          </div>
+          <p class="price">研修 3万円〜<small>2時間あたり（税抜）</small></p>
+        </li>
+      </ul>
+
+      <div class="sub-hd">
+        <h3 class="jp-bal">できること、お引き受けしないこと</h3>
+        <p>はじめにお伝えしておきます。時間の読めない仕事と、専門の先生の領域はお受けしていません。合わないと思われた場合は、遠慮なくお断りください。</p>
+      </div>
+      <div class="scope">
+        <div class="ok">
+          <h4>できること</h4>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>いまのやり方を大きく変えずに、必要なところだけ仕組みを足す</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>ExcelやGoogleスプレッドシート、メールのまま使える形にする</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>AIが合わない作業には、AIを使わない方法を選ぶ</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>どなたが使っても同じ結果になるよう、手順書までつくる</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>削減できた時間と、お金に直結する数字を測り、続けるかを一緒に判断する</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>卒業したあとも、手順書の更新と使い方のご相談に乗る（保守プラン）</span></li>
+          </ul>
+        </div>
+        <div class="ng">
+          <h4>お引き受けしないこと</h4>
+          <ul>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>ホームページの制作</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>パソコンの設定・故障修理や、基本操作のレクチャー</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>型のない一からの開発や、数百万円規模のシステム開発</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>24時間365日の保守対応（受付は9:00〜19:00です）</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>AIに任せきりにする運用。最終確認は人が行う前提でつくります</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>税務・労務・法律の判断。士業の先生の領域はお繋ぎします</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>補助金の申請書づくり（行政書士の先生の業務です）</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FLOW ============ -->
+  <section class="sec" id="flow" aria-labelledby="flow-h">
+    <div class="wrap">
+      <div class="sec-hd">
+        <h2 id="flow-h" class="jp-bal">進め方は、はじめから決めてあります</h2>
+        <p>測って、決めて、また測る。いきなり半年の契約はいたしません。1ヶ月試していただき、数字を見てから決めていただく形です。</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-n" aria-hidden="true">1</span>
+          <div>
+            <h3>無料相談</h3>
+            <p class="step-meta"><span>期間<b>60分</b></span><span>費用<b>無料</b></span></p>
+            <p>どの作業に、誰が、週に何時間かけているかを伺います。この時点ではご提案はいたしません。オンラインでも、お伺いしても構いません。</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div>
+            <h3>いまの数字を測る</h3>
+            <p class="step-meta"><span>期間<b>1〜2週間</b></span><span>費用<b>無料</b></span></p>
+            <p>一番重い作業を1つ選び、いまかかっている時間を記録していただきます。作業時間のほか、見積りを返すまでの日数や求人の応募数など、お金に直結する数字のうち何を測るかも、ここで一緒に決めます。</p>
+            <p class="you">お願いすること：計測シートへの記入（1日数分）</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-n" aria-hidden="true">3</span>
+          <div>
+            <h3>お試し導入</h3>
+            <p class="step-meta"><span>期間<b>1業務・1ヶ月</b></span><span>費用<b>3万円（税抜）</b></span></p>
+            <p>選んだ1つの業務を仕組み化し、実際の業務で1ヶ月使っていただきます。つくって終わりにはせず、詰まったところはその都度直します。</p>
+            <p class="you">お願いすること：いつもの業務で使ってみること</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-n" aria-hidden="true">4</span>
+          <div>
+            <h3>もう一度測る</h3>
+            <p class="step-meta"><span>時期<b>お試しの最終週</b></span></p>
+            <p>導入前と同じ方法で測り、数字を並べて比べます。割に合わないと判断されたら、そこで終了です。続ける場合も、無理に広げることはいたしません。</p>
+            <span class="branch">合わなければ、ここで終了</span>
+          </div>
+        </li>
+        <li class="step is-key">
+          <span class="step-n" aria-hidden="true">5</span>
+          <div>
+            <h3>定着プログラム</h3>
+            <p class="step-meta"><span>期間<b>6ヶ月</b></span><span>費用<b>月5万円（税抜・初月は2万円）</b></span></p>
+            <p>1〜2業務を社内に根付かせます。毎月の振り返りと手順書づくりを含み、お伺いは初月・3ヶ月目・最終月の3回です。お試し導入の3万円は初月の料金から差し引きます。</p>
+            <p class="you">お願いすること：月に一度の振り返りへのご参加</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step-n" aria-hidden="true">6</span>
+          <div>
+            <h3>卒業</h3>
+            <p class="step-meta"><span>保守プラン<b>月1万円（任意）</b></span></p>
+            <p>手順書をお渡しし、ソエギがいなくても社内で回る状態で卒業していただきます。次の業務に広げる場合は、もう1期続けます。</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ SIX MONTHS ============ -->
+  <section class="sec sec-white" id="program" aria-labelledby="program-h">
+    <div class="wrap">
+      <div class="sec-hd">
+        <h2 id="program-h" class="jp-bal">定着プログラムの6ヶ月</h2>
+        <p>お伺いするのは、初月・3ヶ月目・最終月の3回です。あいだの月はオンラインで振り返ります。6ヶ月目に、添え木は外れます。</p>
+      </div>
+      <div class="grow">
+        <figure class="grow-fig">
+          <div class="grow-canvas">
+            <svg class="tree" id="tree" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="tree-t">
+              <title id="tree-t">添え木に支えられた若い木。月が進むと木が育ち、6ヶ月目に添え木が外れる図</title>
+              <g class="ruler"></g>
+              <g>
+                <line class="gr" x1="24" y1="214" x2="220" y2="214"/>
+                <path class="gr" d="M62 214l-3-7M67 214l2-8M172 214l-2-7M177 214l3-8M96 214l-2-5M204 214l2-5"/>
+              </g>
+              <g class="stake">
+                <line class="sk" x1="138" y1="214" x2="138" y2="100"/>
+                <line class="tie" x1="120" y1="192" x2="138" y2="189"/>
+                <line class="tie" x1="120" y1="164" x2="138" y2="161"/>
+                <line class="sk-ld" x1="141" y1="112" x2="156" y2="104"/>
+                <text class="sk-lb" x="158" y="106">添え木</text>
+              </g>
+              <g class="tree-g">
+                <path class="ts" d="M120 214C121 190 118 160 120 132C121 112 119 92 120 70"/>
+                <g class="tp" data-m="1">
+                  <g class="lv"><ellipse class="tl" cx="127" cy="74" rx="8" ry="4.5" transform="rotate(-38 127 74)"/></g>
+                  <g class="lv"><ellipse class="tl" cx="113" cy="77" rx="8" ry="4.5" transform="rotate(38 113 77)"/></g>
+                </g>
+                <g class="tp" data-m="2">
+                  <path class="ts" pathLength="1" d="M120 172C130 166 138 160 146 150"/>
+                  <g class="lv"><ellipse class="tl" cx="151" cy="145" rx="9" ry="5" transform="rotate(-42 151 145)"/></g>
+                  <g class="lv"><ellipse class="tl" cx="136" cy="156" rx="7" ry="4" transform="rotate(-80 136 156)"/></g>
+                </g>
+                <g class="tp" data-m="3">
+                  <path class="ts" pathLength="1" d="M120 152C110 146 101 140 94 130"/>
+                  <g class="lv"><ellipse class="tl" cx="89" cy="125" rx="9" ry="5" transform="rotate(42 89 125)"/></g>
+                  <g class="lv"><ellipse class="tl" cx="104" cy="137" rx="7" ry="4" transform="rotate(80 104 137)"/></g>
+                </g>
+                <g class="tp" data-m="4">
+                  <path class="ts" pathLength="1" d="M120 126C131 120 139 112 144 102"/>
+                  <g class="lv"><ellipse class="tl" cx="148" cy="96" rx="9" ry="5" transform="rotate(-50 148 96)"/></g>
+                  <g class="lv"><ellipse class="tl" cx="134" cy="112" rx="7" ry="4" transform="rotate(-78 134 112)"/></g>
+                </g>
+                <g class="tp" data-m="5">
+                  <path class="ts" pathLength="1" d="M120 106C110 99 103 92 99 83"/>
+                  <g class="lv"><ellipse class="tl" cx="96" cy="77" rx="9" ry="5" transform="rotate(48 96 77)"/></g>
+                  <g class="lv"><ellipse class="tl" cx="108" cy="93" rx="7" ry="4" transform="rotate(78 108 93)"/></g>
+                </g>
+                <g class="tp" data-m="6">
+                  <g class="lv"><ellipse class="tl" cx="120" cy="60" rx="5" ry="10"/></g>
+                  <g class="lv"><ellipse class="tl" cx="160" cy="130" rx="7" ry="4" transform="rotate(-20 160 130)"/></g>
+                  <g class="lv"><ellipse class="tl" cx="80" cy="112" rx="7" ry="4" transform="rotate(20 80 112)"/></g>
+                </g>
+              </g>
+              <g class="mk"><line x1="36" y1="0" x2="112" y2="0"/><path d="M36 0l-6-3.5v7z"/></g>
+            </svg>
+          </div>
+          <figcaption class="grow-cap" aria-live="polite"><b id="gm-label">1ヶ月目</b><span id="gm-tag">お伺い（1回目）</span></figcaption>
+        </figure>
+
+        <ol class="months" id="months">
+          <li class="month is-on" data-m="1">
+            <h3>1ヶ月目<span class="tag visit">お伺い（1回目）</span></h3>
+            <p>対象の業務を仕組み化し、現場で使い方をご説明します。手順書の最初の版もここでつくります。</p>
+            <p class="fee">この月のお支払い 2万円（お試し導入の3万円を差し引いた額・税抜）</p>
+          </li>
+          <li class="month" data-m="2">
+            <h3>2ヶ月目<span class="tag">オンラインで振り返り</span></h3>
+            <p>1ヶ月分の数字を一緒に見て、詰まったところを直します。使いにくい手順は、ここで書き直します。</p>
+            <p class="fee">この月のお支払い 5万円（税抜）</p>
+          </li>
+          <li class="month" data-m="3">
+            <h3>3ヶ月目<span class="tag visit">お伺い（2回目）</span></h3>
+            <p>現場での使われ方を確かめます。2つ目の業務に広げるかどうかも、ここで一緒に決めます。</p>
+            <p class="fee">この月のお支払い 5万円（税抜）</p>
+          </li>
+          <li class="month" data-m="4">
+            <h3>4ヶ月目<span class="tag">オンラインで振り返り</span></h3>
+            <p>担当の方だけで回せるかを試します。ソエギは手を動かす側から、質問に答える側に回ります。</p>
+            <p class="fee">この月のお支払い 5万円（税抜）</p>
+          </li>
+          <li class="month" data-m="5">
+            <h3>5ヶ月目<span class="tag">オンラインで振り返り</span></h3>
+            <p>手順書を仕上げます。担当の方が替わっても同じように使えるかを確かめます。</p>
+            <p class="fee">この月のお支払い 5万円（税抜）</p>
+          </li>
+          <li class="month" data-m="6">
+            <h3>6ヶ月目<span class="tag visit">お伺い（3回目）・卒業</span></h3>
+            <p>導入前と数字を比べ、手順書をお渡しして卒業です。添え木は、ここで外れます。</p>
+            <p class="fee">この月のお支払い 5万円（税抜）。卒業後の保守プラン（月1万円）は任意です</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRICE ============ -->
+  <section class="sec" id="price" aria-labelledby="price-h">
+    <div class="wrap">
+      <div class="sec-hd">
+        <h2 id="price-h">料金</h2>
+        <p>表示はすべて税抜です。紹介してくださる方が金額を聞かれても答えられるよう、すべてここに載せています。</p>
+      </div>
+      <div class="notice">
+        <b>はじめから、標準の料金でお受けします。</b>
+        ソエギとしては始めたばかりで、まだ実績はありません。そのぶん、1ヶ月3万円のお試し導入で小さく始めていただけることと、効果を数字で測ることで補います。
+      </div>
+      <table class="ptable">
+        <thead><tr><th scope="col">内容</th><th scope="col">費用（税抜）</th><th scope="col">補足</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">無料相談</th><td class="yen">無料</td><td class="memo">60分。お話を伺うだけです。オンラインでも、お伺いしても構いません。</td></tr>
+          <tr class="grp"><th scope="colgroup" colspan="3">手作業を減らす</th></tr>
+          <tr><th scope="row">お試し導入</th><td class="yen">30,000円</td><td class="memo">1つの業務を1ヶ月で仕組み化し、導入前と導入後の数字を測ります。定着プログラムに進む場合は、初月の料金から差し引きます。</td></tr>
+          <tr><th scope="row">定着プログラム</th><td class="yen">50,000円<small>／月</small></td><td class="memo">6ヶ月で1〜2業務を社内に根付かせます。毎月の振り返りと手順書づくりを含みます。お伺いは初月・3ヶ月目・最終月の3回です。</td></tr>
+          <tr><th scope="row">保守プラン</th><td class="yen">10,000円<small>／月</small></td><td class="memo">卒業後に任意でお選びいただけます。手順書の更新、3ヶ月ごとのオンライン点検、メールでのご質問。</td></tr>
+          <tr class="grp"><th scope="colgroup" colspan="3">数字を見て、改善を回す</th></tr>
+          <tr><th scope="row">見える化パック</th><td class="yen">50,000円〜</td><td class="memo">売上・利益やお客さまの傾向を、型にしたExcelや一覧表で見える化します。</td></tr>
+          <tr class="grp"><th scope="colgroup" colspan="3">会社に合った道具をつくる</th></tr>
+          <tr><th scope="row">小さなツール</th><td class="yen">100,000円〜</td><td class="memo">型のある仕組みに限ります（見積書や問い合わせ返信の下書きなど）。内容を伺ってお見積りします。</td></tr>
+          <tr class="grp"><th scope="colgroup" colspan="3">社内に「分かる人」を増やす</th></tr>
+          <tr><th scope="row">社内研修</th><td class="yen">30,000円〜<small>／2時間</small></td><td class="memo">御社の書類を題材にしたAIの使い方研修と、社内の利用ルールづくり。内容は事前に伺って決めます。</td></tr>
+        </tbody>
+      </table>
+      <div class="paypath" aria-label="お試しから卒業までのお支払い">
+        <span>お試し <b>3万円</b></span>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+        <span>定着 初月 <b>2万円</b></span>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+        <span>2〜6ヶ月目 <b>5万円</b> × 5</span>
+        <span class="tot">お試しから卒業まで 合計30万円（税抜）</span>
+      </div>
+
+      <div class="sub-hd">
+        <h3 class="jp-bal">元が取れるかの目安</h3>
+        <p>月5万円が割に合うかどうかは、誰の時間が、どれだけ減るかで決まります。つまみを動かして、御社の場合を試してみてください。初期値は例です。</p>
+      </div>
+      <div class="calc">
+        <div>
+          <div class="fld">
+            <div class="fld-l" id="calc-who-l">その作業をしている方</div>
+            <div class="seg" role="group" aria-labelledby="calc-who-l" id="calc-who">
+              <button type="button" data-w="5000" aria-pressed="true">社長・役員</button>
+              <button type="button" data-w="1500" aria-pressed="false">事務の方</button>
+              <button type="button" data-w="2000" aria-pressed="false">現場と兼任の方</button>
+            </div>
+            <p class="hint" id="calc-who-h">時給5,000円として計算します</p>
+          </div>
+          <div class="fld">
+            <label class="fld-l" for="calc-h">その作業に、月に何時間 <span class="val"><output id="calc-h-o" for="calc-h">20</output><small>時間</small></span></label>
+            <input type="range" id="calc-h" min="2" max="60" step="1" value="20">
+          </div>
+          <div class="fld">
+            <label class="fld-l" for="calc-r">そのうち短くなる割合 <span class="val"><output id="calc-r-o" for="calc-r">50</output><small>%</small></span></label>
+            <input type="range" id="calc-r" min="20" max="70" step="5" value="50">
+            <p class="hint">実際の割合は、お試し導入で測って確かめます</p>
+          </div>
+        </div>
+        <div>
+          <div class="res-rows">
+            <div class="res-row"><span>月に減る時間</span><b class="gr"><span id="calc-saved">10</span><small>時間</small></b></div>
+            <div class="res-row"><span>金額に換算すると</span><b>月 <span id="calc-yen">50,000</span><small>円</small></b></div>
+            <div class="res-row"><span>月5万円の元が取れる目安</span><b>月 <span id="calc-be">10</span><small>時間の削減</small></b></div>
+          </div>
+          <div class="meter" aria-hidden="true">
+            <div class="meter-track"><i id="calc-bar"></i><span class="mid"></span></div>
+            <div class="meter-lbl"><span>0円</span><span>定着プログラム 月5万円</span><span>10万円</span></div>
+          </div>
+          <p class="verdict" id="calc-verdict" aria-live="polite">時間の削減だけで、ちょうど月5万円に届きます。</p>
+        </div>
+      </div>
+      <p class="fine">時給は、社長・役員を5,000円、事務の方を社会保険込みで1,500円、現場と兼任の方を2,000円として計算しています（山形県の最低賃金は2026年10月30日から1,092円）。時間だけでは割に合わない場合も、見積りの回答の速さや求人の応募数など、お金に直結する数字で測ると判断が変わることがあります。採用が1人決まれば、人材紹介の手数料（年収の3割前後）と比べられます。</p>
+
+      <div class="sub-hd">
+        <h3 class="jp-bal">ほかの選択肢と比べて</h3>
+        <p>いちばんの比較相手は、ほかの会社ではなく「いまのまま」だと考えています。</p>
+      </div>
+      <div class="cmp">
+        <div>
+          <h4>何もしない</h4>
+          <dl>
+            <div><dt>費用</dt><dd>0円</dd></div>
+            <div><dt>手間</dt><dd>いまの作業時間が、そのまま続きます</dd></div>
+            <div><dt>半年後に残るもの</dt><dd>いまのやり方</dd></div>
+            <div><dt>向いている会社</dt><dd>書き物の作業が、週に1時間もない会社</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h4>社員が自分でChatGPTを使う</h4>
+          <dl>
+            <div><dt>費用</dt><dd>0円〜月数千円</dd></div>
+            <div><dt>手間</dt><dd>使いこなせるかは人次第で、人によって差が出ます</dd></div>
+            <div><dt>半年後に残るもの</dt><dd>使える人の頭の中にだけ残ります</dd></div>
+            <div><dt>向いている会社</dt><dd>詳しい社員がいて、教える時間もある会社</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h4>事務の方を1人雇う</h4>
+          <dl>
+            <div><dt>費用</dt><dd>月20万円前後</dd></div>
+            <div><dt>手間</dt><dd>採用と教育に時間がかかります</dd></div>
+            <div><dt>半年後に残るもの</dt><dd>人手は増えますが、辞めると元に戻ります</dd></div>
+            <div><dt>向いている会社</dt><dd>仕事そのものが増え続けている会社</dd></div>
+          </dl>
+        </div>
+        <div class="me">
+          <h4>ソエギの定着プログラム</h4>
+          <dl>
+            <div><dt>費用</dt><dd>お試し3万円、続ける場合は月5万円 × 6ヶ月（税抜）</dd></div>
+            <div><dt>手間</dt><dd>月に一度の振り返りと、3回のお伺い</dd></div>
+            <div><dt>半年後に残るもの</dt><dd>手順書と、社内の誰がやっても回る仕組み</dd></div>
+            <div><dt>向いている会社</dt><dd>手間のかかる作業があるのに、手を付けられていない会社</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="midcta">
+    <div class="wrap midcta-in">
+      <div>
+        <b>まずは60分、お話を伺わせてください。</b>
+        <p>ご相談は無料です。この時点でご提案や売り込みはいたしません。</p>
+      </div>
+      <a class="btn btn-cta" href="#contact">無料相談のお申し込み</a>
+    </div>
+  </div>
+
+  <!-- ============ SAFETY / FAQ ============ -->
+  <section class="sec sec-white" id="safety" aria-labelledby="safety-h">
+    <div class="wrap">
+      <div class="sec-hd">
+        <h2 id="safety-h" class="jp-bal">情報の取り扱いについて</h2>
+        <p>社内の書類をAIに読み込ませることに不安を感じられるのは当然です。次の4点をお約束します。</p>
+      </div>
+      <div class="promises">
+        <div>
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="11" y="21" width="26" height="19" rx="3"/><path d="M16.5 21v-5a7.5 7.5 0 0 1 15 0v5"/><path class="ac" d="M24 28v5"/></svg>
+          <h3>学習に使われない設定のツールだけを使います</h3>
+          <p>入力した内容が学習に使われない設定、または法人向けのプランで使います。どのツールをどう設定しているかは、ご契約前にご説明します。</p>
+        </div>
+        <div>
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 14h32M8 24h7M33 24h7M8 34h22"/><rect class="ac" x="18" y="20.5" width="12" height="7" rx="1.5"/></svg>
+          <h3>名前や取引先は、伏せてからAIに入れます</h3>
+          <p>お客さまの個人情報や取引先の名前は、AIに入れる前に伏せます。どこまで入れてよいかは最初に一緒に決め、書面に残します。</p>
+        </div>
+        <div>
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M11 14h26M20 14v-4h8v4M14.5 14l1.6 23.2a2.4 2.4 0 0 0 2.4 2.3h11a2.4 2.4 0 0 0 2.4-2.3L33.5 14"/><path class="ac" d="M21 21v12M27 21v12"/></svg>
+          <h3>お預かりした資料は、作業後に削除します</h3>
+          <p>見積書や名簿などをお預かりした場合、作業が終わり次第すべて削除し、削除した旨をご報告します。作業は事業専用のパソコンとアカウントで行います。</p>
+        </div>
+        <div>
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 6h17l7 7v29H12z"/><path d="M29 6v7h7"/><path d="M17 18h10M17 23h14"/><circle class="ac" cx="27" cy="33" r="4.5"/></svg>
+          <h3>ご希望があれば秘密保持契約を結びます</h3>
+          <p>御社の書式でも、こちらでご用意したものでも構いません。ご相談の段階から結んでいただいて差し支えありません。</p>
+        </div>
+      </div>
+      <div class="aside">
+        <b>AIが間違えたときのために</b>
+        AIが出した文章や数字は、必ず人が確かめてから使う運用にします。万一に備えて賠償責任保険に加入し、責任の範囲はご契約書に明記します。
+      </div>
+
+      <div class="sub-hd">
+        <h3>よくあるご質問</h3>
+      </div>
+      <div class="faq">
+        <details>
+          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">AIにくわしくないのですが、大丈夫でしょうか。</span><span class="pm" aria-hidden="true"></span></summary>
+          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>新しく覚えることが、できるだけ少なくなるようにつくります。手順書をお渡しし、画面を見ながら一緒に操作して、慣れるところまでお付き合いします。</p></div>
+        </details>
+        <details>
+          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">AIを入れることが前提ですか。</span><span class="pm" aria-hidden="true"></span></summary>
+          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>いいえ。お話を伺ったうえで、AIが合う作業にだけ使います。Excelの整え方や、いまお使いのソフトの設定を見直すだけで足りることもあります。何をするかは、会社ごとに違います。</p></div>
+        </details>
+        <details>
+          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">うちのような小さい会社でも頼めますか。</span><span class="pm" aria-hidden="true"></span></summary>
+          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>むしろそうした会社さま向けです。従業員5〜50人ほどで、社長や少数の方が現場と事務を兼ねている会社を想定しています。</p></div>
+        </details>
+        <details>
+          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">途中でやめることはできますか。</span><span class="pm" aria-hidden="true"></span></summary>
+          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>お試し導入は1ヶ月で区切ります。割に合わないと判断されたら、そこで終了です。定着プログラムは6ヶ月を1期としていますが、途中で終える場合の条件は、ご契約前に書面でお示しします。</p></div>
+        </details>
+        <details>
+          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">効果が出なかった場合はどうなりますか。</span><span class="pm" aria-hidden="true"></span></summary>
+          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>導入前に時間を測っておくので、効果が出たかどうかは数字ではっきりします。割に合わないと判断された場合は、お試し導入の1ヶ月で終了していただいて構いません。</p></div>
+        </details>
+        <details>
+          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">6ヶ月が終わったら、どうなりますか。</span><span class="pm" aria-hidden="true"></span></summary>
+          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>手順書をお渡しして卒業です。その後は、手順書の更新や3ヶ月ごとの点検をする保守プラン（月1万円）を任意でお選びいただけます。別の業務に広げたい場合は、もう1期続けることもできます。</p></div>
+        </details>
+        <details>
+          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">公的な窓口や商工会議所の無料相談とは、何が違いますか。</span><span class="pm" aria-hidden="true"></span></summary>
+          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>無料の相談は「何をすべきか」を一緒に考える場です。ソエギは、そのあとに実際に手を動かして仕組みをつくり、社内に根付かせるところをお引き受けします。無料相談を受けたあとの方も歓迎です。</p></div>
+        </details>
+        <details>
+          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">補助金は使えますか。</span><span class="pm" aria-hidden="true"></span></summary>
+          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>使える制度がある場合は、確かなものだけをご案内します。申請書の作成は行政書士の先生の業務のため、お引き受けしていません。</p></div>
+        </details>
+        <details>
+          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">料金は税込ですか。インボイスには対応していますか。</span><span class="pm" aria-hidden="true"></span></summary>
+          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>表示はすべて税抜で、消費税を加えてご請求します。適格請求書発行事業者（インボイス）の登録は、開業にあわせて行います。</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="sec" id="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <div class="sec-hd">
+        <h2 id="about-h">事業者概要</h2>
+        <p>大きな会社で積んだ経験を、山形の会社の規模に合わせて。</p>
+      </div>
+      <div class="about-cols">
+        <div>
+          <p>東京の会社に勤めながら、山形に住んでいます。仕事は、企業の顧客管理や販促のしくみをつくって動かすことです。これまでに、新規導入を5社、運用支援を9社ほど担当してきました。</p>
+          <p>相手にしてきたのは、顧客規模が2,000万人を超えるような会社の案件が多いです。担当の方に話を伺って仕組みに落とし、動き出したあとは数字を見て直していく。案内を送った何件が申し込みにつながったか、どのお客さまがよく買ってくださっているか。そういうことを調べて、次の手を決める仕事をしてきました。</p>
+          <p>まとめ役として社内の段取りを組んだり、海外の開発会社に指示を出して進行を見たりもしています。一度は現地まで行って、顔を合わせて進めました。言葉も仕事のやり方も違う相手に、手順を書いて渡し、その通りに動いてもらう。ソエギで手順書にこだわるのは、この経験からです。</p>
+        </div>
+        <div>
+          <p>ここ数年はAIを使う仕事が増えました。社内で試すだけでなく、お客さまの仕組みにAIを組み込んで動かすところまで請けています。本業とは別に、業務システムの開発（C#・SQL）も行っています。</p>
+          <p>そうした中で、ずっと引っかかっていたことがあります。社内の仕事がツールに合わず、結局は手作業に戻っていく場面を何度も見てきました。大きなシステムを入れなくても、AIの使いどころを決めて手順を整えるだけで軽くなる作業が、地元の会社にはまだたくさんあると考えています。</p>
+          <p>ソエギでは、まず一つの作業を選び、導入の前と後で時間を測ります。効果が数字で確かめられたものだけを社内に根付かせ、手順書を残して私は離れる。これまでの仕事で続けてきた「仕組みに落として、数字で直す」やり方を各企業様向けに組み直したものです。</p>
+        </div>
+      </div>
+
+      <div class="strengths">
+        <div>
+          <h3>測って、決めて、また測る</h3>
+          <p>導入の前と1ヶ月後に、作業時間と、お金に直結する数字を測ります。データ分析の実務経験を生かしています。</p>
+        </div>
+        <div>
+          <h3>相談から道具づくりまで、ひとりで</h3>
+          <p>助言だけで終わらず、Excelの仕組みや小さな道具まで自分でつくります。話した人と、つくる人が同じです。</p>
+        </div>
+        <div>
+          <h3>山形に住んでいて、お伺いできる</h3>
+          <p>要所ではお伺いし、日々のやりとりはチャットや録画した説明で進めます。</p>
+        </div>
+      </div>
+
+      <div class="origin">
+        <div>
+          <h3>「ソエギ」という名前について</h3>
+          <p>添え木（そえぎ）から名付けました。若い木が自分で立てるようになるまで、そばで支える棒のことです。</p>
+          <p>主役はお客さまで、私は添え木です。手順書を残し、私がいなくても社内で回る形にする。添え木は、いずれ外れるものだと考えています。</p>
+        </div>
+        <div class="origin-figs" id="origin-figs">
+          <figure><button type="button" class="mini mini-play" data-mini="1" aria-label="1ヶ月目から6ヶ月目まで、木が育つ様子を再生する"><span class="play" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 1l7 4-7 4z"/></svg>育てる</span></button><figcaption id="mini-cap" aria-live="polite">はじめ：添え木で支える</figcaption></figure>
+          <figure><div class="mini" data-mini="6"></div><figcaption>6ヶ月後：添え木を外す</figcaption></figure>
+        </div>
+      </div>
+
+      <dl class="profile">
+        <div><dt>屋号</dt><dd>ソエギ（個人事業）</dd></div>
+        <div><dt>代表者</dt><dd>稲村 圭太</dd></div>
+        <div><dt>所在地</dt><dd>山形県</dd></div>
+        <div><dt>事業内容</dt><dd>業務の聞き取りと改善の設計・導入・定着の支援（生成AI・ITの活用。お試し導入・定着プログラム）／数字の見える化／小さな道具の制作／社内向けのAI研修</dd></div>
+        <div><dt>対応地域</dt><dd>山形県内（オンラインでの対応は全国）</dd></div>
+        <div><dt>受付時間</dt><dd>9:00〜19:00（平日・土日とも）</dd></div>
+        <div><dt>経歴</dt><dd><ul>
+          <li>山形のIT企業を経て、東京のIT企業に勤務。CRM（顧客管理）・SFA（営業支援）の構築および導入コンサルティング、データ分析を担当</li>
+          <li>大手企業の案件でプロジェクトマネジメント、海外の開発会社への指示出しと進行管理（現地渡航あり）</li>
+          <li>近年はテックリードとして、AIを組み込んだプロダクト開発、パーソナライズの仕組みづくり、リレーショナルデータベースの設計・開発を担当</li>
+          <li>別軸で、業務システムの開発・改修（C#・SQL）</li>
+        </ul></dd></div>
+        <div><dt>連絡先</dt><dd>080-9018-2777 ／ info@withsoegi.jp</dd></div>
+      </dl>
+
+
+      <div class="sub-hd" id="referral">
+        <h3>ご紹介くださる方へ</h3>
+        <p>税理士・社労士の事務所、支援機関の方、お知り合いの方からのご紹介を歓迎しています。紹介先の方にそのまま送っていただける文面をご用意しました。</p>
+      </div>
+      <div class="ref">
+        <dl>
+          <div><dt>対象</dt><dd>山形県内の、従業員5〜50人ほどの会社</dd></div>
+          <div><dt>入口</dt><dd>お話を伺って決めます（例：見積書・求人原稿・問い合わせ対応）</dd></div>
+          <div><dt>料金</dt><dd>無料相談、お試し導入 3万円、定着プログラム 月5万円×6ヶ月（税抜）</dd></div>
+          <div><dt>特徴</dt><dd>導入前後で時間を測り、手順書を残して卒業する</dd></div>
+          <div><dt>受けない仕事</dt><dd>ホームページ制作、パソコンの修理、大きな開発、士業の先生の領域</dd></div>
+        </dl>
+        <div>
+          <label class="lbl" for="ref-text">紹介文（そのままLINEやメールに貼り付けられます）</label>
+          <textarea id="ref-text" readonly>山形の中小企業向けに、仕事の流れを聞いて手間のかかる所を見つけ、AIやITで仕組みを整えるお手伝いをしている「ソエギ」さんです。
+1ヶ月3万円（税抜）のお試しから始められ、作業時間を導入の前後で測ってから、続けるかどうかを決められます。ご相談は無料です。
+https://withsoegi.jp ／ 080-9018-2777 ／ info@withsoegi.jp</textarea>
+          <div class="copy-row">
+            <button type="button" class="btn btn-line btn-sm" data-copy="ref-text">紹介文をコピー</button>
+            <span class="copied" aria-live="polite"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="sec contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="sec-hd">
+        <h2 id="contact-h">お問い合わせ</h2>
+        <p>「うちの場合はどうか」だけでも構いません。売り込みはいたしませんので、お気軽にご連絡ください。</p>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <h3>お電話</h3>
+          <a class="big-tel" href="tel:080-9018-2777" id="tel-val">080-9018-2777</a>
+          <p>受付 9:00〜19:00（平日・土日とも）。出られないときは、折り返しご連絡します。</p>
+          <div class="copy-row">
+            <button type="button" class="btn btn-line btn-sm" data-copy-text="080-9018-2777">番号をコピー</button>
+            <span class="copied" aria-live="polite"></span>
+          </div>
+        </div>
+        <div>
+          <h3>メール</h3>
+          <a class="big-mail" href="mailto:info@withsoegi.jp">info@withsoegi.jp</a>
+          <p>いま時間がかかっている作業を一行だけ添えていただけると、当日のお話が早く進みます。「見積書に毎日1時間」といった書き方で構いません。</p>
+          <div class="copy-row">
+            <button type="button" class="btn btn-line btn-sm" data-copy-text="info@withsoegi.jp">アドレスをコピー</button>
+            <span class="copied" aria-live="polite"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ft">
+  <div class="wrap ft-in">
+    <a class="brand" href="#top" aria-label="ソエギ ページの先頭へ">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M13 52H51" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        <path d="M45 52V13" stroke="var(--frost)" stroke-width="4" stroke-linecap="round"/>
+        <path d="M28 52C29 42 27 32 28 21" stroke="currentColor" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+        <path d="M28 41L45 39M28 30L45 28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="35" cy="21" rx="8" ry="4.5" transform="rotate(-35 35 21)" fill="var(--leaf-soft)" stroke="currentColor" stroke-width="2.2"/>
+        <ellipse cx="21" cy="25" rx="8" ry="4.5" transform="rotate(35 21 25)" fill="var(--leaf-soft)" stroke="currentColor" stroke-width="2.2"/>
+      </svg>
+      <span><b>ソエギ</b><small>添え木のように、ひとり立ちまで支える。</small></span>
+    </a>
+    <small>&copy; 2026 ソエギ　山形県</small>
+  </div>
+</footer>
+
+<div class="cbar" id="cbar">
+  <a class="btn btn-line" href="tel:080-9018-2777"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4-2 1.3a11 11 0 0 0 6.1 6.1l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg>電話する</a>
+  <a class="btn btn-cta" href="#contact">無料相談のお申し込み</a>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root = document.documentElement;
+  function $(id) { return document.getElementById(id); }
+  function each(list, fn) { Array.prototype.forEach.call(list, fn); }
+  function h1(n) { return (Math.round(n * 10) / 10).toString(); }
+  function yen(n) { return Math.round(n).toLocaleString('ja-JP'); }
+
+  /* ---------- load choreography ---------- */
+  requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.add('is-ready'); }); });
+
+  /* ---------- header: scrolled state ---------- */
+  var hd = $('hd');
+  function onScroll() { hd.classList.toggle('is-scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- mobile menu ---------- */
+  var menuBtn = $('menu-btn'), gnav = $('gnav');
+  function setMenu(open) {
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    gnav.classList.toggle('is-open', open);
+  }
+  menuBtn.addEventListener('click', function () { setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'); });
+  gnav.addEventListener('click', function (e) { if (e.target.closest('a')) { setMenu(false); } });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menuBtn.getAttribute('aria-expanded') === 'true') { setMenu(false); menuBtn.focus(); }
+  });
+  document.addEventListener('click', function (e) {
+    if (menuBtn.getAttribute('aria-expanded') === 'true' && !e.target.closest('#gnav') && !e.target.closest('#menu-btn')) { setMenu(false); }
+  });
+
+  /* ---------- current section in nav ---------- */
+  if ('IntersectionObserver' in window) {
+    var links = {};
+    each(gnav.querySelectorAll('a'), function (a) { links[a.getAttribute('href').slice(1)] = a; });
+    var navIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var a = links[en.target.id];
+        if (!a) { return; }
+        if (en.isIntersecting) {
+          each(gnav.querySelectorAll('a'), function (x) { x.removeAttribute('aria-current'); });
+          a.setAttribute('aria-current', 'true');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    ['service', 'flow', 'program', 'price', 'safety', 'about', 'contact'].forEach(function (id) {
+      var el = $(id);
+      if (el) { navIO.observe(el); }
+    });
+    links.program = links.flow;
+
+    /* hide the mobile call bar while the contact section is on screen */
+    var cbar = $('cbar');
+    new IntersectionObserver(function (en) { cbar.classList.toggle('is-hidden', en[0].isIntersecting); }, { threshold: 0.15 }).observe($('contact'));
+  }
+
+  /* ---------- measure sheet ---------- */
+  var SHEETS = [
+    { rows: [['見積書の作成', 20, 7, '時間', '月'], ['求人原稿の作成', 6, 1.5, '時間', '月'], ['問い合わせ対応', 12, 5, '時間', '月']],
+      ft: '3つ合わせて、月38時間が13.5時間に', sub: 'お客さまごとに、この表をおつくりします' },
+    { rows: [['見積りを返すまで', 3, 1, '日', ''], ['問い合わせに返信するまで', 24, 3, '時間', ''], ['求人を出すまで', 14, 3, '日', '']],
+      ft: '早く返せるほど、受注や応募につながります', sub: '作業時間だけでなく、こうした数字も一緒に測ります' }
+  ];
+  var sheetRows = $('sheet-rows'), sheetFt = $('sheet-ft');
+  var sheetTimers = [];
+
+  function countTo(el, from, to, unit, dur) {
+    if (RM) { el.textContent = h1(to) + unit; return; }
+    var t0 = null;
+    function st(t) {
+      if (!t0) { t0 = t; }
+      var p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = h1(from + (to - from) * e) + unit;
+      if (p < 1) { requestAnimationFrame(st); }
+    }
+    requestAnimationFrame(st);
+  }
+
+  function renderSheet(i, drawBefore) {
+    sheetTimers.forEach(clearTimeout); sheetTimers = [];
+    var s = SHEETS[i];
+    sheetRows.innerHTML = s.rows.map(function (r) {
+      var ratio = r[2] / r[1];
+      var start = RM ? ratio : 1;
+      return '<div class="mrow"><span class="mname">' + r[0] + '</span>' +
+        '<div class="dimrow"><span class="k">導入前</span><div class="dim" style="--p:' + (drawBefore && !RM ? 0 : 1) + '"><i class="l"></i><i class="r"></i></div><span class="v">' + h1(r[1]) + r[3] + '</span></div>' +
+        '<div class="dimrow af"><span class="k">導入後</span><div class="dim" data-to="' + ratio + '" style="--p:' + (drawBefore && !RM ? 0 : start) + '"><i class="l"></i><i class="r"></i></div><span class="v" data-from="' + r[1] + '" data-to="' + r[2] + '" data-unit="' + r[3] + '">' + h1(RM ? r[2] : r[1]) + r[3] + '</span></div>' +
+        '<div class="mdelta">' + r[4] + h1(r[1] - r[2]) + r[3] + '短く</div></div>';
+    }).join('');
+    sheetFt.innerHTML = '<b>' + s.ft + '</b><small>' + s.sub + '</small>';
+    if (RM) { return; }
+
+    var befores = sheetRows.querySelectorAll('.dimrow:not(.af) .dim');
+    var afters = sheetRows.querySelectorAll('.af .dim');
+    var shrinkAt = 120;
+    if (drawBefore) {
+      /* draw both lines out to the "before" length once the sheet has faded in */
+      sheetRows.offsetWidth;
+      sheetTimers.push(setTimeout(function () {
+        each(befores, function (d) { d.style.setProperty('--p', 1); });
+        each(afters, function (d) { d.style.setProperty('--p', 1); });
+      }, 500));
+      shrinkAt = 1650;
+    }
+    /* then shrink the "after" line to its measured length */
+    sheetTimers.push(setTimeout(function () {
+      each(afters, function (d, k) {
+        sheetTimers.push(setTimeout(function () {
+          d.style.setProperty('--p', d.getAttribute('data-to'));
+          var v = d.parentNode.querySelector('.v');
+          countTo(v, parseFloat(v.getAttribute('data-from')), parseFloat(v.getAttribute('data-to')), v.getAttribute('data-unit'), 1000);
+        }, k * 110));
+      });
+    }, shrinkAt));
+  }
+
+  var sheetBtns = document.querySelectorAll('[data-sheet]');
+  each(sheetBtns, function (b) {
+    b.addEventListener('click', function () {
+      if (b.getAttribute('aria-pressed') === 'true') { return; }
+      each(sheetBtns, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      renderSheet(parseInt(b.getAttribute('data-sheet'), 10), false);
+    });
+  });
+  /* hero load: draw the first sheet after the headline has begun to rise */
+  if (!RM) { renderSheet(0, true); }
+
+  /* ---------- tree ---------- */
+  var MONTH_TAGS = ['お伺い（1回目）', 'オンラインで振り返り', 'お伺い（2回目）', 'オンラインで振り返り', 'オンラインで振り返り', 'お伺い（3回目）・卒業'];
+  function buildRuler(svg) {
+    var g = svg.querySelector('.ruler');
+    if (!g) { return; }
+    var d = 'M36 214V46', ns = 'http://www.w3.org/2000/svg';
+    for (var y = 214, k = 0; y >= 46; y -= 12, k++) { d += 'M36 ' + y + 'h' + (k % 4 === 0 ? -8 : -4); }
+    var p = document.createElementNS(ns, 'path');
+    p.setAttribute('class', 'rl'); p.setAttribute('d', d);
+    g.appendChild(p);
+  }
+  function setTree(svg, m) {
+    var s = 0.55 + 0.09 * (m - 1);
+    svg.querySelector('.tree-g').style.transform = 'scale(' + s + ')';
+    each(svg.querySelectorAll('.tp'), function (p) { p.classList.toggle('on', parseInt(p.getAttribute('data-m'), 10) <= m); });
+    svg.querySelector('.stake').classList.toggle('gone', m >= 6);
+    var tip = m >= 6 ? 50 : 67;
+    var top = 214 - (214 - tip) * s;
+    var mk = svg.querySelector('.mk');
+    if (mk) { mk.style.transform = 'translateY(' + top.toFixed(1) + 'px)'; }
+  }
+  var tree = $('tree');
+  buildRuler(tree);
+  /* minis in the "name" block */
+  each(document.querySelectorAll('[data-mini]'), function (box) {
+    var c = tree.cloneNode(true);
+    c.removeAttribute('id');
+    c.setAttribute('aria-hidden', 'true');
+    c.removeAttribute('role'); c.removeAttribute('aria-labelledby');
+    var t = c.querySelector('title'); if (t) { t.remove(); }
+    var mk = c.querySelector('.mk'); if (mk) { mk.remove(); }
+    var lb = c.querySelector('.sk-lb'); if (lb) { lb.remove(); }
+    var ld = c.querySelector('.sk-ld'); if (ld) { ld.remove(); }
+    c.classList.add('static');
+    box.appendChild(c);
+    setTree(c, parseInt(box.getAttribute('data-mini'), 10));
+  });
+
+  /* press the first mini to watch it grow through the six months */
+  var playBtn = document.querySelector('.mini-play');
+  if (playBtn) {
+    var playing = false;
+    playBtn.addEventListener('click', function () {
+      if (playing) { return; }
+      playing = true;
+      var svg = playBtn.querySelector('svg.tree'), cap = $('mini-cap'), orig = cap.textContent, m = 1;
+      playBtn.setAttribute('aria-busy', 'true');
+      svg.classList.remove('static');
+      function step() {
+        m++;
+        setTree(svg, m);
+        cap.textContent = m < 6 ? m + 'ヶ月目' : '6ヶ月目：添え木が外れる';
+        setTimeout(m < 6 ? step : reset, m < 6 ? 480 : 2000);
+      }
+      function reset() {
+        svg.style.opacity = '0';
+        setTimeout(function () {
+          svg.classList.add('static');
+          setTree(svg, 1);
+          svg.getBoundingClientRect();
+          svg.style.opacity = '';
+          cap.textContent = orig;
+          playBtn.removeAttribute('aria-busy');
+          playing = false;
+        }, 280);
+      }
+      setTimeout(step, 120);
+    });
+  }
+
+  tree.classList.add('static');
+  setTree(tree, 1);
+  tree.getBoundingClientRect();
+  requestAnimationFrame(function () { tree.classList.remove('static'); });
+
+  var curM = 1, gmLabel = $('gm-label'), gmTag = $('gm-tag');
+  var monthEls = document.querySelectorAll('.month');
+  function setMonth(m) {
+    if (m === curM) { return; }
+    curM = m;
+    setTree(tree, m);
+    gmLabel.textContent = m + 'ヶ月目';
+    gmTag.textContent = MONTH_TAGS[m - 1];
+    each(monthEls, function (el) { el.classList.toggle('is-on', parseInt(el.getAttribute('data-m'), 10) === m); });
+  }
+  if ('IntersectionObserver' in window) {
+    var mIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { setMonth(parseInt(en.target.getAttribute('data-m'), 10)); } });
+    }, { rootMargin: '-50% 0px -40% 0px' });
+    each(monthEls, function (el) { mIO.observe(el); });
+  }
+
+  /* ---------- flow: rail drawn by scroll ---------- */
+  var stepsEl = document.querySelector('.steps');
+  if (stepsEl && 'IntersectionObserver' in window) {
+    var stepEls = stepsEl.querySelectorAll('.step'), railOn = false, railTick = false;
+    function updRail() {
+      railTick = false;
+      var r = stepsEl.getBoundingClientRect(), line = window.innerHeight * 0.62;
+      var p = (line - (r.top + 24)) / Math.max(1, r.height - 48);
+      stepsEl.style.setProperty('--prog', Math.max(0, Math.min(1, p)).toFixed(4));
+      each(stepEls, function (el) {
+        var n = el.querySelector('.step-n').getBoundingClientRect();
+        el.classList.toggle('is-passed', n.top + n.height / 2 < line);
+      });
+    }
+    function reqRail() { if (railOn && !railTick) { railTick = true; requestAnimationFrame(updRail); } }
+    new IntersectionObserver(function (en) { railOn = en[0].isIntersecting; if (railOn) { reqRail(); } }, { rootMargin: '10% 0px 10% 0px' }).observe(stepsEl);
+    window.addEventListener('scroll', reqRail, { passive: true });
+    window.addEventListener('resize', reqRail);
+  }
+
+  /* ---------- the three tasks: steps now vs. after ---------- */
+  var BA = {
+    est: [['似た案件の見積書をフォルダから探す', 'コピーして、品目を一つずつ書き換える', '単価と数量を打ち直す', '計算が合っているかを確かめる', '宛名と日付を直して送る'],
+          ['品目・数量・納期などの条件を入れる', '過去の見積書をもとに、下書きが出る', '確かめて、必要なところだけ直す', '送る']],
+    job: [['去年の原稿を探す', '何を書けばいいか、手が止まる', '書いては消してをくり返す', '忙しさにまぎれて、出しそびれる'],
+          ['来てほしい人を、聞き取り票に書く', '書き方の違う原稿案が3つ出る', '選んで、言い回しを直す', 'ハローワークや求人サイトに出す']],
+    mail: [['似たメールを過去の送信から探す', '一から返信を書く', '担当によって、文面や答えが変わる'],
+           ['届いた問い合わせを貼り付ける', '決めておいた答えから、返信の下書きが出る', '確かめて送る']]
+  };
+  var entryEl = document.querySelector('.entry'), baCtl = document.querySelector('.ba-ctl');
+  var baBoxes = entryEl.querySelectorAll('[data-ba]');
+  function baItems(list) { return list.map(function (t, i) { return '<li style="--i:' + i + '"><span class="tx">' + t + '</span></li>'; }).join(''); }
+  each(baBoxes, function (box) {
+    var d = BA[box.getAttribute('data-ba')];
+    box.innerHTML = '<p class="ba-meta"><span class="ba-k">いまの手順</span><b class="ba-c">' + d[0].length + 'つ</b></p>' +
+      '<div class="ba-lists"><ol class="ba-before">' + baItems(d[0]) + '</ol><ol class="ba-after" aria-hidden="true">' + baItems(d[1]) + '</ol></div>';
+  });
+  baCtl.hidden = false;
+  var baBtns = baCtl.querySelectorAll('[data-bav]');
+  each(baBtns, function (b) {
+    b.addEventListener('click', function () {
+      var v = parseInt(b.getAttribute('data-bav'), 10);
+      each(baBtns, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      entryEl.classList.toggle('is-after', v === 1);
+      each(baBoxes, function (box) {
+        var d = BA[box.getAttribute('data-ba')][v];
+        box.querySelector('.ba-k').textContent = v ? '導入後の手順' : 'いまの手順';
+        box.querySelector('.ba-c').textContent = d.length + 'つ';
+        box.querySelector('.ba-before').setAttribute('aria-hidden', v ? 'true' : 'false');
+        box.querySelector('.ba-after').setAttribute('aria-hidden', v ? 'false' : 'true');
+      });
+    });
+  });
+
+  /* ---------- savings check ---------- */
+  var calcWage = 5000;
+  var HINT = { 5000: '時給5,000円として計算します', 1500: '時給1,500円（社会保険込み）として計算します', 2000: '時給2,000円として計算します' };
+  function tween(el, to, fmt) {
+    var from = (typeof el._v === 'number') ? el._v : to;
+    el._v = to;
+    if (el._raf) { cancelAnimationFrame(el._raf); }
+    if (RM || from === to) { el.textContent = fmt(to); return; }
+    var t0 = null, dur = 380;
+    function st(t) {
+      if (!t0) { t0 = t; }
+      var p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(p < 1 ? from + (to - from) * e : to);
+      if (p < 1) { el._raf = requestAnimationFrame(st); }
+    }
+    el._raf = requestAnimationFrame(st);
+  }
+  function fillRange(inp) {
+    var min = +inp.min, max = +inp.max;
+    inp.style.setProperty('--fill', ((inp.value - min) / (max - min) * 100) + '%');
+  }
+  function calc() {
+    var hIn = $('calc-h'), rIn = $('calc-r');
+    var hrs = parseInt(hIn.value, 10), rate = parseInt(rIn.value, 10);
+    $('calc-h-o').textContent = hrs; $('calc-r-o').textContent = rate;
+    fillRange(hIn); fillRange(rIn);
+    var saved = hrs * rate / 100, val = saved * calcWage, be = 50000 / calcWage;
+    tween($('calc-saved'), saved, h1);
+    tween($('calc-yen'), val, yen);
+    tween($('calc-be'), Math.round(be * 10) / 10, h1);
+    $('calc-bar').style.transform = 'scaleX(' + Math.min(val / 100000, 1) + ')';
+    var v;
+    if (val >= 50000 * 1.05) { v = '時間の削減だけで、月5万円を上回ります。お試し導入で、この数字が本当に出るかを確かめましょう。'; }
+    else if (val >= 50000 * 0.95) { v = '時間の削減だけで、ちょうど月5万円に届きます。'; }
+    else if (val >= 25000) { v = 'あと月' + h1(Math.max(0, be - saved)) + '時間の削減で届きます。見積りの回答の速さや求人の応募数など、お金に直結する数字も一緒に測ると判断しやすくなります。'; }
+    else { v = '時間の削減だけでは、割に合わない可能性があります。無理におすすめはしません。作業量が多い別の業務がないか、無料相談で一緒に探しましょう。'; }
+    $('calc-verdict').textContent = v;
+    $('calc-who-h').textContent = HINT[calcWage];
+  }
+  var whoBtns = document.querySelectorAll('#calc-who button');
+  each(whoBtns, function (b) {
+    b.addEventListener('click', function () {
+      calcWage = parseInt(b.getAttribute('data-w'), 10);
+      each(whoBtns, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      calc();
+    });
+  });
+  $('calc-h').addEventListener('input', calc);
+  $('calc-r').addEventListener('input', calc);
+  calc();
+
+  /* ---------- cursor: a warm pool of light, drawn behind the text ---------- */
+  (function () {
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) { return; }
+    var cv = document.createElement('canvas');
+    cv.className = 'cursor-fx';
+    cv.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(cv);
+    var ctx = cv.getContext('2d');
+    var R = 250;
+    var dpr = 1, vw = 0, vh = 0, light = '', lightA = 0;
+    var tx = 0, ty = 0, x = 0, y = 0, a = 0, ta = 0, seen = false;
+    var running = false, last = 0, idle = null;
+
+    function readColors() {
+      var cs = getComputedStyle(root);
+      light = cs.getPropertyValue('--fx-light').trim(); lightA = parseFloat(cs.getPropertyValue('--fx-light-a'));
+    }
+    function size() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      vw = window.innerWidth; vh = window.innerHeight;
+      cv.width = Math.round(vw * dpr); cv.height = Math.round(vh * dpr);
+    }
+    function draw() {
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, vw, vh);
+      if (a < 0.01) { return; }
+      var g = ctx.createRadialGradient(x, y, 0, x, y, R);
+      g.addColorStop(0, 'rgba(' + light + ',' + (lightA * a) + ')');
+      g.addColorStop(0.35, 'rgba(' + light + ',' + (lightA * 0.8 * a) + ')');
+      g.addColorStop(0.7, 'rgba(' + light + ',' + (lightA * 0.32 * a) + ')');
+      g.addColorStop(1, 'rgba(' + light + ',0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(x - R, y - R, R * 2, R * 2);
+    }
+    function tick(now) {
+      var dt = Math.min(now - last, 50); last = now;
+      var k = RM ? 1 : 1 - Math.pow(0.8, dt / 16.67);
+      /* switch on gently, switch off quickly */
+      var ka = RM ? 1 : 1 - Math.pow(ta > a ? 0.88 : 0.78, dt / 16.67);
+      x += (tx - x) * k; y += (ty - y) * k;
+      a += (ta - a) * ka;
+      draw();
+      if (Math.abs(tx - x) + Math.abs(ty - y) > 0.2 || Math.abs(ta - a) > 0.004) { requestAnimationFrame(tick); }
+      else { running = false; a = ta; draw(); }
+    }
+    function kick() {
+      if (running || document.hidden) { return; }
+      running = true; last = performance.now(); requestAnimationFrame(tick);
+    }
+    document.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') { return; }
+      tx = e.clientX; ty = e.clientY;
+      if (!seen) { x = tx; y = ty; seen = true; }
+      ta = 1;
+      clearTimeout(idle);
+      idle = setTimeout(function () { ta = 0; kick(); }, 450);
+      kick();
+    }, { passive: true });
+    document.documentElement.addEventListener('mouseleave', function () { clearTimeout(idle); ta = 0; kick(); });
+    window.addEventListener('resize', function () { size(); draw(); });
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { readColors(); draw(); });
+    size(); readColors();
+  })();
+
+  /* ---------- copy buttons ---------- */
+  function copyText(text, done) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) { /* leave text selectable */ }
+      ta.remove();
+    }
+  }
+  each(document.querySelectorAll('[data-copy], [data-copy-text]'), function (b) {
+    b.addEventListener('click', function () {
+      var id = b.getAttribute('data-copy');
+      var text = id ? $(id).value : b.getAttribute('data-copy-text');
+      var msg = b.parentNode.querySelector('.copied');
+      copyText(text, function () {
+        msg.textContent = 'コピーしました';
+        clearTimeout(b._t); b._t = setTimeout(function () { msg.textContent = ''; }, 3000);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
