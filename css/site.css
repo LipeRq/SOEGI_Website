@@ -884,3 +884,26 @@ html { font-size: 106.25%; }
 .creds li { padding: 1rem 1.1rem 1.1rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); }
 .creds b { display: block; font-family: var(--serif); font-size: 1.6rem; line-height: 1.3; color: var(--beni); font-variant-numeric: tabular-nums; }
 .creds span { display: block; margin-top: .35rem; font-size: .95rem; line-height: 1.75; color: var(--ink-2); }
+
+/* ---- スマホ：お知らせ・トップ冒頭の読みやすさ ---- */
+.news .tag { min-width: 4.6em; text-align: center; }
+@media (max-width: 47.99rem) {
+  .news-in { gap: .25rem; padding-block: 1.5rem 1.25rem; }
+  .news ul { display: grid; }
+  .news li { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: .35rem .75rem; padding-block: .95rem; border-top: 1px solid var(--line); }
+  .news li:first-child { border-top: 0; padding-top: .35rem; }
+  .news li > span:last-child { grid-column: 1 / -1; font-size: .98rem; line-height: 1.8; color: var(--ink); }
+  .news .tag { justify-self: start; }
+}
+@media (max-width: 40rem) {
+  .hero-sub { margin-bottom: 1rem; }
+  .hero .lede { font-size: 1.0625rem; line-height: 1.95; margin-bottom: 1.5rem; }
+  .hero .btns { flex-direction: column; align-items: stretch; }
+  .hero .btns .btn { justify-content: center; text-align: center; }
+  .hero-eg { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+  .hero-eg b { display: block; width: fit-content; margin: 0 0 .5rem; }
+  .hero-note { margin-top: .9rem; }
+}
+/* 日本語の折り返しを、文節の切れ目に寄せる（対応していない環境では従来どおり） */
+p, li, dd, .btn { word-break: auto-phrase; text-wrap: pretty; }
+.btn { text-wrap: balance; }
