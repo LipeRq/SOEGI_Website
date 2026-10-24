@@ -14,7 +14,29 @@ https://withsoegi.jp/ で公開している静的サイトです（複数ペー�
 右下のチャットボットは `https://demo.withsoegi.jp/widget/chat.js`（デモ側のリポジトリ `LipeRq/Soegi`）。料金・文言の元は、デモ側の `public/js/pricing.js` と `docs/` に揃えます。
 
 ## 公開のしかた
-Cloudflare の Worker「soegi」（静的アセット）に、このフォルダの中身を丸ごと（フォルダごと）アップロードして Deploy します。
+Cloudflare の Worker「soegi」（静的アセットのみ。ドメイン withsoegi.jp・www は設定済み）に出します。**サイトのファイルだけを入れたフォルダ**（`README.md` などは入れない）を用意して、公開します。
 
-## ブランチ
-`main` は 2026-10-11 の旧版（1ファイル）のままです。`sync/live-2026-10-24` は、本番の 2026-10-24 時点の内容をそのまま入れ直したものです（最初のコミット）。
+```
+index.html  css/  js/  demo/  graduate/  monthly/  one-off/  price/  sites/
+favicon.svg  ogp.png  apple-touch-icon.png
+```
+
+2026-10-24 の公開では、次の設定ファイル（`wrangler.toml`）を、そのフォルダの親に置き、`public/` にサイトのファイルを入れて実行しました。
+
+```toml
+name = "soegi"
+compatibility_date = "2026-09-25"
+
+[assets]
+directory = "./public"
+```
+
+```
+npx wrangler versions upload   # 確認用の版（本番は変わらない）
+npx wrangler versions deploy   # 本番に出す
+npx wrangler rollback          # 戻す
+```
+
+## 経緯
+- 2026-10-24：`main` を本番の複数ページ版に更新（旧版は 1 ファイルの 2026-10-11 版）。ホームページ制作（3万円〜）を追加し、実績に関する文言を削除、`/sites/`（ホームページの見本）を追加
+- 右下のチャットボットは `https://demo.withsoegi.jp/widget/chat.js`（デモ側のリポジトリ `LipeRq/Soegi`）。料金・文言の元は、デモ側の `public/js/pricing.js` と `docs/`
