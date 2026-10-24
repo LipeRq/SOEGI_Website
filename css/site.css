@@ -116,9 +116,9 @@ button { font: inherit; color: inherit; }
 }
 .hd.is-scrolled { border-bottom-color: var(--line); background: var(--paper); }
 .hd-in { height: 100%; display: flex; align-items: center; gap: 1.25rem; }
-.brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; margin-right: auto; min-height: 44px; }
+.brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; margin-right: auto; min-height: 44px; flex: none; }
 .brand svg { width: 2.25rem; height: 2.25rem; flex: none; }
-.brand b { display: block; font-family: var(--serif); font-size: 1.3rem; font-weight: 700; letter-spacing: .12em; line-height: 1.2; }
+.brand b { display: block; white-space: nowrap; font-family: var(--serif); font-size: 1.3rem; font-weight: 700; letter-spacing: .12em; line-height: 1.2; }
 .brand small { display: block; font-size: .7rem; color: var(--ink-3); letter-spacing: .06em; line-height: 1.4; }
 @media (max-width: 26rem) { .brand small { display: none; } }
 @media (min-width: 64rem) { .hd .brand small { display: none; } }
@@ -176,7 +176,7 @@ button { font: inherit; color: inherit; }
 @media (min-width: 40rem) { .hd-cta { display: inline-flex; } }
 @media (min-width: 52rem) { .hd-tel { display: block; } }
 @media (min-width: 64rem) { .menu-btn { display: none; } }
-@media (min-width: 64rem) and (max-width: 74.99rem) { .hd-tel { display: none; } }
+@media (min-width: 64rem) and (max-width: 79.99rem) { .hd-tel { display: none; } }
 .hd-tel { white-space: nowrap; }
 
 /* ============================================================
@@ -713,6 +713,8 @@ input[type="range"]:focus-visible { outline-offset: 0; }
 .page-h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(1.9rem, 4.6vw, 3rem); line-height: 1.4; letter-spacing: .02em; text-wrap: balance; word-break: auto-phrase; max-width: 22em; }
 .pagehd .lede { max-width: 42rem; margin-top: 1.25rem; color: var(--ink-2); }
 .pagehd .btns { margin-top: 1.75rem; }
+/* 同じ背景の節が続くときは、見出し帯との間をあけすぎない */
+.pagehd + .sec:not(.sec-white):not(.contact) { padding-top: clamp(.5rem, 2vw, 1.5rem); }
 .fld-link { margin-top: .9rem; font-size: .9rem; }
 .fine a { color: var(--beni); }
 /* top: hero sub line + side column */
@@ -720,11 +722,13 @@ input[type="range"]:focus-visible { outline-offset: 0; }
 .hero-side { display: grid; gap: 1.25rem; min-width: 0; }
 /* reel (live demo samples) */
 .reel { border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow); padding: 1.1rem 1.25rem 1rem; min-width: 0; }
-.reel-hd { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: .75rem; }
+.reel-hd { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .1rem 1rem; margin-bottom: .75rem; }
+.reel-hd h2 { white-space: nowrap; }
 .reel-hd h2 { font-family: var(--serif); font-size: 1.05rem; letter-spacing: .06em; }
 .reel-hd span { font-size: .78rem; color: var(--ink-3); }
 .reel-tabs { display: flex; flex-wrap: wrap; width: 100%; }
-.reel-tabs button { flex: 1; padding-inline: .4rem; font-size: .8rem; }
+.reel-tabs button { flex: 1; padding-inline: .4rem; font-size: .8rem; white-space: nowrap; }
+@media (max-width: 26rem) { .reel-tabs button { padding-inline: .15rem; font-size: .74rem; } }
 .reel-stage { margin-top: .9rem; min-height: 15.5rem; }
 .scene { animation: reel-in .45s var(--ease) both; }
 .scene-t { margin-bottom: .6rem; font-size: .85rem; font-weight: 700; color: var(--ink-2); }
@@ -738,7 +742,7 @@ input[type="range"]:focus-visible { outline-offset: 0; }
 .scene .doc { margin-top: .6rem; padding: .5rem .8rem; border-radius: var(--r-md); background: var(--sunk); font-size: .82rem; }
 .scene .doc p.hit { margin: .2rem 0 0; padding-left: .6rem; border-left: 3px solid var(--beni); }
 .scene mark { background: #FFE58A; color: var(--ink); border-radius: 3px; padding: 0 2px; }
-.chip { display: inline-block; padding: 0 .55rem; border-radius: 999px; font-size: .74rem; font-weight: 700; white-space: normal; }
+.chip { display: inline-block; padding: 0 .55rem; border-radius: 999px; font-size: .74rem; font-weight: 700; white-space: nowrap; }
 .chip.r { background: #F6D5D9; color: #8E1B2E; }
 .chip.y, .chip.w { background: #FFF4C7; color: #6B4E00; }
 .chip.o { background: #FFE3CC; color: #7A3E00; }
