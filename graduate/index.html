@@ -55,14 +55,14 @@
         </li>
         <li><a href="/price/">料金</a></li>
         <li><a href="/demo/">デモ</a></li>
-        <li><a href="/#safety">安心のために</a></li>
-        <li><a href="/#about">事業者概要</a></li>
-        <li><a href="/#contact">お問い合わせ</a></li>
+        <li><a href="/safety/">安心のために</a></li>
+        <li><a href="/about/">事業者概要</a></li>
+        <li><a href="/contact/">お問い合わせ</a></li>
       </ul>
     </nav>
     <div class="hd-act">
       <a class="hd-tel" href="tel:080-9018-2777"><small>ご相談無料　9:00〜19:00（土日も）</small><b>080-9018-2777</b></a>
-      <a class="btn btn-cta btn-sm hd-cta" href="/#contact">無料相談のお申し込み</a>
+      <a class="btn btn-cta btn-sm hd-cta" href="/contact/">無料相談のお申し込み</a>
       <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="gnav"><i aria-hidden="true"></i>メニュー</button>
     </div>
   </div>
@@ -75,9 +75,108 @@
       <h1 class="page-h1" id="page-h">仕組みをつくって、卒業する</h1>
       <p class="lede">毎回ゼロから書いている、同じことを何度も入力している。そんな作業の流れを見直し、生成AIやExcel、クラウドの道具のうち合うものを組み合わせて短くします。手順書を残して、ソエギがいなくても社内で回る状態を目指します。</p>
       <div class="btns">
-        <a class="btn btn-cta" href="/#contact">無料相談のお申し込み</a>
+        <a class="btn btn-cta" href="/contact/">無料相談のお申し込み</a>
         <a class="btn btn-line" href="/price/">料金を見る</a>
       </div>
+    </div>
+  </section>
+
+  <section class="sec sec-white" id="measure" aria-labelledby="measure-h">
+    <div class="wrap">
+      <div class="sec-hd">
+        <h2 id="measure-h" class="jp-bal">はじめに、いまの作業時間を測ります</h2>
+        <p>導入の前と後で、同じ方法で測って並べます。お客さまごとに、この表をおつくりします。</p>
+      </div>
+      <div class="measure-box">
+        <div class="sheet" id="sheet">
+        <div class="sheet-hd"><h2>計測シート</h2><span>数値は記入例です</span></div>
+        <div class="sheet-bd">
+          <div class="seg" role="group" aria-label="計測シートの切り替え">
+            <button type="button" data-sheet="0" aria-pressed="true">作業にかかる時間</button>
+            <button type="button" data-sheet="1" aria-pressed="false">お客さまを待たせる時間</button>
+          </div>
+          <div id="sheet-rows">
+            <div class="mrow">
+              <span class="mname">見積書の作成</span>
+              <div class="dimrow"><span class="k">導入前</span><div class="dim" style="--p:1"><i class="l"></i><i class="r"></i></div><span class="v">20時間</span></div>
+              <div class="dimrow af"><span class="k">導入後</span><div class="dim" style="--p:.35"><i class="l"></i><i class="r"></i></div><span class="v">7時間</span></div>
+              <div class="mdelta">月13時間短く</div>
+            </div>
+            <div class="mrow">
+              <span class="mname">求人原稿の作成</span>
+              <div class="dimrow"><span class="k">導入前</span><div class="dim" style="--p:1"><i class="l"></i><i class="r"></i></div><span class="v">6時間</span></div>
+              <div class="dimrow af"><span class="k">導入後</span><div class="dim" style="--p:.25"><i class="l"></i><i class="r"></i></div><span class="v">1.5時間</span></div>
+              <div class="mdelta">月4.5時間短く</div>
+            </div>
+            <div class="mrow">
+              <span class="mname">問い合わせ対応</span>
+              <div class="dimrow"><span class="k">導入前</span><div class="dim" style="--p:1"><i class="l"></i><i class="r"></i></div><span class="v">12時間</span></div>
+              <div class="dimrow af"><span class="k">導入後</span><div class="dim" style="--p:.42"><i class="l"></i><i class="r"></i></div><span class="v">5時間</span></div>
+              <div class="mdelta">月7時間短く</div>
+            </div>
+          </div>
+          <div class="sheet-ft" id="sheet-ft"><b>3つ合わせて、月38時間が13.5時間に</b><small>お客さまごとに、この表をおつくりします</small></div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="approach-sec" aria-labelledby="approach-h">
+    <div class="wrap">
+      <div class="sec-hd">
+        <h2 id="approach-h" class="jp-bal">やることは、会社ごとに違います</h2>
+        <p>決まった商品を売るのではなく、御社の仕事の流れを伺うところから始めます。AIもITも、そのための道具です。</p>
+      </div>
+      <ol class="approach">
+        <li><span class="n">01</span><h3>伺う</h3><p>誰が、どの作業に、週に何時間かけているか。現場の方のお話を聞くところから始めます。</p></li>
+        <li><span class="n">02</span><h3>見つける</h3><p>時間がかかる所、ミスが出やすい所、特定の人に頼りきりの所を、一緒に洗い出します。</p></li>
+        <li><span class="n">03</span><h3>設計する</h3><p>どう変えるかを決め、仕組みを組み立てます。AIが合わない作業には、AIは使いません。</p></li>
+        <li><span class="n">04</span><h3>入れて、直す</h3><p>実際の業務で使っていただき、数字を測って直します。手順書を残して根付かせます。</p></li>
+      </ol>
+      <ul class="tools" aria-label="使う道具の例">
+        <li class="k">使う道具の例</li>
+        <li>AIでつくる御社専用の仕組み</li><li>いまお使いのExcel・スプレッドシート</li><li>メール・問い合わせの定型化</li><li>いまお使いのソフトの設定見直し</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec sec-white" id="compare-sec" aria-labelledby="compare-h">
+    <div class="wrap">
+<div class="sec-hd">
+        <h2 id="compare-h" class="jp-bal">手順は、こう変わります</h2>
+        <p>山形の会社で手間がかかりやすいのは、たとえば次のような作業です。どこから始めるかは、お話を伺ってから決めます。</p>
+        <div class="ba-ctl" hidden>
+          <span id="ba-l">手順を比べる</span>
+          <div class="seg" role="group" aria-labelledby="ba-l">
+            <button type="button" data-bav="0" aria-pressed="true">いま</button>
+            <button type="button" data-bav="1" aria-pressed="false">導入後</button>
+          </div>
+        </div>
+      </div>
+      <ul class="entry">
+        <li>
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="5" width="28" height="38" rx="3"/><path d="M16 14h16M16 20h16M16 26h9"/><path class="ac" d="M27 30l4 4.5 4-4.5M31 34.5V40M28 36.5h6"/></svg>
+          <h3>見積書・請求書</h3>
+          <p>これまでの見積書を読み込ませ、条件をお伝えいただくと、品目と金額の下書きが出てくる形をつくります。いまお使いのExcelやGoogleスプレッドシートのまま使えます。</p>
+          <div class="ba" data-ba="est"></div>
+          <p class="res">書く作業が、確かめる作業に。</p>
+        </li>
+        <li>
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="16" r="5.5"/><path d="M7 34c1.6-5.5 5.4-8.5 10-8.5s8.4 3 10 8.5"/><path class="ac" d="M31 13h10M31 19.5h10M31 26h6"/><path d="M5 41h38"/></svg>
+          <h3>求人原稿・募集文</h3>
+          <p>どんな方に来てほしいかを伺って、ハローワークや求人サイト向けの原稿をつくります。書き方を変えた案を複数お出しするので、選んで直すだけです。</p>
+          <div class="ba" data-ba="job"></div>
+          <p class="res">書けなくて出せない、が無くなる。</p>
+        </li>
+        <li>
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="11" width="36" height="26" rx="3"/><path class="ac" d="M7 13.5l17 12.5 17-12.5"/><path d="M6 43h20"/></svg>
+          <h3>問い合わせ・メール対応</h3>
+          <p>よくあるご質問への返信文を整え、新しい問い合わせにも下書きが出るようにします。どこまで定型にしてよいかを決める作業まで含みます。</p>
+          <div class="ba" data-ba="mail"></div>
+          <p class="res">返信が早く、文面が揃う。</p>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -293,7 +392,7 @@
         <b>まずは60分、お話を伺わせてください。</b>
         <p>ご相談は無料です。この時点でご提案や売り込みはいたしません。</p>
       </div>
-      <a class="btn btn-cta" href="/#contact">無料相談のお申し込み</a>
+      <a class="btn btn-cta" href="/contact/">無料相談のお申し込み</a>
     </div>
   </div>
 </main>
@@ -317,6 +416,9 @@
       <li><a href="/one-off/">必要なものだけ、頼む</a></li>
       <li><a href="/price/">料金</a></li>
       <li><a href="/demo/">デモ</a></li>
+      <li><a href="/safety/">安心のために</a></li>
+      <li><a href="/about/">事業者概要</a></li>
+      <li><a href="/contact/">お問い合わせ</a></li>
     </ul>
     <small>&copy; 2026 ソエギ　山形県</small>
   </div>
@@ -324,7 +426,7 @@
 
 <aside class="cbar" id="cbar" aria-label="電話・無料相談">
   <a class="btn btn-line" href="tel:080-9018-2777"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4-2 1.3a11 11 0 0 0 6.1 6.1l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg>電話する</a>
-  <a class="btn btn-cta" href="/#contact">無料相談のお申し込み</a>
+  <a class="btn btn-cta" href="/contact/">無料相談のお申し込み</a>
 </aside>
 
 <script src="/js/site.js" defer></script>

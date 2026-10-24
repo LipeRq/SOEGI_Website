@@ -787,3 +787,74 @@ input[type="range"]::-moz-range-thumb { border-color: var(--beni); }
 .ft-links a:hover { color: var(--ink); text-decoration: underline; }
 .scope.one { grid-template-columns: 1fr; }
 .tree-tpl { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* ============================================================
+   2026-10-24 追加：読みやすさ・トップを短くしたことによる部品・お申し込みフォーム
+   ============================================================ */
+/* 本文を少し大きく、薄い灰色を濃く（ダークモードは元の値のまま） */
+:root { --ink-2: #2B373E; --ink-3: #3E4C54; }
+html { font-size: 106.25%; }
+.brand small, .hd-tel small { font-size: .78rem; }
+.field .cat, .ex-k, .news .tag, .sheet-hd span, .hero-note, .crumb { font-size: .88rem; }
+.field p, .entry p, .approach p, .midcta p, .contact p, .cases p, .plain-list li, .who { font-size: 1rem; }
+.ex li, .news li, .news time { font-size: .98rem; }
+.lede { font-size: clamp(1.05rem, 1.7vw, 1.15rem); }
+@media (max-width: 40rem) { html { font-size: 112.5%; } }
+
+/* トップ：たとえば（業種別の例） */
+.cases { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 64rem) { .cases { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 30rem) { .cases { grid-template-columns: minmax(0, 1fr); } }
+.cases li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.1rem 1.2rem 1.2rem; }
+.cases h3 { font-family: var(--serif); font-size: 1.15rem; line-height: 1.5; margin-bottom: .5rem; padding-bottom: .5rem; border-bottom: 2px solid var(--beni-soft); }
+.cases p { color: var(--ink-2); line-height: 1.7; }
+.cases p + p { margin-top: .25rem; }
+.cases p::before { content: "・"; color: var(--beni); }
+.hero-eg { margin-top: 1rem; font-size: .95rem; color: var(--ink-2); line-height: 1.8; }
+.hero-eg b { display: inline-block; margin-right: .6rem; padding: 0 .6rem; border-radius: var(--r-sm); background: var(--beni-soft); color: var(--band-ink); font-size: .8rem; }
+.plain-list { display: grid; gap: .5rem; max-width: 40rem; }
+.plain-list li { position: relative; padding: .55rem 1rem .55rem 2.2rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); line-height: 1.7; }
+.plain-list li::before { content: ""; position: absolute; left: .85rem; top: 1.05rem; width: .7rem; height: .7rem; border-radius: 50%; background: var(--leaf); }
+.more { margin-top: 1.5rem; }
+.who { max-width: 44rem; line-height: 1.95; color: var(--ink-2); }
+.who b { font-family: var(--serif); font-size: 1.15em; color: var(--ink); }
+.scope-ask { margin-top: .9rem; padding-top: .8rem; border-top: 1px dashed var(--line); font-size: .95rem; color: var(--ink-2); }
+.measure-box { max-width: 36rem; }
+.measure-box .sheet { margin: 0; }
+.btn-lg { min-height: 3.4rem; padding-inline: 1.8rem; font-size: 1.05rem; }
+.contact .copy-row { margin-top: 1rem; }
+
+/* お申し込みフォーム */
+.form { display: grid; gap: 1.25rem; max-width: 40rem; }
+.f-row { border: 0; padding: 0; margin: 0; min-width: 0; }
+.form label, .form legend { display: block; font-weight: 700; font-size: 1rem; margin-bottom: .4rem; padding: 0; }
+.req { margin-left: .5rem; padding: 0 .5rem; border-radius: var(--r-sm); background: #B3282D; color: #fff; font-size: .75rem; font-weight: 700; vertical-align: .1em; }
+.form input[type=text], .form input[type=tel], .form input[type=email], .form input[type=date], .form select, .form textarea {
+  width: 100%; min-height: 3.1rem; padding: .6rem .85rem; font: inherit; font-size: 1rem; line-height: 1.5; color: var(--ink);
+  background: var(--surface); border: 1.5px solid var(--frost); border-radius: var(--r-md);
+}
+.form textarea { min-height: 7rem; resize: vertical; }
+.form input:focus-visible, .form select:focus-visible, .form textarea:focus-visible { outline: 3px solid var(--beni); outline-offset: 1px; border-color: var(--beni); }
+.f-pair { display: grid; gap: 1rem; }
+@media (min-width: 40rem) { .f-pair { grid-template-columns: 1fr 1fr; } }
+.f-choices { display: flex; flex-wrap: wrap; gap: .6rem; }
+.form .choice { display: flex; align-items: flex-start; gap: .6rem; font-weight: 500; cursor: pointer; margin-bottom: 0; }
+.form .f-choices .choice { min-height: 3.1rem; align-items: center; padding: .4rem 1rem; background: var(--surface); border: 1.5px solid var(--frost); border-radius: var(--r-md); }
+.choice input { width: 1.35rem; height: 1.35rem; margin: .2rem 0 0; accent-color: var(--beni); flex: none; }
+.form .f-choices .choice input { margin: 0; }
+.form .f-choices .choice:has(input:checked) { border-color: var(--beni); background: var(--beni-soft); }
+.f-slots { display: grid; gap: .6rem; }
+.f-slot { display: grid; grid-template-columns: 4.6rem minmax(0, 1fr) minmax(0, 1fr); gap: .5rem; align-items: center; }
+.f-slot-n { font-weight: 700; font-size: .95rem; }
+@media (max-width: 34rem) { .f-slot { grid-template-columns: 1fr 1fr; } .f-slot-n { grid-column: 1 / -1; } }
+.f-help { margin-top: .5rem; font-size: .9rem; color: var(--ink-2); }
+.f-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.f-agree { padding: 1rem; background: var(--sunk); border-radius: var(--r-md); font-size: .95rem; line-height: 1.8; }
+.f-agree b { font-weight: 700; }
+.f-err { min-height: 1.5em; color: #B3282D; font-weight: 700; line-height: 1.7; }
+.f-err:empty { display: none; }
+.f-act .btn:disabled { opacity: .6; cursor: wait; }
+.f-done { max-width: 40rem; padding: 1.75rem; background: var(--leaf-soft); border: 1.5px solid var(--leaf); border-radius: var(--r-lg); }
+.f-done h3 { font-family: var(--serif); font-size: 1.4rem; margin-bottom: .6rem; }
+.f-done:focus { outline: 3px solid var(--leaf); outline-offset: 2px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --ink-2: #C9D1D5; --ink-3: #AEB8BD; } .req, .f-err { color: #FFB4B8; } .req { background: #7A1F24; } }

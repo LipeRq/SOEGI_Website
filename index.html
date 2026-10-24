@@ -36,7 +36,7 @@
 
 <header class="hd" id="hd">
   <div class="wrap hd-in">
-    <a class="brand" href="#top" aria-label="ソエギ ページの先頭へ">
+    <a class="brand" href="/" aria-label="ソエギ ページの先頭へ">
       <svg viewBox="0 0 64 64" aria-hidden="true">
         <path d="M13 52H51" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
         <path d="M45 52V13" stroke="var(--frost)" stroke-width="4" stroke-linecap="round"/>
@@ -58,14 +58,14 @@
         </li>
         <li><a href="/price/">料金</a></li>
         <li><a href="/demo/">デモ</a></li>
-        <li><a href="/#safety">安心のために</a></li>
-        <li><a href="/#about">事業者概要</a></li>
-        <li><a href="/#contact">お問い合わせ</a></li>
+        <li><a href="/safety/">安心のために</a></li>
+        <li><a href="/about/">事業者概要</a></li>
+        <li><a href="/contact/">お問い合わせ</a></li>
       </ul>
     </nav>
     <div class="hd-act">
       <a class="hd-tel" href="tel:080-9018-2777"><small>ご相談無料　9:00〜19:00（土日も）</small><b>080-9018-2777</b></a>
-      <a class="btn btn-cta btn-sm hd-cta" href="#contact">無料相談のお申し込み</a>
+      <a class="btn btn-cta btn-sm hd-cta" href="/contact/">無料相談のお申し込み</a>
       <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="gnav"><i aria-hidden="true"></i>メニュー</button>
     </div>
   </div>
@@ -85,9 +85,10 @@
           御社の仕事の流れを伺って、手間のかかっている所を一緒に見つけます。いまお使いのExcelやメールを生かしながら、AIを使って御社の仕事に合う仕組みをつくります。はじめに今の作業時間を測り、1ヶ月使ってもう一度測ります。割に合わなければ、そこで終了で構いません。
         </p>
         <div class="btns ld" style="--d:520ms">
-          <a class="btn btn-cta" href="#contact">まず話を聞いてもらう（無料）</a>
+          <a class="btn btn-cta" href="/contact/">まず話を聞いてもらう（無料）</a>
           <a class="btn btn-line" href="/price/">料金を見る</a>
         </div>
+        <p class="hero-eg ld" style="--d:560ms"><b>たとえば</b>見積書の下書き／レシートのExcel化／残業の集計／外国人スタッフ向けの手順書</p>
         <p class="hero-note ld" style="--d:600ms">料金はすべてこのサイトに載せています。お試し導入 <b>5万円</b>から（税抜）</p>
       </div>
 
@@ -148,36 +149,6 @@
           </div>
           <p class="reel-ft"><a href="/demo/">デモのページへ</a></p>
         </div>
-        <div class="sheet ld" id="sheet" style="--d:300ms">
-        <div class="sheet-hd"><h2>計測シート</h2><span>数値は記入例です</span></div>
-        <div class="sheet-bd">
-          <div class="seg" role="group" aria-label="計測シートの切り替え">
-            <button type="button" data-sheet="0" aria-pressed="true">作業にかかる時間</button>
-            <button type="button" data-sheet="1" aria-pressed="false">お客さまを待たせる時間</button>
-          </div>
-          <div id="sheet-rows">
-            <div class="mrow">
-              <span class="mname">見積書の作成</span>
-              <div class="dimrow"><span class="k">導入前</span><div class="dim" style="--p:1"><i class="l"></i><i class="r"></i></div><span class="v">20時間</span></div>
-              <div class="dimrow af"><span class="k">導入後</span><div class="dim" style="--p:.35"><i class="l"></i><i class="r"></i></div><span class="v">7時間</span></div>
-              <div class="mdelta">月13時間短く</div>
-            </div>
-            <div class="mrow">
-              <span class="mname">求人原稿の作成</span>
-              <div class="dimrow"><span class="k">導入前</span><div class="dim" style="--p:1"><i class="l"></i><i class="r"></i></div><span class="v">6時間</span></div>
-              <div class="dimrow af"><span class="k">導入後</span><div class="dim" style="--p:.25"><i class="l"></i><i class="r"></i></div><span class="v">1.5時間</span></div>
-              <div class="mdelta">月4.5時間短く</div>
-            </div>
-            <div class="mrow">
-              <span class="mname">問い合わせ対応</span>
-              <div class="dimrow"><span class="k">導入前</span><div class="dim" style="--p:1"><i class="l"></i><i class="r"></i></div><span class="v">12時間</span></div>
-              <div class="dimrow af"><span class="k">導入後</span><div class="dim" style="--p:.42"><i class="l"></i><i class="r"></i></div><span class="v">5時間</span></div>
-              <div class="mdelta">月7時間短く</div>
-            </div>
-          </div>
-          <div class="sheet-ft" id="sheet-ft"><b>3つ合わせて、月38時間が13.5時間に</b><small>お客さまごとに、この表をおつくりします</small></div>
-        </div>
-      </div>
       </div>
     </div>
   </section>
@@ -189,492 +160,150 @@
         <li><time datetime="2026-10-12">2026.10.12</time><span class="tag">お知らせ</span><span>社内ナレッジ検索・宿の多言語対応・Webチャットボットのデモを公開しました。</span></li>
         <li><time datetime="2026-09-01">2026.09.01</time><span class="tag">お知らせ</span><span>ホームページを公開しました。</span></li>
         <li><time datetime="2026-09-01">2026.09.01</time><span class="tag">受付</span><span>無料相談（60分）の受付を始めました。山形県内はお伺いします。</span></li>
-        <li><time datetime="2026-09-01">2026.09.01</time><span class="tag">受付</span><span>お試し導入は2026年11月から順にお受けします。</span></li>
       </ul>
     </div>
   </div>
 
-  <!-- ============ STRENGTHS ============ -->
-  <section class="sec" id="strengths" aria-labelledby="strengths-h">
+  <section class="sec" id="cases" aria-labelledby="cases-h">
     <div class="wrap">
       <div class="sec-hd">
-        <h2 id="strengths-h" class="jp-bal">ソエギの強み</h2>
+        <h2 id="cases-h" class="jp-bal">たとえば、こんな作業から</h2>
+        <p>どこから始めるかは、お話を伺ってから決めます。（想定の例です）</p>
       </div>
-      <div class="promises">
-        <div>
-          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="15"/><path d="M17 16l7 10 7-10"/><path d="M17.5 28h13M17.5 32.5h13"/><path class="ac" d="M24 26v11"/></svg>
-          <h3>小さな費用で、始められる</h3>
-          <p>お試し導入は、1ヶ月5万円（税抜）から。割に合わなければ、そこで終了できます。事務の方を1人雇う（月20万円前後）より、小さな費用で始められます。</p>
-        </div>
-        <div>
-          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="15"/><path d="M24 13v2M24 33v2M13 24h2M33 24h2"/><path class="ac" d="M24 15v9l6 4"/></svg>
-          <h3>素早い対応</h3>
-          <p>東京のIT企業で、AIを組み込んだ仕組みの開発と運用に携わってきた代表者が、各社に直接導入し、PDCAを回して、持続的に貢献します。担当が替わらないので、話が早く進みます。</p>
-        </div>
-        <div>
-          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M38 24a14 14 0 1 1-4.2-10"/><path class="ac" d="M38 8v7h-7"/></svg>
-          <h3>導入して終わりにしない、伴走</h3>
-          <p>導入のあとも、3ヶ月ごとに数字を測り直し、続けるかを一緒に決めます。使い続けるサービスは、答えの更新まで月額に含みます。卒業のあとも、保守プラン（月1万円・任意）で、手順書の更新とご相談に乗ります。</p>
-        </div>
-        <div>
-          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="17" r="5.5"/><path d="M7 39c.8-7.5 5.2-11 10-11s9.2 3.5 10 11"/><circle class="ac" cx="33" cy="19" r="4.5"/><path class="ac" d="M29 39c.6-5.2 3.6-8 8-8s7.4 2.8 8 8"/></svg>
-          <h3>対面でのやり取り</h3>
-          <p>山形県内は、無料相談からお伺いします。要所では顔を合わせ、日々のやりとりはチャットや録画した説明で進めます。</p>
-        </div>
-      </div>
-
-      <div class="sub-hd">
-        <h3 class="jp-bal">あわせて、大事にしていること</h3>
-      </div>
-      <div class="scope one">
-        <div class="ok">
-          <ul>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>相談から道具づくりまで、ひとりで。話した人と、つくる人が同じです。助言だけで終わりません。</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>手順書を残します。どなたが使っても同じ結果になるよう、手順書までつくります。</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>AIが合わない作業には、AIを使いません。いまのやり方を大きく変えず、必要なところだけ仕組みを足します。</span></li>
-          </ul>
-        </div>
-      </div>
+      <ul class="cases">
+        <li><h3>工務店・建設</h3><p>過去の見積書から、単価を探す</p><p>見積書の下書き</p></li>
+        <li><h3>食品・製造</h3><p>手順書に聞けば、答えが出る</p><p>外国人スタッフに、母国語で案内</p></li>
+        <li><h3>宿泊</h3><p>外国語の問い合わせに、返信の下書き</p><p>多言語のよくある質問</p></li>
+        <li><h3>士業・事務</h3><p>レシートを、Excelに</p><p>勤怠の集計</p></li>
+      </ul>
     </div>
   </section>
 
   <section class="sec sec-white" id="service" aria-labelledby="service-h">
     <div class="wrap">
       <div class="sec-hd">
-        <h2 id="service-h" class="jp-bal">やることは、会社ごとに違います</h2>
-        <p>決まった商品を売るのではなく、御社の仕事の流れを伺うところから始めます。手間のかかっている所を見つけ、どう変えるかを設計し、実際に入れて社内に根付かせるまでを、ひとりでお引き受けします。AIもITも、そのための道具です。</p>
-      </div>
-      <ol class="approach">
-        <li><span class="n">01</span><h3>伺う</h3><p>誰が、どの作業に、週に何時間かけているか。現場の方のお話を聞くところから始めます。</p></li>
-        <li><span class="n">02</span><h3>見つける</h3><p>時間がかかる所、ミスが出やすい所、特定の人に頼りきりの所を、一緒に洗い出します。</p></li>
-        <li><span class="n">03</span><h3>設計する</h3><p>どう変えるかを決め、仕組みを組み立てます。AIが合わない作業には、AIは使いません。</p></li>
-        <li><span class="n">04</span><h3>入れて、直す</h3><p>実際の業務で使っていただき、数字を測って直します。手順書を残して根付かせます。</p></li>
-      </ol>
-      <ul class="tools" aria-label="使う道具の例">
-        <li class="k">使う道具の例</li>
-        <li>AIでつくる御社専用の仕組み</li><li>いまお使いのExcel・スプレッドシート</li><li>メール・問い合わせの定型化</li><li>いまお使いのソフトの設定見直し</li>
-      </ul>
-
-            <div class="sub-hd">
-        <h3 class="jp-bal">3つの頼み方があります</h3>
-        <p>どの頼み方も、進め方は同じです。測って、決めて、また測る。どこから始めるかは、お話を伺ってから一緒に決めます。</p>
+        <h2 id="service-h" class="jp-bal">頼み方は、3つです</h2>
+        <p>どの頼み方も、進め方は同じです。測って、決めて、また測る。</p>
       </div>
       <ul class="fields">
         <li class="field">
-          <div><h4>仕組みをつくって、卒業する</h4><span class="cat">手作業を減らす（経理・労務など）</span></div>
+          <div><h3>仕組みをつくって、卒業する</h3><span class="cat">手作業を減らす（経理・労務など）</span></div>
           <div>
-            <p>毎回ゼロから書いている、同じことを何度も入力している。そんな作業の流れを見直し、生成AIやExcel、クラウドの道具のうち合うものを組み合わせて短くします。手順書を残して、ソエギがいなくても社内で回る状態を目指します。</p>
-            <p class="ex-k">たとえば</p>
-            <ul class="ex"><li>見積書・請求書の下書き</li><li>求人原稿</li><li>問い合わせへの返信</li><li>データの転記や集計</li></ul>
+            <p>同じ入力、毎回ゼロから書く作業を見直して短くします。手順書を残し、ソエギがいなくても回る状態で卒業します。</p>
             <p class="fld-link"><a class="btn btn-line btn-sm" href="/graduate/">くわしく見る</a></p>
           </div>
           <p class="price">お試し 5万円<small>続ける場合は月5万円（3ヶ月ごとの更新・税抜）</small></p>
         </li>
         <li class="field">
-          <div><h4>使い続けて、育てる</h4><span class="cat">社内ナレッジ検索・宿の多言語対応・Webチャットボット</span></div>
+          <div><h3>使い続けて、育てる</h3><span class="cat">社内ナレッジ検索・宿の多言語対応・Webチャットボット</span></div>
           <div>
-            <p>資料や宿の情報、サイトの内容は、変わっていきます。AIの答えも、それに合わせて更新し続けます。月額にAIの利用料と更新を含み、3ヶ月ごとに、続けるかを数字を見て決めていただきます。</p>
-            <p class="ex-k">たとえば</p>
-            <ul class="ex"><li>手順書・見積書から根拠付きで答える（外国人スタッフ向けを含む）</li><li>外国語の問い合わせに返信の下書き</li><li>サイトの内容どおりに答える</li></ul>
+            <p>資料や宿の情報、サイトの内容は変わっていきます。AIの答えも、それに合わせて更新し続けます。</p>
             <p class="fld-link"><a class="btn btn-line btn-sm" href="/monthly/">くわしく見る</a></p>
           </div>
           <p class="price">初期 10万円〜<br>＋月2万円〜<small>お試しの5万円は初期費用に充てます（税抜）</small></p>
         </li>
         <li class="field">
-          <div><h4>必要なものだけ、頼む</h4><span class="cat">見える化パック・小さなツール・社内研修・ホームページ制作</span></div>
+          <div><h3>必要なものだけ、頼む</h3><span class="cat">見える化パック・小さなツール・社内研修・ホームページ制作</span></div>
           <div>
-            <p>決まった成果物をお渡しして終わる、単発のご依頼です。毎月の数字の見える化、見積書や返信の下書きが出る小さな道具、御社の書類を題材にしたAIの使い方研修、会社や店の紹介ページをつくるホームページ制作があります。</p>
-            <p class="ex-k">たとえば</p>
-            <ul class="ex"><li>売上・利益の見える化</li><li>見積書や返信の下書きが出る仕組み</li><li>御社の書類を使ったAIの使い方研修</li><li>会社・お店の紹介ページ</li></ul>
+            <p>決まった成果物をお渡しして終わる、単発のご依頼です。</p>
             <p class="fld-link"><a class="btn btn-line btn-sm" href="/one-off/">くわしく見る</a></p>
           </div>
           <p class="price">3万円〜<small>メニューにより異なります（税抜）</small></p>
         </li>
       </ul>
+    </div>
+  </section>
 
-<div class="sub-hd">
-        <h3 class="jp-bal">たとえば、こんな作業から</h3>
-        <p>山形の会社で手間がかかりやすいのは、たとえば次のような作業です。どこから始めるかは、お話を伺ってから決めます。</p>
-        <div class="ba-ctl" hidden>
-          <span id="ba-l">手順を比べる</span>
-          <div class="seg" role="group" aria-labelledby="ba-l">
-            <button type="button" data-bav="0" aria-pressed="true">いま</button>
-            <button type="button" data-bav="1" aria-pressed="false">導入後</button>
-          </div>
-        </div>
+  <section class="sec" id="trial" aria-labelledby="trial-h">
+    <div class="wrap">
+      <div class="sec-hd">
+        <h2 id="trial-h" class="jp-bal">最初は、お試し導入から</h2>
+        <p>1つの業務を、1ヶ月。5万円（税抜）です。割に合わないと判断されたら、そこで終了できます。</p>
       </div>
-      <ul class="entry">
-        <li>
-          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="5" width="28" height="38" rx="3"/><path d="M16 14h16M16 20h16M16 26h9"/><path class="ac" d="M27 30l4 4.5 4-4.5M31 34.5V40M28 36.5h6"/></svg>
-          <h3>見積書・請求書</h3>
-          <p>これまでの見積書を読み込ませ、条件をお伝えいただくと、品目と金額の下書きが出てくる形をつくります。いまお使いのExcelやGoogleスプレッドシートのまま使えます。</p>
-          <div class="ba" data-ba="est"></div>
-          <p class="res">書く作業が、確かめる作業に。</p>
-        </li>
-        <li>
-          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="16" r="5.5"/><path d="M7 34c1.6-5.5 5.4-8.5 10-8.5s8.4 3 10 8.5"/><path class="ac" d="M31 13h10M31 19.5h10M31 26h6"/><path d="M5 41h38"/></svg>
-          <h3>求人原稿・募集文</h3>
-          <p>どんな方に来てほしいかを伺って、ハローワークや求人サイト向けの原稿をつくります。書き方を変えた案を複数お出しするので、選んで直すだけです。</p>
-          <div class="ba" data-ba="job"></div>
-          <p class="res">書けなくて出せない、が無くなる。</p>
-        </li>
-        <li>
-          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="11" width="36" height="26" rx="3"/><path class="ac" d="M7 13.5l17 12.5 17-12.5"/><path d="M6 43h20"/></svg>
-          <h3>問い合わせ・メール対応</h3>
-          <p>よくあるご質問への返信文を整え、新しい問い合わせにも下書きが出るようにします。どこまで定型にしてよいかを決める作業まで含みます。</p>
-          <div class="ba" data-ba="mail"></div>
-          <p class="res">返信が早く、文面が揃う。</p>
-        </li>
-      </ul>
-
+      <ol class="approach">
+        <li><span class="n">01</span><h3>無料相談（60分）</h3><p>どの作業に、誰が、週に何時間かけているかを伺います。</p></li>
+        <li><span class="n">02</span><h3>いまの数字を測る</h3><p>1〜2週間・無料。一番重い作業を1つ選び、かかっている時間を記録していただきます。</p></li>
+        <li><span class="n">03</span><h3>お試し導入（1ヶ月）</h3><p>選んだ1つの業務を仕組み化し、いつもの業務で使っていただきます。</p></li>
+        <li><span class="n">04</span><h3>もう一度測って、決める</h3><p>導入前と並べて比べ、続けるか、ここで終了するかを決めます。</p></li>
+      </ol>
       <div class="sub-hd">
-        <h3 class="jp-bal">できること、お引き受けしないこと</h3>
-        <p>はじめにお伝えしておきます。時間の読めない仕事と、専門の先生の領域はお受けしていません。合わないと思われた場合は、遠慮なくお断りください。</p>
+        <h3 class="jp-bal">お試し導入で、どこまでやるか</h3>
       </div>
       <div class="scope">
         <div class="ok">
-          <h4>できること</h4>
+          <h4>お試しでやること</h4>
           <ul>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>いまのやり方を大きく変えずに、必要なところだけ仕組みを足す</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>ExcelやGoogleスプレッドシート、メールのまま使える形にする</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>AIが合わない作業には、AIを使わない方法を選ぶ</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>どなたが使っても同じ結果になるよう、手順書までつくる</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>削減できた時間と、お金に直結する数字を測り、続けるかを一緒に判断する</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>卒業したあとも、手順書の更新と使い方のご相談に乗る（保守プラン）</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>選んだ<b>1つの業務</b>の仕組みづくり（Excel・スプレッドシート・メール・AIのうち、合うものを組み合わせます）</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>1ヶ月のあいだ、詰まったところをその都度直す</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>導入前と最終週に、同じ方法で測って、数字を並べて比べる</span></li>
           </ul>
+          <p class="scope-ask"><b>お願いすること：</b>計測シートへの記入（1日数分）、いつもの業務で使ってみること</p>
         </div>
         <div class="ng">
-          <h4>お引き受けしないこと</h4>
+          <h4>お試しに含まないこと</h4>
           <ul>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>パソコンの設定・故障修理や、基本操作のレクチャー</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>型のない一からの開発や、数百万円規模のシステム開発</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>2つ目以降の業務（続ける場合に、広げるかを一緒に決めます）</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>型のない一からの開発や、大きなシステム開発</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>AIに任せきりにする運用（最終確認は人が行う前提でつくります）</span></li>
             <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>24時間365日の保守対応（受付は9:00〜19:00です）</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>AIに任せきりにする運用。最終確認は人が行う前提でつくります</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>税務・労務・法律の判断。士業の先生の領域はお繋ぎします</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12"/></svg><span>補助金の申請書づくり（行政書士の先生の業務です）</span></li>
           </ul>
         </div>
       </div>
+      <p class="more"><a class="btn btn-line" href="/graduate/">続けるときの流れと料金を見る</a></p>
     </div>
   </section>
-
-  <section class="sec" id="flow" aria-labelledby="flow-h">
-    <div class="wrap">
-      <div class="sec-hd">
-        <h2 id="flow-h" class="jp-bal">進め方は、はじめから決めてあります</h2>
-        <p>測って、決めて、また測る。いきなり長い契約はいたしません。1ヶ月試していただき、数字を見てから決めていただく形です。</p>
-      </div>
-      <ol class="steps">
-        <li class="step">
-          <span class="step-n" aria-hidden="true">1</span>
-          <div>
-            <h3>無料相談</h3>
-            <p class="step-meta"><span>期間<b>60分</b></span><span>費用<b>無料</b></span></p>
-            <p>どの作業に、誰が、週に何時間かけているかを伺います。この時点ではご提案はいたしません。オンラインでも、お伺いしても構いません。</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="step-n" aria-hidden="true">2</span>
-          <div>
-            <h3>いまの数字を測る</h3>
-            <p class="step-meta"><span>期間<b>1〜2週間</b></span><span>費用<b>無料</b></span></p>
-            <p>一番重い作業を1つ選び、いまかかっている時間を記録していただきます。作業時間のほか、見積りを返すまでの日数や求人の応募数など、お金に直結する数字のうち何を測るかも、ここで一緒に決めます。</p>
-            <p class="you">お願いすること：計測シートへの記入（1日数分）</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="step-n" aria-hidden="true">3</span>
-          <div>
-            <h3>お試し導入</h3>
-            <p class="step-meta"><span>期間<b>1業務・1ヶ月</b></span><span>費用<b>5万円（税抜）</b></span></p>
-            <p>選んだ1つの業務を仕組み化し、実際の業務で1ヶ月使っていただきます。つくって終わりにはせず、詰まったところはその都度直します。</p>
-            <p class="you">お願いすること：いつもの業務で使ってみること</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="step-n" aria-hidden="true">4</span>
-          <div>
-            <h3>もう一度測る</h3>
-            <p class="step-meta"><span>時期<b>お試しの最終週</b></span></p>
-            <p>導入前と同じ方法で測り、数字を並べて比べます。割に合わないと判断されたら、そこで終了です。続ける場合も、無理に広げることはいたしません。</p>
-            <span class="branch">合わなければ、ここで終了</span>
-          </div>
-        </li>
-        <li class="step is-key">
-          <span class="step-n" aria-hidden="true">5</span>
-          <div>
-            <h3>3ヶ月ごとに、続けるかを決める</h3>
-            <p class="step-meta"><span>期間<b>3ヶ月ごと</b></span><span>費用<b>メニューにより異なります（税抜）</b></span></p>
-            <p>測った数字を見て、続けるか、やめるかを一緒に決めます。仕組みづくり（卒業型）は、手順書をお渡しして卒業。使い続けるサービス（月額型）は、そのまま続けます。くわしくは、<a href="/graduate/">仕組みをつくって、卒業する</a>、<a href="/monthly/">使い続けて、育てる</a>のページへ。</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <div class="midcta">
-    <div class="wrap midcta-in">
-      <div>
-        <b>まずは60分、お話を伺わせてください。</b>
-        <p>ご相談は無料です。この時点でご提案や売り込みはいたしません。</p>
-      </div>
-      <a class="btn btn-cta" href="#contact">無料相談のお申し込み</a>
-    </div>
-  </div>
 
   <section class="sec sec-white" id="safety" aria-labelledby="safety-h">
     <div class="wrap">
       <div class="sec-hd">
-        <h2 id="safety-h" class="jp-bal">情報の取り扱いについて</h2>
-        <p>社内の書類をAIに読み込ませることに不安を感じられるのは当然です。次の4点をお約束します。</p>
+        <h2 id="safety-h" class="jp-bal">社内の書類を、AIに読ませる不安に</h2>
+        <p>次の4点をお約束します。</p>
       </div>
-      <div class="promises">
-        <div>
-          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="11" y="21" width="26" height="19" rx="3"/><path d="M16.5 21v-5a7.5 7.5 0 0 1 15 0v5"/><path class="ac" d="M24 28v5"/></svg>
-          <h3>学習に使われない設定のツールだけを使います</h3>
-          <p>入力した内容が学習に使われない設定、または法人向けのプランで使います。どのツールをどう設定しているかは、ご契約前にご説明します。</p>
-        </div>
-        <div>
-          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 14h32M8 24h7M33 24h7M8 34h22"/><rect class="ac" x="18" y="20.5" width="12" height="7" rx="1.5"/></svg>
-          <h3>名前や取引先は、伏せてからAIに入れます</h3>
-          <p>お客さまの個人情報や取引先の名前は、AIに入れる前に伏せます。どこまで入れてよいかは最初に一緒に決め、書面に残します。</p>
-        </div>
-        <div>
-          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M11 14h26M20 14v-4h8v4M14.5 14l1.6 23.2a2.4 2.4 0 0 0 2.4 2.3h11a2.4 2.4 0 0 0 2.4-2.3L33.5 14"/><path class="ac" d="M21 21v12M27 21v12"/></svg>
-          <h3>お預かりした資料は、使い終わったら削除します</h3>
-          <p>見積書や名簿などをお預かりした場合、作業が終わり次第すべて削除し、削除した旨をご報告します。月額で使い続けるサービスでは、使っている間だけ保管し、やめたらすべて削除して、削除した旨をご報告します。作業は事業専用のパソコンとアカウントで行います。</p>
-        </div>
-        <div>
-          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M12 6h17l7 7v29H12z"/><path d="M29 6v7h7"/><path d="M17 18h10M17 23h14"/><circle class="ac" cx="27" cy="33" r="4.5"/></svg>
-          <h3>ご希望があれば秘密保持契約を結びます</h3>
-          <p>御社の書式でも、こちらでご用意したものでも構いません。ご相談の段階から結んでいただいて差し支えありません。</p>
-        </div>
-      </div>
-      <div class="aside">
-        <b>AIが間違えたときのために</b>
-        AIが出した文章や数字は、必ず人が確かめてから使う運用にします。万一に備えて賠償責任保険に加入し、責任の範囲はご契約書に明記します。
-      </div>
-
-      <div class="sub-hd">
-        <h3 class="jp-bal">AIの答えは、こう作っています</h3>
-      </div>
-      <div class="scope one">
-        <div class="ok">
-          <ul>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>外国語の答えは、AIの翻訳です。大事なことは、日本語の原文で確かめる作りにしています。</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>安全・衛生・体調に関わる質問には、必ず「リーダーに確認」を出します。</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>答えには、必ず資料の根拠を付けます。資料に無いことは「見当たりません」と答えます。</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>月額をやめても、整えた資料・よくある質問・手順書は、お客さまの手元に残ります。</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="sub-hd">
-        <h3>よくあるご質問</h3>
-      </div>
-      <div class="faq">
-<details>
-          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">AIにくわしくないのですが、大丈夫でしょうか。</span><span class="pm" aria-hidden="true"></span></summary>
-          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>新しく覚えることが、できるだけ少なくなるようにつくります。手順書をお渡しし、画面を見ながら一緒に操作して、慣れるところまでお付き合いします。</p></div>
-        </details>
-<details>
-          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">AIを入れることが前提ですか。</span><span class="pm" aria-hidden="true"></span></summary>
-          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>いいえ。お話を伺ったうえで、AIが合う作業にだけ使います。Excelの整え方や、いまお使いのソフトの設定を見直すだけで足りることもあります。何をするかは、会社ごとに違います。</p></div>
-        </details>
-<details>
-          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">うちのような小さい会社でも頼めますか。</span><span class="pm" aria-hidden="true"></span></summary>
-          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>むしろそうした会社さま向けです。従業員5〜50人ほどで、社長や少数の方が現場と事務を兼ねている会社を想定しています。</p></div>
-        </details>
-<details>
-          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">公的な窓口や商工会議所の無料相談とは、何が違いますか。</span><span class="pm" aria-hidden="true"></span></summary>
-          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>無料の相談は「何をすべきか」を一緒に考える場です。ソエギは、そのあとに実際に手を動かして仕組みをつくり、社内に根付かせるところをお引き受けします。無料相談を受けたあとの方も歓迎です。</p></div>
-        </details>
-        <details>
-          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">途中でやめることはできますか。</span><span class="pm" aria-hidden="true"></span></summary>
-          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>お試し導入は1ヶ月で区切ります。割に合わないと判断されたら、そこで終了です。続ける場合は、3ヶ月ごとに、測った数字を見て、続けるかを決めます。途中で終える場合の条件は、ご契約前に書面でお示しします。</p></div>
-        </details>
-<details>
-          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">補助金は使えますか。</span><span class="pm" aria-hidden="true"></span></summary>
-          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>使える制度がある場合は、確かなものだけをご案内します。申請書の作成は行政書士の先生の業務のため、お引き受けしていません。</p></div>
-        </details>
-<details>
-          <summary><span class="qa" aria-hidden="true">Q</span><span class="qt">料金は税込ですか。インボイスには対応していますか。</span><span class="pm" aria-hidden="true"></span></summary>
-          <div class="faq-a"><span class="qa" aria-hidden="true">A</span><p>表示はすべて税抜で、消費税を加えてご請求します。適格請求書発行事業者（インボイス）の登録は、開業にあわせて行います。</p></div>
-        </details>
-      </div>
+      <ul class="plain-list">
+        <li><b>学習に使われない設定</b>のツールだけを使います</li>
+        <li><b>名前や取引先は、伏せて</b>からAIに入れます</li>
+        <li>お預かりした資料は、<b>使い終わったら削除</b>します</li>
+        <li>ご希望があれば、<b>秘密保持契約</b>を結びます</li>
+      </ul>
+      <p class="more"><a class="btn btn-line" href="/safety/">AIが間違えたとき・よくあるご質問</a></p>
     </div>
   </section>
 
   <section class="sec" id="about" aria-labelledby="about-h">
     <div class="wrap">
       <div class="sec-hd">
-        <h2 id="about-h">事業者概要</h2>
-        <p>大きな会社で積んだ経験を、山形の会社の規模に合わせて。</p>
+        <h2 id="about-h" class="jp-bal">代表者</h2>
       </div>
-      <div class="about-cols">
-        <div>
-          <p>東京の会社に勤めながら、山形に住んでいます。仕事は、企業の顧客管理や販促のしくみをつくって動かすことです。これまでに、新規導入を5社、運用支援を9社ほど担当してきました。</p>
-          <p>相手にしてきたのは、顧客規模が2,000万人を超えるような会社の案件が多いです。担当の方に話を伺って仕組みに落とし、動き出したあとは数字を見て直していく。案内を送った何件が申し込みにつながったか、どのお客さまがよく買ってくださっているか。そういうことを調べて、次の手を決める仕事をしてきました。</p>
-          <p>まとめ役として社内の段取りを組んだり、海外の開発会社に指示を出して進行を見たりもしています。一度は現地まで行って、顔を合わせて進めました。言葉も仕事のやり方も違う相手に、手順を書いて渡し、その通りに動いてもらう。ソエギで手順書にこだわるのは、この経験からです。</p>
-        </div>
-        <div>
-          <p>ここ数年はAIを使う仕事が増えました。社内で試すだけでなく、お客さまの仕組みにAIを組み込んで動かすところまで請けています。本業とは別に、業務システムの開発（C#・SQL）も行っています。</p>
-          <p>そうした中で、ずっと引っかかっていたことがあります。社内の仕事がツールに合わず、結局は手作業に戻っていく場面を何度も見てきました。大きなシステムを入れなくても、AIの使いどころを決めて手順を整えるだけで軽くなる作業が、地元の会社にはまだたくさんあると考えています。</p>
-          <p>ソエギでは、まず一つの作業を選び、導入の前と後で時間を測ります。効果が数字で確かめられたものだけを社内に根付かせ、手順書を残して私は離れる。これまでの仕事で続けてきた「仕組みに落として、数字で直す」やり方を各企業様向けに組み直したものです。</p>
-        </div>
-      </div>
-
-      <div class="strengths">
-        <div>
-          <h3>測って、決めて、また測る</h3>
-          <p>導入の前と1ヶ月後に、作業時間と、お金に直結する数字を測ります。データ分析の実務経験を生かしています。</p>
-        </div>
-        <div>
-          <h3>相談から道具づくりまで、ひとりで</h3>
-          <p>助言だけで終わらず、Excelの仕組みや小さな道具まで自分でつくります。話した人と、つくる人が同じです。</p>
-        </div>
-        <div>
-          <h3>山形に住んでいて、お伺いできる</h3>
-          <p>要所ではお伺いし、日々のやりとりはチャットや録画した説明で進めます。</p>
-        </div>
-      </div>
-
-      <div class="origin">
-        <div>
-          <h3>「ソエギ」という名前について</h3>
-          <p>添え木（そえぎ）から名付けました。若い木が自分で立てるようになるまで、そばで支える棒のことです。</p>
-          <p>主役はお客さまで、私は添え木です。手順書を残し、私がいなくても社内で回る形にする。添え木は、いずれ外れるものだと考えています。使い続けるサービスでは、そばで寄り添い続けます。</p>
-        </div>
-        <div class="origin-figs" id="origin-figs">
-          <figure><button type="button" class="mini mini-play" data-mini="1" aria-label="1ヶ月目から3ヶ月目、卒業のときまで、木が育つ様子を再生する"><span class="play" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 1l7 4-7 4z"/></svg>育てる</span></button><figcaption id="mini-cap" aria-live="polite">はじめ：添え木で支える</figcaption></figure>
-          <figure><div class="mini" data-mini="4"></div><figcaption>卒業のとき：添え木を外す</figcaption></figure>
-        </div>
-      </div>
-
-      <dl class="profile">
-        <div><dt>屋号</dt><dd>ソエギ（個人事業）</dd></div>
-        <div><dt>代表者</dt><dd>稲村 圭太</dd></div>
-        <div><dt>所在地</dt><dd>山形県</dd></div>
-        <div><dt>事業内容</dt><dd>業務の聞き取りと改善の設計・導入・定着の支援（生成AI・ITの活用。お試し導入）／社内ナレッジ検索・宿の多言語対応・Webチャットボットの提供／数字の見える化／小さな道具の制作／社内向けのAI研修／ホームページの制作</dd></div>
-        <div><dt>対応地域</dt><dd>山形県内（オンラインでの対応は全国）</dd></div>
-        <div><dt>受付時間</dt><dd>9:00〜19:00（平日・土日とも）</dd></div>
-        <div><dt>経歴</dt><dd><ul>
-          <li>山形のIT企業を経て、東京のIT企業に勤務。CRM（顧客管理）・SFA（営業支援）の構築および導入コンサルティング、データ分析を担当</li>
-          <li>大手企業の案件でプロジェクトマネジメント、海外の開発会社への指示出しと進行管理（現地渡航あり）</li>
-          <li>近年はテックリードとして、AIを組み込んだプロダクト開発、パーソナライズの仕組みづくり、リレーショナルデータベースの設計・開発を担当</li>
-          <li>別軸で、業務システムの開発・改修（C#・SQL）</li>
-        </ul></dd></div>
-        <div><dt>連絡先</dt><dd>080-9018-2777 ／ info@withsoegi.jp</dd></div>
-      </dl>
-
-
-      <div class="sub-hd" id="referral">
-        <h3>ご紹介くださる方へ</h3>
-        <p>税理士・社労士の事務所、支援機関の方、お知り合いの方からのご紹介を歓迎しています。紹介先の方にそのまま送っていただける文面をご用意しました。</p>
-      </div>
-      <div class="ref">
-        <dl>
-          <div><dt>対象</dt><dd>山形県内の、従業員5〜50人ほどの会社</dd></div>
-          <div><dt>入口</dt><dd>お話を伺って決めます（例：見積書・求人原稿・問い合わせ対応）</dd></div>
-          <div><dt>料金</dt><dd>無料相談、お試し導入 5万円。続ける場合は、仕組みづくり 月5万円（3ヶ月ごとの更新）、使い続けるサービスは初期＋月額（税抜）</dd></div>
-          <div><dt>特徴</dt><dd>導入前後で時間を測り、手順書を残して卒業する</dd></div>
-          <div><dt>受けない仕事</dt><dd>パソコンの修理、大きな開発、士業の先生の領域</dd></div>
-        </dl>
-        <div>
-          <label class="lbl" for="ref-text">紹介文（そのままLINEやメールに貼り付けられます）</label>
-          <textarea id="ref-text" readonly>山形の中小企業向けに、仕事の流れを聞いて手間のかかる所を見つけ、AIやITで仕組みを整えるお手伝いをしている「ソエギ」さんです。
-1ヶ月5万円（税抜）のお試しから始められ、作業時間を導入の前後で測ってから、続けるかどうかを決められます。ご相談は無料です。
-https://withsoegi.jp ／ 080-9018-2777 ／ info@withsoegi.jp</textarea>
-          <div class="copy-row">
-            <button type="button" class="btn btn-line btn-sm" data-copy="ref-text">紹介文をコピー</button>
-            <span class="copied" aria-live="polite"></span>
-          </div>
-        </div>
-      </div>
+      <p class="who"><b>稲村 圭太</b>（山形県在住）。東京のIT企業で、顧客管理や販促の仕組みづくり、AIを組み込んだ仕組みの開発・運用に携わってきました。相談から道具づくりまで、ひとりでお引き受けします。</p>
+      <p class="more"><a class="btn btn-line" href="/about/">事業者概要・経歴を見る</a></p>
     </div>
   </section>
 
   <section class="sec contact" id="contact" aria-labelledby="contact-h">
     <div class="wrap">
       <div class="sec-hd">
-        <h2 id="contact-h">お問い合わせ</h2>
-        <p>「うちの場合はどうか」だけでも構いません。売り込みはいたしませんので、お気軽にご連絡ください。</p>
+        <h2 id="contact-h">まずは60分、お話を伺わせてください</h2>
+        <p>ご相談は無料です。この時点でご提案や売り込みはいたしません。「うちの場合はどうか」だけでも構いません。</p>
       </div>
       <div class="contact-grid">
+        <div>
+          <h3>フォームで申し込む</h3>
+          <p>ご希望の日時を選んで、送れます。折り返しご連絡します。</p>
+          <div class="copy-row"><a class="btn btn-cta btn-lg" href="/contact/">無料相談のお申し込み</a></div>
+        </div>
         <div>
           <h3>お電話</h3>
           <a class="big-tel" href="tel:080-9018-2777" id="tel-val">080-9018-2777</a>
           <p>受付 9:00〜19:00（平日・土日とも）。出られないときは、折り返しご連絡します。</p>
-          <div class="copy-row">
-            <button type="button" class="btn btn-line btn-sm" data-copy-text="080-9018-2777">番号をコピー</button>
-            <span class="copied" aria-live="polite"></span>
-          </div>
-        </div>
-        <div>
-          <h3>メール</h3>
-          <a class="big-mail" href="mailto:info@withsoegi.jp">info@withsoegi.jp</a>
-          <p>いま時間がかかっている作業を一行だけ添えていただけると、当日のお話が早く進みます。「見積書に毎日1時間」といった書き方で構いません。</p>
-          <div class="copy-row">
-            <button type="button" class="btn btn-line btn-sm" data-copy-text="info@withsoegi.jp">アドレスをコピー</button>
-            <span class="copied" aria-live="polite"></span>
-          </div>
         </div>
       </div>
     </div>
   </section>
-  <div class="tree-tpl" aria-hidden="true"><svg class="tree" id="tree" hidden viewBox="0 0 240 240" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="tree-t">
-              <title id="tree-t">添え木に支えられた若い木。月が進むと木が育ち、卒業を選ぶと添え木が外れる図</title>
-              <g class="ruler"></g>
-              <g>
-                <line class="gr" x1="24" y1="214" x2="220" y2="214"/>
-                <path class="gr" d="M62 214l-3-7M67 214l2-8M172 214l-2-7M177 214l3-8M96 214l-2-5M204 214l2-5"/>
-              </g>
-              <g class="stake">
-                <line class="sk" x1="138" y1="214" x2="138" y2="100"/>
-                <line class="tie" x1="120" y1="192" x2="138" y2="189"/>
-                <line class="tie" x1="120" y1="164" x2="138" y2="161"/>
-                <line class="sk-ld" x1="141" y1="112" x2="156" y2="104"/>
-                <text class="sk-lb" x="158" y="106">添え木</text>
-              </g>
-              <g class="tree-g">
-                <path class="ts" d="M120 214C121 190 118 160 120 132C121 112 119 92 120 70"/>
-                <g class="tp" data-m="1">
-                  <g class="lv"><ellipse class="tl" cx="127" cy="74" rx="8" ry="4.5" transform="rotate(-38 127 74)"/></g>
-                  <g class="lv"><ellipse class="tl" cx="113" cy="77" rx="8" ry="4.5" transform="rotate(38 113 77)"/></g>
-                </g>
-                <g class="tp" data-m="2">
-                  <path class="ts" pathLength="1" d="M120 172C130 166 138 160 146 150"/>
-                  <g class="lv"><ellipse class="tl" cx="151" cy="145" rx="9" ry="5" transform="rotate(-42 151 145)"/></g>
-                  <g class="lv"><ellipse class="tl" cx="136" cy="156" rx="7" ry="4" transform="rotate(-80 136 156)"/></g>
-                </g>
-                <g class="tp" data-m="3">
-                  <path class="ts" pathLength="1" d="M120 152C110 146 101 140 94 130"/>
-                  <g class="lv"><ellipse class="tl" cx="89" cy="125" rx="9" ry="5" transform="rotate(42 89 125)"/></g>
-                  <g class="lv"><ellipse class="tl" cx="104" cy="137" rx="7" ry="4" transform="rotate(80 104 137)"/></g>
-                </g>
-                <g class="tp" data-m="4">
-                  <path class="ts" pathLength="1" d="M120 126C131 120 139 112 144 102"/>
-                  <g class="lv"><ellipse class="tl" cx="148" cy="96" rx="9" ry="5" transform="rotate(-50 148 96)"/></g>
-                  <g class="lv"><ellipse class="tl" cx="134" cy="112" rx="7" ry="4" transform="rotate(-78 134 112)"/></g>
-                </g>
-                <g class="tp" data-m="5">
-                  <path class="ts" pathLength="1" d="M120 106C110 99 103 92 99 83"/>
-                  <g class="lv"><ellipse class="tl" cx="96" cy="77" rx="9" ry="5" transform="rotate(48 96 77)"/></g>
-                  <g class="lv"><ellipse class="tl" cx="108" cy="93" rx="7" ry="4" transform="rotate(78 108 93)"/></g>
-                </g>
-                <g class="tp" data-m="6">
-                  <g class="lv"><ellipse class="tl" cx="120" cy="60" rx="5" ry="10"/></g>
-                  <g class="lv"><ellipse class="tl" cx="160" cy="130" rx="7" ry="4" transform="rotate(-20 160 130)"/></g>
-                  <g class="lv"><ellipse class="tl" cx="80" cy="112" rx="7" ry="4" transform="rotate(20 80 112)"/></g>
-                </g>
-              </g>
-              <g class="mk"><line x1="36" y1="0" x2="112" y2="0"/><path d="M36 0l-6-3.5v7z"/></g>
-            </svg></div>
 </main>
 
 <footer class="ft">
   <div class="wrap ft-in">
-    <a class="brand" href="#top" aria-label="ソエギ ページの先頭へ">
+    <a class="brand" href="/" aria-label="ソエギ ページの先頭へ">
       <svg viewBox="0 0 64 64" aria-hidden="true">
         <path d="M13 52H51" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
         <path d="M45 52V13" stroke="var(--frost)" stroke-width="4" stroke-linecap="round"/>
@@ -691,6 +320,9 @@ https://withsoegi.jp ／ 080-9018-2777 ／ info@withsoegi.jp</textarea>
       <li><a href="/one-off/">必要なものだけ、頼む</a></li>
       <li><a href="/price/">料金</a></li>
       <li><a href="/demo/">デモ</a></li>
+      <li><a href="/safety/">安心のために</a></li>
+      <li><a href="/about/">事業者概要</a></li>
+      <li><a href="/contact/">お問い合わせ</a></li>
     </ul>
     <small>&copy; 2026 ソエギ　山形県</small>
   </div>
@@ -698,7 +330,7 @@ https://withsoegi.jp ／ 080-9018-2777 ／ info@withsoegi.jp</textarea>
 
 <aside class="cbar" id="cbar" aria-label="電話・無料相談">
   <a class="btn btn-line" href="tel:080-9018-2777"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4-2 1.3a11 11 0 0 0 6.1 6.1l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></svg>電話する</a>
-  <a class="btn btn-cta" href="#contact">無料相談のお申し込み</a>
+  <a class="btn btn-cta" href="/contact/">無料相談のお申し込み</a>
 </aside>
 
 <script src="/js/site.js" defer></script>
