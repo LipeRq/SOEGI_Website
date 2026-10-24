@@ -803,7 +803,16 @@ html { font-size: 106.25%; }
 .field p, .entry p, .approach p, .midcta p, .contact p, .cases p, .plain-list li, .who { font-size: 1rem; }
 .ex li, .news li, .news time { font-size: .98rem; }
 .lede { font-size: clamp(1.05rem, 1.7vw, 1.15rem); }
-@media (max-width: 40rem) { html { font-size: 112.5%; } }
+@media (max-width: 40rem) {
+  /* iPhone（Safari）では文節での折り返しが効かないので、文字を一回り小さくして行あたりの字数を確保する */
+  html { font-size: 103%; }
+  body { line-height: 1.85; letter-spacing: .01em; }
+  .sec-hd h2 { font-size: 1.55rem; line-height: 1.5; }
+  .page-h1 { font-size: 1.7rem; }
+  .sub-hd h3, .month h3, .origin h3 { font-size: 1.3rem; }
+  .lede, .hero .lede { font-size: 1.02rem; line-height: 1.9; }
+  .hero-note, .crumb, .field .cat { font-size: .85rem; }
+}
 
 /* トップ：たとえば（業種別の例） */
 .cases { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -897,7 +906,7 @@ html { font-size: 106.25%; }
 }
 @media (max-width: 40rem) {
   .hero-sub { margin-bottom: 1rem; }
-  .hero .lede { font-size: 1.0625rem; line-height: 1.95; margin-bottom: 1.5rem; }
+  .hero .lede { margin-bottom: 1.5rem; }
   .hero .btns { flex-direction: column; align-items: stretch; }
   .hero .btns .btn { justify-content: center; text-align: center; }
   .hero-eg { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
@@ -907,3 +916,7 @@ html { font-size: 106.25%; }
 /* 日本語の折り返しを、文節の切れ目に寄せる（対応していない環境では従来どおり） */
 p, li, dd, .btn { word-break: auto-phrase; text-wrap: pretty; }
 .btn { text-wrap: balance; }
+/* 見出しは行の長さをそろえる（Safari 17.5以降でも効く）。ひと文字だけ次の行に残るのを防ぐ */
+h1, h2, h3, .hero-sub, .scene-t { text-wrap: balance; }
+@media (max-width: 40rem) { .hero .h1 { font-size: clamp(1.5rem, 8.8cqi, 3.6rem); } }
+@media (max-width: 40rem) { .about-cols { gap: 1.6rem; } .about-cols > div > p + p { margin-top: 1.6rem; } .about-cols p { line-height: 1.95; } }
