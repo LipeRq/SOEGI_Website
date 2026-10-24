@@ -1,9 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#F6F5F1"/>
-  <path d="M13 52 H51" stroke="#3B3935" stroke-width="3" stroke-linecap="round"/>
-  <path d="M45 52 V13" stroke="#9A958D" stroke-width="4" stroke-linecap="round"/>
-  <path d="M28 52 C 29 42, 27 32, 28 21" stroke="#262521" stroke-width="3.6" fill="none" stroke-linecap="round"/>
-  <path d="M28 41 L45 39 M28 30 L45 28" stroke="#3B3935" stroke-width="2" stroke-linecap="round"/>
-  <ellipse cx="35" cy="21" rx="8" ry="4.5" transform="rotate(-35 35 21)" fill="#B9CFA8" stroke="#262521" stroke-width="2.2"/>
-  <ellipse cx="21" cy="25" rx="8" ry="4.5" transform="rotate(35 21 25)" fill="#B9CFA8" stroke="#262521" stroke-width="2.2"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><rect width="128" height="128" rx="26" fill="#E9EEED"/><rect x="1.5" y="1.5" width="125" height="125" rx="24.5" fill="none" stroke="#B9C6C8" stroke-width="3"/><g transform="translate(16 16) scale(1.5)" fill="none" stroke-linecap="round"><path d="M13 52H51" stroke="#14565B" stroke-width="3"/><path d="M45 52V13" stroke="#8CA0AA" stroke-width="4"/><path d="M28 52C29 42 27 32 28 21" stroke="#14565B" stroke-width="3.6"/><path d="M28 41L45 39M28 30L45 28" stroke="#14565B" stroke-width="2"/><ellipse cx="35" cy="21" rx="8" ry="4.5" transform="rotate(-35 35 21)" fill="#DCF0F0" stroke="#14565B" stroke-width="2.2"/><ellipse cx="21" cy="25" rx="8" ry="4.5" transform="rotate(35 21 25)" fill="#DCF0F0" stroke="#14565B" stroke-width="2.2"/></g></svg>
