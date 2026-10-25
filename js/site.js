@@ -135,7 +135,7 @@
   if (!RM) { renderSheet(0, true); }
   }
 
-  /* ---------- tree: 1期（3ヶ月）。木が育ち、卒業を選んだときだけ添え木が外れる ---------- */
+  /* ---------- tree: 1期（3ヶ月）。木が育ち、終えるときだけ添え木が外れる ---------- */
   var MONTH_TAGS = ['お伺い（1回）', 'オンラインで振り返り', '数字を見て、続けるか決める', '手順書をお渡しします'];
   var STAGE = [0, 1, 3, 5, 6]; /* 月 → 木の育ち（data-m の何番目まで見せるか） */
   function buildRuler(svg) {
@@ -189,7 +189,7 @@
         function step() {
           m++;
           setTree(svg, m);
-          cap.textContent = m < 4 ? m + 'ヶ月目' : '卒業するとき：添え木が外れる';
+          cap.textContent = m < 4 ? m + 'ヶ月目' : '終えるとき：添え木が外れる';
           setTimeout(m < 4 ? step : reset, m < 4 ? 600 : 2000);
         }
         function reset() {
@@ -219,7 +219,7 @@
         if (m === curM) { return; }
         curM = m;
         setTree(tree, m);
-        gmLabel.textContent = m < 4 ? m + 'ヶ月目' : '卒業する場合';
+        gmLabel.textContent = m < 4 ? m + 'ヶ月目' : '終える場合';
         gmTag.textContent = MONTH_TAGS[m - 1];
         each(monthEls, function (el) { el.classList.toggle('is-on', parseInt(el.getAttribute('data-m'), 10) === m); });
       };
@@ -291,7 +291,7 @@
 
   /* ---------- savings check（メニューを選べる） ---------- */
   if ($('calc-h')) {
-    var calcWage = 5000, calcFee = 50000, calcName = '仕組みづくり（卒業型）';
+    var calcWage = 5000, calcFee = 50000, calcName = '仕組みづくり';
     var HINT = { 5000: '時給5,000円として計算します', 1500: '時給1,500円（社会保険込み）として計算します', 2000: '時給2,000円として計算します' };
     var man = function (n) { return (n / 10000) + '万円'; };
     function tween(el, to, fmt) {
