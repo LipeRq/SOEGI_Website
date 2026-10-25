@@ -920,3 +920,10 @@ p, li, dd, .btn { word-break: auto-phrase; text-wrap: pretty; }
 h1, h2, h3, .hero-sub, .scene-t { text-wrap: balance; }
 @media (max-width: 40rem) { .hero .h1 { font-size: clamp(1.5rem, 8.8cqi, 3.6rem); } }
 @media (max-width: 40rem) { .about-cols { gap: 1.6rem; } .about-cols > div > p + p { margin-top: 1.6rem; } .about-cols p { line-height: 1.95; } }
+
+/* トップ：お試しの範囲は、開いたときだけ表示 */
+.faq-scope { max-width: none; margin-top: clamp(2rem, 4vw, 3rem); }
+.faq-scope summary { grid-template-columns: minmax(0, 1fr) 1.25rem; }
+.faq-scope .qt { font-family: var(--serif); font-size: 1.15rem; }
+.scope-body { padding: .25rem 0 1.5rem; }
+.pf-solo { max-width: 44rem; }
