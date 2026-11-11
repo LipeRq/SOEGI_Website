@@ -946,3 +946,10 @@ h1, h2, h3, .hero-sub, .scene-t { text-wrap: balance; }
 
 .hero-sub { margin-bottom: 1rem; }
 .nw { display: inline-block; }
+
+/* ---- 屋号：Nodus Consulting（文字だけのロゴ） ---- */
+.origin.one { grid-template-columns: minmax(0, 1fr); margin-top: 0; max-width: 46rem; }
+.wordmark b { display: block; font-family: var(--serif); font-size: 1.05rem; font-weight: 700; letter-spacing: .14em; line-height: 1.25; white-space: nowrap; }
+.wordmark small { display: block; margin-top: .1rem; font-size: .72rem; color: var(--ink-3); letter-spacing: .04em; line-height: 1.4; }
+@media (max-width: 26rem) { .wordmark b { font-size: .98rem; letter-spacing: .1em; } }
+@media (min-width: 64rem) and (max-width: 79.99rem) { .hd .wordmark b { font-size: .95rem; letter-spacing: .1em; } .gnav a { padding: 0 .5rem; } }

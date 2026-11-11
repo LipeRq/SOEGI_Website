@@ -1,4 +1,4 @@
-/* 無料相談のお申し込みフォーム。入力は demo.withsoegi.jp の /api/inquiry に送り、メールでソエギに届く（保存はしない） */
+/* 無料相談のお申し込みフォーム。入力は demo.withsoegi.jp の /api/inquiry に送り、メールでNodusに届く（保存はしない） */
 (function () {
   'use strict';
   var form = document.getElementById('inq');
