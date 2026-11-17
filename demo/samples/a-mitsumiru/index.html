@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ミツミル｜見積書の下書きを30秒で（制作サンプル・架空のサービス）</title>
+<meta name="description" content="中小企業向けの見積書の下書きサービス「ミツミル」（架空）の紹介ページ。ソエギの制作サンプルです。">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0D0B16">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../_shared/bar.css">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+<script>
+/* デモの行を、最初の描画の前に隠しておく（完成形が一瞬見えてから消える、のを防ぐ）。
+   「動きを減らす」設定なら隠さない。app.js が読めなかったときは 3 秒で元に戻す */
+(function (d) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  d.classList.add('demo-wait');
+  setTimeout(function () { if (!window.__mm) d.classList.remove('demo-wait'); }, 3000);
+})(document.documentElement);
+</script>
+<script src="../_shared/bar.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="soegi-bar" role="region" aria-label="制作サンプルについて">
+  <span class="soegi-bar__tag">サンプル</span>
+  <span class="soegi-bar__text">これは架空の会社のサンプルです</span>
+  <span class="soegi-bar__links">
+    <button type="button" data-soegi-memo>制作メモ</button>
+    <a href="/demo/#samples">ソエギに戻る</a>
+  </span>
+</div>
+<a class="skip" href="#main">本文へ移動</a>
+
+<div class="app-shell">
+  <!-- 左ドック（PCでは固定の縦レール、モバイルでは上部のコンパクトなコマンドバーに変形） -->
+  <header class="rail">
+    <div class="rail__brand">
+      <a class="logo" href="index.html">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="2.5" y="2.5" width="27" height="27" rx="6" fill="rgba(255,181,71,.08)" stroke="currentColor" stroke-opacity=".55" stroke-width="1.5"/>
+          <path d="M8.5 10.5h15M8.5 16h9.5M8.5 21.5h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="22.8" cy="16" r="2.6" fill="#FFB547"/>
+        </svg>
+        <span class="logo__txt">
+          <span class="logo__name">ミツミル</span>
+          <span class="logo__ver num" aria-hidden="true">DRAFT_OS // v2.4</span>
+        </span>
+      </a>
+      <span class="sys-badge num" aria-label="システム状態 デモ表示"><i aria-hidden="true"></i>SYS: DEMO_MODE</span>
+    </div>
+
+    <div class="rail__switch" role="group" aria-label="画面の切り替え">
+      <a class="rail__tab is-active" href="index.html" aria-current="page"><span class="num" aria-hidden="true">00</span>機能・デモ</a>
+      <a class="rail__tab" href="pricing.html"><span class="num" aria-hidden="true">99</span>プラン</a>
+    </div>
+
+    <nav class="rail__nav" aria-label="サイト内">
+      <p class="rail__lbl num" aria-hidden="true">WORKSPACE // INDEX</p>
+      <a class="rail__link" href="#demo">
+        <span class="rail__idx num">01</span>
+        <span class="rail__en num" aria-hidden="true">WORKBENCH</span>
+        <span class="rail__jp">下書きデモ</span>
+      </a>
+      <a class="rail__link" href="#log">
+        <span class="rail__idx num">02</span>
+        <span class="rail__en num" aria-hidden="true">NIGHT_LOG</span>
+        <span class="rail__jp">ある晩のログ</span>
+      </a>
+      <a class="rail__link" href="#features">
+        <span class="rail__idx num">03</span>
+        <span class="rail__en num" aria-hidden="true">BENTO_ENGINE</span>
+        <span class="rail__jp">機能</span>
+      </a>
+      <a class="rail__link" href="#how">
+        <span class="rail__idx num">04</span>
+        <span class="rail__en num" aria-hidden="true">ACTION_BAR</span>
+        <span class="rail__jp">操作</span>
+      </a>
+      <a class="rail__link" href="#dont">
+        <span class="rail__idx num">05</span>
+        <span class="rail__en num" aria-hidden="true">GUARDRAILS</span>
+        <span class="rail__jp">AIの設定</span>
+      </a>
+    </nav>
+
+    <div class="rail__foot">
+      <p class="rail__meta num" aria-hidden="true">LOCAL_PARSE // 30s_TARGET</p>
+      <a class="btn btn--main rail__cta" href="#contact">資料請求</a>
+    </div>
+  </header>
+
+  <main id="main" class="workspace">
+    <!-- CELL 01: ヒーロー（中央コマンドヘッダー ＋ 全幅3ペイン・スプリットワークベンチ） -->
+    <section class="cell hero" aria-labelledby="hero-t">
+      <div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a4"></i><i class="a2"></i><i class="a3"></i></div>
+
+      <div class="cell-bar" aria-hidden="true">
+        <span class="cell-bar__id num">[CELL 01 // LIVE_PARSE_WORKBENCH]</span>
+        <span class="cell-bar__meta num">ENGINE: OCR_NLP + UNIT_TABLE // MODE: INTERACTIVE_DEMO</span>
+      </div>
+
+      <div class="hero__in">
+        <!-- 上段：モニュメンタル・コマンドヘッダー -->
+        <div class="cmd-hd">
+          <div class="cmd-hd__badge num" aria-hidden="true">
+            <span class="cmd-hd__key">CMD + DRAFT</span>
+            <span class="cmd-hd__sep">//</span>
+            <span>MEMO_TO_ESTIMATE_PIPELINE</span>
+          </div>
+          <h1 class="hero__title" id="hero-t">見積書の下書きを、<br><span class="hero__big"><span class="num">30</span>秒で。<span class="hero__meter" aria-hidden="true"></span></span></h1>
+          <p class="hero__lead">依頼のメモや写真を入れるだけ。過去の見積と単価表から、品名・数量・単価の並んだ下書きができます。金額を決めるのは、あなた。</p>
+          <div class="hero__cta">
+            <a class="btn btn--main" href="pricing.html">プランを見る</a>
+            <a class="btn btn--ghost" href="#how">操作を見る</a>
+          </div>
+          <p class="hero__note"><small>* 架空のサービスです。「30秒」などの数字と金額は、すべて例。</small></p>
+        </div>
+
+        <!-- 下段：全幅 3ペイン・スプリットワークベンチ -->
+        <figure class="demo" id="demo" aria-labelledby="demo-cap">
+          <div class="demo__top">
+            <div class="demo__win" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span class="demo__ttl">新しい見積</span>
+            <span class="demo__file num" aria-hidden="true">draft_2026_led.mm</span>
+            <p class="demo__st"><span class="demo__dot" aria-hidden="true"></span><span class="demo__msg" data-demo-st>下書きができました（要確認 1件）</span><span class="demo__time num" data-demo-time>00:28</span></p>
+            <span class="demo__tag">デモ表示</span>
+          </div>
+
+          <div class="demo__split">
+            <!-- 左ペイン：受信メモ・ソース解析 -->
+            <div class="demo__pane demo__pane--in">
+              <div class="pane-hd" aria-hidden="true">
+                <span class="num">PANE_01 // RAW_INPUT</span>
+                <span class="pane-hd__pill num">SRC: TEL_MEMO</span>
+              </div>
+              <div class="demo__memo">
+                <span class="demo__lbl">依頼のメモ</span>
+                <p>〇〇商事さん（電話）：事務所の蛍光灯をLEDに替えたい。天井の照明が20本くらい。来週中に見積がほしい。</p>
+              </div>
+              <div class="demo__tokens" aria-hidden="true">
+                <p class="demo__tokens-h num">EXTRACTED_SIGNALS</p>
+                <ul class="demo__token-list">
+                  <li><span class="num">ITEM</span><span>蛍光灯 → LED直管 40形</span></li>
+                  <li><span class="num">QTY</span><span>20本 / 20台（交換・撤去）</span></li>
+                  <li class="is-warn"><span class="num">MISS</span><span>天井の高さ（脚立 / 高所作業）</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 中央コネクタ：AI解析パイプライン -->
+            <div class="demo__pipe" aria-hidden="true">
+              <div class="pipe-node">
+                <span class="pipe-node__idx num">01</span>
+                <span class="pipe-node__txt">メモ解析</span>
+              </div>
+              <div class="pipe-wire"><i class="pipe-pulse"></i></div>
+              <div class="pipe-node">
+                <span class="pipe-node__idx num">02</span>
+                <span class="pipe-node__txt">単価照合</span>
+              </div>
+              <div class="pipe-wire"><i class="pipe-pulse"></i></div>
+              <div class="pipe-node is-amber">
+                <span class="pipe-node__idx num">03</span>
+                <span class="pipe-node__txt">要確認印</span>
+              </div>
+            </div>
+
+            <!-- 右ペイン：ライブ生成される見積テーブル -->
+            <div class="demo__pane demo__pane--out">
+              <div class="pane-hd" aria-hidden="true">
+                <span class="num">PANE_02 // DRAFT_ESTIMATE</span>
+                <span class="pane-hd__pill num">ROWS: 05 // TAX: 10%</span>
+              </div>
+              <div class="est" role="table" aria-label="見積の下書き（デモ。金額は例）">
+                <div class="est__r est__h" role="row"><span role="columnheader">品名</span><span role="columnheader">数量</span><span role="columnheader" class="c-u">単価</span><span role="columnheader">金額</span></div>
+                <div class="est__r" role="row" data-step><span role="cell">LED直管ランプ 40形</span><span role="cell"><span class="num">20</span>本</span><span role="cell" class="c-u num">2,400</span><span role="cell" class="num">48,000</span></div>
+                <div class="est__r" role="row" data-step><span role="cell">照明器具の交換工事</span><span role="cell"><span class="num">20</span>台</span><span role="cell" class="c-u num">3,500</span><span role="cell" class="num">70,000</span></div>
+                <div class="est__r" role="row" data-step><span role="cell">古い器具の撤去・処分</span><span role="cell">一式</span><span role="cell" class="c-u num">12,000</span><span role="cell" class="num">12,000</span></div>
+                <div class="est__r is-check" role="row" data-step><span role="cell">高所作業<span class="mark">要確認</span></span><span role="cell">一式</span><span role="cell" class="c-u num">8,000</span><span role="cell" class="num">8,000</span></div>
+                <div class="est__r" role="row" data-step><span role="cell">出張費</span><span role="cell">一式</span><span role="cell" class="c-u num">5,000</span><span role="cell" class="num">5,000</span></div>
+              </div>
+
+              <div class="demo__btm">
+                <p class="demo__chk" data-step><span class="mark">要確認</span><span>天井の高さがメモにありません。脚立で届く高さか、確かめてください。</span></p>
+                <dl class="demo__sum" data-step>
+                  <div><dt>小計</dt><dd><span class="num">143,000</span>円</dd></div>
+                  <div><dt>消費税（10%）</dt><dd><span class="num">14,300</span>円</dd></div>
+                  <div class="is-total"><dt>合計</dt><dd><span class="num">157,300</span>円</dd></div>
+                </dl>
+              </div>
+            </div>
+          </div>
+
+          <figcaption class="demo__cap" id="demo-cap">
+            <span>デモ表示です（早回し）。品名と金額は例です。</span>
+            <button type="button" class="demo__btn" data-demo-btn hidden>もう一度再生</button>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 流れる業種ティッカー -->
+    <section class="tags" aria-label="向いている業種の例">
+      <p class="tags__lbl"><span class="num" aria-hidden="true">[SECTORS]</span> 向いている業種（例）</p>
+      <div class="tags__vp">
+        <div class="tags__track">
+          <ul class="tags__list">
+            <li>電気工事</li><li>管工事・設備</li><li>塗装</li><li>内装・リフォーム</li><li>看板・サイン</li><li>印刷</li><li>造園</li><li>清掃</li><li>運送</li><li>金属加工</li><li>イベント設営</li><li>機械の修理</li><li>解体</li><li>ITサポート</li>
+          </ul>
+          <ul class="tags__list" aria-hidden="true">
+            <li>電気工事</li><li>管工事・設備</li><li>塗装</li><li>内装・リフォーム</li><li>看板・サイン</li><li>印刷</li><li>造園</li><li>清掃</li><li>運送</li><li>金属加工</li><li>イベント設営</li><li>機械の修理</li><li>解体</li><li>ITサポート</li>
+          </ul>
+        </div>
+      </div>
+      <button type="button" class="tags__btn" data-tags-btn aria-pressed="false" hidden>
+        <svg class="i-pause" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.5v9M9 1.5v9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="i-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.5 10.5 6 3 10.5Z" fill="currentColor"/></svg>
+        <span class="vh">業種の帯の</span>流れを止める
+      </button>
+    </section>
+
+    <!-- CELL 02: ある晩のログ（Diff / タイムライン・スプリットターミナル） -->
+    <section class="cell sec night" id="log" aria-labelledby="night-t">
+      <div class="cell-bar" aria-hidden="true">
+        <span class="cell-bar__id num">[CELL 02 // DIFF_TIMELINE_TERMINAL]</span>
+        <span class="cell-bar__meta num">COMPARISON: 3_ESTIMATES // DELTA: -120_MIN</span>
+      </div>
+
+      <div class="cell__body">
+        <div class="night__hd">
+          <div>
+            <div class="sec__kicker num" aria-hidden="true">TIMELINE_DIFF // BEFORE &amp; AFTER</div>
+            <h2 class="sec__h" id="night-t">ある晩のログ</h2>
+          </div>
+          <p class="sec__lead">昼は現場、見積は事務所に戻ってから。3件の依頼を片付けた晩の記録です。同じ3件でも、終わる時刻が2時間ちがいます。</p>
+        </div>
+
+        <div class="logs" data-reveal>
+          <div class="log is-old">
+            <div class="log__top">
+              <h3 class="log__h" id="log-old">いつもの晩</h3>
+              <span class="log__stat num" aria-hidden="true">19:30 → 22:00 [150m]</span>
+            </div>
+            <ol class="log__list" aria-labelledby="log-old">
+              <li>
+                <time class="num">19:30</time>
+                <div class="log__row">
+                  <span>去年の似た見積を、フォルダから探す</span>
+                  <i class="log__bar" style="--w:48%" aria-hidden="true"></i>
+                </div>
+              </li>
+              <li>
+                <time class="num">20:05</time>
+                <div class="log__row">
+                  <span>1件目。単価を電卓で確かめる</span>
+                  <i class="log__bar" style="--w:62%" aria-hidden="true"></i>
+                </div>
+              </li>
+              <li>
+                <time class="num">20:50</time>
+                <div class="log__row">
+                  <span>2件目。単価表が古く、仕入れ先に確認</span>
+                  <i class="log__bar" style="--w:56%" aria-hidden="true"></i>
+                </div>
+              </li>
+              <li>
+                <time class="num">21:30</time>
+                <div class="log__row">
+                  <span>3件目をExcelで清書</span>
+                  <i class="log__bar" style="--w:44%" aria-hidden="true"></i>
+                </div>
+              </li>
+              <li class="is-end">
+                <time class="num">22:00</time>
+                <div class="log__row">
+                  <span>3件を送って、ようやく終わり</span>
+                  <i class="log__bar" style="--w:100%" aria-hidden="true"></i>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="log is-new">
+            <div class="log__top">
+              <h3 class="log__h" id="log-new">ミツミルを使った晩</h3>
+              <span class="log__stat log__stat--sei num" aria-hidden="true">19:30 → 20:00 [30m // -2h]</span>
+            </div>
+            <ol class="log__list" aria-labelledby="log-new">
+              <li>
+                <time class="num">19:30</time>
+                <div class="log__row">
+                  <span>依頼のメモと写真を、3件入れる</span>
+                  <i class="log__bar" style="--w:12%" aria-hidden="true"></i>
+                </div>
+              </li>
+              <li>
+                <time class="num">19:31</time>
+                <div class="log__row">
+                  <span>下書きが3件そろう<span class="mark">要確認 2行</span></span>
+                  <i class="log__bar" style="--w:18%" aria-hidden="true"></i>
+                </div>
+              </li>
+              <li>
+                <time class="num">19:45</time>
+                <div class="log__row">
+                  <span>印の行を確かめて、金額を決める</span>
+                  <i class="log__bar" style="--w:22%" aria-hidden="true"></i>
+                </div>
+              </li>
+              <li>
+                <time class="num">19:58</time>
+                <div class="log__row">
+                  <span>いつもの書式のPDFで、3件を書き出す</span>
+                  <i class="log__bar" style="--w:14%" aria-hidden="true"></i>
+                </div>
+              </li>
+              <li class="is-end">
+                <time class="num">20:00</time>
+                <div class="log__row">
+                  <span>終わり。残りの2時間は、自分の時間</span>
+                  <i class="log__bar" style="--w:28%" aria-hidden="true"></i>
+                </div>
+              </li>
+            </ol>
+            <div class="log__saved num" aria-hidden="true">
+              <span>SAVED_TIME // +120 MIN AVAILABLE</span>
+              <span>20:00 — 22:00 FREE</span>
+            </div>
+          </div>
+        </div>
+        <p class="log__fine"><small>* 時刻と内容は、架空の事務所の例です。</small></p>
+      </div>
+    </section>
+
+    <!-- CELL 03: ベント・エンジン（6モジュール構造グリッド） -->
+    <section class="cell sec feat" id="features" aria-labelledby="feat-t">
+      <div class="cell-bar" aria-hidden="true">
+        <span class="cell-bar__id num">[CELL 03 // BENTO_ENGINE_MODULES]</span>
+        <span class="cell-bar__meta num">MODULES: 06 // ARCHITECTURE: HUMAN_IN_THE_LOOP</span>
+      </div>
+
+      <div class="cell__body">
+        <div class="feat__hd">
+          <div>
+            <div class="sec__kicker num" aria-hidden="true">CORE_CAPABILITIES // 01 — 06</div>
+            <h2 class="sec__h" id="feat-t">並べる。照らす。<br>印を付ける。</h2>
+          </div>
+          <p class="sec__lead">ミツミルの画面の中で起きていること。</p>
+        </div>
+
+        <div class="bento">
+          <article class="tile t-a">
+            <div class="tile__meta num" aria-hidden="true"><span>MOD_01 // PARSE_CORE</span><span>INPUT: MULTI_SOURCE</span></div>
+            <h3>メモを見積の行に並べる</h3>
+            <p>メール、電話のメモ、手書きの写真。形はばらばらで大丈夫。品名・数量・単価の行にして、合計まで出します。</p>
+            <div class="flow tile__viz" aria-hidden="true">
+              <ul class="flow__in">
+                <li><span class="flow__k"><svg viewBox="0 0 20 20"><rect x="2.5" y="4.5" width="15" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m3 5.5 7 5.5 7-5.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>メール</span><span class="flow__v">蛍光灯をLEDに替えたい</span></li>
+                <li><span class="flow__k"><svg viewBox="0 0 20 20"><path d="M5 3h3l1.5 4-2 1.3a9 9 0 0 0 4.2 4.2l1.3-2 4 1.5v3a1.5 1.5 0 0 1-1.6 1.5C8.6 16 4 11.4 3.5 4.6A1.5 1.5 0 0 1 5 3Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>電話のメモ</span><span class="flow__v">20本くらい、来週中に</span></li>
+                <li><span class="flow__k"><svg viewBox="0 0 20 20"><rect x="2.5" y="5.5" width="15" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="10" cy="11" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M7 5.5 8 3.5h4l1 2" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>手書きの写真</span><span class="flow__v">天井の高さ…？</span></li>
+              </ul>
+              <svg class="flow__wire" viewBox="0 0 100 120" preserveAspectRatio="none">
+                <defs><linearGradient id="wire" x1="0" x2="1"><stop offset="0" stop-color="#6FE3D2" stop-opacity=".45"/><stop offset="1" stop-color="#FFB547" stop-opacity=".95"/></linearGradient></defs>
+                <g fill="none" stroke="url(#wire)" stroke-width="1.6" vector-effect="non-scaling-stroke">
+                  <path d="M0 18C55 18 45 60 100 60" vector-effect="non-scaling-stroke"/>
+                  <path d="M0 60H100" vector-effect="non-scaling-stroke"/>
+                  <path d="M0 102C55 102 45 60 100 60" vector-effect="non-scaling-stroke"/>
+                </g>
+              </svg>
+              <div class="flow__doc">
+                <p class="flow__doc-t">御見積書（下書き）</p>
+                <p class="flow__row"><span>LED直管ランプ 40形</span><span class="num">48,000</span></p>
+                <p class="flow__row"><span>照明器具の交換工事</span><span class="num">70,000</span></p>
+                <p class="flow__row"><span>古い器具の撤去・処分</span><span class="num">12,000</span></p>
+                <p class="flow__row is-check"><span>高所作業<b>要確認</b></span><span class="num">8,000</span></p>
+                <p class="flow__row"><span>出張費</span><span class="num">5,000</span></p>
+                <p class="flow__row is-total"><span>合計（税込）</span><span><span class="num">157,300</span>円</span></p>
+              </div>
+            </div>
+            <p class="t-a__note"><span class="mark">要確認</span>の付いた行だけ見れば、仕上がり。</p>
+          </article>
+
+          <article class="tile t-b">
+            <div class="tile__meta num" aria-hidden="true"><span>MOD_02 // AMBER_FLAG</span><span>ALERT</span></div>
+            <h3>迷った行に印を付ける</h3>
+            <p>読み取れなかった数字、いつもと違う単価には琥珀色の印。見るのは印の行だけ。</p>
+            <ul class="mini tile__viz" aria-hidden="true">
+              <li><span>LED直管ランプ 40形</span><span><span class="num">20</span>本</span></li>
+              <li class="is-check"><span>高所作業</span><span class="mark">要確認</span></li>
+              <li><span>出張費</span><span>一式</span></li>
+            </ul>
+          </article>
+
+          <article class="tile t-c">
+            <div class="tile__meta num" aria-hidden="true"><span>MOD_03 // PRICE_SYNC</span><span>DIFF: 0</span></div>
+            <h3>前回の単価と照らす</h3>
+            <p>過去の見積と単価表を見て、同じ品名には同じ単価。値上げしたら、単価表を1か所直すだけ。</p>
+            <div class="same tile__viz" aria-hidden="true">
+              <p class="same__item">照明器具の交換工事（1台）</p>
+              <p class="same__row"><span>前回の見積</span><span class="num">3,500</span></p>
+              <p class="same__row is-now"><span>今回の下書き</span><span class="num">3,500</span></p>
+            </div>
+          </article>
+
+          <article class="tile t-d">
+            <div class="tile__meta num" aria-hidden="true"><span>MOD_04 // FORMAT_OUT</span><span>PDF / XLSX</span></div>
+            <h3>いつもの書式で書き出す</h3>
+            <p>今のExcelの見積書を取り込めば、同じ並びでPDFとExcelに。社印の位置もそのまま。</p>
+            <div class="fmt tile__viz" aria-hidden="true">
+              <svg viewBox="0 0 120 92">
+                <rect x="1" y="1" width="118" height="90" rx="6" fill="rgba(241,239,248,.06)" stroke="rgba(205,198,255,.35)"/>
+                <path d="M12 16h44M12 26h28" stroke="#B4AFC8" stroke-width="3" stroke-linecap="round"/>
+                <rect x="86" y="10" width="22" height="22" rx="3" fill="none" stroke="#FFB547" stroke-width="1.5"/>
+                <circle cx="97" cy="21" r="6" fill="none" stroke="#FFB547" stroke-width="1.2" stroke-opacity=".7"/>
+                <path d="M12 44h96M12 54h96M12 64h96M12 76h52" stroke="rgba(205,198,255,.3)" stroke-width="1.2"/>
+                <path d="M76 76h32" stroke="#F1EFF8" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+              <div class="fmt__chips"><span class="chip">PDF</span><span class="chip">Excel</span></div>
+            </div>
+          </article>
+
+          <article class="tile t-e">
+            <div class="tile__meta num" aria-hidden="true"><span>MOD_05 // APPROVAL_GATE</span><span>LOCK</span></div>
+            <h3>確認が済むまで送らない</h3>
+            <p>担当が作って、社長が確かめる。確認が済むまで送信ボタンが押せない設定もあります。</p>
+            <ol class="chain tile__viz">
+              <li><span>作成</span><small>担当</small></li>
+              <li><span>確認</span><small>社長</small></li>
+              <li><span>送付</span><small>担当</small></li>
+            </ol>
+          </article>
+
+          <article class="tile t-f">
+            <div class="tile__meta num" aria-hidden="true"><span>MOD_06 // FIELD_CAPTURE</span><span>MOBILE</span></div>
+            <h3>現場で撮って入れる</h3>
+            <p>写真と声のメモから、その場で下書き。事務所に着くころには、たたき台があります。</p>
+            <svg class="phone tile__viz" viewBox="0 0 220 96" aria-hidden="true">
+              <rect x="8" y="6" width="56" height="86" rx="10" fill="none" stroke="rgba(205,198,255,.45)" stroke-width="1.5"/>
+              <path d="M28 12h16" stroke="rgba(205,198,255,.45)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18 30v-6h6M54 24h-6M54 24v6M18 64v6h6M54 70h-6M54 70v-6" fill="none" stroke="#6FE3D2" stroke-width="1.5"/>
+              <path d="M22 40c4-3 8 3 12 0s8 3 12 0M22 50c4-3 8 3 12 0s6 2 9 0" fill="none" stroke="#F1EFF8" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M74 48h40" stroke="rgba(205,198,255,.35)" stroke-width="1.5" stroke-dasharray="3 5"/>
+              <path d="m110 43 6 5-6 5" fill="none" stroke="rgba(205,198,255,.5)" stroke-width="1.5"/>
+              <rect x="126" y="18" width="86" height="62" rx="8" fill="rgba(241,239,248,.06)" stroke="rgba(205,198,255,.35)"/>
+              <path d="M138 34h50M138 46h38M138 58h46" stroke="#B4AFC8" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="198" cy="46" r="3.5" fill="#FFB547"/>
+            </svg>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CELL 04: アクションバー（コマンドドック形式の3ボタン見本） -->
+    <section class="cell sec how" id="how" aria-labelledby="how-t">
+      <div class="cell-bar" aria-hidden="true">
+        <span class="cell-bar__id num">[CELL 04 // COMMAND_ACTION_BAR]</span>
+        <span class="cell-bar__meta num">WORKFLOW_STEPS: 03 // ZERO_TRAINING_UI</span>
+      </div>
+
+      <div class="cell__body">
+        <div class="how__hd">
+          <div class="sec__kicker num" aria-hidden="true">MINIMAL_TOOLBAR // 3_ACTIONS</div>
+          <h2 class="sec__h" id="how-t">使うボタンは3つ</h2>
+        </div>
+
+        <div class="bar">
+          <div class="bar__head" aria-hidden="true">
+            <span class="bar__ttl"><i></i>新しい見積</span>
+            <span class="bar__hint num">ACTION_DOCK // PREVIEW</span>
+          </div>
+          <ul class="bar__keys" aria-label="ツールバーのボタン（見本）">
+            <li class="tip">
+              <span class="tip__idx num" aria-hidden="true">STEP 01 // INPUT</span>
+              <span class="key"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>メモを入れる</span>
+              <span class="tip__b">貼る・撮る・打つ、どれでも</span>
+            </li>
+            <li class="tip">
+              <span class="tip__idx num" aria-hidden="true">STEP 02 // VERIFY</span>
+              <span class="key is-check"><span class="mark">要確認</span>印の行へ</span>
+              <span class="tip__b">直すのは、印の行だけ</span>
+            </li>
+            <li class="tip">
+              <span class="tip__idx num" aria-hidden="true">STEP 03 // EXPORT</span>
+              <span class="key is-out"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v8M4.5 7 8 10.5 11.5 7M3 13.5h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>PDFで書き出す</span>
+              <span class="tip__b">送るのは、あなたの手で</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CELL 05: AIガードレール（システムポリシー設定インスペクタ） -->
+    <section class="cell sec policy" id="dont" aria-labelledby="dont-t">
+      <div class="cell-bar" aria-hidden="true">
+        <span class="cell-bar__id num">[CELL 05 // AI_GUARDRAILS_POLICY]</span>
+        <span class="cell-bar__meta num">CONFIG: HUMAN_AUTHORITY_LOCKED</span>
+      </div>
+
+      <div class="cell__body policy__in">
+        <div class="policy__side">
+          <div class="sec__kicker num" aria-hidden="true">GUARDRAILS.CONF // LOCKED_STATES</div>
+          <h2 class="sec__h" id="dont-t">オフに<br>してあること</h2>
+          <p class="sec__lead">AIがやるのは、下書きまで。決めることと送ることは、鍵をかけてオフにしてあります。</p>
+          <div class="guard-badges" aria-hidden="true">
+            <div class="guard-badge"><span class="num">AUTO_COMMIT</span><b>LOCKED_OFF</b></div>
+            <div class="guard-badge"><span class="num">AUTO_SEND</span><b>LOCKED_OFF</b></div>
+            <div class="guard-badge"><span class="num">MODEL_TRAIN</span><b>OPT_OUT_FIXED</b></div>
+          </div>
+        </div>
+
+        <div class="set">
+          <p class="set__ttl" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>AIの設定（見本）</span>
+            <span class="set__code num">SYS_POLICY_READONLY</span>
+          </p>
+          <ul class="set__list">
+            <li class="set__row">
+              <div class="set__info">
+                <span class="set__name"><span class="set__id num" aria-hidden="true">01</span>金額を自動で確定する</span>
+                <span class="set__desc">「確定」を押すのは人。印の行はとくに、目で確かめてから。</span>
+              </div>
+              <span class="set__st is-lock"><i class="sw" aria-hidden="true"></i>オフ・固定</span>
+            </li>
+            <li class="set__row">
+              <div class="set__info">
+                <span class="set__name"><span class="set__id num" aria-hidden="true">02</span>お客様に自動で送る</span>
+                <span class="set__desc">メールで送るのも、印刷するのも、人の操作だけ。</span>
+              </div>
+              <span class="set__st is-lock"><i class="sw" aria-hidden="true"></i>オフ・固定</span>
+            </li>
+            <li class="set__row">
+              <div class="set__info">
+                <span class="set__name"><span class="set__id num" aria-hidden="true">03</span>入れた見積でAIを学習させる</span>
+                <span class="set__desc">見積と単価表は、あなたの事務所の下書きづくりにだけ使います。</span>
+              </div>
+              <span class="set__st is-lock"><i class="sw" aria-hidden="true"></i>オフ・固定</span>
+            </li>
+            <li class="set__row">
+              <div class="set__info">
+                <span class="set__name"><span class="set__id num" aria-hidden="true">04</span>図面から数量を拾う</span>
+                <span class="set__desc">得意なのは、品名・数量・単価で組む見積。図面の積算には向きません。</span>
+              </div>
+              <span class="set__st is-na">対応していません</span>
+            </li>
+            <li class="set__row">
+              <div class="set__info">
+                <span class="set__name"><span class="set__id num" aria-hidden="true">05</span>スマホから入れる</span>
+                <span class="set__desc">撮って入れるだけでも、下書きはできます。パソコンの前に座らなくても大丈夫。</span>
+              </div>
+              <span class="set__st is-on"><i class="sw" aria-hidden="true"></i>オン</span>
+            </li>
+            <li class="set__row">
+              <div class="set__info">
+                <span class="set__name"><span class="set__id num" aria-hidden="true">06</span>解約後のデータ</span>
+                <span class="set__desc">解約の前に、Excelでまとめて書き出せます。そのあと30日で消します（例）。</span>
+              </div>
+              <span class="set__st is-lock"><i class="sw" aria-hidden="true"></i>30日で消去</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CELL 06: 資料請求コンソール -->
+    <section class="cell sec contact" id="contact" aria-labelledby="contact-t">
+      <div class="cell-bar" aria-hidden="true">
+        <span class="cell-bar__id num">[CELL 06 // DOCUMENT_DISPATCH_CONSOLE]</span>
+        <span class="cell-bar__meta num">PACKAGE: OVERVIEW_PDF // FORM: SAMPLE_ONLY</span>
+      </div>
+
+      <div class="cell__body contact__in">
+        <div class="contact__info">
+          <div class="sec__kicker num" aria-hidden="true">REQUEST_BRIEFING_PDF</div>
+          <h2 class="sec__h" id="contact-t">資料を受け取る</h2>
+          <p class="sec__lead">画面の流れとプランの違いを、1つのPDFにまとめました。メールアドレスだけで届きます。</p>
+          <div class="tel-box">
+            <p class="tel-line">電話なら <a class="num" href="tel:0000000000">000-0000-0000</a><span>平日 9:00〜17:00（例）</span></p>
+          </div>
+        </div>
+
+        <form class="form" action="#" method="post" data-sample novalidate>
+          <div class="form__top num" aria-hidden="true">
+            <span>DISPATCH_FORM // PDF_REQUEST</span>
+            <span>FIELDS: 03</span>
+          </div>
+          <div class="field">
+            <label for="f-mail"><span class="field__idx num" aria-hidden="true">01</span>メールアドレス<span class="req">必須</span></label>
+            <input id="f-mail" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="info@example.jp">
+          </div>
+          <div class="field">
+            <label for="f-co"><span class="field__idx num" aria-hidden="true">02</span>事務所の名前<span class="opt">（なくても可）</span></label>
+            <input id="f-co" name="company" type="text" autocomplete="organization" placeholder="例：〇〇電設">
+          </div>
+          <div class="field">
+            <label for="f-n"><span class="field__idx num" aria-hidden="true">03</span>月の下書きの数<span class="opt">（なくても可）</span></label>
+            <select id="f-n" name="count">
+              <option value="">選ぶ</option>
+              <option>10件まで</option>
+              <option>11〜50件</option>
+              <option>51〜100件</option>
+              <option>101件以上</option>
+            </select>
+          </div>
+          <button class="btn btn--main" type="submit">資料を受け取る</button>
+          <p class="form__msg" data-form-msg role="status"></p>
+          <p class="form__fine"><small>* サンプルのフォームです。押しても、どこにも送られません。</small></p>
+        </form>
+      </div>
+    </section>
+
+    <footer class="ft">
+      <div class="ft__in">
+        <div class="ft__brand">
+          <a class="logo" href="index.html">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2.5" y="2.5" width="27" height="27" rx="6" fill="rgba(255,181,71,.08)" stroke="currentColor" stroke-opacity=".55" stroke-width="1.5"/><path d="M8.5 10.5h15M8.5 16h9.5M8.5 21.5h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="22.8" cy="16" r="2.6" fill="#FFB547"/></svg>
+            <span>ミツミル</span>
+          </a>
+          <p>見積書の下書きを作る道具（架空のサービス）</p>
+        </div>
+        <nav class="ft__col" aria-labelledby="ft-p">
+          <p class="ft__h" id="ft-p">製品</p>
+          <a href="#features">機能</a><a href="#how">操作</a><a href="pricing.html">プラン</a>
+        </nav>
+        <nav class="ft__col" aria-labelledby="ft-s">
+          <p class="ft__h" id="ft-s">サポート</p>
+          <a href="#dont">AIの設定</a><a href="#contact">資料請求</a><a class="num" href="tel:0000000000">000-0000-0000</a>
+        </nav>
+      </div>
+      <div class="ft__fine">
+        <p><small>運営　ミツミル株式会社（架空）　山形県〇〇市見本町1-2-3　info@example.jp</small></p>
+        <p><small>このサイトは制作サンプルです。会社・サービス・数字・金額は、すべて架空の例です。</small></p>
+      </div>
+    </footer>
+  </main>
+</div>
+</body>
+</html>

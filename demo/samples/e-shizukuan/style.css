@@ -1,0 +1,1273 @@
+/* 湯の宿 しづく庵（架空）— 制作サンプル E「自然・和」
+   意匠：和綴じの宿帳・暖簾と木札・障子越しの借景と縦組み中心の構成
+   季節は html[data-season] で切り替える。色はすべて CSS カスタムプロパティにして、
+   ページの紙色・差し色と、窓の中の景色（空・山・霧・障子）・お品書き本紙が一度に変わる。
+   既定（:root）は秋。JavaScript が動かないときは秋の見た目で、内容はすべて読める。 */
+
+/* ───────── 色と書体 ───────── */
+:root {
+  --bar: var(--soegi-bar-h, 2.5rem);
+  /* 墨（本文）は通年同じ。どの季節の紙色の上でもコントラスト比 12 以上になる */
+  --ink: #2a2824;
+  --ink-2: #524d44;   /* 補足の文字。紙色・副紙色の上でコントラスト比 6.4 以上 */
+  --moss: #4d5936;    /* 細い線・小さな印 */
+  --mincho: "Zen Old Mincho", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  --hand: "Klee One", "Zen Old Mincho", "Yu Mincho", YuMincho, "Hiragino Mincho ProN", serif;
+  --gutter: clamp(.75rem, 3.2vw, 2.75rem);
+  --wrap: 78rem;
+  --measure: 32em;
+  --ease: cubic-bezier(.45, 0, .2, 1);
+  --slow: .9s;
+
+  /* ── 秋：夕映え（既定） ── */
+  --paper: #f3ede3; --paper-2: #e9e0d2; --rule: #c4b49e;
+  --accent: #8c2f22; --accent-soft: #ead3c6;
+  --sky-1: #7a6a8c; --sky-2: #d99877; --sky-3: #f3cc9b;
+  --orb: #fbe2b2; --orb-shadow: 0 0 70px 34px rgba(250, 205, 145, .55);
+  --orb-x: 33%; --orb-y: 45%; --orb-size: clamp(64px, 9vw, 128px);
+  --stars: 0;
+  --r1a: #bd8f88; --r1b: #c99d90;
+  --r2a: #8f5c56; --r2b: #a46f62;
+  --r3a: #663e3c; --r3b: #7a4a42;
+  --r4a: #3a2a2c; --r4b: #2f2327;
+  --mist: rgba(250, 222, 196, .55);
+  --shoji: #f6ebdc; --frame: #3a2c23; --kumiko: #9d8466; --wood: #9b7550; --wood-2: #75563a;
+  --cup: #556b5a; --steam: rgba(255, 250, 244, .8);
+  --water-1: #e8c4a2; --water-2: #565b70; --refl: #fde6bd;
+  --rock-top: #8a7266; --rock-bot: #5a4640; --rock-2: #4c3b37; --rock-line: #3a2c29;
+  --bamboo: #6f7a45; --bamboo-2: #4d5631; --leaf: #b8462a; --leaf-2: #d58a3a;
+  --tatami: #d8cba3; --view: #e9b98f;
+  --view-soft: #f0dcc6; --plant: #8f7d4c; --glow: #f8e7c6; --snow: transparent;
+}
+
+/* ── 春：朝の霞 ── */
+html[data-season="haru"] {
+  --paper: #f5f0ee; --paper-2: #ece3e0; --rule: #cbbab7;
+  --accent: #8a3a52; --accent-soft: #ead6dc;
+  --sky-1: #ddd3df; --sky-2: #f0e3e0; --sky-3: #f8eee6;
+  --orb: #fff7ee; --orb-shadow: 0 0 80px 46px rgba(255, 242, 230, .9);
+  --orb-x: 70%; --orb-y: 16%; --orb-size: clamp(54px, 7vw, 96px);
+  --stars: 0;
+  --r1a: #cbbccd; --r1b: #d8cbd6;
+  --r2a: #a99db3; --r2b: #bbb0c0;
+  --r3a: #84927f; --r3b: #95a08d;
+  --r4a: #55644e; --r4b: #485645;
+  --mist: rgba(251, 243, 243, .85);
+  --shoji: #f8f4ef; --frame: #3e3127; --kumiko: #b09a7c; --wood: #a38664; --wood-2: #82674a;
+  --cup: #6b7d6a; --steam: rgba(255, 255, 255, .85);
+  --water-1: #eef0ea; --water-2: #86a3a2; --refl: #fffaf2;
+  --rock-top: #9a958c; --rock-bot: #6c6862; --rock-2: #5d5953; --rock-line: #48443f;
+  --bamboo: #7c8a4c; --bamboo-2: #56613a; --leaf: #e8b4c2; --leaf-2: #f3d3db;
+  --tatami: #d9d2ad; --view: #ece0e2;
+  --view-soft: #f1e7e8; --plant: #8d9c78; --glow: #fbf6ee; --snow: transparent;
+}
+
+/* ── 夏：夜（蛍が見えるように、景色だけ夜にする。ページは明るい和紙のまま） ── */
+html[data-season="natsu"] {
+  --paper: #edf0ec; --paper-2: #e0e6e1; --rule: #b6c2bb;
+  --accent: #22406a; --accent-soft: #d3dce7;
+  --sky-1: #0c1424; --sky-2: #132038; --sky-3: #20344f;
+  --orb: transparent; --orb-shadow: inset 11px -5px 0 0 #efe9cf, 0 0 46px 4px rgba(239, 233, 207, .12);
+  --orb-x: 20%; --orb-y: 13%; --orb-size: clamp(38px, 4.4vw, 60px);
+  --stars: 1;
+  --r1a: #2b3e58; --r1b: #24364d;
+  --r2a: #1e2e44; --r2b: #19283b;
+  --r3a: #152335; --r3b: #111c2c;
+  --r4a: #0c1621; --r4b: #09121b;
+  --mist: rgba(140, 170, 205, .16);
+  --shoji: #f1deae; --frame: #28211b; --kumiko: #a5865a; --wood: #7a5f44; --wood-2: #5a4532;
+  --cup: #8a9d86; --steam: rgba(255, 246, 225, .5);
+  --water-1: #2a3d5a; --water-2: #0b1522; --refl: #efe7c4;
+  --rock-top: #3a4558; --rock-bot: #1f2837; --rock-2: #19212e; --rock-line: #0e141d;
+  --bamboo: #4c5d3c; --bamboo-2: #33402a; --leaf: #4f7a46; --leaf-2: #6e9a5c;
+  --tatami: #d6c79a; --view: #1b2b44;
+  --view-soft: #dde6e2; --plant: #5e7a57; --glow: #f5d98c; --snow: transparent;
+}
+
+/* ── 冬：雪の昼 ── */
+html[data-season="fuyu"] {
+  --paper: #eef1f3; --paper-2: #e1e6ea; --rule: #b8c2ca;
+  --accent: #2f4660; --accent-soft: #d5dde6;
+  --sky-1: #a9b5c1; --sky-2: #c8d1d9; --sky-3: #e4e9ed;
+  --orb: #f5f7f8; --orb-shadow: 0 0 70px 40px rgba(255, 255, 255, .5);
+  --orb-x: 28%; --orb-y: 18%; --orb-size: clamp(50px, 6vw, 84px);
+  --stars: 0;
+  --r1a: #edf1f4; --r1b: #d3dbe2;
+  --r2a: #f4f6f8; --r2b: #b7c2cc;
+  --r3a: #f7f9fa; --r3b: #9caab6;
+  --r4a: #5b6773; --r4b: #46515c;
+  --mist: rgba(242, 245, 248, .5);
+  --shoji: #f4f5f3; --frame: #35312c; --kumiko: #a39886; --wood: #887b6b; --wood-2: #695e52;
+  --cup: #5d6f78; --steam: rgba(255, 255, 255, .9);
+  --water-1: #e3e9ee; --water-2: #7d93a6; --refl: #ffffff;
+  --rock-top: #fbfcfd; --rock-bot: #77818b; --rock-2: #66707a; --rock-line: #4d555e;
+  --bamboo: #6a7650; --bamboo-2: #4a5338; --leaf: #56665b; --leaf-2: #f2f5f6;
+  --tatami: #d6d0b4; --view: #dfe5ea;
+  --view-soft: #e7ecf0; --plant: #b7c0c4; --glow: #f6f4ec; --snow: #ffffff;
+}
+
+/* ───────── 土台 ───────── */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  scroll-padding-top: calc(var(--bar) + 1.5rem);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--paper-2);
+}
+body {
+  margin: 0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.05 .2' numOctaves='3' seed='8'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .27 0 0 0 0 .2 0 0 0 .32 -.19'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E"),
+    var(--paper-2);
+  color: var(--ink);
+  font-family: var(--mincho);
+  font-size: 1.0625rem;      /* 17px。明朝は細いので、本文は少し大きめに */
+  line-height: 2;
+  letter-spacing: .04em;
+  font-kerning: normal;
+  line-break: strict;
+  overflow-wrap: anywhere;
+  padding-bottom: 6.5rem;
+  transition: background-color var(--slow) var(--ease);
+}
+img, svg, canvas { display: block; max-width: 100%; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .32em; }
+a:hover { color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+p { margin: 0; }
+h1, h2, h3, dl, dd, dt { font-weight: 400; margin: 0; }
+small { font-size: .875rem; }
+
+.skip {
+  position: absolute; left: 1rem; top: calc(var(--bar) + .5rem); z-index: 60;
+  padding: .6rem 1rem; background: var(--ink); color: var(--paper); text-decoration: none;
+  transform: translateY(-300%);
+}
+.skip:focus { transform: none; }
+.no-js .js-only, .js .nojs-only { display: none; }
+.vh { position: absolute !important; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.anchor-alias { position: relative; top: -2rem; visibility: hidden; pointer-events: none; }
+
+.wrap { width: min(100% - var(--gutter) * 2, var(--wrap)); margin-inline: auto; }
+
+/* ───────── 和綴じの本紙（ページ全体の装丁枠） ───────── */
+.watoji-frame {
+  position: relative;
+  margin-top: clamp(.75rem, 2vw, 1.75rem);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.05 .2' numOctaves='3' seed='8'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .27 0 0 0 0 .2 0 0 0 .3 -.19'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E"),
+    var(--paper);
+  border: 2px solid var(--frame);
+  box-shadow:
+    inset 0 0 0 4px var(--paper),
+    inset 0 0 0 5px var(--rule),
+    0 20px 50px -22px rgba(32, 24, 16, .28);
+  padding: 0 clamp(1rem, 3.6vw, 3.25rem) clamp(2.5rem, 5vw, 4rem);
+  transition: background-color var(--slow) var(--ease), border-color var(--slow);
+}
+
+/* 右端の四つ目綴じ（和綴じの背と麻糸の綴じ目） */
+.watoji-spine { display: none; }
+@media (min-width: 68rem) {
+  .watoji-frame { padding-right: clamp(2.8rem, 4.5vw, 4.2rem); }
+  .watoji-spine {
+    display: flex; flex-direction: column; justify-content: space-around; align-items: stretch;
+    position: absolute; top: 5px; bottom: 5px; right: 5px; width: 22px;
+    border-left: 3px double var(--rule);
+    background: linear-gradient(90deg, rgba(0, 0, 0, .03), transparent);
+    pointer-events: none; z-index: 5;
+  }
+  .watoji-spine span {
+    display: block; height: 2px; width: 100%;
+    background: var(--frame);
+    box-shadow: 0 -1px 0 var(--paper), 0 1px 0 var(--rule);
+    position: relative;
+  }
+  .watoji-spine span::before {
+    content: ""; position: absolute; left: -3px; top: -3px;
+    width: 7px; height: 7px; border-radius: 50%;
+    border: 1.5px solid var(--frame); background: var(--paper-2);
+  }
+}
+
+/* ───────── 暖簾と短冊木札のヘッダー（和の建築意匠） ───────── */
+.site-hd {
+  position: relative;
+  margin-bottom: clamp(1rem, 2.5vw, 1.75rem);
+  padding-top: 0;
+}
+/* 軒の鴨居（梁） */
+.noren-beam {
+  height: 10px;
+  margin-inline: -2px;
+  background: linear-gradient(180deg, var(--frame) 0%, var(--wood-2) 60%, var(--frame) 100%);
+  border-bottom: 2px solid var(--wood);
+  box-shadow: 0 3px 10px rgba(25, 18, 12, .2);
+}
+.noren-wrap {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: 1rem clamp(1rem, 2.5vw, 2.25rem);
+  padding-bottom: 1rem;
+  border-bottom: 3px double var(--rule);
+}
+/* 広い画面では和書の順（右に屋号の暖簾紋、中央に短冊木札、左に季節の落款） */
+@media (min-width: 58rem) {
+  .noren-wrap { direction: rtl; }
+  .noren-wrap > * { direction: ltr; }
+}
+
+/* 屋号の暖簾印 */
+.logo {
+  position: relative;
+  display: inline-flex; align-items: center; gap: .8rem;
+  padding: .85rem 1.15rem .95rem;
+  background: var(--paper-2);
+  border: 1.5px solid var(--frame);
+  border-top: 0;
+  box-shadow:
+    inset 0 0 0 3px var(--paper),
+    inset 0 0 0 4px var(--rule),
+    0 6px 16px -8px rgba(30, 22, 14, .28);
+  text-decoration: none; color: var(--ink);
+  min-height: 44px;
+  transition: background-color var(--slow), border-color .3s;
+}
+.logo:hover { color: var(--ink); border-color: var(--accent); }
+.logo__mark { width: 2.35rem; height: 2.35rem; flex: none; color: var(--accent); }
+.logo__txt { display: flex; flex-direction: column; line-height: 1.25; }
+.logo__loc { font-size: .75rem; letter-spacing: .28em; color: var(--ink-2); }
+.logo__sub { font-size: .875rem; letter-spacing: .32em; color: var(--ink-2); margin-top: .1rem; }
+.logo__name { font-size: 1.45rem; letter-spacing: .2em; margin-top: .08rem; }
+.logo__seal {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.8rem; height: 1.8rem;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  background: var(--paper);
+  font-size: .875rem; line-height: 1;
+  letter-spacing: 0;
+  box-shadow: inset 0 0 0 1px var(--paper);
+}
+
+/* 紐掛けの短冊案内札（ナビゲーション） */
+.nav { justify-self: center; align-self: stretch; display: flex; align-items: flex-start; }
+.nav ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: .5rem .65rem;
+}
+.nav li { display: flex; }
+.nav a {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 48px; min-width: 6.2rem;
+  padding: .75rem .9rem .65rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--frame);
+  box-shadow: inset 0 0 0 2px var(--paper-2), 0 4px 10px -6px rgba(30, 22, 14, .2);
+  text-decoration: none; color: var(--ink);
+  transition: border-color .35s var(--ease), background-color .35s var(--ease), transform .35s var(--ease);
+}
+/* 札の紐穴 */
+.nav a::before {
+  content: "";
+  width: 5px; height: 5px; border-radius: 50%;
+  border: 1px solid var(--frame); background: var(--paper-2);
+  margin-bottom: .3rem;
+}
+.nav__no { font-size: .75rem; letter-spacing: .2em; color: var(--accent); line-height: 1.1; }
+.nav__main { font-size: 1rem; letter-spacing: .16em; line-height: 1.35; margin-top: .15rem; }
+.nav__sub { font-size: .75rem; letter-spacing: .1em; color: var(--ink-2); line-height: 1.2; margin-top: .15rem; }
+.nav a:hover, .nav a[aria-current="page"] {
+  border-top-color: var(--accent);
+  border-color: var(--accent);
+  background: var(--paper-2);
+  color: var(--ink);
+}
+.nav a[aria-current="page"] .nav__main { color: var(--accent); }
+
+.hd-season { align-self: center; padding-top: .35rem; }
+
+@media (max-width: 57.99rem) {
+  .noren-wrap {
+    grid-template-columns: 1fr;
+    gap: .75rem;
+  }
+  .logo { justify-self: stretch; justify-content: space-between; padding: .65rem .9rem; }
+  .logo__txt { flex-direction: row; align-items: baseline; gap: .5rem; flex-wrap: wrap; }
+  .nav { width: 100%; }
+  .nav ul {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .35rem;
+    width: 100%;
+  }
+  .nav a {
+    width: 100%; min-width: 0;
+    padding: .5rem .15rem;
+  }
+  .nav__main { font-size: .8125rem; letter-spacing: .02em; text-align: center; white-space: nowrap; }
+  .nav__sub { display: none; }
+  .hd-season { width: 100%; padding-top: 0; }
+}
+
+/* ───────── 季節の切り替え（伝統の落款・木札意匠） ───────── */
+.season { display: none; align-items: center; gap: .45rem; flex-wrap: wrap; }
+.js .season { display: flex; }
+.season__l {
+  font-size: .9375rem; letter-spacing: .18em; color: var(--ink-2);
+  margin-right: .25rem;
+  display: inline-flex; align-items: center; gap: .35rem;
+}
+.season__l::before {
+  content: ""; width: 6px; height: 6px;
+  border: 1px solid var(--accent); transform: rotate(45deg);
+}
+.season button {
+  position: relative;
+  inline-size: 2.85rem; block-size: 3rem;
+  border-radius: 2px;
+  border: 1.5px solid var(--frame);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow:
+    inset 0 0 0 3px var(--paper-2),
+    inset 0 0 0 4px var(--rule),
+    0 2px 5px rgba(25, 18, 12, .14);
+  font: inherit; font-size: 1.0625rem; line-height: 1; letter-spacing: 0;
+  cursor: pointer;
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: .2rem 0 0;
+  transition: background-color .4s var(--ease), color .4s var(--ease), border-color .4s, transform .25s;
+}
+/* 木札の紐穴 */
+.season button::before {
+  content: "";
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--frame);
+  margin-bottom: .18rem;
+  opacity: .65;
+}
+.season button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.season button[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper);
+  box-shadow:
+    inset 0 0 0 3px var(--accent),
+    inset 0 0 0 4.5px var(--paper),
+    0 3px 8px rgba(25, 18, 12, .26);
+}
+.season button[aria-pressed="true"]::before {
+  background: var(--paper);
+  opacity: .9;
+}
+.season__now {
+  font-size: .9375rem; color: var(--ink-2); letter-spacing: .12em;
+  margin-left: .35rem; padding: .2rem .65rem;
+  border-left: 2px solid var(--accent);
+  background: var(--paper-2);
+}
+
+/* ───────── 窓（床の間・広縁の借景ヒーロー） ───────── */
+.hero { position: relative; }
+.tokonoma-stage {
+  position: relative;
+  border: 3px solid var(--frame);
+  background: var(--frame);
+  box-shadow: 0 14px 34px -16px rgba(20, 14, 8, .4);
+}
+/* 組子欄間（鴨居の上の飾り格子） */
+.ranma {
+  height: 26px;
+  background: #261d17;
+  color: var(--kumiko);
+  border-bottom: 4px solid var(--frame);
+  overflow: hidden;
+}
+.ranma svg { width: 100%; height: 100%; opacity: .82; }
+
+.window {
+  position: relative; overflow: hidden; isolation: isolate;
+  height: clamp(22rem, calc(100svh - var(--bar) - 14rem), 46rem);
+  background: linear-gradient(to bottom, var(--sky-1), var(--sky-2) 55%, var(--sky-3));
+  view-timeline: --win block;
+}
+.window--small { height: clamp(16rem, 42svh, 25rem); }
+.window > * { position: absolute; }
+.window__stars { inset: 0 0 auto; width: 100%; height: 60%; opacity: var(--stars); transition: opacity var(--slow) var(--ease); }
+.window__orb {
+  left: var(--orb-x); top: var(--orb-y); width: var(--orb-size); aspect-ratio: 1; border-radius: 50%;
+  background: var(--orb); box-shadow: var(--orb-shadow); translate: -50% 0;
+  transition: left var(--slow) var(--ease), top var(--slow) var(--ease), background-color var(--slow), box-shadow var(--slow);
+}
+.layer { left: 0; bottom: 0; width: 100%; height: 100%; }
+.layer path { transition: fill var(--slow) var(--ease); }
+.layer stop { transition: stop-color var(--slow) var(--ease); }
+.layer--1 { height: 88%; } .layer--2 { height: 80%; } .layer--3 { height: 70%; } .layer--4 { height: 56%; }
+.s1a { stop-color: var(--r1a); } .s1b { stop-color: var(--r1b); }
+.s2a { stop-color: var(--r2a); } .s2b { stop-color: var(--r2b); }
+.s3a { stop-color: var(--r3a); } .s3b { stop-color: var(--r3b); }
+.s4a { stop-color: var(--r4a); } .s4b { stop-color: var(--r4b); }
+
+/* 霧 */
+.mist {
+  left: -25%; width: 150%; pointer-events: none;
+  background:
+    radial-gradient(28% 50% at 18% 55%, var(--mist), transparent 72%),
+    radial-gradient(24% 42% at 47% 48%, var(--mist), transparent 70%),
+    radial-gradient(30% 55% at 78% 58%, var(--mist), transparent 72%);
+  transition: opacity var(--slow);
+}
+.mist--1 { bottom: 33%; height: 26%; animation: drift 90s ease-in-out infinite alternate; }
+.mist--2 { bottom: 14%; height: 24%; animation: drift 120s ease-in-out infinite alternate-reverse; opacity: .85; }
+@keyframes drift { from { transform: translateX(-7%); } to { transform: translateX(7%); } }
+
+/* 縁側と湯呑み */
+.engawa { left: 0; bottom: 0; width: 100%; height: 13%; }
+.engawa rect, .engawa path { transition: fill var(--slow), stroke var(--slow); }
+.cup { left: 36%; bottom: 7%; width: clamp(40px, 4.6vw, 64px); height: auto; overflow: visible; }
+.cup .st { fill: none; stroke: var(--steam); stroke-width: 1.6; stroke-linecap: round; opacity: .7; }
+.cup .st--2 { opacity: .5; }
+
+.window__fx { inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+/* 障子：組子と腰板 */
+.shoji {
+  top: 0; bottom: 0; width: 50.5%; z-index: 2;
+  border: 6px solid var(--frame);
+  background:
+    linear-gradient(to top, var(--wood) 0 15%, var(--frame) 15% calc(15% + 4px), transparent 0),
+    linear-gradient(90deg, var(--kumiko) 0 3px, transparent 3px) -1px 0 / 25% 100%,
+    linear-gradient(var(--kumiko) 0 3px, transparent 3px) 0 -1px / 100% 2.4rem,
+    linear-gradient(100deg, rgba(255, 255, 255, .35), transparent 60%),
+    var(--shoji);
+  transition: background-color var(--slow);
+  box-shadow: 0 0 24px rgba(0, 0, 0, .22);
+}
+.shoji--l { left: 0; transform: translateX(-83%); animation: shoji-l .65s var(--ease) both; }
+.shoji--r { right: 0; transform: translateX(83%); animation: shoji-r .65s var(--ease) both; }
+@keyframes shoji-l { from { transform: translateX(-45%); } to { transform: translateX(-83%); } }
+@keyframes shoji-r { from { transform: translateX(45%); } to { transform: translateX(83%); } }
+
+@media (min-width: 40rem) {
+  .window--small .layer { height: 160%; }
+  .window--small .layer--1 { bottom: -46%; } .window--small .layer--2 { bottom: -44%; }
+  .window--small .layer--3 { bottom: -38%; } .window--small .layer--4 { bottom: -24%; }
+  .window--small .window__orb { top: calc(var(--orb-y) + 6%); }
+  .window--small .engawa { height: 11%; }
+}
+
+.window__frame {
+  inset: 0; z-index: 3; pointer-events: none;
+  border: 10px solid var(--frame); border-top-width: 16px; border-bottom-width: 12px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1), inset 0 18px 30px -18px rgba(0, 0, 0, .5);
+  transition: border-color var(--slow);
+}
+
+/* 短冊：宿の名前を縦書きで。鴨居から下げる */
+.tanzaku {
+  position: absolute; z-index: 4; margin: 0;
+  writing-mode: vertical-rl; text-orientation: mixed;
+  background: var(--paper);
+  border: 1.5px solid var(--frame);
+  border-top: 4px solid var(--accent);
+  box-shadow:
+    inset 0 0 0 3px var(--paper-2),
+    inset 0 0 0 4px var(--rule),
+    0 16px 32px -14px rgba(20, 14, 8, .55);
+  transition: background-color var(--slow);
+}
+.tanzaku::before {
+  content: ""; position: absolute; left: 50%; bottom: 100%; width: 1.5px; height: 1.5rem; background: var(--frame);
+}
+.tanzaku--name {
+  right: clamp(1.2rem, 8.5%, 6.5rem); top: 2.2rem;
+  padding: 1.35rem 1rem 1.4rem;
+}
+.tanzaku--name h1 { display: flex; flex-direction: column; gap: .35rem; line-height: 1.25; }
+.tanzaku--name .t-small {
+  font-size: clamp(.95rem, 1.3vw, 1.15rem); letter-spacing: .42em; color: var(--ink-2); padding-top: .15em;
+  display: inline-flex; align-items: center; gap: .5rem;
+}
+.tanzaku--name .t-big { font-size: clamp(2.35rem, 4.8vw, 4.1rem); letter-spacing: .14em; color: var(--ink); white-space: nowrap; }
+.tanzaku__seal {
+  writing-mode: horizontal-tb;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.65rem; height: 1.65rem;
+  border: 1.5px solid var(--accent); color: var(--accent);
+  background: var(--paper-2);
+  font-size: .8125rem; line-height: 1; letter-spacing: 0;
+}
+.tanzaku--copy {
+  right: calc(clamp(1.2rem, 8.5%, 6.5rem) + clamp(5.4rem, 9.2vw, 9.2rem)); top: 6.2rem;
+  padding: 1.25rem .65rem 1.4rem;
+  font-size: clamp(1rem, 1.4vw, 1.25rem); letter-spacing: .28em; line-height: 1.4;
+}
+.tanzaku--page .t-small { font-size: .95rem; letter-spacing: .28em; }
+.tanzaku--page .t-big { font-size: clamp(1.6rem, 2.2vw, 1.95rem); letter-spacing: .12em; white-space: nowrap; }
+
+/* ヒーロー内の和紙の縦書き序文（広い画面では窓の左下に重ね、狭い画面では窓の下に収める） */
+.hero-prologue {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1.5px solid var(--frame);
+  border-top: 4px solid var(--accent);
+  box-shadow:
+    inset 0 0 0 3px var(--paper-2),
+    inset 0 0 0 4px var(--rule),
+    0 14px 28px -12px rgba(20, 14, 8, .5);
+  padding: 1.25rem 1.15rem;
+}
+.hero-prologue__title {
+  font-size: 1.0625rem;
+  letter-spacing: .24em;
+  color: var(--accent);
+  margin-bottom: .5rem;
+}
+.hero-prologue p {
+  font-size: 1rem;
+  line-height: 1.9;
+}
+@media (min-width: 56rem) {
+  .hero-prologue {
+    position: absolute;
+    left: clamp(2.5rem, 7%, 5.5rem);
+    bottom: 1.8rem;
+    z-index: 4;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    height: 15.5em;
+    padding: 1.35rem 1.15rem;
+  }
+  .hero-prologue__title {
+    margin-bottom: 0;
+    margin-left: .75rem;
+    padding-left: .5rem;
+    border-left: 1px solid var(--rule);
+  }
+}
+@media (max-width: 55.99rem) {
+  .hero-prologue {
+    position: relative;
+    z-index: 4;
+    border-width: 2px 0 0;
+    box-shadow: inset 0 0 0 3px var(--paper-2);
+  }
+}
+
+.hero__foot {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .85rem 2rem;
+  margin-top: .75rem;
+  padding: .9rem 1.15rem;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--frame);
+}
+.hero__lead { font-size: 1rem; line-height: 1.8; color: var(--ink-2); }
+.hero__lead small { display: block; color: var(--ink-2); letter-spacing: .04em; }
+
+@media (max-width: 40rem) {
+  .window { height: clamp(19rem, calc(100svh - var(--bar) - 22rem), 30rem); }
+  .window--small { height: clamp(19.5rem, 40svh, 22rem); }
+  .tanzaku--name { right: .9rem; top: 1.5rem; padding: 1rem .7rem 1rem; }
+  .tanzaku--name .t-big { font-size: 2.05rem; }
+  .tanzaku--page .t-big { font-size: 1.45rem; }
+  .tanzaku--copy { right: 5.9rem; top: 4.2rem; padding: 1rem .45rem 1.1rem; font-size: .95rem; letter-spacing: .22em; }
+  .window__frame { border-width: 12px 6px 8px; }
+  .shoji { border-width: 4px; }
+  .cup { left: 22%; }
+  .hero__foot { padding: .75rem .8rem; }
+  .hero__foot .season__now { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .season { gap: .35rem; }
+  .season__l { font-size: .875rem; letter-spacing: .1em; margin-right: .15rem; }
+  .season button { inline-size: 2.5rem; block-size: 2.7rem; font-size: 1rem; }
+}
+
+/* ───────── 章の飾り罫（水紋と二重線） ───────── */
+.chapter-rule {
+  display: flex; align-items: center; justify-content: center;
+  margin-block: clamp(2.75rem, 6vw, 4.75rem);
+  color: var(--moss);
+  position: relative;
+}
+.chapter-rule::before,
+.chapter-rule::after {
+  content: ""; flex: 1; height: 3px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.chapter-rule svg { width: 7.5rem; height: 1.5rem; flex: none; margin-inline: .75rem; }
+
+/* ───────── 節（和綴じの見開き構成：右に縦書き章題柱、左に本文絵巻） ───────── */
+.sec { position: relative; }
+.sec__in {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: clamp(1.5rem, 4vw, 3.75rem);
+}
+.sec__body { grid-column: 1; grid-row: 1; min-width: 0; }
+
+/* 右側の縦書き章題柱（二重罫の柱） */
+.v-head-box {
+  grid-column: 2; grid-row: 1;
+  writing-mode: vertical-rl; text-orientation: mixed;
+  display: flex; flex-direction: column; align-items: center; gap: .65rem;
+  padding: 1.35rem .95rem;
+  background: var(--paper-2);
+  border: 1.5px solid var(--frame);
+  border-top: 4px solid var(--accent);
+  box-shadow:
+    inset 0 0 0 3px var(--paper),
+    inset 0 0 0 4px var(--rule);
+}
+.v-head__no {
+  font-size: .8125rem; letter-spacing: .24em; color: var(--accent);
+  padding-bottom: .45rem; border-bottom: 1px solid var(--rule);
+}
+.v-head {
+  font-size: clamp(1.65rem, 2.5vw, 2.2rem);
+  line-height: 1.3; letter-spacing: .28em;
+  color: var(--ink);
+}
+.v-head__sub {
+  font-size: .8125rem; letter-spacing: .2em; color: var(--ink-2);
+  padding-top: .35rem;
+}
+
+@media (max-width: 47.99rem) {
+  .sec__in {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+  .v-head-box {
+    grid-column: 1; grid-row: 1;
+    writing-mode: horizontal-tb;
+    flex-direction: row; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+    padding: .75rem 1rem;
+    border-top-width: 1.5px;
+    border-left: 4px solid var(--accent);
+  }
+  .v-head__no {
+    border-bottom: 0; padding-bottom: 0;
+    margin-right: .6rem;
+  }
+  .v-head { font-size: 1.4rem; letter-spacing: .18em; flex: 1; }
+  .v-head__sub { padding-top: 0; font-size: .8125rem; }
+  .sec__body { grid-column: 1; grid-row: 2; }
+}
+
+.lead { font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.85; letter-spacing: .08em; margin-bottom: 1.35em; word-break: auto-phrase; }
+.prose { max-width: var(--measure); }
+.prose p + p { margin-top: 1.1em; }
+@media (min-width: 40rem) { .prose p { text-align: justify; } }
+.prose .lead, .prose .note { text-align: start; }
+.note { font-size: 1rem; color: var(--ink-2); line-height: 1.8; }
+
+.ex { font-size: max(.875em, 1rem); color: var(--ink-2); letter-spacing: .02em; white-space: nowrap; }
+
+/* ───────── 一の節：館内のご案内（巻頭言と館内のしつらえ帖） ───────── */
+.kannai-scroll {
+  display: grid;
+  gap: 2rem clamp(1.75rem, 3.5vw, 3rem);
+  align-items: start;
+}
+@media (min-width: 62rem) {
+  .kannai-scroll { grid-template-columns: minmax(0, 1.2fr) minmax(0, .95fr); }
+}
+.kannai-scroll__v {
+  padding: clamp(1.25rem, 2.8vw, 2rem);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow: inset 0 0 0 4px var(--paper-2), inset 0 0 0 5px var(--rule);
+}
+.ledger-card {
+  background: var(--paper-2);
+  border: 1.5px solid var(--frame);
+  border-top: 4px solid var(--frame);
+  box-shadow: inset 0 0 0 4px var(--paper), inset 0 0 0 5px var(--rule);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+.ledger-card__hd {
+  font-size: 1.2rem;
+  letter-spacing: .24em;
+  padding-bottom: .65rem;
+  margin-bottom: .9rem;
+  border-bottom: 3px double var(--rule);
+  color: var(--ink);
+}
+.ledger-list { display: grid; gap: .85rem; }
+.ledger-list > div {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: .75rem;
+  align-items: baseline;
+  padding-bottom: .75rem;
+  border-bottom: 1px dashed var(--rule);
+}
+.ledger-list > div:last-child { border-bottom: 0; padding-bottom: 0; }
+.ledger-list dt {
+  font-size: .9375rem;
+  letter-spacing: .16em;
+  color: var(--accent);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  text-align: center;
+  padding: .1rem .3rem;
+}
+.ledger-list dd {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+/* ───────── 縦書きの木札・ご宿泊の栞（隅切り・二重枠） ───────── */
+.fuda, .shiori {
+  position: relative;
+  writing-mode: vertical-rl; text-orientation: mixed;
+  font-size: 1.0625rem; line-height: 2; letter-spacing: .12em;
+  padding: 1.8rem 1.4rem;
+  border: 2px solid var(--frame);
+  transition: background-color var(--slow);
+}
+.fuda h3, .shiori h3 { font-size: 1.35rem; letter-spacing: .28em; margin-left: .9rem; color: var(--ink); }
+.fuda ul, .shiori ul { list-style: none; margin: 0; padding: 0; }
+.fuda__foot, .shiori__foot, .menu-foot { font-size: 1rem; color: var(--ink-2); letter-spacing: .1em; }
+
+/* 湯殿の木札：二重枠と木釘の印 */
+.fuda {
+  justify-self: end; align-self: start;
+  background: var(--paper-2);
+  border-top: 4px solid var(--wood-2);
+  box-shadow:
+    inset 0 0 0 4px var(--paper),
+    inset 0 0 0 6px var(--rule),
+    0 10px 24px -14px rgba(25, 18, 12, .35);
+  max-width: 100%;
+}
+.fuda li {
+  padding-right: .3em; margin-right: .3em;
+  border-right: 1px dotted var(--rule);
+}
+.fuda__foot { margin-right: .9rem; }
+
+/* ご宿泊の栞：二重枠と便箋の縦罫 */
+.shiori-wrap { display: flex; justify-content: flex-end; }
+.shiori {
+  height: 26em; width: max-content; max-width: 100%;
+  border-top: 4px solid var(--accent);
+  background: var(--paper);
+  box-shadow:
+    inset 0 0 0 4px var(--paper-2),
+    inset 0 0 0 6px var(--rule),
+    0 10px 24px -14px rgba(25, 18, 12, .28);
+}
+.shiori li { padding-right: .38em; margin-right: .38em; border-right: 1px solid var(--rule); }
+.shiori__foot { margin-right: 1rem; }
+@media (max-width: 47.99rem) {
+  .shiori-wrap { display: block; }
+  .shiori { writing-mode: horizontal-tb; height: auto; width: 100%; padding: 1.4rem 1.15rem; }
+  .shiori h3 { margin: 0 0 .6rem; }
+  .shiori li { padding: .5rem 0; margin: 0; border-right: 0; border-top: 1px solid var(--rule); line-height: 1.8; }
+  .shiori__foot { margin: .8rem 0 0; }
+}
+
+/* ───────── 二の節：湯殿（錦絵風パノラマ枠と木札） ───────── */
+.yu-fig {
+  position: relative;
+  margin: 0 0 clamp(1.75rem, 4vw, 2.75rem);
+  padding: clamp(.85rem, 2.2vw, 1.6rem);
+  background: var(--paper-2);
+  border: 2px solid var(--frame);
+  box-shadow:
+    inset 0 0 0 4px var(--paper),
+    inset 0 0 0 5.5px var(--rule);
+}
+.yu-fig__tag {
+  position: absolute; top: 1.25rem; right: 1.25rem; z-index: 2;
+  writing-mode: vertical-rl; text-orientation: mixed;
+  padding: .65rem .45rem;
+  background: var(--paper);
+  border: 1px solid var(--frame);
+  box-shadow: inset 0 0 0 2px var(--paper-2);
+  font-size: .875rem; letter-spacing: .22em; color: var(--ink);
+}
+.yu-fig svg { width: 100%; height: auto; overflow: visible; }
+.yu-cols { display: grid; gap: 2rem clamp(2rem, 4vw, 4rem); align-items: start; }
+@media (min-width: 60rem) { .yu-cols { grid-template-columns: minmax(0, 1fr) auto; } }
+@media (max-width: 59.99rem) { .yu-cols .fuda { justify-self: start; } }
+@media (max-width: 39.99rem) {
+  .yu-fig__tag { display: none; }
+  .fuda { writing-mode: horizontal-tb; width: 100%; padding: 1.25rem 1.1rem; }
+  .fuda h3 { margin: 0 0 .5rem; }
+  .fuda li { padding: .4rem 0; margin: 0; border-right: 0; border-top: 1px dotted var(--rule); }
+  .fuda__foot { margin: .65rem 0 0; }
+}
+.yu-prose {
+  padding: 1.4rem 1.5rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-top: 3px double var(--frame);
+}
+.yu-fig .rock-g stop { transition: stop-color var(--slow); }
+.yu-fig path, .yu-fig ellipse, .yu-fig rect { transition: fill var(--slow), stroke var(--slow); }
+.ripple { fill: none; stroke: var(--refl); stroke-width: 1.4; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.drop { fill: var(--refl); opacity: 0; }
+.steam { opacity: .55; }
+
+/* ───────── 三の節：宿のひととき（折本の時刻絵巻） ───────── */
+.emaki-box {
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  background: var(--paper);
+  border: 1.5px solid var(--frame);
+  box-shadow:
+    inset 0 0 0 4px var(--paper-2),
+    inset 0 0 0 5px var(--rule);
+}
+.day { list-style: none; margin: 0; padding: 0; max-width: 44rem; position: relative; }
+.day::before {
+  content: ""; position: absolute; left: calc(5.65rem - 2px); top: 1.2rem; bottom: 1.2rem; width: 4px; border-radius: 2px;
+  background: linear-gradient(#efe3c0, #f0d7a6 17%, #cf8a64 34%, #1f2c45 52%, #1f2c45 60%, #e3c4cb 72%, #eee6c9 86%, #dde7ec);
+}
+.day li {
+  display: grid; grid-template-columns: 4rem 1.3rem 1fr; column-gap: 1rem; align-items: baseline;
+  padding-block: .75rem;
+  border-bottom: 1px dashed var(--rule);
+}
+.day li:last-child { border-bottom: 0; }
+.day time { font-family: var(--hand); font-weight: 600; font-size: 1.0625rem; letter-spacing: .04em; text-align: right; font-variant-numeric: tabular-nums; }
+.day .sky { width: 1rem; height: 1rem; border-radius: 50%; border: 2px solid var(--paper); box-shadow: 0 0 0 1px var(--ink-2); align-self: center; position: relative; justify-self: center; }
+.day b { font-weight: 400; font-size: 1.125rem; letter-spacing: .12em; margin-right: 1em; color: var(--accent); }
+.day p { display: inline; }
+.day .what { line-height: 1.9; }
+.day-note { margin-top: 1.25rem; padding-top: .85rem; border-top: 1px solid var(--rule); }
+
+/* ───────── 四の節：四季の短冊とお品書き本紙 ───────── */
+.shiki-wrap { display: grid; gap: 2.25rem; }
+.shiki {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  direction: rtl;
+}
+.shiki__item {
+  direction: ltr;
+  writing-mode: vertical-rl; text-orientation: mixed;
+  height: 16.5em;
+  width: 100%;
+  font-size: 1.0625rem; line-height: 1.95; letter-spacing: .1em;
+  padding: 1.15rem .85rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--frame);
+  box-shadow: inset 0 0 0 2px var(--paper-2);
+  position: relative;
+  transition: border-color .4s, background-color .4s;
+}
+.shiki__item h3 {
+  font-size: 1.45rem; letter-spacing: .2em; margin-left: .55rem;
+  display: flex; align-items: center; gap: .5rem;
+}
+.shiki__item h3::after {
+  content: ""; width: .55rem; height: .55rem; border-radius: 50%;
+  border: 1.5px solid var(--ink-2);
+  transition: background-color .4s, border-color .4s;
+}
+html[data-season="haru"] .shiki__item--haru,
+html[data-season="natsu"] .shiki__item--natsu,
+html[data-season="aki"] .shiki__item--aki,
+html[data-season="fuyu"] .shiki__item--fuyu {
+  border-top-color: var(--accent);
+  border-color: var(--accent);
+  background: var(--paper-2);
+}
+html[data-season="haru"] .shiki__item--haru h3::after,
+html[data-season="natsu"] .shiki__item--natsu h3::after,
+html[data-season="aki"] .shiki__item--aki h3::after,
+html[data-season="fuyu"] .shiki__item--fuyu h3::after {
+  background: var(--accent); border-color: var(--accent);
+}
+.shiki__item p { text-align: start; }
+
+@media (max-width: 59.99rem) {
+  .shiki { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 39.99rem) {
+  .shiki { gap: .75rem; }
+  .shiki__item { height: 14.5em; font-size: 1rem; padding: .9rem .6rem; }
+}
+
+.shiki-oshinagaki-grid {
+  display: grid;
+  gap: 2rem clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+@media (min-width: 62rem) {
+  .shiki-oshinagaki-grid { grid-template-columns: minmax(0, 1fr) auto; }
+}
+.shiki-switch, .food-switch { margin-top: 1.5rem; }
+.shiki-switch .season__l, .food-switch .season__l { flex-basis: 100%; margin-bottom: .25rem; }
+
+/* ───────── 縦書きのお品書き本紙（奉書紙・二重枠・季節の落款） ───────── */
+.oshinagaki-wrap { display: grid; gap: 2.5rem clamp(2rem, 5vw, 4.5rem); align-items: start; }
+@media (min-width: 62rem) { .oshinagaki-wrap { grid-template-columns: minmax(0, 1fr) auto; } }
+.oshinagaki {
+  justify-self: end; position: relative;
+  display: flex; flex-direction: row-reverse; align-items: flex-start; gap: 1rem;
+  padding: 2rem 1.65rem;
+  border: 2px solid var(--frame);
+  border-top: 5px solid var(--accent);
+  background: var(--paper);
+  box-shadow:
+    inset 0 0 0 4px var(--paper-2),
+    inset 0 0 0 5.5px var(--rule),
+    0 12px 28px -16px rgba(25, 18, 12, .32);
+  max-width: 100%;
+  transition: background-color var(--slow);
+}
+.oshinagaki__seal {
+  writing-mode: vertical-rl;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  background: var(--paper-2);
+  padding: .3rem .25rem;
+  font-size: .75rem;
+  letter-spacing: .18em;
+  line-height: 1.1;
+  align-self: flex-start;
+}
+.menu {
+  display: none; margin: 0;
+  writing-mode: vertical-rl; text-orientation: mixed;
+  height: max-content; font-family: var(--hand); font-weight: 600;
+  font-size: 1.0625rem; line-height: 2.05; letter-spacing: .12em;
+}
+.menu h3 {
+  font-family: var(--mincho); font-weight: 400;
+  font-size: 1.35rem; letter-spacing: .28em; margin-left: .85rem;
+  color: var(--accent);
+}
+.menu ul { list-style: none; margin: 0; padding: 0; }
+.menu li {
+  padding-left: .25em; margin-left: .25em;
+  border-left: 1px dotted var(--rule);
+}
+.menu li span { color: var(--ink-2); font-family: var(--mincho); font-weight: 400; }
+.menu-foot { writing-mode: vertical-rl; line-height: 1.8; }
+.menu--aki { display: block; }
+.js .menu--aki { display: none; }
+html[data-season="haru"] .menu--haru,
+html[data-season="natsu"] .menu--natsu,
+html[data-season="aki"] .menu--aki,
+html[data-season="fuyu"] .menu--fuyu { display: block; }
+
+@media (max-width: 47.99rem) {
+  .oshinagaki-wrap, .shiki-oshinagaki-grid { grid-template-columns: minmax(0, 1fr); }
+  .oshinagaki {
+    justify-self: stretch;
+    padding: 1.35rem .9rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  .oshinagaki__seal { writing-mode: horizontal-tb; align-self: flex-end; padding: .15rem .45rem; }
+  .menu-foot { writing-mode: horizontal-tb; text-align: center; margin-top: .5rem; }
+  .menu { font-size: .95rem; letter-spacing: .06em; line-height: 1.85; max-width: 100%; }
+  .menu h3 { font-size: 1.15rem; margin-left: .55rem; }
+}
+
+/* ───────── 線画（客室・湯） ───────── */
+.drawing { width: 100%; height: auto; overflow: hidden; }
+.drawing.yu { overflow: visible; }
+.drawing .ln { fill: none; stroke: var(--ink); stroke-width: 1.15; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.drawing .ln-2 { fill: none; stroke: var(--ink-2); stroke-width: .8; vector-effect: non-scaling-stroke; }
+.drawing .ln-m { fill: none; stroke: var(--moss); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.drawing .f-paper { fill: var(--paper); }
+.drawing .f-paper2 { fill: var(--paper-2); }
+.drawing .f-shoji { fill: var(--shoji); }
+.drawing .f-wood { fill: var(--wood); opacity: .55; }
+.drawing .f-tatami { fill: var(--tatami); opacity: .6; }
+.drawing .f-view { fill: var(--view); }
+.drawing .f-r2 { fill: var(--r2b); } .drawing .f-r3 { fill: var(--r3b); } .drawing .f-r4 { fill: var(--r4b); }
+.drawing .f-leaf { fill: var(--leaf); } .drawing .f-leaf2 { fill: var(--leaf-2); }
+.drawing .f-wood2 { fill: var(--wood-2); opacity: .75; }
+.drawing .f-view-soft { fill: var(--view-soft); }
+.drawing .f-plant { fill: var(--plant); opacity: .7; }
+.drawing .f-glow { fill: var(--glow); }
+.drawing .f-snow { fill: var(--snow); }
+.drawing * { transition: fill var(--slow), stroke var(--slow); }
+
+/* 湯の絵の色 */
+.yu .w1 { stop-color: var(--water-1); } .yu .w2 { stop-color: var(--water-2); }
+.yu .k1 { stop-color: var(--rock-top); } .yu .k2 { stop-color: var(--rock-bot); }
+.yu .sm1 { stop-color: var(--steam); } .yu .sm2 { stop-color: var(--steam); stop-opacity: 0; }
+.yu stop { transition: stop-color var(--slow); }
+.yu .rocks path { stroke: var(--rock-line); stroke-width: .9; }
+.yu .refl { fill: var(--refl); opacity: .85; }
+.yu .rim { fill: none; stroke: rgba(0, 0, 0, .2); stroke-width: 12; }
+.yu .shine { fill: none; stroke: rgba(255, 255, 255, .22); stroke-width: 2; stroke-linecap: round; }
+.yu .branch { fill: none; stroke: var(--rock-line); stroke-width: 3; stroke-linecap: round; }
+.yu .kakei__leg { fill: none; stroke: var(--bamboo-2); stroke-width: 5; stroke-linecap: round; }
+.yu .kakei__pipe { fill: none; stroke: var(--bamboo); stroke-width: 15; }
+.yu .kakei__hi { fill: none; stroke: rgba(255, 255, 255, .28); stroke-width: 3; }
+.yu .kakei__node { fill: none; stroke: var(--bamboo-2); stroke-width: 2.4; }
+
+/* ───────── 五の節：客室と料理の案内（トップ） ───────── */
+.teaser { display: grid; gap: 2rem clamp(2rem, 4.5vw, 4rem); align-items: start; }
+@media (min-width: 58rem) { .teaser { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); } }
+.teaser__fig {
+  position: relative;
+  padding: .9rem;
+  background: var(--paper-2);
+  border: 2px solid var(--frame);
+  box-shadow: inset 0 0 0 4px var(--paper), inset 0 0 0 5px var(--rule);
+}
+.teaser__tag {
+  position: absolute; top: 1.2rem; right: 1.2rem; z-index: 2;
+  writing-mode: vertical-rl;
+  padding: .5rem .4rem;
+  background: var(--paper);
+  border: 1px solid var(--frame);
+  font-size: .8125rem; letter-spacing: .2em;
+}
+.room-triptych {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .6rem;
+  margin-bottom: 1.35rem;
+}
+.room-tag {
+  padding: .65rem .6rem;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--frame);
+  display: flex; flex-direction: column; gap: .2rem;
+}
+.room-tag b { font-weight: 400; font-size: 1rem; letter-spacing: .14em; color: var(--accent); }
+.room-tag span { font-size: .875rem; line-height: 1.5; color: var(--ink-2); }
+@media (max-width: 39.99rem) {
+  .room-triptych { grid-template-columns: 1fr; }
+  .teaser__tag { display: none; }
+}
+
+.more {
+  display: inline-flex; align-items: center; gap: .9rem;
+  margin-top: 1.6rem; min-height: 3.1rem; padding: .35rem 1.4rem;
+  background: var(--paper-2);
+  border: 1.5px solid var(--frame);
+  border-left: 4px solid var(--accent);
+  box-shadow: inset 0 0 0 2px var(--paper);
+  text-decoration: none; letter-spacing: .16em;
+  word-break: keep-all;
+  transition: background-color .4s var(--ease), color .4s var(--ease);
+}
+.more::after { content: ""; width: 2rem; height: 1px; background: currentColor; transition: width .5s var(--ease); }
+.more:hover { background: var(--frame); color: var(--paper); }
+.more:hover::after { width: 2.8rem; }
+
+/* ───────── 客室ページ（三つの趣・和綴じの客室帖） ───────── */
+.rooms { display: grid; gap: clamp(2.5rem, 5vw, 4rem); }
+.room {
+  display: grid;
+  gap: 1.5rem clamp(1.5rem, 3.5vw, 2.75rem);
+  align-items: center;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  background: var(--paper);
+  border: 1.5px solid var(--frame);
+  box-shadow:
+    inset 0 0 0 4px var(--paper-2),
+    inset 0 0 0 5px var(--rule);
+}
+@media (min-width: 58rem) {
+  /* 和書の順：右に縦書きの室名柱、中央に線画、左にしつらえとお代 */
+  .room {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) auto;
+  }
+  .room__pillar {
+    grid-column: 3; grid-row: 1;
+    writing-mode: vertical-rl; text-orientation: mixed;
+    display: flex; flex-direction: column; align-items: center; gap: .6rem;
+    padding-left: 1.35rem;
+    border-left: 3px double var(--rule);
+    min-height: 14rem;
+  }
+  .room__fig { grid-column: 2; grid-row: 1; }
+  .room__info { grid-column: 1; grid-row: 1; }
+}
+.room__no {
+  font-size: .8125rem; letter-spacing: .22em; color: var(--accent);
+}
+.room h3 {
+  font-size: clamp(1.55rem, 2.6vw, 2rem);
+  letter-spacing: .22em; line-height: 1.4;
+}
+.room h3 small { display: block; font-size: .875rem; letter-spacing: .2em; color: var(--ink-2); }
+.room__seal {
+  font-size: .875rem; color: var(--ink-2);
+  padding: .2rem .45rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-2);
+}
+.room__fig {
+  padding: .65rem;
+  background: var(--paper-2);
+  border: 1px solid var(--frame);
+}
+.room .prose { margin-block: .85rem 1.25rem; }
+.room__spec { font-size: 1rem; letter-spacing: .12em; color: var(--accent); padding-bottom: .5rem; border-bottom: 1px dashed var(--rule); }
+.room__price {
+  font-size: 1.125rem; letter-spacing: .06em;
+  padding: .75rem 1rem;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+}
+@media (max-width: 57.99rem) {
+  .room__pillar {
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem;
+    padding-bottom: .75rem;
+    border-bottom: 3px double var(--rule);
+  }
+}
+
+/* ───────── 道のり・ご予約（帳場の札と交通の栞） ───────── */
+.sec--reserve { padding-bottom: 0; }
+.reserve {
+  background: var(--paper-2);
+  border: 2px solid var(--frame);
+  box-shadow:
+    inset 0 0 0 4px var(--paper),
+    inset 0 0 0 5.5px var(--rule);
+  padding: clamp(1.75rem, 4.5vw, 3.5rem) clamp(1.15rem, 3.5vw, 3rem);
+  transition: background-color var(--slow);
+}
+.reserve .sec__in { align-items: start; }
+.tel { display: inline-block; white-space: nowrap; margin: .4rem 0 .2rem; font-size: clamp(2.1rem, 6.4vw, 4.4rem); line-height: 1.3; letter-spacing: .06em; text-decoration: none; font-variant-numeric: tabular-nums; }
+.tel:hover { color: var(--accent); }
+.reserve-body { display: grid; gap: 2rem clamp(2rem, 4vw, 3.5rem); align-items: start; }
+@media (min-width: 62rem) {
+  .reserve-body { grid-template-columns: minmax(0, 1fr) auto; }
+  .reserve-body > .fuda--yoyaku { grid-column: 2; grid-row: 1; }
+  .reserve-body > .reserve-cols { grid-column: 1; grid-row: 1; }
+}
+.fuda--yoyaku {
+  writing-mode: vertical-rl;
+  height: 24em;
+  background: var(--paper);
+  border: 2px solid var(--frame);
+  border-top: 4px solid var(--accent);
+  box-shadow:
+    inset 0 0 0 4px var(--paper-2),
+    inset 0 0 0 5.5px var(--rule);
+}
+.fuda__tel { margin: .1rem .35rem; }
+.fuda__tel .tel {
+  margin: 0; font-size: 1.6rem;
+  display: block; writing-mode: horizontal-tb;
+  box-sizing: content-box; inline-size: 1ch; padding-inline: calc(.65em - .5ch);
+  white-space: normal; overflow-wrap: anywhere; word-break: break-all;
+  text-align: center; line-height: 1.02; letter-spacing: 0;
+}
+.reserve-cols { display: grid; gap: 2rem clamp(1.75rem, 4vw, 3.5rem); }
+@media (min-width: 56rem) { .reserve-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+@media (max-width: 39.99rem) {
+  .fuda--yoyaku {
+    writing-mode: vertical-rl;
+    height: 22.5em;
+    padding: 1.25rem 1rem;
+    justify-self: center;
+  }
+}
+
+/* 交通のご案内 */
+.access {
+  padding: 1.25rem 1.35rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--frame);
+}
+.access h3 { font-size: 1.2rem; letter-spacing: .22em; margin-bottom: .7rem; color: var(--accent); }
+.access p { font-size: 1rem; line-height: 1.9; }
+.access p + p { margin-top: .6em; }
+
+/* ───────── フッター ───────── */
+.site-ft { padding-block: 3.5rem .5rem; font-size: 1rem; line-height: 1.9; }
+.site-ft__in {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem 3rem;
+  border-top: 3px double var(--rule); padding-top: 1.75rem;
+}
+.site-ft .logo__name { font-size: 1.2rem; color: var(--ink); }
+.site-ft p { max-width: 36em; color: var(--ink-2); }
+.site-ft nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: .25rem 1.15rem; flex-wrap: wrap; }
+.site-ft nav a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* ───────── 固定の「お電話で予約」（帳場の木札） ───────── */
+.call {
+  position: fixed; z-index: 50;
+  right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom));
+  display: grid; grid-template-columns: auto auto; grid-template-rows: auto auto; column-gap: .75rem; align-items: center;
+  min-height: 3.5rem; padding: .45rem 1.3rem .5rem 1rem;
+  background: var(--frame); color: #f6f1e8; text-decoration: none; border-radius: 4px;
+  border: 1.5px solid var(--wood);
+  box-shadow: 0 10px 26px -10px rgba(20, 16, 10, .6), inset 0 0 0 2px rgba(255, 255, 255, .1);
+  transition: background-color .4s var(--ease);
+}
+.call:hover { color: #fff; background: var(--accent); }
+.call:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; box-shadow: 0 0 0 3px var(--paper); }
+.call svg { grid-row: span 2; width: 1.35rem; height: 1.35rem; }
+.call__l { font-size: .875rem; letter-spacing: .2em; line-height: 1.3; }
+.call__n { font-size: 1.125rem; letter-spacing: .06em; line-height: 1.3; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 39.99rem) {
+  body { padding-bottom: 5.5rem; }
+  .call {
+    left: .75rem; right: .75rem; bottom: max(.75rem, env(safe-area-inset-bottom));
+    display: flex; justify-content: center; gap: .75rem; padding: .4rem 1rem;
+  }
+  .call__l { font-size: .875rem; letter-spacing: .14em; }
+}
+@media (min-width: 88rem) {
+  body { padding-bottom: 2.5rem; }
+  .call {
+    right: 0; bottom: auto; top: 50%; translate: 0 -50%;
+    writing-mode: vertical-rl; display: flex; align-items: center; gap: .9rem;
+    padding: 1.3rem .85rem 1.4rem; border-radius: 6px 0 0 6px; min-height: 0;
+    box-shadow: -8px 10px 26px -12px rgba(20, 16, 10, .55);
+  }
+  .call__l { font-size: .875rem; letter-spacing: .3em; }
+  .call__n {
+    font-size: 1.0625rem;
+    writing-mode: horizontal-tb;
+    box-sizing: content-box; inline-size: 1ch; padding-inline: calc(.65em - .5ch);
+    white-space: normal; overflow-wrap: anywhere; word-break: break-all;
+    text-align: center; line-height: 1.02; letter-spacing: 0;
+  }
+}
+
+/* ───────── 動きを減らす設定：無限に続く動き・読み込み時の動きをすべて止める ───────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: 0s !important; scroll-behavior: auto !important; }
+  .ripple, .drop { opacity: 0 !important; }
+  .ripple--still { opacity: .7 !important; }
+}
+.ripple--still { opacity: 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  .cup .st { animation: steam 7s ease-in-out infinite; }
+  .cup .st--2 { animation-delay: -3.5s; }
+  @keyframes steam { 0% { opacity: 0; transform: translateY(6px); } 40% { opacity: .75; } 100% { opacity: 0; transform: translateY(-14px); } }
+  .yu-fig .steam { animation: steam-yu 11s ease-in-out infinite; }
+  .yu-fig .steam--2 { animation-delay: -4s; } .yu-fig .steam--3 { animation-delay: -7.5s; }
+  @keyframes steam-yu { 0% { opacity: 0; transform: translate(0, 18px); } 45% { opacity: .6; } 100% { opacity: 0; transform: translate(14px, -40px); } }
+  .drop { animation: drop 8s cubic-bezier(.55, 0, .9, .5) infinite; }
+  @keyframes drop { 0% { opacity: 0; transform: translateY(0) scaleY(.6); } 4% { opacity: 1; transform: translateY(0) scaleY(1); } 12% { opacity: 1; transform: translateY(60px) scaleY(1.25); } 12.5%, 100% { opacity: 0; transform: translateY(62px); } }
+  .ripple { animation: ripple 8s cubic-bezier(.2, .6, .3, 1) infinite; }
+  .ripple--2 { animation-delay: .5s; } .ripple--3 { animation-delay: 1s; }
+  @keyframes ripple { 0%, 12% { opacity: 0; transform: scale(.08); } 13% { opacity: .9; } 55% { opacity: 0; transform: scale(1); } 100% { opacity: 0; transform: scale(1); } }
+}

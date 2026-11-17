@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="ja" class="no-js" data-season="aki">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>お部屋とお食事｜湯の宿 しづく庵（架空の旅館・制作サンプル）</title>
+<meta name="description" content="湯の宿 しづく庵（架空）の、三つの趣のお部屋と季節のお品書き、ご宿泊のご案内。お代はすべて例です。">
+<link rel="icon" href="data:,">
+<script>
+/* 季節の初期値：保存した選択があればそれを、なければ今の月から決める（CSS より先に決めて、色のちらつきを防ぐ） */
+(function (d) { var m = new Date().getMonth() + 1, s = m >= 3 && m <= 5 ? 'haru' : m >= 6 && m <= 8 ? 'natsu' : m >= 9 && m <= 11 ? 'aki' : 'fuyu'; try { var v = localStorage.getItem('shizukuan-season'); if (/^(haru|natsu|aki|fuyu)$/.test(v)) s = v; } catch (e) {} d.setAttribute('data-season', s); d.className = 'js'; })(document.documentElement);
+</script>
+<link rel="stylesheet" href="../_shared/bar.css">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+<script src="../_shared/bar.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body class="page-rooms">
+<div class="soegi-bar" role="region" aria-label="制作サンプルについて">
+  <span class="soegi-bar__tag">サンプル</span>
+  <span class="soegi-bar__text">これは架空の会社のサンプルです</span>
+  <span class="soegi-bar__links">
+    <button type="button" data-soegi-memo>制作メモ</button>
+    <a href="/demo/#samples">ソエギに戻る</a>
+  </span>
+</div>
+<a class="skip" href="#main">本文へ移動</a>
+
+<div class="watoji-frame wrap">
+  <div class="watoji-spine" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <header class="site-hd">
+    <div class="noren-beam" aria-hidden="true"></div>
+    <div class="noren-wrap">
+      <a class="logo" href="./">
+        <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M20 3c3.2 5.2 5.2 8.4 5.2 11a5.2 5.2 0 0 1-10.4 0c0-2.6 2-5.8 5.2-11z" fill="currentColor"/>
+          <ellipse cx="20" cy="30" rx="6.5" ry="2" fill="none" stroke="currentColor" stroke-width="1.3"/>
+          <ellipse cx="20" cy="30" rx="12.5" ry="4.2" fill="none" stroke="currentColor" stroke-width="1" opacity=".7"/>
+          <ellipse cx="20" cy="30" rx="18.5" ry="6.4" fill="none" stroke="currentColor" stroke-width=".8" opacity=".45"/>
+        </svg>
+        <span class="logo__txt">
+          <span class="logo__loc">上山温泉</span>
+          <span class="logo__sub">湯の宿</span>
+          <span class="logo__name">しづく庵</span>
+        </span>
+        <span class="logo__seal" aria-hidden="true">庵</span>
+      </a>
+
+      <nav class="nav" aria-label="サイト内">
+        <ul>
+          <li>
+            <a href="./">
+              <span class="nav__no">一</span>
+              <span class="nav__main">ご案内</span>
+              <span class="nav__sub">館内・四季</span>
+            </a>
+          </li>
+          <li>
+            <a href="rooms.html" aria-current="page">
+              <span class="nav__no">二</span>
+              <span class="nav__main">客室と料理</span>
+              <span class="nav__sub">お部屋・献立</span>
+            </a>
+          </li>
+          <li>
+            <a href="./#bath">
+              <span class="nav__no">三</span>
+              <span class="nav__main">湯殿</span>
+              <span class="nav__sub">露天・内湯</span>
+            </a>
+          </li>
+          <li>
+            <a href="#access">
+              <span class="nav__no">四</span>
+              <span class="nav__main">道のり</span>
+              <span class="nav__sub">ご予約・交通</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="hd-season">
+        <div class="season season--seal" role="group" aria-labelledby="season-hd">
+          <span class="season__l" id="season-hd">季節の木札</span>
+          <button type="button" data-season-btn="haru" data-caption="春の献立" aria-pressed="false"><span>春</span></button>
+          <button type="button" data-season-btn="natsu" data-caption="夏の献立" aria-pressed="false"><span>夏</span></button>
+          <button type="button" data-season-btn="aki" data-caption="秋の献立" aria-pressed="false"><span>秋</span></button>
+          <button type="button" data-season-btn="fuyu" data-caption="冬の献立" aria-pressed="false"><span>冬</span></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero hero--small" aria-labelledby="hero-title">
+      <div class="tokonoma-stage">
+        <div class="ranma" aria-hidden="true">
+          <svg viewBox="0 0 1200 28" preserveAspectRatio="none">
+            <defs>
+              <pattern id="kumiko-p2" width="48" height="28" patternUnits="userSpaceOnUse">
+                <path d="M0 14h48M24 0v28M0 0l24 28M48 0L24 28M0 28L24 0M48 28L24 0" fill="none" stroke="currentColor" stroke-width="1"/>
+              </pattern>
+            </defs>
+            <rect width="1200" height="28" fill="url(#kumiko-p2)"/>
+          </svg>
+        </div>
+
+        <div class="window window--small" data-scene role="img"
+          aria-label="窓の絵：障子の向こうに、夕暮れの山の稜線が重なる（秋）"
+          data-label-haru="窓の絵：障子の向こうに、朝の霞がかかった山の稜線が重なり、桜の花びらが舞う（春）"
+          data-label-natsu="窓の絵：障子の向こうに、夜の山と三日月と星が見え、蛍が飛ぶ（夏）"
+          data-label-aki="窓の絵：障子の向こうに、夕暮れの山の稜線が重なり、紅葉が舞う（秋）"
+          data-label-fuyu="窓の絵：障子の向こうに、雪をかぶった山の稜線が重なり、雪が降る（冬）">
+          <svg class="window__stars" viewBox="0 0 1200 360" preserveAspectRatio="xMidYMin slice" aria-hidden="true" fill="#f4f1e2"><circle cx="286" cy="242" r="0.9" opacity="0.86"/><circle cx="860" cy="119" r="1.2" opacity="0.48"/><circle cx="62" cy="287" r="0.7" opacity="0.45"/><circle cx="598" cy="213" r="0.8" opacity="0.86"/><circle cx="568" cy="128" r="1.7" opacity="0.40"/><circle cx="1176" cy="117" r="1.6" opacity="0.71"/><circle cx="719" cy="157" r="1.9" opacity="0.62"/><circle cx="603" cy="73" r="1.0" opacity="0.83"/><circle cx="225" cy="135" r="1.9" opacity="0.49"/><circle cx="1071" cy="93" r="1.2" opacity="0.53"/><circle cx="1065" cy="176" r="1.1" opacity="0.71"/><circle cx="122" cy="53" r="0.7" opacity="0.44"/><circle cx="940" cy="95" r="0.7" opacity="0.63"/><circle cx="183" cy="118" r="0.6" opacity="0.75"/><circle cx="293" cy="101" r="1.3" opacity="0.78"/><circle cx="477" cy="212" r="0.8" opacity="0.49"/><circle cx="111" cy="187" r="1.8" opacity="0.92"/><circle cx="110" cy="161" r="0.8" opacity="0.62"/><circle cx="97" cy="207" r="1.6" opacity="0.80"/><circle cx="332" cy="187" r="1.8" opacity="0.39"/><circle cx="822" cy="295" r="0.7" opacity="0.69"/><circle cx="1177" cy="108" r="1.9" opacity="0.52"/><circle cx="245" cy="323" r="0.9" opacity="0.42"/><circle cx="869" cy="202" r="1.3" opacity="0.83"/><circle cx="217" cy="31" r="1.7" opacity="0.58"/><circle cx="417" cy="116" r="1.4" opacity="0.52"/><circle cx="154" cy="179" r="1.4" opacity="0.47"/><circle cx="166" cy="102" r="1.5" opacity="0.60"/><circle cx="681" cy="76" r="0.9" opacity="0.51"/><circle cx="343" cy="298" r="0.8" opacity="0.72"/><circle cx="466" cy="90" r="0.8" opacity="0.91"/><circle cx="766" cy="28" r="0.7" opacity="0.45"/><circle cx="609" cy="215" r="1.2" opacity="0.57"/><circle cx="926" cy="89" r="0.9" opacity="0.37"/><circle cx="1024" cy="311" r="1.3" opacity="0.58"/><circle cx="457" cy="113" r="1.8" opacity="0.46"/><circle cx="783" cy="27" r="0.6" opacity="0.83"/><circle cx="1165" cy="242" r="0.8" opacity="0.64"/><circle cx="44" cy="75" r="0.9" opacity="0.54"/><circle cx="1045" cy="172" r="0.6" opacity="0.40"/><circle cx="1148" cy="218" r="1.1" opacity="0.40"/><circle cx="666" cy="213" r="1.1" opacity="0.70"/><circle cx="492" cy="248" r="1.7" opacity="0.76"/><circle cx="331" cy="49" r="0.7" opacity="0.63"/><circle cx="1184" cy="3" r="1.8" opacity="0.83"/><circle cx="16" cy="159" r="1.6" opacity="0.54"/></svg>
+          <div class="window__orb"></div>
+          <svg class="layer layer--1" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset=".25" class="s1a"/><stop offset=".7" class="s1b"/></linearGradient></defs><path fill="url(#g1)" d="M0 600 L0 231 L8 228 L16 226 L24 223 L32 223 L40 224 L48 226 L56 226 L64 227 L72 228 L80 228 L88 230 L96 231 L104 232 L112 232 L120 230 L128 229 L136 230 L144 233 L152 237 L160 239 L168 238 L176 235 L184 232 L192 231 L200 231 L208 232 L216 232 L224 234 L232 237 L240 240 L248 242 L256 244 L264 245 L272 246 L280 246 L288 245 L296 245 L304 244 L312 242 L320 240 L328 239 L336 240 L344 241 L352 243 L360 247 L368 250 L376 252 L384 253 L392 253 L400 252 L408 251 L416 247 L424 242 L432 237 L440 233 L448 231 L456 230 L464 230 L472 232 L480 237 L488 243 L496 247 L504 249 L512 249 L520 248 L528 246 L536 240 L544 234 L552 228 L560 224 L568 221 L576 218 L584 217 L592 216 L600 215 L608 213 L616 211 L624 209 L632 206 L640 202 L648 197 L656 191 L664 185 L672 180 L680 174 L688 168 L696 163 L704 160 L712 158 L720 156 L728 152 L736 149 L744 146 L752 144 L760 141 L768 139 L776 137 L784 136 L792 135 L800 135 L808 136 L816 135 L824 135 L832 135 L840 137 L848 141 L856 145 L864 148 L872 150 L880 151 L888 154 L896 157 L904 161 L912 164 L920 166 L928 167 L936 165 L944 164 L952 163 L960 163 L968 164 L976 165 L984 165 L992 165 L1000 165 L1008 167 L1016 168 L1024 169 L1032 171 L1040 173 L1048 176 L1056 179 L1064 180 L1072 182 L1080 185 L1088 187 L1096 188 L1104 191 L1112 195 L1120 202 L1128 210 L1136 219 L1144 226 L1152 231 L1160 234 L1168 235 L1176 238 L1184 242 L1192 247 L1200 250 L1200 600 Z"/></svg>
+          <div class="mist mist--1"></div>
+          <svg class="layer layer--2" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset=".38" class="s2a"/><stop offset=".75" class="s2b"/></linearGradient></defs><path fill="url(#g2)" d="M0 600 L0 292 L6 292 L12 292 L18 291 L24 291 L30 291 L36 293 L42 296 L48 300 L54 304 L60 307 L66 307 L72 307 L78 306 L84 307 L90 308 L96 308 L102 308 L108 308 L114 306 L120 303 L126 300 L132 297 L138 293 L144 289 L150 285 L156 284 L162 284 L168 284 L174 283 L180 284 L186 286 L192 287 L198 288 L204 289 L210 288 L216 285 L222 281 L228 277 L234 275 L240 273 L246 272 L252 271 L258 270 L264 266 L270 263 L276 261 L282 261 L288 261 L294 261 L300 262 L306 262 L312 263 L318 263 L324 264 L330 264 L336 265 L342 267 L348 272 L354 278 L360 283 L366 285 L372 287 L378 288 L384 289 L390 289 L396 288 L402 287 L408 286 L414 284 L420 282 L426 281 L432 280 L438 280 L444 279 L450 278 L456 278 L462 277 L468 277 L474 277 L480 277 L486 276 L492 275 L498 274 L504 273 L510 272 L516 271 L522 270 L528 270 L534 270 L540 271 L546 273 L552 276 L558 277 L564 277 L570 276 L576 276 L582 277 L588 280 L594 283 L600 285 L606 287 L612 289 L618 290 L624 290 L630 289 L636 287 L642 287 L648 288 L654 289 L660 290 L666 290 L672 288 L678 287 L684 285 L690 284 L696 283 L702 283 L708 283 L714 283 L720 282 L726 281 L732 280 L738 279 L744 278 L750 277 L756 277 L762 275 L768 272 L774 270 L780 267 L786 265 L792 262 L798 260 L804 259 L810 258 L816 257 L822 255 L828 252 L834 251 L840 251 L846 252 L852 255 L858 258 L864 261 L870 265 L876 269 L882 272 L888 276 L894 280 L900 284 L906 287 L912 288 L918 290 L924 292 L930 294 L936 296 L942 297 L948 299 L954 302 L960 305 L966 308 L972 312 L978 316 L984 321 L990 324 L996 328 L1002 331 L1008 334 L1014 336 L1020 336 L1026 336 L1032 335 L1038 334 L1044 331 L1050 329 L1056 327 L1062 327 L1068 328 L1074 328 L1080 325 L1086 321 L1092 318 L1098 316 L1104 313 L1110 311 L1116 309 L1122 306 L1128 303 L1134 300 L1140 296 L1146 291 L1152 287 L1158 284 L1164 282 L1170 281 L1176 280 L1182 279 L1188 278 L1194 276 L1200 275 L1200 600 Z"/></svg>
+          <div class="mist mist--2"></div>
+          <svg class="layer layer--3" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset=".55" class="s3a"/><stop offset=".85" class="s3b"/></linearGradient></defs><path fill="url(#g3)" d="M0 600 L0 371 L6 370 L12 366 L18 365 L24 366 L30 366 L36 361 L42 355 L48 355 L54 354 L60 353 L66 352 L72 351 L78 353 L84 355 L90 357 L96 360 L102 363 L108 367 L114 371 L120 374 L126 376 L132 375 L138 374 L144 375 L150 375 L156 376 L162 373 L168 369 L174 366 L180 366 L186 368 L192 369 L198 367 L204 367 L210 368 L216 373 L222 377 L228 377 L234 376 L240 379 L246 383 L252 385 L258 386 L264 389 L270 388 L276 388 L282 391 L288 393 L294 395 L300 397 L306 398 L312 399 L318 402 L324 402 L330 402 L336 405 L342 405 L348 406 L354 407 L360 408 L366 405 L372 401 L378 393 L384 386 L390 382 L396 377 L402 374 L408 371 L414 367 L420 367 L426 364 L432 364 L438 366 L444 371 L450 373 L456 375 L462 375 L468 375 L474 379 L480 381 L486 384 L492 386 L498 386 L504 386 L510 385 L516 383 L522 382 L528 383 L534 384 L540 385 L546 386 L552 387 L558 389 L564 389 L570 390 L576 390 L582 392 L588 392 L594 392 L600 392 L606 393 L612 397 L618 402 L624 407 L630 408 L636 409 L642 410 L648 408 L654 403 L660 401 L666 401 L672 404 L678 405 L684 406 L690 409 L696 409 L702 408 L708 407 L714 408 L720 409 L726 409 L732 408 L738 409 L744 408 L750 408 L756 407 L762 406 L768 405 L774 405 L780 407 L786 408 L792 408 L798 407 L804 406 L810 405 L816 404 L822 404 L828 404 L834 406 L840 406 L846 406 L852 406 L858 404 L864 402 L870 401 L876 400 L882 397 L888 396 L894 393 L900 391 L906 391 L912 390 L918 390 L924 389 L930 387 L936 385 L942 386 L948 388 L954 388 L960 385 L966 383 L972 382 L978 381 L984 383 L990 384 L996 383 L1002 384 L1008 386 L1014 390 L1020 389 L1026 390 L1032 393 L1038 393 L1044 393 L1050 392 L1056 390 L1062 387 L1068 385 L1074 385 L1080 386 L1086 386 L1092 388 L1098 386 L1104 385 L1110 383 L1116 381 L1122 378 L1128 376 L1134 376 L1140 375 L1146 374 L1152 371 L1158 370 L1164 368 L1170 367 L1176 367 L1182 370 L1188 373 L1194 375 L1200 377 L1200 600 Z"/></svg>
+          <svg class="layer layer--4" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><linearGradient id="g4" x1="0" y1="0" x2="0" y2="1"><stop offset=".7" class="s4a"/><stop offset="1" class="s4b"/></linearGradient></defs><path fill="url(#g4)" d="M0 600 L0 459 L5 453 L10 457 L10 457 L13 440 L17 456 L17 456 L24 452 L30 457 L30 457 L35 435 L41 459 L42 459 L50 446 L58 463 L58 463 L64 456 L70 466 L70 466 L74 462 L78 468 L79 468 L82 450 L86 469 L85 469 L93 454 L100 469 L97 470 L103 454 L110 468 L111 468 L115 454 L118 469 L119 469 L123 458 L127 470 L126 470 L133 463 L140 473 L138 473 L145 469 L152 476 L153 477 L161 458 L168 479 L168 479 L176 470 L183 479 L185 479 L190 458 L194 479 L192 479 L198 475 L203 479 L203 479 L207 470 L211 480 L210 480 L214 472 L218 481 L218 481 L223 474 L228 484 L227 484 L232 472 L236 484 L237 484 L240 478 L243 482 L242 483 L248 476 L254 480 L253 480 L260 466 L267 476 L268 476 L274 455 L280 474 L279 475 L283 463 L287 472 L285 472 L293 460 L301 468 L299 468 L305 445 L310 466 L312 466 L318 449 L324 465 L323 465 L330 455 L337 462 L336 462 L343 451 L350 461 L349 461 L356 437 L363 457 L363 455 L368 435 L373 453 L373 453 L379 447 L385 451 L385 451 L392 429 L399 449 L398 450 L401 438 L404 449 L404 449 L410 445 L416 450 L416 450 L420 437 L424 450 L425 450 L431 439 L437 447 L437 447 L442 426 L447 447 L446 447 L452 427 L459 448 L458 448 L466 441 L473 450 L472 450 L479 430 L486 451 L487 451 L494 437 L502 453 L500 452 L507 448 L513 453 L514 453 L518 439 L522 454 L522 454 L527 447 L533 453 L530 453 L535 434 L540 453 L540 453 L544 442 L548 452 L547 452 L550 442 L553 452 L551 452 L556 440 L561 452 L560 452 L566 432 L571 451 L573 452 L579 448 L584 453 L583 453 L590 434 L597 452 L598 452 L602 433 L607 452 L606 452 L612 444 L617 453 L615 452 L619 440 L623 453 L622 453 L629 449 L637 454 L634 454 L641 432 L647 452 L644 453 L647 439 L650 452 L649 452 L656 442 L662 449 L659 449 L665 445 L671 449 L669 449 L675 441 L680 450 L679 450 L685 430 L690 452 L690 452 L697 444 L704 454 L706 456 L712 446 L718 459 L716 458 L720 446 L725 460 L724 460 L731 446 L739 460 L736 460 L739 456 L742 460 L742 460 L749 449 L756 459 L757 459 L763 450 L768 457 L768 457 L775 443 L783 456 L783 457 L791 434 L798 454 L799 454 L804 439 L809 452 L808 452 L812 434 L817 452 L816 452 L823 436 L829 451 L829 451 L833 446 L836 450 L837 450 L841 429 L845 449 L844 449 L849 435 L853 449 L853 449 L861 437 L868 452 L866 451 L870 430 L874 453 L875 453 L879 445 L883 453 L884 453 L889 449 L893 454 L893 454 L900 436 L908 455 L909 455 L914 440 L919 455 L917 455 L921 448 L926 456 L925 456 L932 445 L939 456 L937 456 L944 451 L951 455 L950 455 L954 451 L957 455 L958 455 L965 445 L973 456 L975 456 L979 452 L983 459 L984 459 L988 455 L993 461 L991 461 L997 451 L1002 464 L1003 464 L1011 456 L1018 468 L1016 466 L1020 446 L1023 469 L1022 468 L1027 454 L1032 470 L1033 470 L1039 462 L1045 469 L1042 469 L1049 461 L1055 465 L1054 465 L1060 446 L1066 462 L1066 462 L1072 448 L1078 460 L1077 461 L1083 455 L1089 459 L1090 459 L1094 443 L1098 459 L1097 459 L1101 455 L1104 459 L1105 459 L1108 454 L1112 458 L1111 458 L1116 438 L1122 458 L1121 458 L1129 454 L1137 458 L1138 458 L1144 439 L1150 456 L1150 456 L1155 434 L1161 457 L1162 457 L1169 440 L1176 459 L1175 459 L1179 455 L1182 459 L1183 459 L1189 450 L1196 458 L1196 458 L1202 439 L1208 457 L1200 600 Z"/></svg>
+          <svg class="engawa" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><rect width="1200" height="120" style="fill:var(--wood)"/><path d="M0 30H1200M0 62H1200M0 98H1200" fill="none" style="stroke:var(--wood-2)" stroke-width="1.5" vector-effect="non-scaling-stroke"/><rect width="1200" height="7" style="fill:var(--wood-2)"/></svg>
+          <canvas class="window__fx" data-fx aria-hidden="true"></canvas>
+          <div class="shoji shoji--l"></div>
+          <div class="shoji shoji--r"></div>
+          <div class="window__frame"></div>
+        </div>
+
+        <div class="tanzaku tanzaku--name tanzaku--page">
+          <h1 id="hero-title"><span class="t-small">湯の宿 しづく庵<span class="tanzaku__seal" aria-hidden="true">栞</span></span><span class="t-big">お部屋とお食事</span></h1>
+        </div>
+      </div>
+
+      <div class="hero__foot">
+        <div class="season season--seal" role="group" aria-labelledby="season-l1">
+          <span class="season__l" id="season-l1">季節の木札</span>
+          <button type="button" data-season-btn="haru" data-caption="春の献立" aria-pressed="false"><span>春</span></button>
+          <button type="button" data-season-btn="natsu" data-caption="夏の献立" aria-pressed="false"><span>夏</span></button>
+          <button type="button" data-season-btn="aki" data-caption="秋の献立" aria-pressed="false"><span>秋</span></button>
+          <button type="button" data-season-btn="fuyu" data-caption="冬の献立" aria-pressed="false"><span>冬</span></button>
+          <span class="season__now" data-season-now aria-live="polite"></span>
+        </div>
+        <p class="hero__lead">三つの趣のお部屋と、季節のお品書きをご案内いたします。<small>架空の宿の見本につき、部屋数・お代・献立は、すべて例として記しております。</small></p>
+      </div>
+    </section>
+
+    <div class="chapter-rule" aria-hidden="true">
+      <svg viewBox="0 0 120 24"><path d="M0 12h42M78 12h42" stroke="currentColor" stroke-width="1"/><path d="M60 4c2.2 3.6 3.5 5.8 3.5 7.6a3.5 3.5 0 0 1-7 0c0-1.8 1.3-4 3.5-7.6z" fill="currentColor"/><ellipse cx="60" cy="18" rx="8" ry="2.2" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+    </div>
+
+    <section class="sec" id="heya" aria-labelledby="room-h">
+      <div class="sec__in">
+        <div class="v-head-box">
+          <span class="v-head__no">一の節</span>
+          <h2 class="v-head" id="room-h"><span class="ink">お部屋</span></h2>
+          <span class="v-head__sub">広縁・縁側・離れの三様</span>
+        </div>
+        <div class="sec__body">
+          <p class="lead">どのお部屋も和室で、窓は山の方を向いております。</p>
+          <div class="rooms">
+            <article class="room" aria-labelledby="r1">
+              <div class="room__pillar">
+                <span class="room__no">一の間</span>
+                <h3 id="r1"><small>やまのま</small>山の間</h3>
+                <span class="room__seal">五室<span class="ex">（例）</span></span>
+              </div>
+              <div class="room__fig">
+                <svg class="drawing" viewBox="0 0 480 340" role="img" aria-labelledby="dA"><title id="dA">山の間の線画：畳の部屋の奥に広縁と椅子が二つあり、障子をあけた窓の向こうに山が見える</title><path class="f-paper2" d="M0 10L480 10L360 90L120 90Z"/><path class="f-paper" d="M0 10L120 90L120 250L0 330Z"/><path class="f-paper" d="M480 10L360 90L360 250L480 330Z"/><path class="f-paper2" d="M120 90L360 90L360 250L120 250Z"/><path class="f-wood" d="M120 250L360 250L397.5 275L82.5 275Z"/><path class="f-tatami" d="M82.5 275L397.5 275L495 340L-15 340Z"/><rect class="f-view" x="140" y="112" width="200" height="114"/><path class="f-r2" d="M140 186C160 176 178 181 200 168S240 150 262 166S300 170 318 160S334 168 340 172V226H140Z"/><path class="f-r3" d="M140 206C168 197 196 208 228 199S290 194 312 202S334 204 340 205V226H140Z"/><rect class="f-shoji" x="140" y="112" width="44" height="114"/><rect class="f-wood" x="140" y="208" width="44" height="18"/><path class="ln-2" d="M154.7 112L154.7 208"/><path class="ln-2" d="M169.3 112L169.3 208"/><path class="ln-2" d="M140 126L184 126"/><path class="ln-2" d="M140 140L184 140"/><path class="ln-2" d="M140 154L184 154"/><path class="ln-2" d="M140 168L184 168"/><path class="ln-2" d="M140 182L184 182"/><path class="ln-2" d="M140 196L184 196"/><rect class="ln" x="140" y="112" width="44" height="114"/><rect class="f-shoji" x="296" y="112" width="44" height="114"/><rect class="f-wood" x="296" y="208" width="44" height="18"/><path class="ln-2" d="M310.7 112L310.7 208"/><path class="ln-2" d="M325.3 112L325.3 208"/><path class="ln-2" d="M296 126L340 126"/><path class="ln-2" d="M296 140L340 140"/><path class="ln-2" d="M296 154L340 154"/><path class="ln-2" d="M296 168L340 168"/><path class="ln-2" d="M296 182L340 182"/><path class="ln-2" d="M296 196L340 196"/><rect class="ln" x="296" y="112" width="44" height="114"/><rect class="ln" x="140" y="112" width="200" height="114"/><path class="ln-2" d="M160 90L80 10"/><path class="ln-2" d="M200 90L160 10"/><path class="ln-2" d="M280 90L320 10"/><path class="ln-2" d="M320 90L400 10"/><path class="ln" d="M0 10L120 90"/><path class="ln" d="M480 10L360 90"/><path class="ln" d="M120 90L360 90"/><path class="ln-2" d="M120 104L360 104"/><path class="ln-2" d="M120 104L0 40"/><path class="ln-2" d="M360 104L480 40"/><path class="ln" d="M120 90L120 250"/><path class="ln" d="M360 90L360 250"/><path class="ln" d="M40 36.7L40 303.3"/><path class="ln" d="M440 36.7L440 303.3"/><path class="ln" d="M120 250L0 330"/><path class="ln" d="M360 250L480 330"/><path class="ln" d="M120 250L360 250"/><path class="f-paper" d="M392 120L410 114.1L410 220.3L392 215Z"/><path class="ln" d="M392 120L410 114.1L410 220.3L392 215Z"/><path class="ln-m" d="M395 186q4-9 6-6t5-10"/><path class="f-paper" d="M151 226h30v20h-30z"/><path class="ln" d="M151 246v-20h30v20M147 247h38v8h-38zM149 255v9M183 255v9"/><path class="f-paper" d="M299 226h30v20h-30z"/><path class="ln" d="M299 246v-20h30v20M295 247h38v8h-38zM297 255v9M331 255v9"/><path class="ln" d="M228 246a12 3.2 0 0 0 24 0a12 3.2 0 0 0-24 0M240 249v13M233 262h14"/><path class="ln" d="M82.5 275L397.5 275"/><path class="ln-2" d="M84 278L396 278"/><path class="ln-2" d="M135 278L70 340"/><path class="ln-2" d="M187.5 278L155 340"/><path class="ln-2" d="M292.5 278L325 340"/><path class="ln-2" d="M345 278L410 340"/><path class="ln-2" d="M45 300L435 300"/><path class="f-wood2" d="M205 298L275 298L279.9 316L200.1 316Z"/><path class="ln" d="M205 298L275 298L279.9 316L200.1 316Z"/><path class="ln" d="M200.1 316v5h79.8v-5M203.1 321v7M276.9 321v7"/><path class="ln-2" d="M228 305a4 1.3 0 0 0 8 0a4 1.3 0 0 0-8 0M246 307a4 1.3 0 0 0 8 0a4 1.3 0 0 0-8 0"/></svg>
+              </div>
+              <div class="room__info">
+                <p class="room__spec">和室八畳と広縁　二名様まで　五室<span class="ex">（例）</span></p>
+                <div class="prose"><p>窓辺の広縁に、椅子をふたつ置いております。稜線を正面に望む、宿でいちばん多いお部屋です。</p></div>
+                <p class="room__price">ご一泊二食付き　お一人様 18,000円より<span class="ex">（例）</span></p>
+              </div>
+            </article>
+
+            <article class="room" aria-labelledby="r2">
+              <div class="room__pillar">
+                <span class="room__no">二の間</span>
+                <h3 id="r2"><small>えんのま</small>縁の間</h3>
+                <span class="room__seal">三室<span class="ex">（例）</span></span>
+              </div>
+              <div class="room__fig">
+                <svg class="drawing" viewBox="0 0 480 340" role="img" aria-labelledby="dB"><title id="dB">縁の間の線画：障子の並ぶ縁側が奥へ続き、軒の柱の向こうに庭の木と石灯籠が見える</title><path class="f-view-soft" d="M140 0L480 0L480 340L210 340L326 239.8L326 96.2Z"/><path class="f-plant" d="M300 300c6-22 30-30 52-24c10-18 40-20 54-4c18-8 40 0 46 18c14 2 28 14 28 30v20H292z"/><path class="ln-2" d="M300 300c6-22 30-30 52-24c10-18 40-20 54-4c18-8 40 0 46 18c14 2 28 14 28 30"/><path class="f-paper2" d="M404 262h22l-3 10h-16zM409 238h12v24h-12zM400 230h30l-6 8h-18zM406 214h18v16h-18zM396 214l19-12 19 12z"/><path class="f-glow" d="M410 218h10v9h-10z"/><path class="ln" d="M404 262h22l-3 10h-16zM409 238h12v24h-12zM400 230h30l-6 8h-18zM406 214h18v16h-18zM396 214l19-12 19 12zM415 202v-5"/><path class="f-snow" d="M396 214l19-12 19 12q-19-6-38 0z"/><path class="ln" d="M480 40c-30 6-52 20-70 40M452 52c-6 14-4 26 2 38M430 64c-12 4-22 12-28 22"/><circle class="f-leaf2" cx="400" cy="84" r="16"/><circle class="f-leaf" cx="418" cy="70" r="14"/><circle class="f-leaf" cx="440" cy="88" r="15"/><circle class="f-leaf2" cx="458" cy="60" r="13"/><circle class="f-leaf" cx="470" cy="82" r="12"/><circle class="f-leaf" cx="432" cy="46" r="12"/><circle class="f-leaf2" cx="405" cy="102" r="11"/><circle class="f-leaf" cx="454" cy="100" r="12"/><circle class="f-leaf" cx="390" cy="90" r="10"/><circle class="f-leaf2" cx="474" cy="36" r="11"/><path class="f-paper2" d="M0 0L140 0L326 96.2L326 123.4L0 40Z"/><path class="ln-2" d="M28 0L326 111.2"/><path class="ln-2" d="M62 0L326 107.6"/><path class="ln-2" d="M98 0L326 103"/><path class="f-shoji" d="M0 40L326 123.4L326 177.1L0 262Z"/><path class="f-wood" d="M0 226L326 168.4L326 177.1L0 262Z"/><path class="ln-2" d="M0 68L326 130.2"/><path class="ln-2" d="M0 94L326 136.5"/><path class="ln-2" d="M0 120L326 142.7"/><path class="ln-2" d="M0 146L326 149"/><path class="ln-2" d="M0 172L326 155.3"/><path class="ln-2" d="M0 198L326 161.6"/><path class="ln-2" d="M0 224L326 167.9"/><path class="ln" d="M0 40L0 262"/><path class="ln-2" d="M46 51.8L46 217.9"/><path class="ln" d="M92 63.5L92 238"/><path class="ln-2" d="M128.5 72.9L128.5 203.3"/><path class="ln" d="M165 82.2L165 219"/><path class="ln-2" d="M193.5 89.5L193.5 191.8"/><path class="ln" d="M222 96.8L222 204.2"/><path class="ln-2" d="M244 102.4L244 182.9"/><path class="ln" d="M266 108L266 192.7"/><path class="ln-2" d="M283 112.4L283 176"/><path class="ln" d="M300 116.7L300 183.9"/><path class="ln-2" d="M313 120.1L313 170.7"/><path class="ln" d="M326 123.4L326 177.1"/><path class="ln" d="M0 40L326 123.4"/><path class="ln-2" d="M0 226L326 168.4"/><path class="f-wood" d="M0 262L326 177.1L326 239.8L210 340L0 340Z"/><path class="ln-2" d="M-60 340L326 190.3"/><path class="ln-2" d="M-10 340L326 194.9"/><path class="ln-2" d="M40 340L326 200.7"/><path class="ln-2" d="M90 340L326 208.1"/><path class="ln-2" d="M140 340L326 218.1"/><path class="ln-2" d="M180 340L326 229"/><path class="ln" d="M0 262L326 177.1"/><path class="ln" d="M210 340L326 239.8"/><path class="ln" d="M140 0L326 96.2"/><path class="f-wood2" d="M209.5 38.3h9V336.5h-9z"/><path class="ln" d="M209.5 38.3V336.5M218.5 38.3V336.5"/><path class="f-wood2" d="M289.5 78.6h5V269.2h-5z"/><path class="ln" d="M289.5 78.6V269.2M294.5 78.6V269.2"/><path class="f-wood2" d="M322.5 95.2h3V241.5h-3z"/><path class="ln" d="M322.5 95.2V241.5M325.5 95.2V241.5"/><path class="f-paper2" d="M232 326c8-8 52-9 64-1c4 5-4 10-32 10s-36-4-32-9z"/><path class="ln" d="M232 326c8-8 52-9 64-1c4 5-4 10-32 10s-36-4-32-9z"/></svg>
+              </div>
+              <div class="room__info">
+                <p class="room__spec">和室十畳と縁側　四名様まで　三室<span class="ex">（例）</span></p>
+                <div class="prose"><p>障子の外に縁側があり、小さなお庭へおりられます。ご家族で、またはゆっくりと長めにご滞在の方に。</p></div>
+                <p class="room__price">ご一泊二食付き　お一人様 22,000円より<span class="ex">（例）</span></p>
+              </div>
+            </article>
+
+            <article class="room" aria-labelledby="r3">
+              <div class="room__pillar">
+                <span class="room__no">三の間</span>
+                <h3 id="r3"><small>はなれ しずく</small>離れ「雫」</h3>
+                <span class="room__seal">二室<span class="ex">（例）</span></span>
+              </div>
+              <div class="room__fig">
+                <svg class="drawing" viewBox="0 0 480 340" role="img" aria-labelledby="dC"><title id="dC">離れ「雫」の線画：寄棟屋根の小さな建物に丸窓と入口があり、飛び石が入口まで続く</title><path class="ln-2" d="M0 150C40 132 70 140 104 122S168 104 196 116S250 132 290 112S350 86 392 104S450 124 480 116"/><path class="ln" d="M84 292c2-30-4-62-10-96M77 220c-12-8-20-22-24-36M80 238c10-10 22-16 34-18"/><circle class="f-leaf" cx="66" cy="176" r="30"/><circle class="f-leaf2" cx="96" cy="160" r="26"/><circle class="f-leaf" cx="44" cy="196" r="22"/><circle class="f-leaf2" cx="110" cy="196" r="22"/><circle class="f-leaf" cx="76" cy="146" r="20"/><circle class="f-leaf2" cx="52" cy="160" r="18"/><circle class="f-leaf" cx="122" cy="172" r="16"/><path class="f-paper2" d="M366 238h96v54h-96z"/><path class="ln-2" d="M370 238v54M378 238v54M386 238v54M394 238v54M402 238v54M410 238v54M418 238v54M426 238v54M434 238v54M442 238v54M450 238v54M458 238v54"/><path class="ln" d="M362 252h104M362 272h104M366 236v56M462 236v56"/><path class="f-paper" d="M130 186h220v104H130z"/><path class="ln" d="M130 186v104M350 186v104M240 186v104M126 290h228M130 282h220"/><path class="f-paper2" d="M98 188h284l-60-70H158z"/><path class="ln-2" d="M112.2 188L166.2 118M126.4 188L174.4 118M140.6 188L182.6 118M154.8 188L190.8 118M169 188L199 118M183.2 188L207.2 118M197.4 188L215.4 118M211.6 188L223.6 118M225.8 188L231.8 118M240 188L240 118M254.2 188L248.2 118M268.4 188L256.4 118M282.6 188L264.6 118M296.8 188L272.8 118M311 188L281 118M325.2 188L289.2 118M339.4 188L297.4 118M353.6 188L305.6 118M367.8 188L313.8 118"/><path class="ln" d="M98 188h284l-60-70H158zM152 114h176v5H152z"/><path class="f-snow" d="M158 118h164l12 14q-94-10-188 0z"/><defs><clipPath id="maru"><circle cx="186" cy="234" r="30"/></clipPath></defs><circle class="f-glow" cx="186" cy="234" r="30"/><g clip-path="url(#maru)"><path class="ln-2" d="M171 200v70M186 200v70M201 200v70M150 219h72M150 234h72M150 249h72"/></g><circle class="ln" cx="186" cy="234" r="30"/><circle class="ln-2" cx="186" cy="234" r="34"/><path class="f-shoji" d="M268 206h68v76h-68z"/><path class="ln" d="M268 206h68v76h-68zM302 206v76M258 200h88"/><path class="ln-2" d="M279 206v76M290 206v76M313 206v76M324 206v76M268 226h68M268 246h68M268 266h68"/><path class="ln" d="M278 292c4-5 44-5 48 0c-2 4-46 4-48 0z"/><ellipse class="f-paper2" cx="286" cy="306" rx="15" ry="4"/><ellipse class="ln" cx="286" cy="306" rx="15" ry="4"/><ellipse class="f-paper2" cx="262" cy="318" rx="17" ry="4.6"/><ellipse class="ln" cx="262" cy="318" rx="17" ry="4.6"/><ellipse class="f-paper2" cx="282" cy="331" rx="19" ry="5"/><ellipse class="ln" cx="282" cy="331" rx="19" ry="5"/><path class="ln-2" d="M20 292L126 292"/><path class="ln-2" d="M354 292L462 292"/></svg>
+              </div>
+              <div class="room__info">
+                <p class="room__spec">二間続き・檜の内風呂つき　四名様まで　二室<span class="ex">（例）</span></p>
+                <div class="prose"><p>母屋から渡り廊下でつながる離れです。丸窓のある一間と、檜の内風呂がございます。</p></div>
+                <p class="room__price">ご一泊二食付き　お一人様 32,000円より<span class="ex">（例）</span></p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="chapter-rule" aria-hidden="true">
+      <svg viewBox="0 0 120 24"><path d="M0 12h42M78 12h42" stroke="currentColor" stroke-width="1"/><path d="M60 4c2.2 3.6 3.5 5.8 3.5 7.6a3.5 3.5 0 0 1-7 0c0-1.8 1.3-4 3.5-7.6z" fill="currentColor"/><ellipse cx="60" cy="18" rx="8" ry="2.2" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+    </div>
+
+    <section class="sec" id="shokuji" aria-labelledby="food-h">
+      <div class="sec__in">
+        <div class="v-head-box">
+          <span class="v-head__no">二の節</span>
+          <h2 class="v-head" id="food-h"><span class="ink">お食事</span></h2>
+          <span class="v-head__sub">四季のお品書き</span>
+        </div>
+        <div class="sec__body">
+          <p class="lead">ご夕食は、お部屋で一品ずつお運びいたします。</p>
+          <div class="oshinagaki-wrap">
+            <div class="prose">
+              <p>山形の山と川の恵みを、季節ごとの献立でお出ししております。<span class="js-only">お品書きは、春夏秋冬の木札を押すと、その季節のものに替わります。</span><span class="nojs-only">ここには秋のお品書きを載せております。</span></p>
+              <p>ご朝食は食事処にて。炊きたてのご飯にお味噌汁、焼き魚、お漬物などをご用意いたします。</p>
+              <p>召し上がれない食材がございましたら、ご予約の際にお申し付けください。できる限りお応えいたします。</p>
+              <div class="season season--seal food-switch" role="group" aria-labelledby="season-l2">
+                <span class="season__l" id="season-l2">お品書きの季節</span>
+                <button type="button" data-season-btn="haru" data-caption="春の献立" aria-pressed="false"><span>春</span></button>
+                <button type="button" data-season-btn="natsu" data-caption="夏の献立" aria-pressed="false"><span>夏</span></button>
+                <button type="button" data-season-btn="aki" data-caption="秋の献立" aria-pressed="false"><span>秋</span></button>
+                <button type="button" data-season-btn="fuyu" data-caption="冬の献立" aria-pressed="false"><span>冬</span></button>
+              </div>
+            </div>
+            <div class="oshinagaki">
+              <div class="oshinagaki__seal" aria-hidden="true">献立</div>
+              <div class="menu menu--haru">
+                <h3>春のお品書き</h3>
+                <ul>
+                  <li><span>先付</span>　こごみの胡麻和え</li>
+                  <li><span>椀物</span>　ふきのとうの真薯</li>
+                  <li><span>造り</span>　桜鱒</li>
+                  <li><span>焼物</span>　山女魚の塩焼き</li>
+                  <li><span>煮物</span>　筍の土佐煮</li>
+                  <li><span>食事</span>　山菜ご飯</li>
+                  <li><span>水菓子</span>　苺</li>
+                </ul>
+              </div>
+              <div class="menu menu--natsu">
+                <h3>夏のお品書き</h3>
+                <ul>
+                  <li><span>先付</span>　枝豆と胡麻豆腐</li>
+                  <li><span>椀物</span>　冷やし冬瓜</li>
+                  <li><span>造り</span>　鯉の洗い</li>
+                  <li><span>焼物</span>　鮎の塩焼き</li>
+                  <li><span>煮物</span>　茄子の揚げびたし</li>
+                  <li><span>食事</span>　だしと白ご飯</li>
+                  <li><span>水菓子</span>　さくらんぼ</li>
+                </ul>
+              </div>
+              <div class="menu menu--aki">
+                <h3>秋のお品書き</h3>
+                <ul>
+                  <li><span>先付</span>　菊のおひたし</li>
+                  <li><span>椀物</span>　舞茸の土瓶蒸し</li>
+                  <li><span>造り</span>　秋鮭</li>
+                  <li><span>焼物</span>　牛肉の朴葉焼き</li>
+                  <li><span>煮物</span>　芋煮</li>
+                  <li><span>食事</span>　栗ご飯</li>
+                  <li><span>水菓子</span>　洋梨</li>
+                </ul>
+              </div>
+              <div class="menu menu--fuyu">
+                <h3>冬のお品書き</h3>
+                <ul>
+                  <li><span>先付</span>　青菜漬</li>
+                  <li><span>椀物</span>　寒鱈汁</li>
+                  <li><span>造り</span>　平目</li>
+                  <li><span>焼物</span>　鰤の照り焼き</li>
+                  <li><span>煮物</span>　大根と蕪の炊き合わせ</li>
+                  <li><span>食事</span>　納豆汁と白ご飯</li>
+                  <li><span>水菓子</span>　柚子の寒天</li>
+                </ul>
+              </div>
+              <p class="menu-foot">献立は一例です。仕入れにより替わります。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="chapter-rule" aria-hidden="true">
+      <svg viewBox="0 0 120 24"><path d="M0 12h42M78 12h42" stroke="currentColor" stroke-width="1"/><path d="M60 4c2.2 3.6 3.5 5.8 3.5 7.6a3.5 3.5 0 0 1-7 0c0-1.8 1.3-4 3.5-7.6z" fill="currentColor"/><ellipse cx="60" cy="18" rx="8" ry="2.2" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+    </div>
+
+    <section class="sec" id="shukuhaku" aria-labelledby="stay-h">
+      <div class="sec__in">
+        <div class="v-head-box">
+          <span class="v-head__no">三の節</span>
+          <h2 class="v-head" id="stay-h"><span class="ink">ご宿泊のご案内</span></h2>
+          <span class="v-head__sub">お着き・お食事・お代</span>
+        </div>
+        <div class="sec__body">
+          <div class="shiori-wrap">
+            <div class="shiori">
+              <h3>ご宿泊の栞</h3>
+              <ul>
+                <li>ご一泊二食付きを、基本としております</li>
+                <li>チェックイン　午後三時より</li>
+                <li>チェックアウト　午前十時まで</li>
+                <li>ご夕食　午後六時または六時半より、お部屋にて</li>
+                <li>ご朝食　午前七時半または八時より、食事処にて</li>
+                <li>休前日は、お一人様三千円ほど増しとなります</li>
+                <li>入湯税は、お代とは別に申し受けます</li>
+                <li>お一人でのご宿泊、お子様のお代は、お電話にてお尋ねください</li>
+              </ul>
+              <p class="shiori__foot">時刻・お代はいずれも例</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="chapter-rule" aria-hidden="true">
+      <svg viewBox="0 0 120 24"><path d="M0 12h42M78 12h42" stroke="currentColor" stroke-width="1"/><path d="M60 4c2.2 3.6 3.5 5.8 3.5 7.6a3.5 3.5 0 0 1-7 0c0-1.8 1.3-4 3.5-7.6z" fill="currentColor"/><ellipse cx="60" cy="18" rx="8" ry="2.2" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+    </div>
+
+    <section class="sec sec--reserve" id="access" aria-labelledby="reserve-h">
+      <span id="reserve" class="anchor-alias" aria-hidden="true"></span>
+      <div class="reserve">
+        <div class="sec__in">
+          <div class="v-head-box">
+            <span class="v-head__no">四の節</span>
+            <h2 class="v-head" id="reserve-h"><span class="ink">道のり・ご予約</span></h2>
+            <span class="v-head__sub">帳場の札とご案内</span>
+          </div>
+          <div class="sec__body">
+            <div class="reserve-body">
+              <div class="fuda fuda--yoyaku">
+                <h3>ご予約の札</h3>
+                <p>ご予約は、お電話にて</p>
+                <p class="fuda__tel"><a class="tel" href="tel:0000000000">000-0000-0000</a></p>
+                <p>帳場にて、朝九時から夜八時まで<span class="ex">（例）</span></p>
+                <p>火曜は休館日です<span class="ex">（例）</span></p>
+              </div>
+              <div class="reserve-cols">
+                <div class="prose">
+                  <p class="lead">ご予約は、帳場のお電話にて承っております。</p>
+                  <p>お部屋のご希望、お食事で召し上がれないもの、駅へのお迎えの時刻なども、どうぞお電話でお申し付けください。</p>
+                  <p class="note">文でのお問い合わせは、info@example.jp へお寄せください。お返事まで、数日いただくことがあります。</p>
+                </div>
+                <div class="access">
+                  <h3>道のり・交通のご案内</h3>
+                  <p>山形県上山市見本町1-2-3<span class="ex">（架空の住所）</span></p>
+                  <p>お車では、最寄りのインターから十五分ほど<span class="ex">（例）</span>。駐車場は十台分<span class="ex">（例）</span>ございます。</p>
+                  <p>電車では、最寄り駅から車で十分ほど<span class="ex">（例）</span>。前日までにお知らせいただければ、駅までお迎えにあがります。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-ft">
+    <div class="site-ft__in">
+      <div>
+        <p class="logo__name">湯の宿 しづく庵</p>
+        <p>このサイトは制作サンプルです。しづく庵は架空の旅館で、住所・電話番号・お代・部屋数・創業の年などは、すべて架空または例です。</p>
+      </div>
+      <nav aria-label="フッター">
+        <ul>
+          <li><a href="./">ご案内</a></li>
+          <li><a href="rooms.html" aria-current="page">客室と料理</a></li>
+          <li><a href="./#bath">湯殿</a></li>
+          <li><a href="#access">道のり・ご予約</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+<a class="call" href="tel:0000000000">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+  <span class="call__l">お電話で予約</span>
+  <span class="call__n">000-0000-0000</span>
+</a>
+</body>
+</html>

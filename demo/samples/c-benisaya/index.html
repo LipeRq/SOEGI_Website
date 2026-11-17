@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>べにさや農園｜山形のさくらんぼ園とジャム工房（制作サンプル）</title>
+<meta name="description" content="山形のさくらんぼ園と小さなジャム工房（架空）。花が咲いてから、ジャムの瓶に詰めるまでの一年。制作サンプルです。">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../_shared/bar.css">
+<script src="../_shared/bar.js" defer></script>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body class="home">
+<div class="soegi-bar" role="region" aria-label="制作サンプルについて">
+  <span class="soegi-bar__tag">サンプル</span>
+  <span class="soegi-bar__text">これは架空の会社のサンプルです</span>
+  <span class="soegi-bar__links">
+    <button type="button" data-soegi-memo>制作メモ</button>
+    <a href="/demo/#samples">ソエギに戻る</a>
+  </span>
+</div>
+<a class="skip" href="#main">本文へ移動</a>
+
+<!-- 絵の部品（花・葉・さくらんぼ・瓶・角飾り）。ページ内で <use> して使い回す -->
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="bv-cherry" cx=".36" cy=".3" r=".78">
+      <stop offset="0" stop-color="#F2416A"/><stop offset=".55" stop-color="#C8143C"/><stop offset="1" stop-color="#7D0F2B"/>
+    </radialGradient>
+    <path id="bv-petal" d="M0 -2C-8 -5 -10 -14 -5 -18L0 -15.5 5 -18C10 -14 8 -5 0 -2Z"/>
+    <g id="bv-fl">
+      <g fill="#fff" stroke="#EFAFC0" stroke-width=".9"><use href="#bv-petal"/><use href="#bv-petal" transform="rotate(72)"/><use href="#bv-petal" transform="rotate(144)"/><use href="#bv-petal" transform="rotate(216)"/><use href="#bv-petal" transform="rotate(288)"/></g>
+      <circle r="6.5" fill="#F9C9D5"/>
+      <path d="M0 0V-9M0 0L8.5 -2.8M0 0L5.3 7.3M0 0L-5.3 7.3M0 0L-8.5 -2.8" stroke="#E7A93B" stroke-width="1" stroke-linecap="round"/>
+      <g fill="#E7A93B"><circle cy="-9" r="1.4"/><circle cx="8.5" cy="-2.8" r="1.4"/><circle cx="5.3" cy="7.3" r="1.4"/><circle cx="-5.3" cy="7.3" r="1.4"/><circle cx="-8.5" cy="-2.8" r="1.4"/></g>
+      <circle r="2.2" fill="#D9748F"/>
+    </g>
+    <g id="bv-leaf"><path d="M0 0C10 -12 38 -14 58 0C38 13 10 11 0 0Z" fill="#5E9E45"/><path d="M4 0Q30 -1.5 54 0" fill="none" stroke="#3E7A33" stroke-width="1.5" stroke-linecap="round"/></g>
+    <g id="bv-pair">
+      <path d="M22 4Q16 15 11 25M22 4Q27 16 30 26" fill="none" stroke="#5E7A2E" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M22 4Q30 0 36 5Q29 10 22 4Z" fill="#5E9E45"/>
+      <circle cx="11" cy="30" r="8" fill="url(#bv-cherry)"/><circle cx="30" cy="31" r="8" fill="url(#bv-cherry)"/>
+      <ellipse cx="8.3" cy="27" rx="2.3" ry="1.5" fill="#fff" opacity=".8"/><ellipse cx="27.3" cy="28" rx="2.3" ry="1.5" fill="#fff" opacity=".8"/>
+    </g>
+    <clipPath id="bv-clothclip"><path d="M20 40Q60 26 100 40L104 58Q98 64 92 59Q86 64 80 59Q74 64 68 59Q62 64 56 59Q50 64 44 59Q38 64 32 59Q26 64 22 59L16 58Z"/></clipPath>
+    <g id="bv-jar">
+      <path d="M30 62Q22 65 21 76L17 127Q16 146 35 146H85Q104 146 103 127L99 76Q98 65 90 62Z" style="fill:var(--jam,#8E1230)"/>
+      <path d="M30 62Q22 65 21 76L17 127Q16 146 35 146H85Q104 146 103 127L99 76Q98 65 90 62Z" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="2.5"/>
+      <path d="M27 82Q25 104 26 130" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="5" stroke-linecap="round"/>
+      <rect x="35" y="90" width="50" height="34" rx="7" fill="#FFF7E8"/>
+      <text x="60" y="111" text-anchor="middle" font-size="11.5" fill="#3B1E1A" style="font-family:'Kiwi Maru',serif">べにさや</text>
+      <rect x="29" y="52" width="62" height="12" rx="3" fill="#E6CFAA"/>
+      <path d="M20 40Q60 26 100 40L104 58Q98 64 92 59Q86 64 80 59Q74 64 68 59Q62 64 56 59Q50 64 44 59Q38 64 32 59Q26 64 22 59L16 58Z" style="fill:var(--cloth,#C8143C)"/>
+      <g clip-path="url(#bv-clothclip)" fill="#fff" opacity=".4"><rect x="24" y="20" width="8" height="50"/><rect x="40" y="20" width="8" height="50"/><rect x="56" y="20" width="8" height="50"/><rect x="72" y="20" width="8" height="50"/><rect x="88" y="20" width="8" height="50"/><rect x="10" y="38" width="100" height="6"/><rect x="10" y="50" width="100" height="6"/></g>
+      <path d="M18 55Q60 62 102 55" fill="none" stroke="#FFF7E8" stroke-width="2.4"/>
+      <path d="M58 59q-10 -8 -14 2q8 3 14 -2zM62 59q10 -8 14 2q-8 3 -14 -2z" fill="#FFF7E8"/>
+      <path d="M58 60l-4 10M62 60l4 10" stroke="#FFF7E8" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <g id="bv-corner">
+      <path d="M2 28C2 12 12 2 28 2" fill="none" stroke="#2D5A3C" stroke-width="2" stroke-linecap="round"/>
+      <path d="M10 18C8 11 14 7 21 9C17 15 13 17 10 18Z" fill="#2D5A3C"/>
+      <circle cx="7" cy="23" r="3" fill="#B81D33"/>
+      <circle cx="23" cy="7" r="3" fill="#B81D33"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- 木の看板と栞ひものナビゲーション -->
+<header class="site-head">
+  <div class="signboard-wrap">
+    <a class="ribbon-logo logo" href="index.html">
+      <span class="ribbon-hole" aria-hidden="true"></span>
+      <svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><use href="#bv-pair"/></svg>
+      <span class="ribbon-txt">
+        <span class="logo-kicker">山形・紅さや農園</span>
+        <span class="logo-name">べにさや農園</span>
+        <span class="logo-sub">さくらんぼとジャム</span>
+      </span>
+    </a>
+
+    <div class="wood-signboard">
+      <div class="signboard-top" aria-hidden="true">
+        <span class="nail"></span>
+        <span class="signboard-caption">木の看板と絵本の案内</span>
+        <span class="nail"></span>
+      </div>
+      <nav class="gnav" aria-label="サイト内">
+        <a class="nav-tag" href="#story"><span class="tag-eyelet" aria-hidden="true"></span>畑の一年</a>
+        <a class="nav-tag" href="products.html"><span class="tag-eyelet" aria-hidden="true"></span>お取り寄せと発送の暦</a>
+        <a class="nav-tag" href="products.html#order"><span class="tag-eyelet" aria-hidden="true"></span>頼みかた</a>
+        <a class="nav-tag" href="#about"><span class="tag-eyelet" aria-hidden="true"></span>うちのこと</a>
+      </nav>
+      <button class="still-btn" type="button" aria-pressed="false" data-still data-motion-toggle>
+        <svg class="i-pause" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><rect x="4.5" y="4" width="3.6" height="12" rx="1.8" fill="currentColor"/><rect x="11.9" y="4" width="3.6" height="12" rx="1.8" fill="currentColor"/></svg>
+        <svg class="i-play" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 4.2v11.6c0 .8.9 1.3 1.6.8l8.6-5.8c.6-.4.6-1.2 0-1.6L7.6 3.4C6.9 2.9 6 3.4 6 4.2Z" fill="currentColor"/></svg>
+        動きを止める
+      </button>
+    </div>
+  </div>
+  <svg class="head-scallop" viewBox="0 0 1440 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path d="M0 0H1440V12Q1410 28 1380 12T1320 12 1260 12 1200 12 1140 12 1080 12 1020 12 960 12 900 12 840 12 780 12 720 12 660 12 600 12 540 12 480 12 420 12 360 12 300 12 240 12 180 12 120 12 60 12 0 12Z" fill="#EADAC3"/>
+    <path d="M0 8H1440" stroke="#B81D33" stroke-width="1.5" stroke-dasharray="6 5" opacity=".55"/>
+  </svg>
+</header>
+
+<main id="main">
+  <!-- ヒーロー：絵本の見開きパノラマ（右に縦書き題箋、中央に果樹園と枝の絵、左に手書き絵葉書） -->
+  <section class="hero" aria-labelledby="hero-h">
+    <canvas class="petals" id="petals" aria-hidden="true"></canvas>
+
+    <div class="hero-in">
+      <!-- 左：ピンで留めた農園からの絵葉書 -->
+      <div class="hero-postcard">
+        <span class="pin-cherry" aria-hidden="true"></span>
+        <div class="postcard-head">
+          <span class="post-stamp">山形・盆地<br><small>1968年〜（例）</small></span>
+          <p class="post-from">紅さや農園より・春の手紙</p>
+        </div>
+        <p class="hero-lede">山形の盆地で、さくらんぼを育ててます。春に咲いた花が実になって、朝にもいだ実が、となりの小さな工房でジャムになるまで。うちは家族でやってる農園です。</p>
+        <p class="post-meta">畑の広さ 50アール・木は120本ほど（例）。手が回るだけの木を、家族4人で見ています。</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#story">畑の一年をのぞく</a>
+          <a class="btn btn-ghost" href="products.html">お取り寄せと発送の暦</a>
+        </div>
+      </div>
+
+      <!-- 中央：大きく張り出すさくらんぼの枝と、揺れる赤い実 -->
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 560 500" focusable="false">
+          <g fill="none" stroke-linecap="round" stroke="#5E3427">
+            <path d="M580 18C490 38 430 26 364 64S232 136 110 150C84 152 54 148 26 140" stroke-width="15"/>
+            <path d="M364 64C374 100 362 138 370 170" stroke-width="7"/>
+            <path d="M242 118C232 100 226 86 216 72" stroke-width="6"/>
+            <path d="M572 14C490 34 430 22 364 60S232 132 110 146" stroke="#8A5440" stroke-width="3" opacity=".55"/>
+          </g>
+          <use href="#bv-leaf" transform="translate(366 70) rotate(-28) scale(.9)"/>
+          <use href="#bv-leaf" transform="translate(360 70) rotate(196) scale(.75)"/>
+          <use href="#bv-leaf" transform="translate(220 126) rotate(150) scale(.7)"/>
+          <g fill="#F4A9BC"><ellipse cx="156" cy="132" rx="4.5" ry="7" transform="rotate(-30 156 132)"/><ellipse cx="404" cy="38" rx="4.5" ry="7" transform="rotate(20 404 38)"/><ellipse cx="314" cy="84" rx="4" ry="6.5" transform="rotate(-10 314 84)"/></g>
+          <use href="#bv-fl" transform="translate(508 30) rotate(10) scale(1.45)"/>
+          <use href="#bv-fl" transform="translate(470 54) rotate(-25) scale(1.15)"/>
+          <use href="#bv-fl" transform="translate(534 56) rotate(35)"/>
+          <use href="#bv-fl" transform="translate(432 28) rotate(5) scale(.9)"/>
+          <use href="#bv-fl" transform="translate(280 106) rotate(-10) scale(1.4)"/>
+          <use href="#bv-fl" transform="translate(250 138) rotate(20) scale(1.1)"/>
+          <use href="#bv-fl" transform="translate(216 70) scale(1.25)"/>
+          <use href="#bv-fl" transform="translate(192 98) rotate(-30)"/>
+          <use href="#bv-fl" transform="translate(130 146) rotate(15) scale(1.3)"/>
+          <use href="#bv-fl" transform="translate(92 168) rotate(-20) scale(1.05)"/>
+          <use href="#bv-fl" transform="translate(50 140) rotate(30) scale(1.15)"/>
+          <g class="sway">
+            <path d="M370 170C364 222 342 266 318 318M370 170C384 230 410 274 426 330" fill="none" stroke="#2D5A3C" stroke-width="4.5" stroke-linecap="round"/>
+            <use href="#bv-leaf" transform="translate(370 172) rotate(-18) scale(1.1)"/>
+            <circle cx="314" cy="354" r="37" fill="url(#bv-cherry)"/>
+            <circle cx="430" cy="368" r="39" fill="url(#bv-cherry)"/>
+            <path d="M306 319q8 5 16 0M422 331q8 5 16 0" fill="none" stroke="#6B0A22" stroke-width="2.4" stroke-linecap="round" opacity=".6"/>
+            <ellipse cx="300" cy="338" rx="10" ry="6.5" transform="rotate(-35 300 338)" fill="#fff" opacity=".75"/>
+            <ellipse cx="416" cy="351" rx="10.5" ry="7" transform="rotate(-35 416 351)" fill="#fff" opacity=".75"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- 右：絵本の表紙のような縦書き題箋（writing-mode: vertical-rl） -->
+      <div class="hero-title-plate">
+        <div class="title-plate-inner">
+          <p class="plate-sub">山形・さくらんぼ園とジャム工房</p>
+          <h1 id="hero-h">
+            <span class="h1-line">花から、</span><span class="h1-line">瓶まで<svg class="h1-dot" viewBox="0 0 30 38" aria-hidden="true" focusable="false"><path d="M19 2Q14 10 13 17" fill="none" stroke="#2D5A3C" stroke-width="2.6" stroke-linecap="round"/><path d="M19 2q7 -2 10 3q-6 3 -10 -3z" fill="#5E9E45"/><circle cx="13" cy="26" r="11" fill="url(#bv-cherry)"/><ellipse cx="9.5" cy="22" rx="3.2" ry="2.1" transform="rotate(-30 9.5 22)" fill="#fff" opacity=".8"/></svg><span class="vh">。</span></span>
+          </h1>
+          <div class="plate-seal" aria-hidden="true"><span>紅さや</span><span>農園印</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- パノラマ背景：遠くの雪山・果樹園の列・雨よけハウス・赤い屋根の直売所とジャム瓶 -->
+    <div class="hills" aria-hidden="true">
+      <svg class="hill-far" viewBox="0 0 1440 240" preserveAspectRatio="xMidYMax slice" focusable="false">
+        <path d="M0 240V155C120 132 210 98 330 94C420 90 480 118 560 114C670 108 730 42 860 40C980 38 1060 94 1150 100C1230 105 1280 78 1360 80C1400 81 1420 92 1440 96V240Z" fill="#EFC5D2"/>
+        <path d="M808 54C832 44 880 38 912 44L936 55C918 52 904 58 888 56C872 54 860 60 842 58C830 57 818 60 808 54Z" fill="#fff" opacity=".92"/>
+        <path d="M270 104C295 96 340 94 366 100L382 108C354 106 312 108 270 104Z" fill="#fff" opacity=".8"/>
+        <path d="M0 240V182C200 164 380 154 600 160C820 166 1100 152 1440 142V240Z" fill="#E6B2C3"/>
+      </svg>
+      <svg class="hill-mid" viewBox="0 0 1440 180" preserveAspectRatio="xMidYMax slice" focusable="false">
+        <path d="M0 180V126C220 114 460 110 720 116C980 122 1220 116 1440 108V180Z" fill="#C5DFA4"/>
+        <!-- 雨よけビニールの白い屋根 -->
+        <g opacity=".92">
+          <path d="M460 106Q510 78 560 106Z" fill="#FFFDF8" stroke="#8AA899" stroke-width="1.5"/>
+          <path d="M566 108Q616 80 666 108Z" fill="#FFFDF8" stroke="#8AA899" stroke-width="1.5"/>
+          <path d="M672 110Q722 82 772 110Z" fill="#FFFDF8" stroke="#8AA899" stroke-width="1.5"/>
+          <path d="M470 106v18M550 106v18M576 108v18M656 108v18M682 110v18M762 110v18" stroke="#6E7F75" stroke-width="2"/>
+        </g>
+        <!-- 赤い三角屋根の小さなジャム工房・直売所 -->
+        <g transform="translate(830 74)">
+          <rect x="14" y="24" width="64" height="38" rx="2" fill="#F3DEC0" stroke="#7A4A2A" stroke-width="2"/>
+          <path d="M6 26L46 2L86 26Z" fill="#B81D33"/>
+          <rect x="28" y="36" width="16" height="26" fill="#7A4A2A"/>
+          <rect x="50" y="34" width="18" height="14" rx="2" fill="#FFF7E8" stroke="#7A4A2A" stroke-width="1.5"/>
+        </g>
+        <!-- 果樹の並び -->
+        <path d="M24 106v32M112 111v35M198 113v31M296 109v35M384 112v30M980 112v35M1078 111v30M1158 108v30M1256 107v35M1341 108v35M1431 112v34" stroke="#8C5A44" stroke-width="5" stroke-linecap="round"/>
+        <g fill="#F4C6D2"><circle cx="24" cy="102" r="34"/><circle cx="5" cy="112" r="21"/><circle cx="45" cy="111" r="20"/><circle cx="112" cy="107" r="31"/><circle cx="94" cy="117" r="19"/><circle cx="131" cy="116" r="19"/><circle cx="198" cy="109" r="33"/><circle cx="179" cy="119" r="20"/><circle cx="218" cy="118" r="20"/><circle cx="296" cy="105" r="29"/><circle cx="280" cy="115" r="18"/><circle cx="314" cy="114" r="17"/><circle cx="384" cy="108" r="33"/><circle cx="365" cy="118" r="21"/><circle cx="405" cy="117" r="20"/><circle cx="980" cy="108" r="28"/><circle cx="964" cy="118" r="18"/><circle cx="997" cy="117" r="16"/><circle cx="1078" cy="107" r="34"/><circle cx="1059" cy="117" r="21"/><circle cx="1099" cy="116" r="20"/><circle cx="1158" cy="104" r="31"/><circle cx="1141" cy="114" r="19"/><circle cx="1177" cy="113" r="18"/><circle cx="1256" cy="103" r="32"/><circle cx="1238" cy="113" r="20"/><circle cx="1276" cy="112" r="19"/><circle cx="1341" cy="104" r="32"/><circle cx="1323" cy="114" r="20"/><circle cx="1361" cy="113" r="19"/><circle cx="1431" cy="108" r="29"/></g>
+      </svg>
+      <svg class="hill-near" viewBox="0 0 1440 68" preserveAspectRatio="none" focusable="false">
+        <path d="M0 68V30C180 12 360 10 540 20C720 30 880 34 1060 24C1240 14 1340 16 1440 24V68Z" fill="#8BB85C"/>
+        <path d="M0 68V46C240 36 520 38 780 44C1040 50 1260 44 1440 40V68Z" fill="#2D5A3C"/>
+      </svg>
+    </div>
+    <div class="hero-jar" aria-hidden="true">
+      <svg viewBox="0 0 120 150" focusable="false"><use href="#bv-jar" style="--cloth:#B81D33;--jam:#9A1432"/></svg>
+    </div>
+  </section>
+
+  <!-- 縫い目つきの絵巻帯（2つ目は途切れずに流すための複製なので、読み上げない） -->
+  <div class="band">
+    <div class="band-track">
+      <ul class="band-list">
+        <li>6月なかば、朝もぎはじまります<svg viewBox="-20 -20 40 40" aria-hidden="true" focusable="false"><use href="#bv-fl"/></svg></li>
+        <li>ジャムは冬でも送れます<svg viewBox="-20 -20 40 40" aria-hidden="true" focusable="false"><use href="#bv-fl"/></svg></li>
+        <li>注文は電話・FAX・メールで<svg viewBox="-20 -20 40 40" aria-hidden="true" focusable="false"><use href="#bv-fl"/></svg></li>
+        <li>直売所は収穫の時期の朝だけ<svg viewBox="-20 -20 40 40" aria-hidden="true" focusable="false"><use href="#bv-fl"/></svg></li>
+      </ul>
+      <ul class="band-list" aria-hidden="true">
+        <li>6月なかば、朝もぎはじまります<svg viewBox="-20 -20 40 40" focusable="false"><use href="#bv-fl"/></svg></li>
+        <li>ジャムは冬でも送れます<svg viewBox="-20 -20 40 40" focusable="false"><use href="#bv-fl"/></svg></li>
+        <li>注文は電話・FAX・メールで<svg viewBox="-20 -20 40 40" focusable="false"><use href="#bv-fl"/></svg></li>
+        <li>直売所は収穫の時期の朝だけ<svg viewBox="-20 -20 40 40" focusable="false"><use href="#bv-fl"/></svg></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 畑の一年：アーチ窓の標本枠の中の同じ枝が、読んでいる作業日誌に合わせて季節を進める -->
+  <section class="story" id="story" data-scene="spring" aria-labelledby="story-h">
+    <div class="story-head">
+      <p class="sec-kicker">農園の記録・第1章</p>
+      <h2 id="story-h">畑の一年と作業日誌</h2>
+      <p>4月に花が咲いて、7月にジャムを炊くまで。うちの畑の一本の枝と、季節ごとの作業日誌を追いかけてみてください。</p>
+      <p class="story-note">＊この暦の日付や数は、見本の例です。花も収穫も、年によって一週間くらい前後します。</p>
+    </div>
+
+    <div class="story-body">
+      <!-- 左：アーチ窓・丸窓の標本枠 -->
+      <div class="stage">
+        <div class="stage-win">
+          <div class="arch-ornament" aria-hidden="true">
+            <svg class="corner-svg tl" viewBox="0 0 32 32"><use href="#bv-corner"/></svg>
+            <svg class="corner-svg tr" viewBox="0 0 32 32"><use href="#bv-corner"/></svg>
+          </div>
+
+          <!-- 季節の暦バッジ（アーチ窓の天頂） -->
+          <div class="almanac-dial" aria-hidden="true">
+            <span class="dial-badge" data-d="spring">4月・花</span>
+            <span class="dial-badge" data-d="early">5月・青い実</span>
+            <span class="dial-badge" data-d="harvest">6月・収穫</span>
+            <span class="dial-badge" data-d="jam">通年・ジャム</span>
+          </div>
+
+          <nav class="steps" aria-label="畑の暦の場面">
+            <ol>
+              <li><a href="#ch-spring" aria-current="step">春</a></li>
+              <li><a href="#ch-early">初夏</a></li>
+              <li><a href="#ch-harvest">収穫</a></li>
+              <li><a href="#ch-jam">ジャム</a></li>
+            </ol>
+          </nav>
+
+          <div class="months" aria-hidden="true"><span data-m="spring">4月</span><span data-m="early">5月</span><span data-m="harvest">6月</span><span data-m="jam">7月</span></div>
+
+          <svg class="stage-svg" viewBox="0 0 600 720" aria-hidden="true" focusable="false">
+            <defs><clipPath id="sv-jarclip"><path d="M30 62Q22 65 21 76L17 127Q16 146 35 146H85Q104 146 103 127L99 76Q98 65 90 62Z"/></clipPath></defs>
+
+            <!-- 初夏：雨よけの屋根（雨は屋根の上で止まり、端から落ちる） -->
+            <g class="sv-x sv-roof">
+              <path d="M40 0l-7 16M110 10l-7 16M190 -4l-7 16M262 6l-7 16M340 -2l-7 16M420 8l-7 16M500 0l-7 16M572 10l-7 16" stroke="#7FA6C9" stroke-width="2.4" stroke-linecap="round" opacity=".75"/>
+              <path d="M-10 64Q300 4 610 64L610 82Q300 22 -10 82Z" fill="#fff" opacity=".85"/>
+              <path d="M-10 64Q300 4 610 64" fill="none" stroke="#fff" stroke-width="3"/>
+              <g fill="#7FA6C9" opacity=".8"><path d="M8 92q-4 7 0 10q4 -3 0 -10z"/><path d="M592 92q-4 7 0 10q4 -3 0 -10z"/><path d="M14 114q-4 7 0 10q4 -3 0 -10z"/><path d="M586 118q-4 7 0 10q4 -3 0 -10z"/></g>
+            </g>
+            <!-- 収穫：朝日 -->
+            <g class="sv-x sv-sun">
+              <circle cx="470" cy="66" r="50" fill="none" stroke="#F5B83D" stroke-width="9" stroke-dasharray="5 21" stroke-linecap="round"/>
+              <circle cx="470" cy="66" r="34" fill="#F5B83D"/>
+            </g>
+
+            <g class="sv-tree">
+              <g fill="none" stroke="#5E3427" stroke-linecap="round">
+                <path d="M-20 172C90 140 170 200 280 186S470 120 620 150" stroke-width="18"/>
+                <path d="M180 182C200 226 196 260 215 290" stroke-width="9"/>
+                <path d="M420 154C450 186 455 214 480 240" stroke-width="8"/>
+                <path d="M-20 166C90 134 170 194 280 180S470 114 620 144" stroke="#8A5440" stroke-width="3.5" opacity=".5"/>
+              </g>
+              <g class="sv-lf"><g style="--d:0.1s"><use href="#bv-leaf" transform="translate(95 162) rotate(-150) scale(1)"/></g><g style="--d:0.1s"><use href="#bv-leaf" transform="translate(95 162) rotate(-75) scale(0.9)"/></g><g style="--d:0.1s"><use href="#bv-leaf" transform="translate(95 162) rotate(-20) scale(0.85)"/></g><g style="--d:0.2s"><use href="#bv-leaf" transform="translate(215 290) rotate(-170) scale(0.95)"/></g><g style="--d:0.3s"><use href="#bv-leaf" transform="translate(215 290) rotate(-10) scale(1)"/></g><g style="--d:0.3s"><use href="#bv-leaf" transform="translate(215 290) rotate(40) scale(0.8)"/></g><g style="--d:0.4s"><use href="#bv-leaf" transform="translate(300 182) rotate(-120) scale(0.9)"/></g><g style="--d:0.4s"><use href="#bv-leaf" transform="translate(300 182) rotate(-50) scale(1)"/></g><g style="--d:0.5s"><use href="#bv-leaf" transform="translate(480 240) rotate(-160) scale(0.85)"/></g><g style="--d:0.5s"><use href="#bv-leaf" transform="translate(480 240) rotate(10) scale(1)"/></g><g style="--d:0.6s"><use href="#bv-leaf" transform="translate(480 240) rotate(55) scale(0.8)"/></g><g style="--d:0.7s"><use href="#bv-leaf" transform="translate(548 140) rotate(-110) scale(0.9)"/></g><g style="--d:0.7s"><use href="#bv-leaf" transform="translate(548 140) rotate(-30) scale(0.95)"/></g></g>
+              <g class="sv-stem"><path d="M95 162Q84.7 211.5 66 252"/><path d="M95 162Q103.6 219.2 112 266"/><path d="M215 290Q204.4 342.8 184 386"/><path d="M215 290Q223.6 352.7 232 404"/><path d="M215 290Q228.7 336.2 266 374"/><path d="M300 182Q291.3 237 282 282"/><path d="M300 182Q310.5 242.5 330 292"/><path d="M480 240Q469.8 298.3 452 346"/><path d="M480 240Q489.3 304.9 502 358"/><path d="M548 140Q555.2 192.8 556 236"/><path d="M548 140Q560.3 185.1 590 222"/></g>
+              <g class="sv-fl"><g style="--d:0s"><use href="#bv-fl" transform="translate(66 252) rotate(-35)"/></g><g style="--d:0s"><use href="#bv-fl" transform="translate(112 266) rotate(12)"/></g><g style="--d:0.2s"><use href="#bv-fl" transform="translate(184 386) rotate(-10)"/></g><g style="--d:0.2s"><use href="#bv-fl" transform="translate(232 404) rotate(-33)"/></g><g style="--d:0.2s"><use href="#bv-fl" transform="translate(266 374) rotate(14)"/></g><g style="--d:0.4s"><use href="#bv-fl" transform="translate(282 282) rotate(-8)"/></g><g style="--d:0.4s"><use href="#bv-fl" transform="translate(330 292) rotate(-31)"/></g><g style="--d:0.5s"><use href="#bv-fl" transform="translate(452 346) rotate(-30)"/></g><g style="--d:0.6s"><use href="#bv-fl" transform="translate(502 358) rotate(17)"/></g><g style="--d:0.7s"><use href="#bv-fl" transform="translate(556 236) rotate(-5)"/></g><g style="--d:0.7s"><use href="#bv-fl" transform="translate(590 222) rotate(-28)"/></g></g>
+              <g class="sv-gr"><g style="--d:0s"><circle cx="66" cy="260" r="10"/><ellipse cx="62.5" cy="256.5" rx="3" ry="2" class="hl"/></g><g style="--d:0s"><circle cx="112" cy="274" r="10"/><ellipse cx="108.5" cy="270.5" rx="3" ry="2" class="hl"/></g><g style="--d:0.2s"><circle cx="184" cy="394" r="10"/><ellipse cx="180.5" cy="390.5" rx="3" ry="2" class="hl"/></g><g style="--d:0.2s"><circle cx="232" cy="412" r="10"/><ellipse cx="228.5" cy="408.5" rx="3" ry="2" class="hl"/></g><g style="--d:0.2s"><circle cx="266" cy="382" r="10"/><ellipse cx="262.5" cy="378.5" rx="3" ry="2" class="hl"/></g><g style="--d:0.4s"><circle cx="282" cy="290" r="10"/><ellipse cx="278.5" cy="286.5" rx="3" ry="2" class="hl"/></g><g style="--d:0.4s"><circle cx="330" cy="300" r="10"/><ellipse cx="326.5" cy="296.5" rx="3" ry="2" class="hl"/></g><g style="--d:0.5s"><circle cx="452" cy="354" r="10"/><ellipse cx="448.5" cy="350.5" rx="3" ry="2" class="hl"/></g><g style="--d:0.6s"><circle cx="502" cy="366" r="10"/><ellipse cx="498.5" cy="362.5" rx="3" ry="2" class="hl"/></g><g style="--d:0.7s"><circle cx="556" cy="244" r="10"/><ellipse cx="552.5" cy="240.5" rx="3" ry="2" class="hl"/></g><g style="--d:0.7s"><circle cx="590" cy="230" r="10"/><ellipse cx="586.5" cy="226.5" rx="3" ry="2" class="hl"/></g></g>
+              <g class="sv-rd"><g style="--d:0s"><circle cx="66" cy="268" r="19" fill="url(#bv-cherry)"/><path d="M62 252.5q4 3 8 0" class="dim"/><ellipse cx="59" cy="260" rx="5" ry="3.2" transform="rotate(-30 59 260)" class="hl"/></g><g style="--d:0s"><circle cx="112" cy="282" r="19" fill="url(#bv-cherry)"/><path d="M108 266.5q4 3 8 0" class="dim"/><ellipse cx="105" cy="274" rx="5" ry="3.2" transform="rotate(-30 105 274)" class="hl"/></g><g style="--d:0.2s"><circle cx="184" cy="402" r="19" fill="url(#bv-cherry)"/><path d="M180 386.5q4 3 8 0" class="dim"/><ellipse cx="177" cy="394" rx="5" ry="3.2" transform="rotate(-30 177 394)" class="hl"/></g><g style="--d:0.2s"><circle cx="232" cy="420" r="19" fill="url(#bv-cherry)"/><path d="M228 404.5q4 3 8 0" class="dim"/><ellipse cx="225" cy="412" rx="5" ry="3.2" transform="rotate(-30 225 412)" class="hl"/></g><g style="--d:0.2s"><circle cx="266" cy="390" r="19" fill="url(#bv-cherry)"/><path d="M262 374.5q4 3 8 0" class="dim"/><ellipse cx="259" cy="382" rx="5" ry="3.2" transform="rotate(-30 259 382)" class="hl"/></g><g style="--d:0.4s"><circle cx="282" cy="298" r="19" fill="url(#bv-cherry)"/><path d="M278 282.5q4 3 8 0" class="dim"/><ellipse cx="275" cy="290" rx="5" ry="3.2" transform="rotate(-30 275 290)" class="hl"/></g><g style="--d:0.4s"><circle cx="330" cy="308" r="19" fill="url(#bv-cherry)"/><path d="M326 292.5q4 3 8 0" class="dim"/><ellipse cx="323" cy="300" rx="5" ry="3.2" transform="rotate(-30 323 300)" class="hl"/></g><g style="--d:0.5s"><circle cx="452" cy="362" r="19" fill="url(#bv-cherry)"/><path d="M448 346.5q4 3 8 0" class="dim"/><ellipse cx="445" cy="354" rx="5" ry="3.2" transform="rotate(-30 445 354)" class="hl"/></g><g style="--d:0.6s"><circle cx="502" cy="374" r="19" fill="url(#bv-cherry)"/><path d="M498 358.5q4 3 8 0" class="dim"/><ellipse cx="495" cy="366" rx="5" ry="3.2" transform="rotate(-30 495 366)" class="hl"/></g><g style="--d:0.7s"><circle cx="556" cy="252" r="19" fill="url(#bv-cherry)"/><path d="M552 236.5q4 3 8 0" class="dim"/><ellipse cx="549" cy="244" rx="5" ry="3.2" transform="rotate(-30 549 244)" class="hl"/></g><g style="--d:0.7s"><circle cx="590" cy="238" r="19" fill="url(#bv-cherry)"/><path d="M586 222.5q4 3 8 0" class="dim"/><ellipse cx="583" cy="230" rx="5" ry="3.2" transform="rotate(-30 583 230)" class="hl"/></g></g>
+            </g>
+
+            <!-- 春：ミツバチと、授粉に使う羽毛のはたき、散った花びら -->
+            <g class="sv-x sv-bee">
+              <path d="M248 500C300 470 340 400 380 356" fill="none" stroke="#B81D33" stroke-width="2.2" stroke-dasharray="1 9" stroke-linecap="round" opacity=".55"/>
+              <g transform="translate(394 342) rotate(-18)">
+                <ellipse cx="-5" cy="-12" rx="10" ry="6.5" fill="#fff" stroke="#C9D7E8" stroke-width="1.2" opacity=".95"/>
+                <ellipse cx="6" cy="-13" rx="9" ry="6" fill="#fff" stroke="#C9D7E8" stroke-width="1.2" opacity=".95"/>
+                <ellipse rx="16" ry="10.5" fill="#F5C04A"/>
+                <path d="M-6 -9.5V9.5M2 -10.2V10.2" stroke="#3B1E1A" stroke-width="3.4"/>
+                <path d="M-16 0l-5 1.5" stroke="#3B1E1A" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="15" cy="-1" r="6" fill="#3B1E1A"/>
+                <path d="M19 -6q4 -6 9 -6M17 -6.5q2 -7 6 -9.5" fill="none" stroke="#3B1E1A" stroke-width="1.5" stroke-linecap="round"/>
+              </g>
+            </g>
+            <g class="sv-x sv-tool">
+              <path d="M44 712L146 548" stroke="#A86E3C" stroke-width="7" stroke-linecap="round"/>
+              <rect x="136" y="540" width="16" height="12" rx="3" transform="rotate(32 144 546)" fill="#7D5230"/>
+              <g fill="#fff" stroke="#EADFD3" stroke-width="1.5"><circle cx="160" cy="528" r="24"/><circle cx="142" cy="514" r="18"/><circle cx="178" cy="510" r="17"/><circle cx="164" cy="498" r="16"/><circle cx="182" cy="534" r="15"/></g>
+              <path d="M146 530q-6 -10 -2 -22M158 538q-2 -14 4 -26M172 528q2 -12 10 -20M152 504q6 -6 16 -6M166 520q8 2 14 10" fill="none" stroke="#E2D4C4" stroke-width="1.6" stroke-linecap="round"/>
+              <g fill="#F2C14E"><circle cx="152" cy="520" r="2.4"/><circle cx="168" cy="512" r="2.4"/><circle cx="174" cy="530" r="2.4"/><circle cx="160" cy="536" r="2.4"/><circle cx="182" cy="516" r="2"/><circle cx="144" cy="508" r="2"/></g>
+            </g>
+            <g class="sv-x sv-fallen" fill="#F4AFC0">
+              <use href="#bv-petal" transform="translate(262 650) rotate(40)"/><use href="#bv-petal" transform="translate(330 676) rotate(-60)"/><use href="#bv-petal" transform="translate(408 640) rotate(110)"/><use href="#bv-petal" transform="translate(470 690) rotate(20)"/><use href="#bv-petal" transform="translate(540 660) rotate(-20)"/><use href="#bv-petal" transform="translate(372 602) rotate(160)" fill="#fff"/><use href="#bv-petal" transform="translate(512 612) rotate(70)" fill="#fff"/><use href="#bv-petal" transform="translate(296 708) rotate(-120)"/>
+            </g>
+
+            <!-- 収穫：摘んだ実のかご -->
+            <g class="sv-x sv-basket">
+              <path d="M100 604Q186 478 270 604" fill="none" stroke="#A86E3C" stroke-width="9" stroke-linecap="round"/>
+              <g fill="url(#bv-cherry)"><circle cx="118" cy="598" r="18"/><circle cx="150" cy="586" r="19"/><circle cx="184" cy="592" r="18"/><circle cx="216" cy="582" r="19"/><circle cx="246" cy="596" r="18"/><circle cx="168" cy="570" r="17"/><circle cx="200" cy="566" r="17"/></g>
+              <g fill="#fff" opacity=".7"><ellipse cx="144" cy="578" rx="5" ry="3"/><ellipse cx="210" cy="574" rx="5" ry="3"/><ellipse cx="162" cy="563" rx="4.5" ry="2.8"/><ellipse cx="194" cy="559" rx="4.5" ry="2.8"/><ellipse cx="112" cy="590" rx="4.5" ry="2.8"/><ellipse cx="240" cy="588" rx="4.5" ry="2.8"/></g>
+              <path d="M168 553q-4 -14 6 -22M200 549q2 -14 12 -18M150 568q-8 -12 -2 -24" fill="none" stroke="#5E7A2E" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M80 602H290L268 694Q265 706 252 706H118Q105 706 102 694Z" fill="#C98B4E"/>
+              <path d="M88 630H282M94 658H276M99 684H271" stroke="#A86E3C" stroke-width="3"/>
+              <path d="M125 606L130 704M160 606L162 706M195 606V706M230 606L228 706M264 606L259 704" stroke="#B57A42" stroke-width="2"/>
+              <rect x="72" y="594" width="226" height="16" rx="8" fill="#B07440"/>
+            </g>
+
+            <!-- ジャム：瓶にジャムが満ちて、ふたが閉まる -->
+            <g class="sv-x sv-jar">
+              <g fill="none" stroke="#FFF7E8" stroke-width="4" stroke-linecap="round" opacity=".45"><path d="M262 396c-14 -20 14 -30 0 -52"/><path d="M300 384c-14 -22 14 -32 0 -56"/><path d="M338 396c-14 -20 14 -30 0 -52"/></g>
+              <g transform="translate(162 368) scale(2.3)">
+                <path d="M30 62Q22 65 21 76L17 127Q16 146 35 146H85Q104 146 103 127L99 76Q98 65 90 62Z" fill="#fff" opacity=".14"/>
+                <g clip-path="url(#sv-jarclip)">
+                  <g class="sv-jamfill">
+                    <rect x="10" y="72" width="100" height="80" fill="#D21B45"/>
+                    <g fill="#9E0F30" opacity=".7"><circle cx="34" cy="94" r="5"/><circle cx="76" cy="104" r="6"/><circle cx="52" cy="132" r="5.5"/><circle cx="88" cy="134" r="4.5"/><circle cx="30" cy="124" r="4"/></g>
+                  </g>
+                </g>
+                <path d="M30 62Q22 65 21 76L17 127Q16 146 35 146H85Q104 146 103 127L99 76Q98 65 90 62Z" fill="none" stroke="#FFF7E8" stroke-opacity=".75" stroke-width="1.6"/>
+                <path d="M27 82Q25 104 26 130" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="4.5" stroke-linecap="round"/>
+                <rect x="35" y="92" width="50" height="34" rx="7" fill="#FFF7E8"/>
+                <text x="60" y="108" text-anchor="middle" font-size="10.5" fill="#3B1E1A" style="font-family:'Kiwi Maru',serif">べにさや</text>
+                <text x="60" y="120" text-anchor="middle" font-size="7" fill="#7D0F2B" style="font-family:'Zen Maru Gothic',sans-serif">さくらんぼ</text>
+                <g class="sv-lid">
+                  <rect x="29" y="52" width="62" height="12" rx="3" fill="#E6CFAA"/>
+                  <path d="M20 40Q60 26 100 40L104 58Q98 64 92 59Q86 64 80 59Q74 64 68 59Q62 64 56 59Q50 64 44 59Q38 64 32 59Q26 64 22 59L16 58Z" fill="#FFF7E8"/>
+                  <g clip-path="url(#bv-clothclip)" fill="#C8143C" opacity=".55"><rect x="24" y="20" width="8" height="50"/><rect x="40" y="20" width="8" height="50"/><rect x="56" y="20" width="8" height="50"/><rect x="72" y="20" width="8" height="50"/><rect x="88" y="20" width="8" height="50"/><rect x="10" y="38" width="100" height="6"/><rect x="10" y="50" width="100" height="6"/></g>
+                  <path d="M18 55Q60 62 102 55" fill="none" stroke="#7D0F2B" stroke-width="2"/>
+                  <path d="M58 59q-10 -8 -14 2q8 3 14 -2zM62 59q10 -8 14 2q-8 3 -14 -2z" fill="#7D0F2B"/>
+                </g>
+              </g>
+              <g transform="translate(410 640) rotate(-12)"><use href="#bv-pair" transform="scale(1.6)"/></g>
+              <g transform="translate(120 650) rotate(14)"><use href="#bv-pair" transform="scale(1.3)"/></g>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <!-- 右：作業日誌のページ（罫線・穴あき・テープ留めの端書き） -->
+      <div class="chapters">
+        <article class="ch" id="ch-spring" data-scene="spring" aria-labelledby="ch-spring-h">
+          <div class="ch-card">
+            <div class="ch-holes" aria-hidden="true"></div>
+            <p class="ch-when"><span class="ch-season">春・第1章</span><span>4月下旬〜5月上旬</span></p>
+            <h3 id="ch-spring-h">今年も白い花がいっせいに咲きました</h3>
+            <p>雪がとけてしばらくすると、枝いっぱいに白い花が咲きます。咲いてるのは一週間ほど。さくらんぼは同じ品種の花粉だと実がつきにくいので、ミツバチに手伝ってもらいながら、うちでも羽毛のはたきで花をなでて、別の品種の花粉を運んでます。</p>
+            <div class="diary">
+              <span class="diary-tape" aria-hidden="true"></span>
+              <p class="diary-t">作業日誌の端書き</p>
+              <ul>
+                <li><span class="d">4/26</span>はたきで授粉。風がなくて、いい日。</li>
+                <li><span class="d">5/2</span>朝4時、遅霜の見回り。冷えこみなし。</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="ch" id="ch-early" data-scene="early" aria-labelledby="ch-early-h">
+          <div class="ch-card">
+            <div class="ch-holes" aria-hidden="true"></div>
+            <p class="ch-when"><span class="ch-season">初夏・第2章</span><span>5月〜6月上旬</span></p>
+            <h3 id="ch-early-h">梅雨の前に屋根をかけておくんです</h3>
+            <p>花が散ると、緑の小さな実がふくらんできます。多すぎると一粒ずつが大きくならないので、手で間引きます。さくらんぼは、色づくころに雨に当たると皮が割れてしまうんです。だから木の上にビニールの屋根をかけて、雨から守ってます。</p>
+            <div class="diary">
+              <span class="diary-tape" aria-hidden="true"></span>
+              <p class="diary-t">作業日誌の端書き</p>
+              <ul>
+                <li><span class="d">5/22</span>実すぐり。だいたい半分に。</li>
+                <li><span class="d">6/3</span>雨よけの屋根かけ。家族そろって一日仕事。</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="ch" id="ch-harvest" data-scene="harvest" aria-labelledby="ch-harvest-h">
+          <div class="ch-card">
+            <div class="ch-holes" aria-hidden="true"></div>
+            <p class="ch-when"><span class="ch-season">収穫・第3章</span><span>6月中旬〜7月上旬</span></p>
+            <h3 id="ch-harvest-h">暑くなる前に摘みおえたくて</h3>
+            <p>実が赤くなったら収穫です。日中の暑さで実がやわらかくなる前に、夜明けから摘みはじめます。来年の花芽を傷めないように、軸を持って一つずつ。その日のうちに大きさと色で分けて、箱に詰めてます。</p>
+            <div class="diary">
+              <span class="diary-tape" aria-hidden="true"></span>
+              <p class="diary-t">作業日誌の端書き</p>
+              <ul>
+                <li><span class="d">6/15</span>葉つみ。実に日が当たるように。</li>
+                <li><span class="d">6/18</span>初もぎ。朝5時から、まず早い木を。</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="ch" id="ch-jam" data-scene="jam" aria-labelledby="ch-jam-h">
+          <div class="ch-card">
+            <div class="ch-holes" aria-hidden="true"></div>
+            <p class="ch-when"><span class="ch-season">ジャム・第4章</span><span>7月〜通年</span></p>
+            <h3 id="ch-jam-h">ふぞろいな実はジャムの鍋に</h3>
+            <p>小さい実や双子の実、ちょっと傷のある実も、味は変わりません。工房で種を一粒ずつ抜いて、砂糖とレモン果汁だけで、小さな鍋で炊いてます。実の形が残るように、短い時間で仕上げるのがうちのやり方です。</p>
+            <div class="diary">
+              <span class="diary-tape" aria-hidden="true"></span>
+              <p class="diary-t">作業日誌の端書き</p>
+              <ul>
+                <li><span class="d">7/6</span>ふぞろいの実で、今年はじめての鍋。</li>
+                <li><span class="d">7/6</span>瓶20本。ラベルに今日の日付を手で書く。</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 波形SVG境界＋ジャム工房の張り紙 -->
+  <section class="jamcta on-dark" aria-labelledby="jamcta-h">
+    <svg class="wave-top" viewBox="0 0 1440 36" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path d="M0 0H1440V14C1320 34 1140 34 960 18C780 2 600 2 420 18C240 34 120 28 0 14Z" fill="#FBF6EE"/>
+    </svg>
+    <div class="jamcta-in">
+      <div class="jamcta-copy">
+        <p class="jam-kicker">工房の棚だより</p>
+        <h2 id="jamcta-h">ジャム、あります。</h2>
+        <p>生のさくらんぼを送れるのは、6月中旬から7月上旬だけ。ジャムなら工房の棚にあるかぎり、冬でも送ります。</p>
+        <p style="margin-top:1rem">ネットのお店はやってないので、電話かFAXかメールで声をかけてください。</p>
+        <a class="btn btn-cream" href="products.html">お取り寄せと発送の暦へ</a>
+      </div>
+      <div class="shelf" aria-hidden="true">
+        <svg viewBox="0 0 120 150" focusable="false"><use href="#bv-jar" style="--cloth:#F2A2B6;--jam:#E04A6A"/></svg>
+        <svg viewBox="0 0 120 150" focusable="false"><use href="#bv-jar" style="--cloth:#C8143C;--jam:#D21B45"/></svg>
+        <svg viewBox="0 0 120 150" focusable="false"><use href="#bv-jar" style="--cloth:#4F8F45;--jam:#C0542F"/></svg>
+      </div>
+    </div>
+    <svg class="wave-btm" viewBox="0 0 1440 36" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <path d="M0 36H1440V22C1320 2 1140 2 960 18C780 34 600 34 420 18C240 2 120 8 0 22Z" fill="#FBF6EE"/>
+    </svg>
+  </section>
+
+  <!-- うちのこと＆畑の前の直売所 -->
+  <section class="about" id="about" aria-labelledby="about-h">
+    <div class="about-in">
+      <div class="about-text">
+        <svg class="corner-svg tl" viewBox="0 0 32 32" aria-hidden="true"><use href="#bv-corner"/></svg>
+        <svg class="corner-svg br" viewBox="0 0 32 32" aria-hidden="true"><use href="#bv-corner"/></svg>
+        <p class="sec-kicker">農園の記録・第2章</p>
+        <h2 id="about-h">うちのこと</h2>
+        <p>べにさや農園は、山形の盆地にある小さなさくらんぼ畑です。最初の苗木は、1968年にじいちゃんが植えました。いまは両親とわたしたち夫婦の4人で、畑も工房もやってます。</p>
+        <p>畑はだいたい50アールで、木は120本くらい。大きな園じゃないぶん、一本ずつ顔を見ながら、手が回るだけの木を育ててます。</p>
+        <p>ジャムをはじめたのは、形のそろわない実を捨てたくなかったから。味は、まっすぐな実と同じなんです。</p>
+        <dl class="farm-stamps">
+          <div><dt>はじまり</dt><dd>1968年（例）</dd></div>
+          <div><dt>畑の広さ</dt><dd>50アール（例）</dd></div>
+          <div><dt>さくらんぼの木</dt><dd>120本ほど（例）</dd></div>
+          <div><dt>作り手</dt><dd>家族4人（例）</dd></div>
+        </dl>
+        <p class="hand-note">＊ここに書いた年・人数・広さ・本数、直売所の時期と時間、車の台数は、どれも見本の例です。</p>
+      </div>
+
+      <div class="about-side">
+        <!-- 直売所は、表ではなく小屋の看板として書く -->
+        <div class="sign">
+          <svg viewBox="0 0 160 110" aria-hidden="true" focusable="false">
+            <path d="M6 104H154" stroke="#9CC46A" stroke-width="6" stroke-linecap="round"/>
+            <rect x="32" y="44" width="96" height="58" rx="3" fill="#E9C9A0"/>
+            <path d="M22 48L80 12L138 48Z" fill="#C8143C"/>
+            <text x="80" y="40" text-anchor="middle" font-size="12" fill="#FFF7E8" style="font-family:'Kiwi Maru',serif">直売所</text>
+            <path d="M28 50H132V60Q125 66 118 60Q111 66 104 60Q97 66 90 60Q83 66 76 60Q69 66 62 60Q55 66 48 60Q41 66 34 60Q31 64 28 60Z" fill="#FFF7E8"/>
+            <path d="M41 50V62M55 50V62M69 50V62M83 50V62M97 50V62M111 50V62M125 50V62" stroke="#C8143C" stroke-width="7" opacity=".85"/>
+            <rect x="40" y="78" width="80" height="8" rx="2" fill="#A86E3C"/>
+            <g fill="#C8143C"><circle cx="52" cy="74" r="4"/><circle cx="60" cy="73" r="4"/><circle cx="56" cy="69" r="4"/><circle cx="92" cy="74" r="4"/><circle cx="100" cy="73" r="4"/><circle cx="108" cy="74" r="4"/><circle cx="100" cy="68" r="4"/></g>
+          </svg>
+          <div class="sign-board">
+            <h3>畑の前の直売所</h3>
+            <p class="sign-lines">
+              <span>とれた朝に、とれた分だけ</span>
+              <span>6月中旬〜7月上旬</span>
+              <span>朝8時から、お昼まで</span>
+              <span>売り切れたら、おしまい</span>
+            </p>
+            <p class="sign-addr">山形県〇〇市見本町1-2-3</p>
+          </div>
+        </div>
+        <div class="notice">
+          <h3>畑に来られる方へ</h3>
+          <ul>
+            <li>さくらんぼ狩りはやってません。畑がせまいのと、木を傷めたくないので。</li>
+            <li>畑の中には入らないでください。消毒をしている日があります。</li>
+            <li>車は、直売所の前に2台まで停められます。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- トップページ末尾：お取り寄せと頼みかたの早見案内 -->
+  <section class="home-digest" aria-labelledby="digest-h">
+    <div class="digest-in">
+      <div class="digest-head">
+        <p class="sec-kicker">農園の記録・第3章</p>
+        <h2 id="digest-h">お取り寄せと頼みかた</h2>
+        <p>お取り寄せのページには、12か月の「発送の暦」と、ひも付きの「商品の荷札（A-1〜C-1）」、そのまま印刷できる「FAX注文用紙」を置いています。</p>
+      </div>
+      <div class="digest-grid">
+        <div class="digest-card">
+          <span class="digest-badge">1番〜3番札｜A-1〜A-3</span>
+          <h3>生のさくらんぼ（朝もぎ）</h3>
+          <p>予約は5月1日から、発送は6月中旬〜7月上旬（例）。化粧箱500g・バラ詰め1kg・ふぞろいの実500gの3種類です。</p>
+        </div>
+        <div class="digest-card">
+          <span class="digest-badge">4番〜8番札｜B-1〜C-1</span>
+          <h3>工房のジャム・3本の箱</h3>
+          <p>さくらんぼ（粒のこし・なめらか）は一年じゅう。秋冬には、さくらんぼとりんご、洋なしのジャムも炊いています。</p>
+        </div>
+        <div class="digest-card digest-contact">
+          <span class="digest-badge">電話・FAX・メール</span>
+          <h3>ご注文の案内（サンプル）</h3>
+          <p>電話・FAX：<strong><a href="tel:0000000000">000-0000-0000</a></strong>（電話は朝9時〜夕方5時・日曜休み）<br>メール：<strong>info@example.jp</strong></p>
+          <div class="digest-actions">
+            <a class="btn btn-primary" href="products.html">商品の札と発送の暦を見る</a>
+            <a class="btn btn-ghost" href="products.html#fax">FAX注文用紙を見る</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot on-dark">
+  <div class="foot-in">
+    <div>
+      <a class="logo" href="index.html">
+        <svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><use href="#bv-pair"/></svg>
+        <span><span class="logo-name">べにさや農園</span><span class="logo-sub">さくらんぼとジャム</span></span>
+      </a>
+      <address>〒000-0000　山形県〇〇市見本町1-2-3</address>
+    </div>
+    <div>
+      <p class="foot-tel">TEL <a href="tel:0000000000">000-0000-0000</a></p>
+      <p>FAX 000-0000-0000（いつでも）</p>
+      <p>メール info@example.jp</p>
+      <p>電話は朝9時〜夕方5時、日曜は休み</p>
+    </div>
+    <ul class="foot-nav">
+      <li><a href="#story">畑の一年</a></li>
+      <li><a href="#about">うちのこと</a></li>
+      <li><a href="products.html">お取り寄せと発送の暦</a></li>
+      <li><a href="products.html#order">頼みかた</a></li>
+    </ul>
+    <p class="foot-note">＊べにさや農園は、制作サンプルのためにつくった架空の農園です。住所・電話・値段・時期・数は、どれも見本の例です。</p>
+  </div>
+</footer>
+</body>
+</html>

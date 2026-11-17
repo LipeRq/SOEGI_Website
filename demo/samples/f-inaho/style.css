@@ -1,0 +1,1360 @@
+/* 木のいえ 稲穂工務店（架空）— 地元工務店の家づくり読本・折込パンフレット構成
+   方針：
+   ・寸法は rem 中心。文字サイズ「大」は html の font-size を 125% にするだけで全体が均等に拡大
+   ・本文 17px（1.0625rem）・行間 1.85。本文色は地色に対してコントラスト比 7 以上（AAA）
+   ・2段構えの地元工務店ヘッダー（上段：対応地域・文字サイズ切替・電話枠／下段：全幅タブ・ハンバーガーなし）
+   ・折込パンフレット表紙（見開き間取り図＋3つのご用件案内）、町内回覧板風のお知らせ、御見積書、
+     断面図連動の修理目安、2列の現場工程帳、間取り図集、木の銘板と柱の背比べ年表
+   ・動きは最小限（無限アニメーションなし）。色だけで状態を伝えない */
+
+:root {
+  --paper: #FFFFFF;
+  --sheet: #FAF5EA;        /* 冊子の生成り紙 */
+  --mist: #F1EFE9;         /* 薄い砂利・和紙色 */
+  --line: #C9C3B5;         /* 罫線 */
+  --line-2: #8C8678;       /* 濃い枠線 */
+  --ink: #1E2220;          /* 主本文（白地 15.8:1 / 生成り 14.5:1） */
+  --ink-2: #3E4442;        /* 補足文（白地 9.7:1 / 生成り 8.9:1 / 檜薄 7.9:1） */
+  --wood: #5E3819;         /* 濃い檜・リンク・主ボタン（白地 10.1:1 / 生成り 9.3:1） */
+  --wood-d: #42250F;       /* ホバー用濃茶（白地 13.5:1） */
+  --wood-l: #F3E8D4;       /* 薄い檜 */
+  --wood-m: #C6A477;       /* 木枠の装飾線 */
+  --beni: #8A281A;         /* 印・必須バッジ（白文字 8.2:1） */
+  --focus: #0E4D92;        /* フォーカス枠 */
+  --wrap: 74rem;
+  --gut: clamp(0.875rem, 3.5vw, 2.25rem);
+  color-scheme: light;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--soegi-bar-h, 2.5rem) + 1rem);
+}
+html[data-fs="l"] { font-size: 125%; }
+@media (min-width: 70em) {
+  html { scroll-padding-top: calc(var(--soegi-bar-h, 2.5rem) + 8.5rem); }
+  html[data-fs="l"] { scroll-padding-top: calc(var(--soegi-bar-h, 2.5rem) + 1rem); }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--sheet);
+  color: var(--ink);
+  font-family: "BIZ UDPGothic", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", YuGothic, Meiryo, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  letter-spacing: 0.04em;
+  overflow-wrap: anywhere;
+  line-break: strict;
+}
+img, svg { max-width: 100%; }
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+h1, h2, h3 {
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: 0.05em;
+  word-break: auto-phrase;
+}
+@supports not (word-break: auto-phrase) {
+  h1, h2, h3 { word-break: keep-all; }
+  .estimate-sheet h3, .estimate-sheet th { word-break: normal; }
+}
+h2 { font-size: clamp(1.5rem, 1.25rem + 0.9vw, 2rem); }
+h3 { font-size: 1.25rem; }
+p + p { margin-top: 0.9em; }
+b, strong { font-weight: 700; }
+
+a {
+  color: var(--wood);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.24em;
+}
+a:hover { color: var(--wood-d); text-decoration-thickness: 2.5px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { width: min(100% - 2 * var(--gut), var(--wrap)); margin-inline: auto; }
+.vh { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.note { color: var(--ink-2); font-size: 1rem; line-height: 1.75; }
+.nw { white-space: nowrap; }
+.measure { max-width: 42em; }
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: calc(var(--soegi-bar-h, 2.5rem) + 0.5rem);
+  z-index: 60;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  color: var(--ink);
+  border: 3px solid var(--focus);
+  font-weight: 700;
+  transform: translateY(-300%);
+}
+.skip:focus { transform: none; }
+
+/* ───── ボタン（48px 以上） ───── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55em;
+  min-height: 3.125rem;
+  padding: 0.55rem 1.25rem;
+  border: 2px solid var(--wood);
+  border-radius: 0.25rem;
+  font: inherit;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+}
+.btn svg { flex: none; width: 1.3em; height: 1.3em; }
+.btn--main { background: var(--wood); color: #fff; }
+.btn--main:hover { background: var(--wood-d); border-color: var(--wood-d); color: #fff; }
+.btn--sub { background: #fff; color: var(--wood); }
+.btn--sub:hover { background: var(--wood-l); color: var(--wood-d); }
+.btn--tel { flex-direction: column; gap: 0.1rem; padding-block: 0.45rem; }
+.btn--tel .btn__n {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: min(1.3125rem, 6vw);
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+.btn--tel .btn__l { font-size: 0.9375rem; font-weight: 400; }
+
+/* ───── 2段構えの地元工務店ヘッダー ───── */
+.hd {
+  background: var(--paper);
+  border-bottom: 2px solid var(--ink);
+  z-index: 40;
+}
+@media (min-width: 70em) {
+  .hd { position: sticky; top: var(--soegi-bar-h, 2.5rem); box-shadow: 0 2px 10px rgba(30, 34, 32, 0.08); }
+  html[data-fs="l"] .hd { position: static; box-shadow: none; }
+}
+
+.hd-top {
+  border-top: 6px solid var(--wood);
+  background: linear-gradient(180deg, #EFE1C6 0, #FAF4E6 6px, #FFFFFF 7px);
+}
+.hd-top__in {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem 1rem;
+  padding-block: 0.45rem;
+}
+.hd-brand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  min-width: 0;
+}
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ink);
+  text-decoration: none;
+  min-height: 3rem;
+}
+.logo:hover { color: var(--wood); }
+.logo__mk { width: 2.65rem; height: 2.65rem; flex: none; }
+.logo__t { display: flex; flex-direction: column; line-height: 1.2; }
+.logo__s { font-size: 0.875rem; color: var(--ink-2); letter-spacing: 0.12em; }
+.logo__m { font-size: 1.375rem; font-weight: 700; letter-spacing: 0.08em; }
+
+.area-badge {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.5rem;
+  padding: 0.3rem 0.75rem;
+  background: var(--wood-l);
+  border: 1px solid var(--wood-m);
+  border-radius: 0.2rem;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 100%;
+}
+.area-badge strong { color: var(--wood-d); white-space: nowrap; }
+
+.hd-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1rem;
+  margin-left: auto;
+}
+
+/* 文字の大きさ切替 */
+.fsw {
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.45rem;
+  background: var(--sheet);
+  border: 1px solid var(--line);
+  border-radius: 0.25rem;
+}
+.js .fsw { display: flex; }
+.fsw__l { font-size: 0.9375rem; font-weight: 700; color: var(--ink-2); margin-right: 0.15rem; white-space: nowrap; }
+.fsw button {
+  flex: none;
+  white-space: nowrap;
+  min-width: 3.5rem;
+  min-height: 2.75rem;
+  padding: 0 0.65rem;
+  border: 2px solid var(--line-2);
+  border-radius: 0.25rem;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25em;
+}
+.fsw button[data-fs-set="l"] { font-size: 1.125rem; }
+.fsw button:hover { border-color: var(--wood); }
+.fsw button[aria-pressed="true"] { background: var(--wood); border-color: var(--wood); color: #fff; }
+.fsw button[aria-pressed="true"]::before { content: "✓"; font-size: 0.85em; }
+
+/* 常時表示の電話ボックス */
+.tel-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3.125rem;
+  padding: 0.35rem 0.85rem;
+  background: var(--sheet);
+  border: 2px solid var(--wood);
+  border-radius: 0.25rem;
+  color: var(--wood-d);
+  text-decoration: none;
+  box-shadow: 2px 2px 0 var(--wood-l);
+}
+.tel-box:hover { background: var(--wood-l); color: var(--wood-d); }
+.tel-box svg { width: 1.5rem; height: 1.5rem; flex: none; color: var(--wood); }
+.tel-box__body { display: flex; flex-direction: column; line-height: 1.25; }
+.tel-box__num {
+  font-size: 1.3125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.16em;
+  white-space: nowrap;
+}
+.tel-box__hours { font-size: 0.875rem; color: var(--ink-2); font-weight: 400; }
+
+/* 下段：全幅タブバー（ハンバーガーなし） */
+.hd-nav {
+  background: var(--mist);
+  border-top: 1px solid var(--line);
+}
+.gnav ul {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-left: 1px solid var(--line);
+}
+.gnav li { display: flex; }
+.gnav a {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 3.125rem;
+  padding: 0.45rem 0.5rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 4px solid transparent;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1.3;
+}
+.gnav a:hover { background: var(--wood-l); border-bottom-color: var(--wood-m); color: var(--wood-d); }
+.gnav a[aria-current="page"] {
+  background: #fff;
+  color: var(--wood-d);
+  border-bottom-color: var(--wood);
+}
+
+@media (max-width: 59.99em) {
+  .hd-tools { margin-left: 0; width: 100%; justify-content: space-between; }
+  .gnav ul { grid-template-columns: repeat(2, minmax(0, 1fr)); border-left: 0; }
+  .gnav a {
+    border-right: 0;
+    border-top: 1px solid var(--line);
+    border-inline: 0.5px solid var(--line);
+    font-size: 0.9375rem;
+    padding-inline: 0.35rem;
+  }
+}
+@media (max-width: 26em) {
+  .tel-box { width: 100%; justify-content: center; }
+  .fsw { width: 100%; justify-content: space-between; }
+  .area-badge { padding: 0.22rem 0.55rem; }
+  .gnav a { font-size: 0.875rem; padding-inline: 0.2rem; }
+}
+
+/* ───── パンくず ───── */
+.crumb { padding-block: 0.25rem 0; font-size: 1rem; }
+.crumb ol { display: flex; flex-wrap: wrap; align-items: center; gap: 0 0.45rem; }
+.crumb li { display: flex; align-items: center; min-height: 3rem; }
+.crumb li + li::before { content: "＞"; margin-right: 0.45rem; color: var(--ink-2); }
+.crumb [aria-current] { color: var(--ink-2); }
+.crumb a { display: inline-flex; align-items: center; min-height: 3rem; padding-inline: 0.25rem; margin-inline: -0.25rem; }
+
+/* ───── パンフレット表紙ヒーロー（index.html） ───── */
+.hero {
+  padding-block: clamp(0.85rem, 1.5vw, 1.35rem) clamp(1.5rem, 2.5vw, 2.25rem);
+  background:
+    repeating-linear-gradient(0deg, rgba(198, 164, 119, 0.08) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(90deg, rgba(198, 164, 119, 0.08) 0 1px, transparent 1px 28px),
+    var(--sheet);
+  border-bottom: 3px solid var(--ink);
+}
+.pamphlet-cover {
+  background: #fff;
+  border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--wood-m);
+}
+.sheet-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  padding: 0.35rem 1.15rem;
+  background: var(--wood);
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.sheet-bar__sub { font-weight: 400; color: #F5E9D3; }
+
+.cover-spread {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.22fr);
+  gap: 1.15rem 1.65rem;
+  padding: clamp(0.85rem, 1.6vw, 1.25rem);
+  align-items: center;
+}
+@media (max-width: 63.99em) {
+  .cover-spread { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* 檜の銘板風タイトル枠 */
+.cover-plaque {
+  padding: clamp(0.85rem, 1.5vw, 1.2rem);
+  background: var(--sheet);
+  border: 4px double var(--wood);
+  position: relative;
+}
+.plaque-kicker {
+  display: inline-block;
+  padding: 0.12rem 0.6rem;
+  background: var(--beni);
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.45rem;
+}
+.cover-plaque h1 {
+  font-size: clamp(1.375rem, 1.1rem + 0.95vw, 1.875rem);
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.hero__lead {
+  margin-top: 0.65rem;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+.hero__cta .btn { flex: 1 1 13rem; }
+.hero__hours { margin-top: 0.6rem; font-size: 1rem; line-height: 1.7; color: var(--ink-2); }
+
+/* 右側：一階の平面図見開き */
+.cover-plan {
+  padding: 0.7rem 0.9rem;
+  background: #FCFBF7;
+  border: 1px solid var(--line-2);
+}
+.cover-plan__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--line-2);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--wood-d);
+}
+.cover-plan .pl-h { max-height: 17.5rem; }
+
+/* 3つのご用件ナビゲーション（ヒーロー直下） */
+.triage { margin-top: 1.05rem; }
+.triage__hd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 1.25rem;
+  margin-bottom: 0.85rem;
+}
+.triage__hd h2 { font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem); }
+.triage__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+@media (max-width: 56em) {
+  .triage__grid { grid-template-columns: minmax(0, 1fr); }
+}
+.door {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.75rem minmax(0, 1fr);
+  gap: 0.35rem 0.9rem;
+  align-items: start;
+  padding: 1rem 1.1rem;
+  background: #fff;
+  border: 2px solid var(--wood);
+  border-radius: 0.25rem;
+  box-shadow: 3px 3px 0 var(--wood-l);
+}
+.door:hover { background: var(--wood-l); border-color: var(--wood-d); }
+.door:has(a:focus-visible) { outline: 3px solid var(--focus); outline-offset: 3px; }
+.door__ico {
+  grid-row: span 3;
+  width: 3.75rem;
+  height: 3.75rem;
+  padding: 0.35rem;
+  background: var(--sheet);
+  border: 1px solid var(--wood-m);
+  border-radius: 0.25rem;
+}
+.door__no {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--beni);
+  letter-spacing: 0.08em;
+}
+.door h3 { font-size: 1.125rem; line-height: 1.35; }
+.door h3 a { color: var(--ink); text-decoration: none; }
+.door h3 a::after { content: ""; position: absolute; inset: 0; }
+.door h3 a:focus-visible { outline: none; }
+.door__desc {
+  grid-column: 2;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+.door__go {
+  grid-column: 2;
+  margin-top: 0.2rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--wood);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* ───── 間取り図 SVG ───── */
+.pl-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.plan { container-type: inline-size; }
+.pl { display: block; width: 100%; height: auto; margin-inline: auto; }
+.pl-n { font-weight: 700; fill: var(--ink); }
+.pl-s { fill: #3E4442; }
+.pl-t text { paint-order: stroke; stroke: #fff; stroke-width: 3.2px; stroke-linejoin: round; letter-spacing: 0.02em; }
+.plan .pl-h { display: none; }
+.plan .pl-v { display: block; max-height: 44rem; }
+@container (min-width: 34rem) {
+  .plan .pl-h { display: block; }
+  .plan .pl-v { display: none; }
+}
+.plan .pl-1 { display: block; }
+.plan figcaption { margin-top: 0.65rem; font-size: 1rem; color: var(--ink-2); line-height: 1.75; }
+.plan figcaption a { margin-left: 0.25em; font-weight: 700; }
+
+/* ───── 節（セクション共通見出し） ───── */
+.sec {
+  padding-block: clamp(2.75rem, 2rem + 3vw, 4.25rem);
+  border-bottom: 1px solid var(--line);
+}
+.sec--paper { background: #fff; }
+.sec--sheet { background: var(--sheet); }
+.sec--mist { background: var(--mist); }
+
+.sec-kicker {
+  display: inline-block;
+  padding: 0.15rem 0.65rem;
+  border: 1px solid var(--wood);
+  background: var(--wood-l);
+  color: var(--wood-d);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+.sec__hd { max-width: 48rem; margin-bottom: 1.75rem; }
+.sec__hd p { margin-top: 0.65rem; color: var(--ink-2); }
+
+/* ───── 1. 町内回覧・折り込みチラシのお知らせ（#news） ───── */
+.flyer-sheet {
+  background: #fff;
+  border: 2px solid var(--ink);
+  padding: clamp(1rem, 2.5vw, 2rem);
+  box-shadow: 5px 5px 0 var(--line);
+}
+.flyer-banner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px double var(--wood);
+  margin-bottom: 1.5rem;
+}
+.flyer-banner__stamp {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border: 2px solid var(--beni);
+  color: var(--beni);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: 0.08em;
+  margin-right: 0.65rem;
+  vertical-align: 0.12em;
+}
+.flyer-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 1.25rem;
+}
+.flyer-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.1rem;
+  background: var(--sheet);
+  border: 1px dashed var(--line-2);
+}
+.flyer-item__top {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+/* 日めくりカレンダー札 */
+.tear-cal {
+  flex: none;
+  width: 6.25rem;
+  border: 2px solid var(--ink);
+  border-radius: 0.25rem;
+  background: #fff;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 2px 2px 0 var(--line);
+}
+.tear-cal__m {
+  display: block;
+  padding: 0.2rem 0.25rem;
+  background: var(--beni);
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.tear-cal__d {
+  display: block;
+  padding: 0.35rem 0.2rem 0.15rem;
+  font-size: 1.625rem;
+  font-weight: 700;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.tear-cal__d--sm { font-size: 1.125rem; padding-block: 0.55rem 0.35rem; }
+.tear-cal__w {
+  display: block;
+  padding: 0.15rem 0.25rem 0.35rem;
+  border-top: 1px solid var(--line);
+  background: var(--mist);
+  color: var(--ink-2);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+.flyer-item__title h3 { font-size: 1.1875rem; line-height: 1.4; }
+.flyer-item__when { margin-top: 0.35rem; font-weight: 700; color: var(--wood-d); font-size: 1rem; line-height: 1.7; }
+.flyer-item__how {
+  margin-top: auto;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+/* ───── 2. お金の内訳：御見積書台帳（#cost） ───── */
+.build-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr);
+  gap: 1.75rem 2.5rem;
+  align-items: start;
+}
+@media (max-width: 58em) {
+  .build-grid { grid-template-columns: minmax(0, 1fr); }
+}
+.build-note {
+  padding: 1.25rem 1.35rem;
+  background: #fff;
+  border-left: 5px solid var(--wood);
+  border-top: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.build-note__lead { font-size: 1.125rem; font-weight: 700; color: var(--wood-d); margin-bottom: 0.65rem; }
+.build-note__link { margin-top: 1.1rem; }
+
+.estimate-sheet {
+  padding: clamp(1.1rem, 2.5vw, 1.75rem);
+  background: #fff;
+  border: 2px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--wood-l);
+}
+.estimate-sheet__hd {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 0.75rem;
+}
+.estimate-sheet__title { font-size: 1.375rem; letter-spacing: 0.14em; }
+.estimate-sheet__stamp {
+  padding: 0.15rem 0.6rem;
+  border: 2px solid var(--beni);
+  color: var(--beni);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+.estimate-sheet__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+.estimate-table-wrap { overflow-x: auto; }
+.estimate-sheet table { width: 100%; border-collapse: collapse; }
+.estimate-sheet th, .estimate-sheet td {
+  padding: 0.7rem 0.45rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.estimate-sheet thead th {
+  background: var(--mist);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+.estimate-sheet tbody th { font-weight: 700; }
+@media (min-width: 48em) {
+  .estimate-sheet tbody th { white-space: nowrap; padding-right: 1rem; }
+}
+.estimate-sheet td.num, .estimate-sheet th.num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+.estimate-sheet tfoot th, .estimate-sheet tfoot td {
+  font-weight: 700;
+  font-size: 1.125rem;
+  background: var(--wood-l);
+  border-top: 4px double var(--ink);
+  border-bottom: 4px double var(--ink);
+  padding-block: 0.85rem;
+}
+.tadashi {
+  margin-top: 1rem;
+  padding: 0.75rem 0.9rem;
+  background: var(--sheet);
+  border: 1px solid var(--line);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink-2);
+}
+
+/* ───── 3. 家の断面図・修理の目安（#repair） ───── */
+.repair-stage {
+  display: grid;
+  gap: 1.5rem;
+}
+.repair-diagram {
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+  background: var(--sheet);
+  border: 2px solid var(--ink);
+}
+.repair-diagram__cap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4rem 1rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  color: var(--wood-d);
+}
+.repair-diagram svg {
+  display: block;
+  width: 100%;
+  max-width: 48rem;
+  height: auto;
+  margin-inline: auto;
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 0.5rem;
+}
+.pin-group { cursor: pointer; }
+.pin-ring { fill: none; stroke: transparent; stroke-width: 3; }
+.pin-group.is-active .pin-ring { stroke: var(--beni); }
+.pin-group.is-active circle.pin-dot { fill: var(--beni); }
+
+.pin-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed var(--line-2);
+  align-items: center;
+}
+.pin-nav__label { font-size: 0.9375rem; font-weight: 700; color: var(--ink-2); margin-right: 0.25rem; }
+.pin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2.75rem;
+  padding: 0.25rem 0.7rem;
+  background: #fff;
+  border: 2px solid var(--line-2);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+}
+.pin-btn:hover { border-color: var(--wood); background: var(--wood-l); }
+.pin-btn[aria-pressed="true"] { background: var(--beni); border-color: var(--beni); color: #fff; }
+
+.repair-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.5rem), 1fr));
+  gap: 1rem;
+}
+.repair-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1rem 1.1rem;
+  background: #fff;
+  border: 1px solid var(--line-2);
+  border-top: 4px solid var(--wood);
+}
+.repair-card.is-active {
+  border-color: var(--beni);
+  border-top-width: 4px;
+  background: #FFF9F7;
+  box-shadow: 0 0 0 2px var(--beni);
+}
+.repair-card__hd {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.no {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--wood);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+}
+.repair-card.is-active .no { background: var(--beni); }
+.repair-card h3 { font-size: 1.125rem; }
+.repair-card .cost {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--line);
+  font-weight: 700;
+  color: var(--wood-d);
+  font-size: 1rem;
+}
+.more { margin-top: 1.5rem; }
+
+/* ───── 4. 2列の現場の工程帳（#flow） ───── */
+.logbook-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--wood);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+.logbook-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 2px solid var(--ink);
+  border-top: 0;
+  background: #fff;
+}
+@media (max-width: 56em) {
+  .logbook-grid { grid-template-columns: minmax(0, 1fr); }
+}
+html[data-fs="l"] .logbook-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 72em) {
+  html[data-fs="l"] .logbook-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.bs {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 0.5rem 1.1rem;
+  padding: 1.15rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  align-items: start;
+}
+@media (max-width: 34em) {
+  .bs { grid-template-columns: minmax(0, 1fr); }
+}
+.bs__visual { display: flex; flex-direction: column; gap: 0.35rem; }
+.bs__fig {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 11rem;
+  background: var(--sheet);
+  border: 1px solid var(--line);
+}
+.bs__when {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.1rem 0.55rem;
+  margin-bottom: 0.35rem;
+  background: var(--wood-l);
+  border: 1px solid var(--wood-m);
+  color: var(--wood-d);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+.bs__body { display: flex; flex-direction: column; min-width: 0; }
+.bs h3 { font-size: 1.125rem; margin-bottom: 0.35rem; }
+.bs__you {
+  margin-top: 0.65rem;
+  padding: 0.45rem 0.7rem;
+  background: var(--sheet);
+  border-left: 4px solid var(--wood);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.bs__you b { display: block; color: var(--wood-d); }
+
+/* ───── 5. 施工事例の抜粋カード（index.html） ───── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 1.25rem;
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 2px solid var(--line-2);
+  box-shadow: 4px 4px 0 var(--mist);
+}
+.card:hover { border-color: var(--wood); }
+.card:has(a:focus-visible) { outline: 3px solid var(--focus); outline-offset: 3px; }
+.card__fig { padding: 0.9rem; background: #FCFBF7; border-bottom: 1px solid var(--line); }
+.card__fig .pl { max-height: 14.5rem; }
+.card__bd { padding: 1rem 1.15rem 1.2rem; display: flex; flex-direction: column; gap: 0.45rem; flex: 1; }
+.card h3 a { color: var(--ink); text-decoration-color: var(--line-2); }
+.card h3 a::after { content: ""; position: absolute; inset: 0; }
+.card h3 a:focus-visible { outline: none; }
+.card__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.card__go { margin-top: auto; color: var(--wood); font-weight: 700; text-decoration: underline; text-underline-offset: 0.24em; }
+
+.tag {
+  display: inline-block;
+  min-width: 4em;
+  padding: 0 0.55em;
+  border: 1px solid var(--line-2);
+  border-radius: 2px;
+  background: #fff;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  text-align: center;
+}
+.tag--wood { border-color: var(--wood); color: var(--wood-d); background: var(--wood-l); font-weight: 700; }
+
+/* ───── 6. 対応エリア・電話窓口 ───── */
+.area-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: 1.25rem;
+}
+.area-col {
+  padding: 1.15rem 1.25rem;
+  background: #fff;
+  border: 1px solid var(--line-2);
+}
+.area-col h3 {
+  font-size: 1.125rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 2px solid var(--wood);
+  margin-bottom: 0.75rem;
+}
+.area-col ul { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.area-col li {
+  padding: 0.25rem 0.85rem;
+  background: var(--sheet);
+  border: 1px solid var(--wood-m);
+  font-weight: 700;
+}
+.area__note { margin-top: 1.25rem; }
+
+.call-plaque {
+  max-width: 48rem;
+  margin-inline: auto;
+  padding: clamp(1.25rem, 2.5vw, 2.25rem);
+  background: #fff;
+  border: 4px double var(--wood);
+  text-align: center;
+  box-shadow: 6px 6px 0 var(--wood-l);
+}
+.call-plaque h2 { margin-bottom: 1rem; }
+.bigtel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 3.5rem;
+  padding: 0.45rem 1.25rem;
+  background: var(--wood);
+  border: 2px solid var(--wood);
+  border-radius: 0.25rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: min(clamp(1.625rem, 1.35rem + 1.2vw, 2.25rem), 8vw);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+.bigtel svg { width: 0.9em; height: 0.9em; flex: none; }
+.bigtel:hover { background: var(--wood-d); border-color: var(--wood-d); color: #fff; }
+.call-plaque p { margin-top: 1rem; }
+.call-plaque__btns { margin-top: 1.25rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; }
+
+/* ───── フッター ───── */
+.ft { background: #262A28; color: #fff; padding-block: 2.75rem 2rem; }
+.ft a { color: #fff; }
+.ft a:hover { color: #F3E8D4; }
+.ft :focus-visible { outline-color: #fff; }
+.ft__in { display: flex; flex-wrap: wrap; gap: 1.75rem 3.5rem; }
+.ft__co { flex: 1 1 20rem; }
+.ft__name { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.1em; }
+.ft__co p { margin-top: 0.5rem; }
+.ft__nav ul { display: grid; gap: 0.25rem; }
+.ft__nav a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.ft__fine {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #59605D;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #E8EBE9;
+}
+
+/* ───── モバイル固定電話バー ───── */
+.callbar {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 50;
+  display: none;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  padding: 0.45rem max(0.75rem, (100% - 40rem) / 2) calc(0.45rem + env(safe-area-inset-bottom));
+  background: #fff;
+  border-top: 2px solid var(--wood);
+  box-shadow: 0 -2px 12px rgba(30, 34, 32, 0.12);
+}
+.callbar .btn { min-height: 3.35rem; padding-inline: 0.85rem; }
+.callbar__tel { flex-direction: row; justify-content: flex-start; text-align: left; gap: 0.55rem; }
+.callbar__tel span { display: flex; flex-direction: column; line-height: 1.25; }
+.callbar__tel small { font-size: 0.9375rem; font-weight: 400; letter-spacing: 0.03em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+html[data-fs="l"] .callbar__tel svg { display: none; }
+@media (max-width: 69.99em) {
+  .callbar { display: grid; }
+  body { padding-bottom: calc(5rem + env(safe-area-inset-bottom)); }
+}
+@media (min-width: 70em) {
+  html[data-fs="l"] .callbar { display: grid; }
+  html[data-fs="l"] body { padding-bottom: calc(5rem + env(safe-area-inset-bottom)); }
+}
+@media (orientation: landscape) and (max-height: 30em) {
+  .callbar { padding-top: 0.35rem; padding-bottom: calc(0.35rem + env(safe-area-inset-bottom)); }
+  .callbar .btn { min-height: 3rem; padding-block: 0.25rem; }
+  .callbar__tel span { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: 0.75em; }
+}
+
+/* ───── 下層ページの見出し ───── */
+.phd {
+  padding-block: 1.25rem clamp(1.75rem, 1.5rem + 1.5vw, 2.5rem);
+  background: #fff;
+  border-bottom: 2px solid var(--ink);
+}
+.phd h1 { font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.375rem); margin-top: 0.65rem; }
+.phd p { margin-top: 0.65rem; max-width: 44em; }
+
+/* ───── 施工事例・間取り図集（works.html） ───── */
+.filter {
+  margin-top: 1.5rem;
+  padding: 1rem 1.15rem;
+  background: var(--sheet);
+  border: 1px solid var(--line-2);
+}
+.filter legend { padding: 0; font-weight: 700; margin-bottom: 0.6rem; }
+.filter__opts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.filter input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.filter label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  min-height: 3rem;
+  padding: 0 1.05rem;
+  border: 2px solid var(--line-2);
+  border-radius: 0.25rem;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 700;
+}
+.filter label:hover { border-color: var(--wood); background: var(--wood-l); }
+.filter label small { font-weight: 400; color: var(--ink-2); font-size: 0.9375rem; }
+.filter input:checked + label { background: var(--wood); border-color: var(--wood); color: #fff; }
+.filter input:checked + label small { color: #fff; }
+.filter input:checked + label::before { content: "✓"; }
+.filter input:focus-visible + label { outline: 3px solid var(--focus); outline-offset: 3px; }
+.filter__count { margin-top: 0.65rem; min-height: 1.6em; color: var(--ink-2); font-weight: 700; }
+
+body:has(#t-new:checked) .case:not([data-type~="new"]),
+body:has(#t-hiraya:checked) .case:not([data-type~="hiraya"]),
+body:has(#t-reform:checked) .case:not([data-type~="reform"]) { display: none; }
+
+.legend {
+  margin-top: 1.25rem;
+  padding: 0.9rem 1.15rem;
+  background: var(--mist);
+  border: 1px solid var(--line);
+}
+.legend h2 { font-size: 1.0625rem; margin-bottom: 0.5rem; }
+.legend ul { display: flex; flex-wrap: wrap; gap: 0.45rem 1.5rem; }
+.legend li { display: flex; align-items: center; gap: 0.45rem; font-size: 0.9375rem; }
+.legend svg { width: 2.25rem; height: 1.5rem; flex: none; border: 1px solid var(--line-2); background: #fff; }
+
+.cases { display: grid; gap: 1.75rem; padding-block: 2rem; }
+.case {
+  background: #fff;
+  border: 2px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--line);
+  scroll-margin-top: 1rem;
+}
+.case__hd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 1rem;
+  padding: 0.9rem 1.25rem;
+  background: var(--sheet);
+  border-bottom: 2px solid var(--ink);
+}
+.case__no {
+  padding: 0.1rem 0.6rem;
+  background: var(--wood);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: 0.06em;
+}
+.case__tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.case__where { color: var(--ink-2); font-size: 0.9375rem; margin-left: auto; }
+.case__hd h2 { font-size: clamp(1.3125rem, 1.15rem + 0.7vw, 1.625rem); flex: 1 1 100%; }
+.case__bd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.25rem;
+  padding: clamp(1rem, 2.2vw, 1.75rem);
+  align-items: flex-start;
+}
+.case__fig {
+  flex: 999 1 28rem;
+  min-width: 0;
+  padding: 0.75rem;
+  background: #FCFBF7;
+  border: 1px solid var(--line);
+}
+.case__txt { flex: 1 1 21rem; min-width: 0; }
+.case__spec {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.35rem 1rem;
+  padding: 0.75rem 0;
+  border-block: 1px solid var(--line);
+  margin-bottom: 1.1rem;
+}
+.case__spec dt { color: var(--ink-2); font-weight: 700; }
+.case__spec dd { word-break: auto-phrase; }
+.case__txt h3 { font-size: 1.125rem; margin: 1.1rem 0 0.3rem; color: var(--wood-d); }
+.case__txt h3:first-of-type { margin-top: 0; }
+.case__txt ul li { position: relative; padding-left: 1.1em; }
+.case__txt ul li + li { margin-top: 0.35rem; }
+.case__txt ul li::before {
+  content: "";
+  position: absolute;
+  left: 0.1em;
+  top: 0.78em;
+  width: 0.45em;
+  height: 0.45em;
+  border: 2px solid var(--wood);
+  border-radius: 50%;
+}
+.ba { display: flex; flex-wrap: wrap; gap: 1rem 1.25rem; align-items: flex-start; }
+.ba > figure { flex: 1 1 13rem; min-width: 0; }
+.ba figcaption { font-weight: 700; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.5rem; }
+.ba .pl { margin-inline: 0; }
+.floors { display: flex; flex-wrap: wrap; gap: 1rem 1.25rem; }
+.floors > figure { flex: 1 1 17rem; min-width: 0; }
+.floors figcaption { font-weight: 700; margin-bottom: 0.35rem; }
+
+/* ───── 会社案内ページ（company.html） ───── */
+.plate {
+  overflow-wrap: normal;
+  word-break: auto-phrase;
+  max-width: 44rem;
+  margin-inline: auto;
+  padding: clamp(1.25rem, 1rem + 2vw, 2.25rem) clamp(1rem, 0.5rem + 3vw, 2.5rem);
+  background: linear-gradient(180deg, #FFFDF8, #FAF2E1);
+  border: 6px double var(--wood);
+  box-shadow: inset 0 0 0 2px var(--wood-m), 6px 6px 0 var(--line);
+  text-align: center;
+}
+.plate__sub { font-size: 1rem; color: var(--ink-2); letter-spacing: 0.12em; }
+.plate__name {
+  margin-top: 0.25rem;
+  font-size: min(clamp(1.6rem, 1.3rem + 1.4vw, 2.25rem), 8vw);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+}
+.plate__ln { margin-top: 0.6rem; }
+.plate__ln a { display: inline-block; font-weight: 700; }
+.plate__name + .plate__ln { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--wood); }
+.plate__fine { margin-top: 1rem; font-size: 1rem; line-height: 1.75; color: var(--ink-2); }
+
+.split { display: flex; flex-wrap: wrap; gap: 1.25rem 3rem; }
+.split__hd { flex: 1 1 17rem; }
+.split__hd p { margin-top: 0.65rem; color: var(--ink-2); }
+.split__bd { flex: 999 1 30rem; min-width: 0; }
+
+/* 柱の背比べ年表 */
+.hashira {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 0.75rem 0 1.75rem;
+  max-width: 38rem;
+}
+.hashira::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0.75rem;
+  left: 6.25rem;
+  width: 1.65rem;
+  border-radius: 2px 2px 0 0;
+  border: 1px solid #9B7B49;
+  background: linear-gradient(90deg, #D5B987, #EAD5B0 28%, #E0C79C 52%, #ECD9B6 78%, #D3B683);
+}
+.hashira::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 4.85rem;
+  width: 4.45rem;
+  height: 0.75rem;
+  background: #6B4220;
+  border-radius: 1px;
+}
+.hashira li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 5.5rem 1.65rem minmax(0, 1fr);
+  column-gap: 0.75rem;
+  align-items: baseline;
+  padding-block: 0.3rem;
+  margin-bottom: calc(var(--gap) * 0.2rem);
+}
+.hashira li::after {
+  content: "";
+  position: absolute;
+  left: 6rem;
+  top: 1.2em;
+  width: 2.15rem;
+  height: 2px;
+  background: var(--ink);
+}
+.hashira__y { grid-column: 1; text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+.hashira__t { grid-column: 3; }
+.hist__now { margin-top: 1.25rem; font-weight: 700; color: var(--wood-d); }
+
+.access { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; }
+.access > * { flex: 1 1 20rem; min-width: 0; }
+.map { border: 2px solid var(--ink); background: #fff; }
+.map svg { display: block; width: 100%; height: auto; }
+.map figcaption { padding: 0.75rem 1rem; border-top: 1px solid var(--line); font-size: 1rem; line-height: 1.75; color: var(--ink-2); }
+.michi p + p { margin-top: 0.75rem; }
+.michi__addr { font-weight: 700; padding: 0.75rem 1rem; background: #fff; border-left: 4px solid var(--wood); }
+
+.telline { font-size: 1.125rem; }
+.telline a { font-weight: 700; white-space: nowrap; }
+
+.form {
+  display: grid;
+  gap: 1.35rem;
+  max-width: 46rem;
+  padding: clamp(1.1rem, 2.5vw, 2rem);
+  background: #fff;
+  border: 2px solid var(--ink);
+}
+.field { display: grid; gap: 0.4rem; }
+.field > label, .field legend { font-weight: 700; padding: 0; }
+fieldset.field { border: 0; margin: 0; padding: 0; min-width: 0; }
+.req, .opt {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0 0.45em;
+  border-radius: 2px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.6;
+  vertical-align: 0.1em;
+}
+.req { background: var(--beni); color: #fff; }
+.opt { border: 1px solid var(--line-2); color: var(--ink-2); font-weight: 400; }
+.hint { font-size: 1rem; line-height: 1.75; color: var(--ink-2); }
+.form input[type="text"], .form input[type="tel"], .form input[type="email"], .form textarea {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.65rem 0.85rem;
+  border: 2px solid var(--line-2);
+  border-radius: 0.25rem;
+  background: #fff;
+  font: inherit;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.form textarea { min-height: 9rem; resize: vertical; }
+.form input:hover, .form textarea:hover { border-color: var(--wood); }
+.form input:focus-visible, .form textarea:focus-visible { border-color: var(--focus); }
+.choices { display: flex; flex-wrap: wrap; gap: 0.5rem 0.85rem; }
+.choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 3rem;
+  padding: 0.25rem 0.9rem 0.25rem 0.7rem;
+  border: 2px solid var(--line);
+  border-radius: 0.25rem;
+  background: #fff;
+  cursor: pointer;
+}
+.choice:has(input:checked) { border-color: var(--wood); background: var(--wood-l); font-weight: 700; }
+.choice input { width: 1.35rem; height: 1.35rem; margin: 0; accent-color: var(--wood); }
+.agree { display: flex; align-items: flex-start; gap: 0.65rem; }
+.agree input { width: 1.35rem; height: 1.35rem; margin: 0.3rem 0 0; flex: none; accent-color: var(--wood); }
+.form__send { display: grid; gap: 0.75rem; justify-items: start; }
+.form__status {
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--focus);
+  border-radius: 0.25rem;
+  background: #EEF3F9;
+  color: var(--ink);
+}
+.form__status:focus { outline: 3px solid var(--focus); outline-offset: 2px; }
+.form__status ul { margin-top: 0.5rem; list-style: disc; padding-left: 1.4rem; }
+
+.print-btn[hidden] { display: none; }
+
+/* ───── 印刷 ───── */
+@media print {
+  .soegi-bar, .fsw, .hd-nav, .callbar, .skip, .hero__cta, .print-btn, .form, .crumb, .filter, .filter__count, .pin-nav { display: none !important; }
+  body { padding: 0 !important; background: #fff !important; font-size: 11pt; }
+  .hd { position: static; border-bottom: 1px solid #000; box-shadow: none; }
+  .sec, .phd { padding-block: 1rem; background: #fff !important; }
+  a { color: var(--ink); }
+  .ft { background: none; color: var(--ink); border-top: 1px solid var(--ink); }
+  .ft a { color: var(--ink); }
+  .case, .flyer-item, .bs, .plate, .hashira li, .estimate-sheet { break-inside: avoid; box-shadow: none; }
+}

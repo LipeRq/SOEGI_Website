@@ -1,0 +1,1091 @@
+/* 月山テクノワークス（架空）— JIS製図用紙・CADビューポート構成
+   考え方：ページ全体を1枚のJIS製図用紙（二重図枠・区域記号・表題欄）とCAD画面として構成する。
+   地は深い青図（ブループリント）と方眼、外形線は白、中心線・かくれ線はシアン、寸法・主要操作はオレンジ。
+   数字（寸法・公差・測定値・電話番号・図番）は等幅の IBM Plex Mono で桁をそろえる。 */
+
+:root {
+  --sheet: #0F2C52;        /* 青図の紙 */
+  --deep: #07162A;         /* CADステータスバー・制御盤・入力欄 */
+  --stage: #081C38;        /* CADビューポート・図面ラック背景 */
+  --lift: #133764;         /* 少し浮かせる面 */
+  --line: #EDF4FF;         /* 外形線・見出し・図枠内枠 */
+  --text: #D3E1F5;         /* 本文（地とのコントラスト 10:1以上） */
+  --muted: #A4BAD8;        /* 補足（地とのコントラスト 7:1以上） */
+  --cyan: #6FD3F0;         /* 中心線・かくれ線・リンク */
+  --orange: #FFA245;       /* 寸法線・主ボタン（地・暗色とのコントラスト 6.5:1以上） */
+  --orange-hi: #FFB970;
+  --paper: #F3F6F9;        /* 検査成績書（白い書類） */
+  --ink: #13294A;
+  --ink-2: #3D4E66;        /* 書類上の補足（#F3F6F9上で 7.5:1以上） */
+  --shu: #B8322A;          /* 検印の朱 */
+  --ok: #165E30;           /* 合格印の緑（#F3F6F9上で 7:1以上） */
+  --rule: rgba(190, 218, 255, .36);
+  --rule-2: rgba(190, 218, 255, .18);
+  --g1: rgba(130, 190, 255, .055); /* 方眼（細 16px） */
+  --g2: rgba(130, 190, 255, .12);  /* 方眼（太 80px） */
+  --sans: "IBM Plex Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, "Yu Gothic", "YuGothic", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", "IBM Plex Sans JP", Consolas, Menlo, "SFMono-Regular", ui-monospace, monospace;
+  --hd-h: 5.5rem;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--soegi-bar-h) + 1rem);
+}
+@media (min-width: 64rem) {
+  html { scroll-padding-top: calc(var(--soegi-bar-h) + var(--hd-h) + 1rem); }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+body {
+  margin: 0;
+  color: var(--text);
+  font: 400 1rem/1.85 var(--sans);
+  letter-spacing: .02em;
+  background-color: var(--sheet);
+  background-image:
+    linear-gradient(var(--g2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--g2) 1px, transparent 1px),
+    linear-gradient(var(--g1) 1px, transparent 1px),
+    linear-gradient(90deg, var(--g1) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+  background-position: -1px -1px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { max-width: 100%; }
+
+:where(.hd, main, .ft) a { color: var(--cyan); text-underline-offset: .2em; text-decoration-thickness: 1px; }
+:where(.hd, main, .ft) a:hover { color: var(--line); }
+:where(.skip, .hd, main, .ft) :focus-visible, .skip:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+:where(.hd, main, .ft) :is(h1, h2, h3) { color: var(--line); font-feature-settings: "palt"; }
+:where(.hd, main, .ft) p { margin: 0 0 1em; text-wrap: pretty; }
+:where(main) :is(h1, h2, h3), .zone__hd p, .hero__lead, .spec dd, .kv dd, .notes li, .tb dd, .rep__tbl td, .rep__tbl th, .eq td, .eq th { word-break: auto-phrase; }
+:where(.hd, main, .ft) small { font-size: .875rem; }
+
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; letter-spacing: 0; }
+.sr { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.note { margin-top: 1.25rem; color: var(--muted); font-size: .9375rem; }
+
+.skip { position: absolute; left: .75rem; top: calc(var(--soegi-bar-h) + .5rem); z-index: 100; padding: .6rem 1rem; background: var(--orange); color: var(--deep); font-weight: 600; text-decoration: none; translate: 0 -300%; }
+.skip:focus { translate: 0 0; }
+
+/* ───── ボタン ───── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 3rem; padding: .65rem 1.35rem;
+  border: 1.5px solid var(--orange); border-radius: 2px;
+  background: var(--orange); color: var(--deep);
+  font: 600 1rem/1.4 var(--sans); letter-spacing: .05em; text-decoration: none; text-align: center;
+  cursor: pointer; transition: background-color .15s, border-color .15s, color .15s;
+}
+.btn:hover { background: var(--orange-hi); border-color: var(--orange-hi); color: var(--deep); }
+.btn--line { background: rgba(7, 22, 42, .5); color: var(--line); border-color: var(--rule); }
+.btn--line:hover { background: rgba(237, 244, 255, .1); border-color: var(--line); color: var(--line); }
+.btn--sm { min-height: 2.75rem; padding: .4rem 1rem; font-size: .9375rem; }
+
+/* ───── 1. 外周図枠（二重図枠・区域記号・中心マーク） ───── */
+.sheet {
+  position: relative;
+  margin: .375rem;
+  padding: 1.375rem .375rem;
+  border: 1px solid var(--rule);
+  max-width: calc(100% - .75rem);
+}
+.sheet__frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.sheet__z {
+  position: absolute;
+  display: flex;
+  color: var(--muted);
+  font: 500 .6875rem/1 var(--mono);
+}
+.sheet__z i {
+  font-style: normal;
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+.sheet__z--t { left: .375rem; right: .375rem; top: 0; height: 1.375rem; }
+.sheet__z--b { left: .375rem; right: .375rem; bottom: 0; height: 1.375rem; }
+.sheet__z--t i + i, .sheet__z--b i + i { border-left: 1px solid var(--rule-2); }
+.sheet__z--l, .sheet__z--r { display: none; }
+
+/* 中心マーク */
+.sheet__cm { position: absolute; background: var(--line); }
+.sheet__cm--t, .sheet__cm--b { left: 50%; width: 1.5px; height: 1.375rem; }
+.sheet__cm--t { top: 0; }
+.sheet__cm--b { bottom: 0; }
+.sheet__cm--l, .sheet__cm--r { top: 50%; height: 1.5px; width: .375rem; }
+.sheet__cm--l { left: 0; }
+.sheet__cm--r { right: 0; }
+
+.sheet__inner {
+  position: relative;
+  border: 2px solid var(--line);
+  background: rgba(12, 37, 70, .42);
+}
+
+@media (min-width: 48rem) {
+  .sheet {
+    margin: .75rem;
+    padding: 1.5rem;
+    max-width: calc(100% - 1.5rem);
+  }
+  .sheet__z--t { left: 1.5rem; right: 1.5rem; height: 1.5rem; }
+  .sheet__z--b { left: 1.5rem; right: 1.5rem; height: 1.5rem; }
+  .sheet__z--l, .sheet__z--r {
+    display: flex;
+    flex-direction: column;
+    top: 1.5rem;
+    bottom: 1.5rem;
+    width: 1.5rem;
+  }
+  .sheet__z--l { left: 0; }
+  .sheet__z--r { right: 0; }
+  .sheet__z--l i + i, .sheet__z--r i + i { border-top: 1px solid var(--rule-2); }
+  .sheet__cm--t, .sheet__cm--b { height: 1.5rem; }
+  .sheet__cm--l, .sheet__cm--r { width: 1.5rem; }
+}
+@media (min-width: 80rem) {
+  .sheet {
+    margin: 1rem auto;
+    max-width: min(94rem, calc(100% - 2rem));
+  }
+}
+
+/* ───── CADステータスバー ＆ ヘッダー ───── */
+.hd {
+  position: relative;
+  z-index: 40;
+  background: var(--deep);
+  border-bottom: 2px solid var(--line);
+}
+@media (min-width: 64rem) {
+  .hd { position: sticky; top: var(--soegi-bar-h); }
+}
+.hd__status {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .25rem 1rem;
+  padding: .35rem .85rem;
+  border-bottom: 1px solid var(--rule-2);
+  background: #041020;
+  color: var(--cyan);
+  font-size: .75rem;
+  line-height: 1.4;
+}
+.hd__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem 1rem;
+  padding: .45rem .85rem;
+}
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  min-height: 2.75rem;
+  color: var(--line);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.0625rem;
+  letter-spacing: .06em;
+  white-space: nowrap;
+}
+.logo:hover { color: var(--line); }
+.logo__mark { width: 28px; height: 28px; flex: none; fill: none; }
+.logo__c { stroke: var(--cyan); stroke-width: 1.2; stroke-dasharray: 5 1.6 1.4 1.6; }
+.logo__m { stroke: var(--line); stroke-width: 1.8; }
+.logo__s { stroke: var(--line); stroke-width: 2.2; stroke-linecap: round; }
+
+.hd__menu { display: none; }
+.gnav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .25rem .5rem;
+  margin-left: auto;
+}
+.gnav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.gnav ul a {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  min-height: 2.75rem;
+  padding: 0 .65rem;
+  color: var(--text);
+  text-decoration: none;
+  font-size: .9375rem;
+  letter-spacing: .03em;
+}
+.gnav ul a .num { color: var(--muted); font-size: .75rem; }
+.gnav ul a:hover { color: var(--line); background: rgba(237, 244, 255, .08); }
+.gnav ul a[aria-current="page"] { color: var(--line); box-shadow: inset 0 -2px 0 var(--orange); }
+
+@media (max-width: 25rem) {
+  .hd__bar { column-gap: .4rem; padding: .4rem .65rem; }
+  .logo { gap: .45rem; font-size: 1rem; letter-spacing: .02em; }
+  .js .hd__menu.hd__menu { padding: 0 .65rem; }
+}
+@media (max-width: 63.99rem) {
+  .js .hd__menu {
+    display: inline-flex; align-items: center; gap: .5rem; margin-left: auto; min-height: 2.75rem; padding: 0 .85rem;
+    border: 1px solid var(--rule); border-radius: 2px; background: transparent; color: var(--line);
+    font: 500 .9375rem/1 var(--sans); letter-spacing: .05em; cursor: pointer;
+  }
+  .js .hd__menu::before {
+    content: ""; width: 14px; height: 10px;
+    background: linear-gradient(currentColor 0 0) top/100% 1.5px no-repeat, linear-gradient(currentColor 0 0) center/100% 1.5px no-repeat, linear-gradient(currentColor 0 0) bottom/100% 1.5px no-repeat;
+  }
+  .js .hd__menu[aria-expanded="true"] { border-color: var(--orange); color: var(--orange); }
+  .js .gnav { display: none; width: 100%; margin: 0; padding: .25rem 0 .85rem; }
+  .js .gnav.is-open { display: block; }
+  .js .gnav ul { display: block; border-top: 1px solid var(--rule-2); }
+  .js .gnav ul a { display: flex; min-height: 2.85rem; padding: 0 .25rem; border-bottom: 1px solid var(--rule-2); font-size: 1rem; }
+  .js .gnav .btn { margin-top: .75rem; width: 100%; }
+}
+
+/* ───── 2. ヒーロー：全面CADビューポート ＋ 注記ドック ＋ 右下JIS表題欄 ───── */
+.hero {
+  border-bottom: 2px solid var(--line);
+}
+.hero__hud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .4rem 1rem;
+  padding: .45rem 1rem;
+  border-bottom: 1px solid var(--rule);
+  background: rgba(7, 22, 42, .85);
+  color: var(--muted);
+  font-size: .8125rem;
+}
+.hero__proj {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--text);
+  font-size: .8125rem;
+}
+.proj-sym {
+  width: 52px;
+  height: 22px;
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1.4;
+}
+.proj-sym .proj-c {
+  stroke: var(--cyan);
+  stroke-width: 1;
+  stroke-dasharray: 6 2 1.5 2;
+}
+
+.fig { margin: 0; }
+.cad-stage {
+  position: relative;
+  padding: clamp(.75rem, 2vw, 1.35rem) clamp(1rem, 4vw, 2.75rem);
+  background-color: var(--stage);
+  background-image:
+    linear-gradient(rgba(111, 211, 240, .1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(111, 211, 240, .1) 1px, transparent 1px),
+    linear-gradient(rgba(111, 211, 240, .04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(111, 211, 240, .04) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+  background-position: -1px -1px;
+}
+/* CADビューポート四隅のコーナーレジストレーション */
+.cad-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  border-color: var(--cyan);
+  border-style: solid;
+  opacity: .65;
+}
+.cad-corner--tl { top: .65rem; left: .65rem; border-width: 1.5px 0 0 1.5px; }
+.cad-corner--tr { top: .65rem; right: .65rem; border-width: 1.5px 1.5px 0 0; }
+.cad-corner--bl { bottom: .65rem; left: .65rem; border-width: 0 0 1.5px 1.5px; }
+.cad-corner--br { bottom: .65rem; right: .65rem; border-width: 0 1.5px 1.5px 0; }
+
+.fig__draw {
+  position: relative;
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+/* ───── 図面（SVG）の線の決まり ───── */
+.dw { display: block; width: 100%; height: auto; overflow: visible; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.dw .o { stroke: var(--line); stroke-width: 1.9; }
+.dw .t { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.dw .c { stroke: var(--cyan); stroke-width: 1; stroke-dasharray: 16 3 2.5 3; vector-effect: non-scaling-stroke; }
+.dw .h { stroke: var(--cyan); stroke-width: 1; stroke-dasharray: 5 3; vector-effect: non-scaling-stroke; }
+.dw .d, .dw .d path, .dw .d rect, .dw .d circle { stroke: var(--orange); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.dw .df, .dw .d .df { fill: var(--orange); stroke: none; }
+.dw text { fill: var(--orange); stroke: none; font-family: var(--mono); font-weight: 500; font-size: 15px; letter-spacing: 0; }
+@media (min-width: 40rem) { .dw text { font-size: 13px; } }
+@media (min-width: 64rem) { .cad-stage .dw text { font-size: 11.5px; } }
+
+.dw .hl { opacity: 0; stroke: var(--cyan); stroke-width: 3.5; transition: opacity .18s; }
+.dw .hl rect { fill: rgba(111, 211, 240, .18); stroke: none; }
+
+/* 照合番号（バルーン） */
+.bl {
+  position: absolute; left: var(--x); top: var(--y); translate: -50% -50%;
+  width: 1.625rem; height: 1.625rem; display: grid; place-items: center;
+  border: 1.5px solid var(--line); border-radius: 50%; background: var(--deep); color: var(--line);
+  font: 600 .875rem/1 var(--mono); text-decoration: none;
+  transition: background-color .15s, color .15s, border-color .15s;
+}
+.bl::after { content: ""; position: absolute; inset: -.7rem; border-radius: 50%; }
+.bl:hover, .bl:focus-visible { background: var(--orange); border-color: var(--orange); color: var(--deep); }
+@media (min-width: 64rem) { .bl { width: 1.9rem; height: 1.9rem; font-size: .9375rem; } }
+
+/* ヒーロー下部ドック（左：注記読み出し / 右：JIS表題欄） */
+.hero__deck {
+  display: grid;
+  border-top: 1.5px solid var(--line);
+}
+@media (min-width: 64rem) {
+  .hero__deck { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+}
+
+.cad-dock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(7, 22, 42, .88);
+  padding: 1rem 1.15rem;
+}
+.cad-dock__hd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  padding-bottom: .65rem;
+  margin-bottom: .75rem;
+  border-bottom: 1px dashed var(--rule);
+  color: var(--cyan);
+  font-size: .8125rem;
+}
+.cad-dock__leds {
+  display: inline-flex;
+  gap: .3rem;
+}
+.cad-dock__leds span {
+  display: grid;
+  place-items: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+  font: 600 .75rem/1 var(--mono);
+}
+
+/* 注記欄：重ねて高さを固定 */
+.notes {
+  display: grid;
+  border: 1px solid var(--rule);
+  background: rgba(15, 44, 82, .55);
+}
+.notes > * { grid-area: 1 / 1; padding: .85rem 1rem .9rem; }
+.notes > [data-n] { visibility: hidden; }
+.notes p, .notes li { margin: 0; font-size: 1rem; line-height: 1.75; }
+.notes ol { margin: .25rem 0 0; padding-left: 1.4em; }
+.notes__h { color: var(--line); font-weight: 600; display: flex; align-items: center; gap: .5rem; }
+.notes__hint { margin-top: .5rem !important; color: var(--muted); }
+.notes__hint--touch { display: none; }
+@media (hover: none) { .notes__hint { display: none; } .notes__hint--touch { display: block; } }
+.bn { display: inline-grid; place-items: center; flex: none; width: 1.5rem; height: 1.5rem; border: 1.5px solid currentColor; border-radius: 50%; font: 600 .8125rem/1 var(--mono); }
+
+.fig__cap {
+  margin: .75rem 0 0;
+  color: var(--muted);
+  font-size: .875rem;
+  line-height: 1.6;
+}
+
+/* 照合番号インタラクション（:has） */
+.fig:has(.bl:focus-visible) .notes__base { visibility: hidden; }
+.fig:has(.bl[data-f="1"]:focus-visible) [data-n="1"],
+.fig:has(.bl[data-f="2"]:focus-visible) [data-n="2"],
+.fig:has(.bl[data-f="3"]:focus-visible) [data-n="3"],
+.fig:has(.bl[data-f="4"]:focus-visible) [data-n="4"],
+.fig:has(.bl[data-f="5"]:focus-visible) [data-n="5"] { visibility: visible; }
+.fig:has(.bl[data-f="1"]:focus-visible) .hl[data-f="1"],
+.fig:has(.bl[data-f="2"]:focus-visible) .hl[data-f="2"],
+.fig:has(.bl[data-f="3"]:focus-visible) .hl[data-f="3"],
+.fig:has(.bl[data-f="4"]:focus-visible) .hl[data-f="4"],
+.fig:has(.bl[data-f="5"]:focus-visible) .hl[data-f="5"] { opacity: 1; }
+.fig:has(.bl[data-f="1"]:focus-visible) [data-led="1"],
+.fig:has(.bl[data-f="2"]:focus-visible) [data-led="2"],
+.fig:has(.bl[data-f="3"]:focus-visible) [data-led="3"],
+.fig:has(.bl[data-f="4"]:focus-visible) [data-led="4"],
+.fig:has(.bl[data-f="5"]:focus-visible) [data-led="5"] {
+  background: var(--orange); border-color: var(--orange); color: var(--deep);
+}
+@media (hover: hover) {
+  .fig:has(.bl:hover) .notes__base { visibility: hidden; }
+  .fig:has(.bl[data-f="1"]:hover) [data-n="1"],
+  .fig:has(.bl[data-f="2"]:hover) [data-n="2"],
+  .fig:has(.bl[data-f="3"]:hover) [data-n="3"],
+  .fig:has(.bl[data-f="4"]:hover) [data-n="4"],
+  .fig:has(.bl[data-f="5"]:hover) [data-n="5"] { visibility: visible; }
+  .fig:has(.bl[data-f="1"]:hover) .hl[data-f="1"],
+  .fig:has(.bl[data-f="2"]:hover) .hl[data-f="2"],
+  .fig:has(.bl[data-f="3"]:hover) .hl[data-f="3"],
+  .fig:has(.bl[data-f="4"]:hover) .hl[data-f="4"],
+  .fig:has(.bl[data-f="5"]:hover) .hl[data-f="5"] { opacity: 1; }
+  .fig:has(.bl[data-f="1"]:hover) [data-led="1"],
+  .fig:has(.bl[data-f="2"]:hover) [data-led="2"],
+  .fig:has(.bl[data-f="3"]:hover) [data-led="3"],
+  .fig:has(.bl[data-f="4"]:hover) [data-led="4"],
+  .fig:has(.bl[data-f="5"]:hover) [data-led="5"] {
+    background: var(--orange); border-color: var(--orange); color: var(--deep);
+  }
+}
+
+/* JIS 表題欄（Title Block） */
+.title-block {
+  display: grid;
+  border-top: 2px solid var(--line);
+  background: var(--deep);
+}
+@media (min-width: 64rem) {
+  .title-block { border-top: 0; border-left: 2px solid var(--line); }
+}
+.title-block__head {
+  padding: clamp(1.15rem, 3vw, 1.75rem);
+  border-bottom: 1.5px solid var(--line);
+}
+.title-block h1 {
+  margin: 0 0 .85rem;
+  font-weight: 600;
+  font-size: clamp(2rem, 1.3rem + 3vw, 3.25rem);
+  line-height: 1.24;
+  letter-spacing: .05em;
+}
+.title-block h1 span, .ib { display: inline-block; }
+@supports not (word-break: auto-phrase) { .title-block h1 span { word-break: keep-all; } }
+.hero__lead { max-width: 38em; font-size: 1rem; color: var(--text); margin-bottom: 1.15rem; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: .65rem; margin-bottom: 1rem; }
+@media (max-width: 29.99rem) { .hero__cta .btn { width: 100%; } }
+.hero__tel { margin: 0; color: var(--muted); font-size: .9375rem; line-height: 1.7; }
+.hero__tel a { color: var(--line); font-size: 1.0625rem; font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--rule); }
+.hero__tel a:hover { border-color: var(--line); }
+.hero__tel-h { display: inline-block; margin-left: .75rem; font-size: .875rem; }
+
+.title-block__cells {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (min-width: 48rem) {
+  .title-block__cells { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.title-block__cells > div {
+  padding: .5rem .75rem;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.title-block__cells .tb-span2 { grid-column: span 2; }
+.title-block__cells dt {
+  color: var(--muted);
+  font-size: .75rem;
+  letter-spacing: .05em;
+  line-height: 1.4;
+}
+.title-block__cells dd {
+  margin: .15rem 0 0;
+  color: var(--line);
+  font-size: .9375rem;
+  font-weight: 600;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.title-block__cells .tb-co { font-size: 1.0625rem; }
+.title-block__cells .tb-co small { font-weight: 400; color: var(--muted); }
+
+/* ───── 3. 連続する製図区画（Zone Compartments） ───── */
+.zone {
+  display: grid;
+  border-bottom: 2px solid var(--line);
+}
+.zone:last-child { border-bottom: 0; }
+.zone__rail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: .55rem 1rem;
+  border-bottom: 1px solid var(--rule);
+  background: rgba(7, 22, 42, .82);
+}
+.zone__code {
+  color: var(--orange);
+  font-size: .8125rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+}
+.zone__v {
+  color: var(--line);
+  font-size: .875rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+}
+@media (min-width: 64rem) {
+  .zone { grid-template-columns: 3.75rem minmax(0, 1fr); }
+  .zone__rail {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem .5rem;
+    border-bottom: 0;
+    border-right: 1.5px solid var(--rule);
+  }
+  .zone__code {
+    writing-mode: vertical-rl;
+    letter-spacing: .12em;
+  }
+  .zone__v {
+    writing-mode: vertical-rl;
+    font-size: .9375rem;
+    letter-spacing: .24em;
+    color: var(--muted);
+  }
+}
+
+.zone__body {
+  padding: clamp(1.5rem, 3.5vw, 2.75rem) clamp(1rem, 3vw, 2.25rem);
+  min-width: 0;
+}
+.zone__hd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .65rem 2rem;
+  padding-bottom: 1.15rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px dashed rgba(111, 211, 240, .4);
+}
+.zone__hd h2 {
+  margin: 0;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.125rem);
+  line-height: 1.35;
+  letter-spacing: .05em;
+}
+.zone__hd p { margin: 0; max-width: 38em; color: var(--text); }
+.zone h3 { margin: 0 0 .65rem; font-weight: 600; font-size: 1.25rem; line-height: 1.45; letter-spacing: .04em; }
+
+/* ───── 加工仕様（要目表） ───── */
+.spec {
+  margin: 0;
+  display: grid;
+  border-top: 1.5px solid var(--rule);
+  border-left: 1.5px solid var(--rule);
+}
+@media (min-width: 36rem) { .spec { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 60rem) { .spec { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.spec > div {
+  padding: 1rem 1.15rem 1.15rem;
+  border-right: 1.5px solid var(--rule);
+  border-bottom: 1.5px solid var(--rule);
+  background: rgba(7, 22, 42, .52);
+}
+.spec dt { color: var(--muted); font-size: .875rem; letter-spacing: .06em; }
+.spec dt .num { color: var(--cyan); margin-right: .35rem; }
+.spec dd { margin: .3rem 0 0; color: var(--line); font-size: 1.0625rem; line-height: 1.7; }
+.spec dd .num { color: var(--orange); font-size: 1.125rem; }
+
+/* ───── 3-Bay CAD 図面ラック（平歯車・フランジ・治具プレート） ───── */
+.rack {
+  display: grid;
+  border: 1.5px solid var(--rule);
+  background: rgba(7, 22, 42, .45);
+}
+@media (min-width: 64rem) {
+  .rack { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.bay {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.bay + .bay { border-top: 1.5px solid var(--rule); }
+@media (min-width: 64rem) {
+  .bay + .bay { border-top: 0; border-left: 1.5px solid var(--rule); }
+}
+.bay__top {
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+  padding: .45rem .8rem;
+  border-bottom: 1px solid var(--rule);
+  background: var(--deep);
+  color: var(--cyan);
+  font-size: .75rem;
+}
+.bay__sheet {
+  padding: .75rem .9rem;
+  background-color: #06152B;
+  background-image:
+    linear-gradient(rgba(111, 211, 240, .09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(111, 211, 240, .09) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.bay__sheet .dw { padding: .25rem; }
+@media (min-width: 64rem) { .bay__sheet .dw text { font-size: 12.5px; } }
+
+.tblk { margin: 0; display: grid; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: rgba(7, 22, 42, .85); }
+.tblk--ex { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tblk--ex > div { padding: .4rem .6rem; min-width: 0; }
+.tblk--ex > div + div { border-left: 1px solid var(--rule); }
+.tblk dt { color: var(--muted); font-size: .75rem; line-height: 1.4; }
+.tblk dd { margin: .1rem 0 0; color: var(--line); font-size: .875rem; line-height: 1.4; word-break: keep-all; overflow-wrap: anywhere; }
+
+.bay__txt {
+  padding: 1rem 1.05rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.bay__txt p { font-size: .9375rem; line-height: 1.75; margin-bottom: 1rem; }
+.kv { margin: auto 0 0; border-top: 1px solid var(--rule-2); }
+.kv > div { display: grid; grid-template-columns: 5.5rem 1fr; gap: .6rem; padding: .5rem 0; border-bottom: 1px solid var(--rule-2); }
+.kv dt { color: var(--muted); font-size: .875rem; }
+.kv dd { margin: 0; color: var(--line); font-size: .9375rem; }
+@media (max-width: 23rem) { .kv > div { grid-template-columns: 1fr; gap: .1rem; } }
+
+/* ───── 検査と記録（QCシート＋検査成績書） ───── */
+.zone--q { background: rgba(7, 22, 42, .38); }
+.q { display: grid; gap: 2rem; align-items: start; }
+@media (min-width: 64rem) { .q { grid-template-columns: minmax(0, 3.6fr) minmax(0, 8fr); gap: clamp(2rem, 4vw, 3.25rem); } }
+.q__txt h2 { margin: 0 0 .9rem; font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.125rem); line-height: 1.35; }
+.cl { list-style: none; margin: 1.25rem 0; padding: 0; border-top: 1px solid var(--rule-2); }
+.cl li { display: grid; grid-template-columns: 1.75rem 1fr; padding: .7rem 0; border-bottom: 1px solid var(--rule-2); }
+.cl__n { color: var(--cyan); font-family: var(--mono); }
+.cl b { color: var(--line); font-weight: 600; }
+.lk { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--cyan); font-weight: 500; }
+
+/* 検査成績書（白い書類） */
+.rep {
+  background: var(--paper);
+  color: var(--ink);
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  border: 2px solid var(--ink);
+  box-shadow: 0 18px 42px -18px rgba(2, 10, 24, .75);
+}
+.rep__hd {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: .85rem;
+  border-bottom: 2px solid var(--ink);
+}
+.rep__docid { margin: 0 0 .2rem; font-size: .75rem; color: var(--ink-2); }
+.rep__t { margin: 0; font-size: 1.375rem; font-weight: 600; letter-spacing: .28em; line-height: 1.4; color: var(--ink); }
+.rep__t span { letter-spacing: .05em; font-size: .9375rem; font-weight: 400; color: var(--ink-2); }
+
+.stamp {
+  flex: none;
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  width: 4.1rem;
+  height: 4.1rem;
+  margin: -.15rem .15rem 0 0;
+  border: 2px solid var(--shu);
+  border-radius: 50%;
+  color: var(--shu);
+  text-align: center;
+  font-size: .75rem;
+  line-height: 1;
+  rotate: -9deg;
+  overflow: hidden;
+}
+.stamp span { display: grid; place-items: center; font-weight: 600; }
+.stamp span:nth-child(2) { border-block: 1.5px solid var(--shu); padding: .2rem 0; font-size: .6875rem; }
+
+.rep__meta {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: row dense;
+  border-left: 1px solid rgba(19, 41, 74, .3);
+}
+.rep__meta > div:nth-child(2) { grid-column: 1 / -1; }
+@media (min-width: 40rem) {
+  .rep__meta { grid-template-columns: 1fr 1.9fr 1.4fr 1.05fr 1.05fr; }
+  .rep__meta > div:nth-child(2) { grid-column: auto; }
+}
+.rep__meta > div {
+  padding: .45rem .65rem;
+  border-right: 1px solid rgba(19, 41, 74, .3);
+  border-bottom: 1px solid rgba(19, 41, 74, .3);
+}
+.rep__meta dt { font-size: .75rem; color: var(--ink-2); }
+.rep__meta dd { margin: 0; font-size: .9375rem; word-break: keep-all; overflow-wrap: anywhere; }
+
+.rep__tbl { width: 100%; margin-top: .9rem; border-collapse: collapse; font-size: .9375rem; line-height: 1.55; }
+.rep__tbl th, .rep__tbl td { padding: .55rem .5rem; border-bottom: 1px solid rgba(19, 41, 74, .22); text-align: left; vertical-align: middle; }
+.rep__tbl thead th { font-size: .8125rem; font-weight: 600; color: var(--ink-2); border-bottom: 1.5px solid var(--ink); white-space: nowrap; }
+.rep__tbl tbody th { font-weight: 600; color: var(--ink); }
+.rep__tbl .v { font-size: 1.0625rem; font-weight: 600; white-space: nowrap; }
+.rep__tbl .rng { white-space: nowrap; }
+.rep__tbl .ok { text-align: center; }
+.ok__mark {
+  display: inline-grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1.5px solid var(--ok);
+  color: var(--ok);
+  font-weight: 700;
+  font-size: .9375rem;
+}
+.rep__tbl thead th:last-child { text-align: center; }
+.rep__tbl tr:target { background: #FFF1DE; }
+.rep__tbl .bn { color: var(--ink); }
+.ro.is-run { color: #8A4E0B; }
+.rep__note { margin: .85rem 0 0; color: var(--ink-2); font-size: .8125rem; line-height: 1.7; }
+.rep :focus-visible { outline-color: var(--ink); }
+
+@media (min-width: 48rem) { .rep__tbl td[data-l="測定器"] { white-space: nowrap; } }
+@media (max-width: 47.99rem) {
+  .rep__tbl thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .rep__tbl, .rep__tbl tbody { display: block; }
+  .rep__tbl tr { display: grid; grid-template-columns: 2.25rem 1fr auto; column-gap: .65rem; padding: .75rem 0; border-bottom: 1px solid rgba(19, 41, 74, .22); }
+  .rep__tbl th, .rep__tbl td { display: block; padding: 0; border: 0; }
+  .rep__tbl td:first-child { grid-row: 1 / span 4; }
+  .rep__tbl tbody th { grid-column: 2; }
+  .rep__tbl .ok { grid-column: 3; grid-row: 1; align-self: start; }
+  .rep__tbl td[data-l="図面指示"], .rep__tbl td[data-l="測定器"], .rep__tbl .v { grid-column: 2 / span 2; font-size: .9375rem; }
+  .rep__tbl .v { white-space: normal; font-size: 1.0625rem; }
+  .rep__tbl td[data-l="図面指示"]::before, .rep__tbl .v::before, .rep__tbl td[data-l="測定器"]::before { content: attr(data-l) "："; color: var(--ink-2); font: 400 .8125rem var(--sans); }
+}
+
+/* ───── 加工工程表 ───── */
+.pt { width: 100%; border-collapse: collapse; font-size: 1rem; line-height: 1.7; border: 1px solid var(--rule); background: rgba(7, 22, 42, .45); }
+.pt th, .pt td { padding: .85rem .85rem; border-bottom: 1px solid var(--rule-2); text-align: left; vertical-align: middle; }
+.pt thead th { color: var(--muted); font-size: .875rem; font-weight: 500; border-bottom: 1.5px solid var(--rule); background: var(--deep); white-space: nowrap; }
+.pt tbody th { color: var(--line); font-weight: 600; white-space: nowrap; }
+.pt td[data-l="使用設備"] { color: var(--text); }
+.pt td[data-l="検査・記録"] { color: var(--orange); }
+.pt__no { position: relative; width: 6.5rem; padding-left: 2.75rem !important; color: var(--line); font-weight: 600; }
+.pt__no::before { content: ""; position: absolute; left: 1.2rem; top: 0; bottom: 0; width: 1px; background: var(--cyan); opacity: .75; }
+.pt tbody tr:first-child .pt__no::before { top: 50%; }
+.pt tbody tr:last-child .pt__no::before { bottom: 50%; }
+.pt__k { position: absolute; left: 1.2rem; top: 50%; translate: -50% -50%; width: 1.15rem; height: 1.15rem; border: 1.5px solid var(--line); border-radius: 50%; background: var(--sheet); }
+.pt tr[data-k="q"] .pt__k { width: .95rem; height: .95rem; border-radius: 0; rotate: 45deg; border-color: var(--orange); }
+.pt tr[data-k="a"] .pt__k { width: .5rem; height: .5rem; background: var(--line); }
+.pt__key { display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; margin: 1rem 0 0; color: var(--muted); font-size: .9375rem; }
+.pt__lg::before { content: ""; display: inline-block; margin-right: .5rem; vertical-align: -.1em; width: .95rem; height: .95rem; border: 1.5px solid var(--line); border-radius: 50%; }
+.pt__lg--q::before { width: .75rem; height: .75rem; border-radius: 0; rotate: 45deg; border-color: var(--orange); margin-left: .1rem; }
+.pt__lg--a::before { width: .5rem; height: .5rem; background: var(--line); vertical-align: .05em; }
+
+@media (max-width: 59.99rem) {
+  .pt { border: 0; background: none; }
+  .pt thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .pt, .pt tbody { display: block; }
+  .pt tr { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); column-gap: .5rem; }
+  .pt th, .pt td { display: block; padding: 0; border: 0; }
+  .pt__no { grid-row: 1 / span 4; width: auto; padding: .95rem 0 0 2.5rem !important; vertical-align: top; }
+  .pt__k { top: 1.6rem; }
+  .pt tbody tr:first-child .pt__no::before { top: 1.6rem; }
+  .pt tbody tr:last-child .pt__no::before { bottom: auto; height: 1.6rem; }
+  .pt tbody th { padding-top: .95rem; white-space: normal; }
+  .pt td[data-l] { font-size: 1rem; }
+  .pt td[data-l]:last-child { padding-bottom: 1rem; border-bottom: 1px solid var(--rule-2); }
+  .pt td[data-l="使用設備"]::before, .pt td[data-l="検査・記録"]::before { content: attr(data-l) "："; color: var(--muted); font-size: .875rem; }
+}
+
+/* ───── 会社案内（表題欄形式） ───── */
+.tb { width: 100%; border-collapse: collapse; border: 2px solid var(--line); background: var(--deep); }
+.tb th, .tb td { padding: .7rem .9rem; border: 1px solid var(--rule); text-align: left; vertical-align: middle; }
+.tb th { width: 5.5rem; color: var(--muted); font-size: .8125rem; font-weight: 500; letter-spacing: .06em; white-space: nowrap; background: rgba(15, 44, 82, .55); }
+.tb td { color: var(--line); font-size: 1rem; line-height: 1.7; overflow-wrap: anywhere; }
+.tb td small { display: inline-block; color: var(--muted); font-size: .875rem; }
+.tb__name { font-size: 1.375rem !important; font-weight: 600; letter-spacing: .08em; }
+.tb > caption.sr { position: static !important; margin: 0 0 -1px; }
+@media (max-width: 47.99rem) {
+  .tb, .tb tbody { display: block; }
+  .tb tr { display: grid; grid-auto-flow: column; grid-template-rows: auto auto; grid-auto-columns: minmax(0, 1fr); border-bottom: 1px solid var(--rule); }
+  .tb tr:last-child { border-bottom: 0; }
+  .tb tr.tb__r1 { grid-auto-columns: minmax(0, 1fr) auto; }
+  .tb th, .tb td { display: block; border: 0; }
+  .tb th { width: auto; padding: .45rem .75rem 0; background: none; font-size: .75rem; }
+  .tb td { padding: .1rem .75rem .6rem; }
+  .tb__name { font-size: 1.125rem !important; }
+  .tb th ~ th, .tb th ~ th + td { border-left: 1px solid var(--rule); }
+}
+
+/* ───── 見積依頼 ───── */
+.zone--c { background: rgba(7, 22, 42, .48); }
+.ct { display: grid; gap: 2rem; }
+@media (min-width: 64rem) { .ct { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(2rem, 4vw, 3.5rem); } }
+.ct__txt h2 { margin: 0 0 .9rem; font-size: clamp(1.5rem, 1.2rem + 1.3vw, 2.125rem); line-height: 1.35; }
+.ct__to { width: 100%; margin-top: 1.5rem; border-collapse: collapse; border: 1.5px solid var(--rule); background: var(--deep); }
+.ct__to caption { padding: .55rem .9rem; text-align: left; color: var(--line); font-weight: 600; font-size: .9375rem; border: 1.5px solid var(--rule); border-bottom: 0; background: rgba(15, 44, 82, .65); }
+.ct__to th, .ct__to td { padding: .7rem .9rem; border-top: 1px solid var(--rule-2); text-align: left; vertical-align: baseline; }
+.ct__to th { width: 5rem; color: var(--muted); font-size: .9375rem; font-weight: 500; }
+.ct__to td { color: var(--line); font-size: 1.0625rem; }
+.ct__to td a { color: var(--line); padding-block: .2rem; }
+.ct__to small { color: var(--muted); font-size: .875rem; }
+
+.form { display: grid; gap: 1.15rem; }
+@media (min-width: 40rem) { .form { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.field { display: grid; gap: .35rem; align-content: start; min-width: 0; }
+.field--full, .form__end, .form__note { grid-column: 1 / -1; }
+.field label { color: var(--line); font-size: .9375rem; font-weight: 600; letter-spacing: .04em; }
+.field small { color: var(--muted); font-size: .875rem; line-height: 1.6; }
+.req { margin-left: .5rem; padding: .1rem .4rem; border-radius: 2px; background: var(--orange); color: var(--deep); font-size: .75rem; font-weight: 600; vertical-align: .1em; }
+.field input, .field select, .field textarea {
+  width: 100%; min-height: 3rem; padding: .65rem .8rem;
+  border: 1px solid var(--rule); border-radius: 2px; background: var(--deep); color: var(--line);
+  font: 400 1rem/1.6 var(--sans);
+}
+.field textarea { resize: vertical; min-height: 7.5rem; }
+.field select {
+  -webkit-appearance: none; appearance: none; padding-right: 2.5rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23EDF4FF' stroke-width='1.4' stroke-linecap='square'/%3E%3C/svg%3E") no-repeat right .9rem center / 12px 8px, var(--deep);
+}
+.field input:hover, .field select:hover, .field textarea:hover { border-color: rgba(190, 218, 255, .6); }
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--orange); outline-offset: 1px; border-color: var(--orange); }
+.field input[type="file"] { padding: .45rem .5rem; color: var(--text); }
+.field input[type="file"]::file-selector-button { margin-right: .85rem; min-height: 2.25rem; padding: 0 .85rem; border: 1px solid var(--rule); border-radius: 2px; background: var(--lift); color: var(--line); font: 500 .9375rem var(--sans); cursor: pointer; }
+.form__end { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.25rem; margin-top: .25rem; }
+.form__msg { margin: 0; color: var(--orange); font-weight: 600; }
+.form__msg:empty { display: none; }
+.form__note { margin: 0; color: var(--muted); font-size: .9375rem; }
+
+/* ───── フッター ───── */
+.ft {
+  background: var(--deep);
+  border-top: 2px solid var(--line);
+  padding: 1.75rem clamp(1rem, 3vw, 2.25rem);
+}
+.ft__in { display: grid; gap: .45rem; }
+.ft p { margin: 0; }
+.ft__name { color: var(--line); font-weight: 600; letter-spacing: .08em; }
+.ft__name small { color: var(--muted); font-weight: 400; letter-spacing: .02em; }
+.ft__addr { color: var(--text); font-size: .9375rem; }
+.ft__nav { list-style: none; margin: .4rem 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
+.ft__nav a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--text); }
+.ft__note { color: var(--muted); font-size: .875rem; }
+
+/* ───── 設備一覧ページ ───── */
+.ph-zone {
+  display: grid;
+  border-bottom: 2px solid var(--line);
+  background: rgba(7, 22, 42, .65);
+}
+@media (min-width: 64rem) {
+  .ph-zone { grid-template-columns: minmax(0, 1fr) minmax(0, 22rem); }
+}
+.ph-zone__main {
+  padding: clamp(1.25rem, 3.5vw, 2.25rem) clamp(1rem, 3vw, 2.25rem);
+}
+.ph-zone h1 {
+  margin: 0 0 .85rem;
+  font-weight: 600;
+  font-size: clamp(1.85rem, 1.3rem + 2.2vw, 2.85rem);
+  line-height: 1.3;
+  letter-spacing: .05em;
+}
+.ph-zone__main p { max-width: 40em; }
+.crumb { margin: 0 0 .9rem; font-size: .9375rem; color: var(--muted); }
+.crumb a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+
+.ph-zone__meta {
+  margin: 0;
+  display: grid;
+  border-top: 1.5px solid var(--rule);
+  background: var(--deep);
+}
+@media (min-width: 64rem) {
+  .ph-zone__meta { border-top: 0; border-left: 1.5px solid var(--line); }
+}
+.ph-zone__meta > div {
+  padding: .7rem 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+.ph-zone__meta > div:last-child { border-bottom: 0; }
+.ph-zone__meta dt { color: var(--muted); font-size: .75rem; letter-spacing: .05em; }
+.ph-zone__meta dd { margin: .15rem 0 0; color: var(--line); font-size: 1rem; font-weight: 600; }
+
+/* 加工範囲比較（A4同縮尺） */
+.env {
+  display: grid;
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+@media (min-width: 52rem) { .env { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.env figure {
+  margin: 0;
+  padding: 1.15rem;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: rgba(7, 22, 42, .45);
+}
+.env figcaption { margin-bottom: .75rem; }
+.env__tag { display: block; color: var(--cyan); font-size: .75rem; margin-bottom: .15rem; }
+.env figcaption b { display: block; color: var(--line); font-weight: 600; font-size: 1.0625rem; }
+.env figcaption span { color: var(--text); font-size: .9375rem; }
+.env figcaption .num { color: var(--orange); }
+.env__canvas { padding: .35rem; background: #06152B; border: 1px solid var(--rule-2); }
+.env svg { display: block; height: auto; width: calc(var(--w) / 820 * 100%); overflow: visible; }
+.env .box { fill: rgba(111, 211, 240, .08); stroke: var(--line); stroke-width: 1.75; vector-effect: non-scaling-stroke; }
+.env .grid { stroke: var(--cyan); stroke-width: 1; opacity: .28; vector-effect: non-scaling-stroke; }
+.env .ax { stroke: var(--cyan); stroke-width: 1; stroke-dasharray: 16 3 2.5 3; vector-effect: non-scaling-stroke; fill: none; }
+.env .a4 { fill: none; stroke: var(--orange); stroke-width: 1.25; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+.env .a4t { fill: var(--orange); font: 500 40px var(--mono); }
+.env__key { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin: 1.25rem 0 0; color: var(--muted); font-size: .9375rem; }
+.env__key span::before { content: ""; display: inline-block; width: 1.6rem; margin-right: .5rem; vertical-align: middle; border-top: 1.5px dashed var(--orange); }
+.env__key span + span::before { border-top: 1.5px solid var(--line); }
+
+/* 工作機械セレクタパネル（設備絞り込み） */
+.flt {
+  margin: 0 0 1.5rem;
+  border: 1.5px solid var(--rule);
+  background: var(--deep);
+}
+.flt[hidden] { display: none; }
+.flt__bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .5rem;
+  padding: .45rem 1rem;
+  border-bottom: 1px solid var(--rule);
+  background: #041020;
+  color: var(--cyan);
+  font-size: .75rem;
+}
+.flt__groups {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+@media (min-width: 60rem) {
+  .flt__groups { grid-template-columns: 1fr 1.2fr; gap: 1.5rem; }
+}
+.flt fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+.flt legend { padding: 0; margin-bottom: .5rem; color: var(--muted); font-family: var(--mono); font-weight: 600; font-size: .8125rem; letter-spacing: .05em; }
+.chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.chips label { position: relative; }
+.chips input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.chips span {
+  display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 .9rem;
+  border: 1px solid var(--rule); border-radius: 2px; background: rgba(15, 44, 82, .45); color: var(--text);
+  font-size: .9375rem; transition: background-color .15s, border-color .15s, color .15s;
+}
+.chips input:hover + span { border-color: var(--line); color: var(--line); }
+.chips input:checked + span { background: var(--orange); border-color: var(--orange); color: var(--deep); font-weight: 600; }
+.chips input:focus-visible + span { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+.flt__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem 1.5rem;
+  padding: .75rem 1rem;
+  border-top: 1px solid var(--rule);
+  background: rgba(15, 44, 82, .35);
+}
+.flt__count { margin: 0; color: var(--line); font-size: 1rem; }
+.flt__count .num { color: var(--orange); font-size: 1.125rem; }
+.flt__count > span { display: inline-block; }
+.flt button[type="reset"] {
+  min-height: 2.75rem; padding: 0 1rem;
+  border: 1px solid var(--rule); border-radius: 2px;
+  background: transparent; color: var(--text);
+  font: 500 .9375rem var(--sans); cursor: pointer;
+}
+.flt button[type="reset"]:hover { border-color: var(--line); color: var(--line); }
+
+/* 設備仕様台帳テーブル */
+.eq { width: 100%; border-collapse: collapse; font-size: 1rem; line-height: 1.7; border: 1px solid var(--rule); background: rgba(7, 22, 42, .45); }
+.eq caption { text-align: left; color: var(--muted); font-size: .9375rem; padding-bottom: .75rem; }
+.eq th, .eq td { padding: .85rem .75rem; border-bottom: 1px solid var(--rule-2); text-align: left; vertical-align: top; }
+.eq thead th { color: var(--muted); font-size: .875rem; font-weight: 500; border-bottom: 1.5px solid var(--rule); background: var(--deep); white-space: nowrap; }
+.eq tbody th { color: var(--line); font-weight: 600; min-width: 12rem; }
+.eq tbody th small { display: block; margin-top: .2rem; color: var(--muted); font-size: .8125rem; font-weight: 500; letter-spacing: .04em; }
+.eq .n { white-space: nowrap; color: var(--line); }
+.eq .r { color: var(--orange); }
+.eq .id { color: var(--cyan); white-space: nowrap; font-weight: 600; }
+.eq tr[hidden] { display: none; }
+.tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .3rem; }
+.tags li { padding: .05rem .5rem; border: 1px solid var(--rule-2); border-radius: 2px; font-size: .8125rem; color: var(--text); white-space: nowrap; }
+.tags li.is-hit { border-color: var(--orange); background: var(--orange); color: var(--deep); font-weight: 600; }
+.eq__empty { margin: 1rem 0 0; padding: 1rem 1.1rem; border: 1px dashed var(--rule); color: var(--line); }
+
+@media (max-width: 59.99rem) {
+  .eq { border: 0; background: none; }
+  .eq thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .eq, .eq tbody { display: block; }
+  .eq caption { display: block; }
+  .eq tr { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .35rem .75rem; padding: 1rem 0; border-bottom: 1px solid var(--rule-2); }
+  .eq th, .eq td { display: block; padding: 0; border: 0; }
+  .eq td.id { grid-column: 1; grid-row: 1; }
+  .eq tbody th { grid-column: 2; grid-row: 1; min-width: 0; }
+  .eq td.n { grid-column: 3; grid-row: 1; text-align: right; }
+  .eq td:not(.n):not(.id) { grid-column: 1 / -1; }
+  .eq td[data-l]:not(.n):not(.id)::before { content: attr(data-l); display: block; color: var(--muted); font-size: .8125rem; }
+}
+
+.eq-to { width: 100%; margin-top: clamp(2rem, 5vw, 3.5rem); border-collapse: collapse; border: 2px solid var(--line); background: var(--deep); }
+.eq-to caption { padding: 0 0 .6rem; text-align: left; color: var(--line); font-weight: 600; font-size: 1.125rem; letter-spacing: .06em; }
+.eq-to th, .eq-to td { padding: .75rem .9rem; border: 1px solid var(--rule); text-align: left; vertical-align: middle; }
+.eq-to th { width: 9rem; color: var(--muted); font-size: .875rem; font-weight: 500; white-space: nowrap; background: rgba(15, 44, 82, .55); }
+.eq-to td { color: var(--line); }
+.eq-to td a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.eq-to .nw, .tb .nw { display: inline-block; }
+@media (max-width: 40rem) {
+  .eq-to, .eq-to tbody, .eq-to tr { display: block; }
+  .eq-to caption { display: block; }
+  .eq-to { border: 0; background: none; }
+  .eq-to tbody { border: 2px solid var(--line); background: var(--deep); }
+  .eq-to tr { border-bottom: 1px solid var(--rule); }
+  .eq-to tr:last-child { border-bottom: 0; }
+  .eq-to th, .eq-to td { display: block; width: auto; border: 0; }
+  .eq-to th { padding: .45rem .75rem 0; background: none; font-size: .75rem; }
+  .eq-to td { padding: .15rem .75rem .65rem; }
+}
+
+/* ───── 動き（prefers-reduced-motion: reduce では完全に無効） ───── */
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pop { from { opacity: 0; scale: .4; } to { opacity: 1; scale: 1; } }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero .ln { stroke-dasharray: 1 1; animation: draw .5s cubic-bezier(.55, .08, .25, 1) both; animation-delay: calc(var(--d, 0) * 1ms + 40ms); }
+  .hero .fade { animation: fadein .3s ease-out both; animation-delay: calc(var(--d, 0) * 1ms + 40ms); }
+  .hero .bl { animation: pop .24s cubic-bezier(.3, 1.5, .55, 1) both; animation-delay: calc(var(--d, 0) * 1ms + 40ms); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

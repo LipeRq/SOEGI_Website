@@ -1,0 +1,1927 @@
+/* べにさや農園（架空）— 絵本・農園の手帖・縦スクロール絵巻スタイル
+   方針：生成りコットン紙（#FBF6EE）とクラフト紙（#F2E6D2）、さくらんぼ紅（#B81D33）、果樹園の葉緑（#2D5A3C）を基調に、
+   木の看板と栞ひものナビ、縦書き絵本題箋＋パノラマ果樹園ヒーロー、アーチ窓の標本枠＋作業日誌ページ、
+   12か月の畑ごよみ絵巻、鳩目穴つきの荷札、切り取り線つきFAX注文用紙として設える。 */
+
+:root {
+  --beni: #A8152B;      /* さくらんぼ紅（全淡地で 6.0:1 以上、白文字と 7.3:1） */
+  --beni-dk: #850E20;   /* 濃い紅（ホバー・強調） */
+  --jam: #6E0E23;       /* 煮詰めたジャム紅（白文字と 10.4:1） */
+  --cream: #FBF6EE;     /* 生成りコットン紙：ページの地 */
+  --craft: #F2E6D2;     /* クラフト紙：看板・台紙の地 */
+  --craft-dk: #DFCBB0;  /* クラフト紙の縁・縫い目 */
+  --paper: #FFFDF8;     /* 手帖・絵葉書・荷札の地 */
+  --leaf: #2D5A3C;      /* 果樹園の葉緑（#FBF6EE地で 7.35:1） */
+  --leaf-lt: #E3F0DF;   /* 若葉の淡地 */
+  --ink: #361C18;       /* 焙煎こげ茶：本文（#FBF6EE地で 13.5:1） */
+  --ink-soft: #5E3C35;  /* 補足の文字（どの淡地でも 6.8:1 以上） */
+  --blossom: #FCE8EE;   /* 春の花霞 */
+  --young: #E4F1D8;     /* 初夏の若葉 */
+  --sun: #FDEBC2;       /* 収穫の朝陽 */
+  --bark: #4E2C1E;      /* 木の看板・樹皮 */
+  --line: #DCC7AC;      /* 罫線・枠線 */
+  --f-round: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "BIZ UDPGothic", "Yu Gothic", "YuGothic", Meiryo, sans-serif;
+  --f-hand: "Kiwi Maru", "Hiragino Maru Gothic ProN", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
+  --gut: clamp(1rem, 4vw, 2.75rem);
+  --max: 76rem;
+  --head-h: 6.5rem;
+  color-scheme: light;
+}
+
+/* ---------- 土台 ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  scroll-padding-top: calc(var(--soegi-bar-h, 2.5rem) + 1rem);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: clip;
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(rgba(184, 29, 51, .03) 1px, transparent 0),
+    radial-gradient(rgba(45, 90, 60, .03) 1px, transparent 0);
+  background-size: 28px 28px;
+  background-position: 0 0, 14px 14px;
+  color: var(--ink);
+  font-family: var(--f-round);
+  font-size: 1.0625rem;
+  line-height: 1.9;
+  letter-spacing: .04em;
+  overflow-x: clip;
+}
+h1, h2, h3, h4 {
+  font-family: var(--f-hand);
+  font-weight: 500;
+  letter-spacing: .03em;
+  line-height: 1.4;
+  margin: 0;
+  word-break: auto-phrase;
+  text-wrap: balance;
+}
+p { margin: 0; font-size: 1.0625rem; line-height: 1.88; }
+li, dd, dt, td, th { font-size: 1.03rem; line-height: 1.82; }
+img, svg { display: block; }
+a { color: var(--beni); text-underline-offset: .22em; text-decoration-thickness: 1.5px; }
+a:hover { color: var(--beni-dk); }
+:focus-visible {
+  outline: 3px solid var(--leaf) !important;
+  outline-offset: 3px !important;
+  border-radius: 6px;
+}
+.on-dark :focus-visible { outline-color: var(--cream) !important; }
+.vh {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: calc(var(--soegi-bar-h, 2.5rem) + .5rem);
+  z-index: 60;
+  padding: .6rem 1rem;
+  border-radius: .75rem;
+  background: var(--ink);
+  color: var(--cream);
+  transform: translateY(-300%);
+}
+.skip:focus { transform: none; color: var(--cream); }
+
+.sec-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font: 700 .95rem/1.5 var(--f-round);
+  color: var(--leaf);
+  letter-spacing: .08em;
+}
+.sec-kicker::before, .sec-kicker::after {
+  content: "";
+  display: inline-block;
+  width: 1.1rem;
+  height: 2px;
+  background: var(--leaf);
+  border-radius: 2px;
+}
+
+/* ---------- ボタン（布タグ・栞ボタン） ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  min-height: 3.2rem;
+  padding: .45rem 1.5rem;
+  border-radius: 999px;
+  border: 2px dashed transparent;
+  font: 700 1rem/1.4 var(--f-round);
+  letter-spacing: .05em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.btn-primary {
+  background: var(--beni);
+  color: var(--paper);
+  border-color: rgba(255, 253, 248, .45);
+  box-shadow: 0 4px 0 var(--jam), 0 8px 16px -8px rgba(110, 14, 35, .45);
+}
+.btn-primary:hover {
+  background: var(--beni-dk);
+  color: var(--paper);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 var(--jam);
+}
+.btn-primary:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--jam);
+}
+.btn-ghost {
+  background: var(--paper);
+  color: var(--beni);
+  border: 2px dashed var(--beni);
+  box-shadow: 0 3px 0 var(--craft-dk);
+}
+.btn-ghost:hover {
+  background: var(--blossom);
+  color: var(--beni-dk);
+}
+.btn-cream {
+  background: var(--paper);
+  color: var(--jam);
+  border: 2px dashed var(--jam);
+  box-shadow: 0 4px 0 #420714;
+}
+.btn-cream:hover {
+  background: #fff;
+  color: var(--jam);
+  transform: translateY(-1px);
+}
+
+/* ---------- 1. 木の看板と栞ひものナビゲーション ---------- */
+.site-head {
+  position: relative;
+  z-index: 10;
+  background: #EADAC3;
+  padding: 0;
+}
+.signboard-wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: .65rem var(--gut) .45rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: .75rem 1.25rem;
+}
+
+/* 赤い栞リボン型の農園ロゴ札 */
+.ribbon-logo {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  padding: .55rem 1.15rem .7rem .95rem;
+  background: var(--beni);
+  color: var(--paper);
+  text-decoration: none;
+  border-radius: .4rem .4rem .85rem .85rem;
+  border: 2px dashed rgba(255, 253, 248, .55);
+  box-shadow: 0 6px 0 var(--jam), 0 10px 20px -12px rgba(54, 28, 24, .55);
+  view-transition-name: logo;
+}
+.ribbon-logo:hover {
+  background: var(--beni-dk);
+  color: var(--paper);
+}
+.ribbon-hole {
+  width: .65rem;
+  height: .65rem;
+  border-radius: 50%;
+  background: #EADAC3;
+  border: 2px solid #F7D794;
+  flex: none;
+}
+.ribbon-logo svg {
+  width: 2.35rem;
+  height: 2.35rem;
+  flex: none;
+  background: var(--paper);
+  border-radius: 50%;
+  padding: .18rem;
+}
+.ribbon-txt { display: flex; flex-direction: column; }
+.logo-kicker {
+  font: 700 .72rem/1.2 var(--f-round);
+  letter-spacing: .1em;
+  color: #FFE3E8;
+}
+.logo-name {
+  font-family: var(--f-hand);
+  font-size: 1.38rem;
+  line-height: 1.2;
+  letter-spacing: .06em;
+  color: #FFFDF8;
+}
+.logo-sub {
+  display: block;
+  font: 700 .75rem/1.3 var(--f-round);
+  letter-spacing: .1em;
+  color: #FFEAEF;
+}
+
+/* 木の看板＋栞タグのナビボード */
+.wood-signboard {
+  flex: 1 1 32rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .45rem .75rem;
+  padding: .55rem .9rem .6rem;
+  background: var(--paper);
+  border: 2px solid var(--bark);
+  border-radius: 1rem;
+  box-shadow: inset 0 0 0 3px var(--craft), 0 4px 0 var(--craft-dk);
+}
+.signboard-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: .25rem;
+  border-bottom: 1.5px dashed var(--line);
+  font: 700 .78rem/1.2 var(--f-round);
+  color: var(--ink-soft);
+  letter-spacing: .08em;
+}
+.nail {
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: var(--bark);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,.35);
+}
+.gnav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem .45rem;
+}
+.nav-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+  min-height: 2.55rem;
+  padding: .2rem .85rem .2rem .65rem;
+  border-radius: .5rem 1rem 1rem .5rem;
+  background: var(--craft);
+  border: 1.5px solid #C8AE8D;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: .94rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color .2s, transform .2s;
+}
+.nav-tag:hover {
+  background: var(--blossom);
+  border-color: var(--beni);
+  color: var(--beni-dk);
+  transform: translateY(-1px);
+}
+.nav-tag[aria-current="page"] {
+  background: var(--leaf);
+  border-color: var(--leaf);
+  color: var(--paper);
+}
+.tag-eyelet {
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1.5px solid var(--bark);
+  flex: none;
+}
+.nav-tag[aria-current="page"] .tag-eyelet {
+  background: var(--craft);
+  border-color: var(--paper);
+}
+
+.still-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+  min-height: 2.55rem;
+  padding: .2rem .85rem .2rem .68rem;
+  border: 1.5px dashed var(--bark);
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--ink);
+  font: 700 .85rem/1.2 var(--f-round);
+  letter-spacing: .04em;
+  cursor: pointer;
+  margin-left: auto;
+}
+.still-btn:hover { background: var(--blossom); }
+.still-btn svg { width: 1.05rem; height: 1.05rem; flex: none; }
+.still-btn .i-play { display: none; }
+.still-btn[aria-pressed="true"] {
+  background: var(--ink);
+  border-style: solid;
+  border-color: var(--ink);
+  color: var(--paper);
+}
+.still-btn[aria-pressed="true"] .i-pause { display: none; }
+.still-btn[aria-pressed="true"] .i-play { display: block; }
+@media (prefers-reduced-motion: reduce) { .still-btn { display: none; } }
+
+.head-scallop {
+  width: 100%;
+  height: 1.35rem;
+  display: block;
+  margin-bottom: -1px;
+}
+
+@media (max-width: 52rem) {
+  .signboard-wrap {
+    padding: .5rem var(--gut) .3rem;
+    gap: .5rem;
+  }
+  .ribbon-logo {
+    width: 100%;
+    justify-content: center;
+    padding: .45rem .8rem;
+  }
+  .wood-signboard {
+    padding: .45rem .6rem;
+  }
+  .gnav {
+    width: 100%;
+    justify-content: center;
+    gap: .3rem;
+  }
+  .nav-tag {
+    padding: .15rem .6rem .15rem .5rem;
+    font-size: .88rem;
+    min-height: 2.35rem;
+  }
+  .still-btn {
+    margin: .15rem auto 0;
+  }
+}
+
+/* ---------- 2. ヒーロー：絵本パノラマ＋縦書き題箋＋ピン留め絵葉書 ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #FDECEF 0%, #FCE2EA 58%, #F8D5E0 100%);
+  min-height: max(39rem, calc(100svh - var(--soegi-bar-h, 2.5rem) - var(--head-h)));
+  display: flex;
+  flex-direction: column;
+}
+.petals {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.hero-in {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(19rem, 26.5rem) minmax(16rem, 1fr) auto;
+  align-items: start;
+  gap: 1.5rem;
+  padding: 1.5rem var(--gut) clamp(8.5rem, 15vw, 12.5rem);
+}
+
+/* 左：ピン留めの手書き絵葉書 */
+.hero-postcard {
+  position: relative;
+  align-self: center;
+  background: var(--paper);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 2.15rem,
+    rgba(220, 199, 172, .38) 2.15rem calc(2.15rem + 1px)
+  );
+  padding: 1.85rem 1.5rem 1.5rem;
+  border-radius: .6rem;
+  border: 2px solid var(--craft-dk);
+  box-shadow:
+    inset 0 0 0 4px var(--paper),
+    inset 0 0 0 5.5px rgba(184, 29, 51, .28),
+    0 16px 30px -18px rgba(54, 28, 24, .45);
+  transform: rotate(-.8deg);
+}
+.pin-cherry {
+  position: absolute;
+  top: -.55rem;
+  left: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: -.625rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #FF6B8B, #B81D33 65%, #6E0E23);
+  box-shadow: 0 3px 6px rgba(54, 28, 24, .4);
+}
+.postcard-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem .75rem;
+  margin-bottom: .9rem;
+  padding-bottom: .6rem;
+  border-bottom: 1.5px dashed var(--line);
+}
+.post-stamp {
+  display: inline-block;
+  padding: .25rem .55rem;
+  border: 2px dashed var(--beni);
+  border-radius: .25rem;
+  background: #FFF5F7;
+  color: var(--beni);
+  font: 700 .78rem/1.25 var(--f-round);
+  text-align: center;
+}
+.post-stamp small {
+  display: block;
+  font-size: .72rem;
+  color: var(--ink-soft);
+}
+.post-from {
+  font: 500 1.05rem/1.4 var(--f-hand);
+  color: var(--leaf);
+}
+.hero-lede {
+  font-size: 1.0625rem;
+  line-height: 1.95;
+  color: var(--ink);
+}
+.post-meta {
+  margin-top: .75rem;
+  padding-top: .55rem;
+  border-top: 1px dashed var(--line);
+  font-size: 1rem;
+  line-height: 1.78;
+  color: var(--ink-soft);
+}
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-top: 1.25rem;
+}
+
+/* 中央：枝とさくらんぼのイラスト */
+.hero-art {
+  position: relative;
+  align-self: start;
+  width: 100%;
+  max-width: 34rem;
+  justify-self: center;
+  margin: -1rem 0 0;
+}
+.hero-art svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.sway { transform-box: view-box; transform-origin: 370px 170px; }
+@media (prefers-reduced-motion: no-preference) {
+  .sway { animation: sway 5.5s ease-in-out infinite; }
+  .is-still .sway, .is-still .band-track { animation-play-state: paused; }
+}
+@keyframes sway {
+  0%, 100% { transform: rotate(-3.5deg); }
+  50% { transform: rotate(3deg); }
+}
+
+/* 右：絵本の表紙のような縦書き題箋（writing-mode: vertical-rl） */
+.hero-title-plate {
+  position: relative;
+  align-self: start;
+  justify-self: end;
+  background: var(--paper);
+  padding: 1.35rem 1.15rem 1.25rem;
+  border-radius: .5rem;
+  border: 2.5px solid var(--beni);
+  box-shadow:
+    inset 0 0 0 4px var(--paper),
+    inset 0 0 0 5.5px var(--leaf),
+    0 16px 32px -16px rgba(54, 28, 24, .5);
+}
+.title-plate-inner {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .85rem;
+  min-height: 22rem;
+}
+.plate-sub {
+  font: 700 .95rem/1.5 var(--f-round);
+  color: var(--leaf);
+  letter-spacing: .14em;
+  padding-left: .55rem;
+  border-left: 1.5px dashed var(--line);
+  margin: 0;
+}
+.hero h1, .p-title-plate h1 {
+  font-family: var(--f-hand);
+  font-size: clamp(2.6rem, 4.4vw, 3.85rem);
+  line-height: 1.22;
+  letter-spacing: .08em;
+  color: var(--beni);
+  margin: 0;
+  text-wrap: nowrap;
+}
+.h1-line { display: inline-block; }
+.h1-dot {
+  display: inline-block;
+  width: .58em;
+  height: .7em;
+  vertical-align: middle;
+  margin-top: .08em;
+}
+.plate-seal {
+  writing-mode: horizontal-tb;
+  margin-top: auto;
+  display: inline-grid;
+  place-items: center;
+  width: 3.1rem;
+  height: 3.1rem;
+  padding: .2rem;
+  border: 2px solid var(--beni);
+  border-radius: .35rem;
+  background: #FFF3F5;
+  color: var(--beni);
+  font: 700 .72rem/1.15 var(--f-hand);
+  letter-spacing: .04em;
+  text-align: center;
+  transform: rotate(-4deg);
+}
+
+.hills {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: clamp(9.5rem, 18vw, 14.5rem);
+  z-index: 1;
+  pointer-events: none;
+}
+.hills svg { position: absolute; left: 0; bottom: 0; width: 100%; }
+.hill-far { height: 100%; }
+.hill-mid { height: 68%; }
+.hill-near { height: 30%; }
+.hero-jar {
+  position: absolute;
+  z-index: 3;
+  right: max(var(--gut), calc(50% - 22rem));
+  bottom: clamp(1rem, 2.2vw, 1.8rem);
+  width: clamp(5.2rem, 8.5vw, 8rem);
+}
+.hero-jar svg { width: 100%; height: auto; }
+
+/* 視差：対応ブラウザだけ */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hill-far, .hill-mid, .hero-art, .hero-jar {
+      animation: auto linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 100vh;
+    }
+    .hill-far { animation-name: px-far; }
+    .hill-mid { animation-name: px-mid; }
+    .hero-art { animation-name: px-art; }
+    .hero-jar { animation-name: px-jar; }
+  }
+}
+@keyframes px-far { to { transform: translateY(34%); } }
+@keyframes px-mid { to { transform: translateY(20%); } }
+@keyframes px-art { to { transform: translateY(-12%); } }
+@keyframes px-jar { to { transform: translateY(-24%) rotate(-5deg); } }
+
+@media (max-width: 63.99rem) {
+  .hero-in {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    padding-top: 1rem;
+  }
+  .hero-art {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: 22rem;
+    margin: -.5rem auto -1.5rem 0;
+  }
+  .hero-title-plate {
+    grid-column: 2;
+    grid-row: 1;
+    padding: .9rem .75rem;
+  }
+  .title-plate-inner {
+    min-height: 15.5rem;
+    gap: .5rem;
+  }
+  .hero h1, .p-title-plate h1 {
+    font-size: clamp(2rem, 6.5vw, 2.75rem);
+  }
+  .hero-postcard {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    transform: none;
+    padding: 1.4rem 1.15rem 1.25rem;
+  }
+  .hero-cta .btn { flex: 1 1 12rem; }
+  .hero-jar { right: var(--gut); width: 4.6rem; }
+}
+
+/* ---------- 流れる縫い目帯 ---------- */
+.band {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  background: var(--beni);
+  color: var(--paper);
+  padding: .9rem 0;
+  border-top: 2px dashed rgba(255, 253, 248, .55);
+  border-bottom: 2px dashed rgba(255, 253, 248, .55);
+}
+.band-track { display: flex; width: max-content; }
+.band-list {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin: 0;
+  padding: 0 1.6rem 0 0;
+  list-style: none;
+  font-family: var(--f-hand);
+  font-size: 1.18rem;
+  white-space: nowrap;
+}
+.band-list li { display: flex; align-items: center; gap: 1.6rem; }
+.band-list svg { width: 1.3rem; height: 1.3rem; flex: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .band-track { animation: band 46s linear infinite; }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .band:hover .band-track { animation-play-state: paused; }
+}
+@keyframes band { to { transform: translateX(-50%); } }
+
+/* ---------- 3. 畑の一年：アーチ窓の標本枠＋作業日誌ページ ---------- */
+.story {
+  --scene-bg: var(--blossom);
+  padding: clamp(3.5rem, 7vw, 6rem) 0 2rem;
+}
+.story[data-scene="early"] { --scene-bg: var(--young); }
+.story[data-scene="harvest"] { --scene-bg: var(--sun); }
+.story[data-scene="jam"] { --scene-bg: var(--jam); }
+
+.story-head {
+  max-width: var(--max);
+  margin: 0 auto clamp(1.75rem, 4vw, 3rem);
+  padding: 0 var(--gut);
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: .65rem;
+}
+.story-head h2 {
+  font-size: clamp(2rem, 4.4vw, 3.2rem);
+  color: var(--beni);
+}
+.story-head p { max-width: 38em; }
+
+.story-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+  gap: 0 clamp(2rem, 4.5vw, 4.5rem);
+  max-width: 84rem;
+  margin: 0 auto;
+  padding: 0 var(--gut);
+}
+.stage {
+  position: sticky;
+  top: calc(var(--soegi-bar-h, 2.5rem) + 1rem);
+  height: calc(100svh - var(--soegi-bar-h, 2.5rem) - 2rem);
+  align-self: start;
+}
+/* ボタニカル・アーチ窓の標本枠 */
+.stage-win {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 14rem 14rem 2.25rem 2.25rem;
+  background-color: var(--scene-bg);
+  border: 3px solid var(--bark);
+  box-shadow:
+    inset 0 0 0 6px rgba(255, 253, 248, .55),
+    0 18px 36px -20px rgba(54, 28, 24, .55);
+  transition: background-color .9s ease;
+  content-visibility: auto;
+}
+.arch-ornament {
+  position: absolute;
+  inset: .75rem;
+  pointer-events: none;
+  z-index: 2;
+}
+.corner-svg {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+}
+.corner-svg.tl { top: .5rem; left: .5rem; }
+.corner-svg.tr { top: .5rem; right: .5rem; transform: scaleX(-1); }
+.corner-svg.br { bottom: .5rem; right: .5rem; transform: scale(-1); }
+
+/* 季節の暦バッジ（四月・花 / 五月・青い実 / 六月・収穫 / 通年・ジャム） */
+.almanac-dial {
+  position: absolute;
+  top: .85rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  min-width: 9.5rem;
+  height: 2.2rem;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 2px solid var(--bark);
+  box-shadow: 0 3px 8px rgba(54, 28, 24, .2);
+  display: grid;
+  place-items: center;
+  padding: 0 1rem;
+}
+.dial-badge {
+  grid-area: 1 / 1;
+  font: 700 .92rem/1 var(--f-hand);
+  color: var(--beni);
+  letter-spacing: .08em;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .4s ease, transform .4s ease;
+  white-space: nowrap;
+}
+.story[data-scene="spring"] .dial-badge[data-d="spring"],
+.story[data-scene="early"] .dial-badge[data-d="early"],
+.story[data-scene="harvest"] .dial-badge[data-d="harvest"],
+.story[data-scene="jam"] .dial-badge[data-d="jam"] {
+  opacity: 1;
+  transform: none;
+}
+
+.stage-svg {
+  position: absolute;
+  inset: 6.2rem 0 0 0;
+  width: 100%;
+  height: calc(100% - 6.2rem);
+  z-index: 1;
+}
+
+.steps {
+  position: absolute;
+  z-index: 3;
+  top: 3.45rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.steps ol {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: .25rem;
+  margin: 0;
+  padding: .28rem;
+  list-style: none;
+  border-radius: 999px;
+  background: rgba(255, 253, 248, .92);
+  border: 1.5px solid var(--line);
+  box-shadow: 0 2px 10px -4px rgba(54, 28, 24, .25);
+}
+.steps a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.4rem;
+  padding: 0 .95rem;
+  border-radius: 999px;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: .92rem;
+  text-decoration: none;
+  transition: background-color .3s, color .3s;
+}
+.steps a:hover { background: rgba(184, 29, 51, .1); color: var(--ink); }
+.steps a[aria-current] { background: var(--beni); color: var(--paper); }
+
+.months {
+  position: absolute;
+  inset: auto 1.25rem -.12em auto;
+  z-index: 0;
+  font-family: var(--f-hand);
+  font-size: clamp(6.5rem, 14vw, 13rem);
+  line-height: 1;
+  pointer-events: none;
+}
+.months span {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(.25em);
+  transition: opacity .6s ease, transform .8s cubic-bezier(.2, .8, .2, 1);
+}
+.months [data-m="spring"] { color: #F5C0CE; }
+.months [data-m="early"] { color: #C1DDA3; }
+.months [data-m="harvest"] { color: #F6CB72; }
+.months [data-m="jam"] { color: #82122D; }
+.story[data-scene="spring"] [data-m="spring"],
+.story[data-scene="early"] [data-m="early"],
+.story[data-scene="harvest"] [data-m="harvest"],
+.story[data-scene="jam"] [data-m="jam"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* 枝の部品アニメーション */
+.stage-svg .sv-stem path { fill: none; stroke: #7C9A45; stroke-width: 3; stroke-linecap: round; transition: opacity .5s ease; }
+.sv-gr circle { fill: #9CC46A; }
+.stage-svg .hl { fill: #fff; opacity: .7; }
+.stage-svg .dim { fill: none; stroke: #6B0A22; stroke-width: 1.6; stroke-linecap: round; opacity: .55; }
+.sv-fl > g, .sv-lf > g, .sv-gr > g, .sv-rd > g {
+  opacity: 0;
+  transform: scale(.25);
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  transition: opacity .45s ease var(--d, 0s), transform .7s cubic-bezier(.34, 1.5, .64, 1) var(--d, 0s);
+}
+.sv-gr > g, .sv-rd > g { transform-origin: 50% 0%; }
+.story[data-scene="spring"] .sv-fl > g,
+.story[data-scene="early"] .sv-lf > g,
+.story[data-scene="harvest"] .sv-lf > g,
+.story[data-scene="jam"] .sv-lf > g,
+.story[data-scene="early"] .sv-gr > g,
+.story[data-scene="harvest"] .sv-rd > g {
+  opacity: 1;
+  transform: none;
+}
+.story[data-scene="jam"] .sv-stem { opacity: 0; }
+.sv-tree { transition: opacity .9s ease, transform 1s cubic-bezier(.2, .8, .2, 1); }
+.story[data-scene="jam"] .sv-tree { opacity: .3; transform: translateY(-46px); }
+
+.sv-x { opacity: 0; transition: opacity .6s ease, transform .9s cubic-bezier(.2, .8, .2, 1); }
+.sv-bee { transform: translate(40px, -30px); }
+.sv-tool { transform: translate(-40px, 30px); }
+.sv-fallen { transform: translateY(-50px); }
+.sv-roof { transform: translateY(-40px); }
+.sv-sun { transform: translateY(40px); }
+.sv-basket { transform: translateY(50px); }
+.sv-jar { transform: translateY(70px); }
+.story[data-scene="spring"] .sv-bee,
+.story[data-scene="spring"] .sv-tool,
+.story[data-scene="spring"] .sv-fallen,
+.story[data-scene="early"] .sv-roof,
+.story[data-scene="harvest"] .sv-sun,
+.story[data-scene="harvest"] .sv-basket,
+.story[data-scene="jam"] .sv-jar {
+  opacity: 1;
+  transform: none;
+}
+.sv-jamfill {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transform: scaleY(.12);
+  transition: transform 1.5s cubic-bezier(.2, .8, .2, 1) .5s;
+}
+.story[data-scene="jam"] .sv-jamfill { transform: none; }
+.sv-lid {
+  opacity: 0;
+  transform: translateY(-26px);
+  transition: opacity .3s ease, transform .55s cubic-bezier(.3, 1.4, .5, 1);
+}
+.story[data-scene="jam"] .sv-lid { opacity: 1; transform: none; transition-delay: 1.7s; }
+
+/* 作業日誌のページ（右カラム） */
+.ch {
+  min-height: calc(100svh - var(--soegi-bar-h, 2.5rem));
+  display: flex;
+  align-items: center;
+  padding: 2.5rem 0;
+}
+.ch-card {
+  position: relative;
+  width: 100%;
+  max-width: 34rem;
+  padding: 2rem 1.75rem 1.85rem 2.85rem;
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 2.05rem,
+    rgba(220, 199, 172, .42) 2.05rem calc(2.05rem + 1px)
+  );
+  border: 2px solid var(--line);
+  border-radius: .45rem 1.15rem 1.15rem .45rem;
+  box-shadow:
+    4px 4px 0 var(--craft-dk),
+    0 16px 32px -20px rgba(54, 28, 24, .45);
+}
+.ch:nth-child(odd) .ch-card { transform: rotate(-.45deg); }
+.ch:nth-child(even) .ch-card { transform: rotate(.55deg); }
+
+/* 手帖の綴じ穴 */
+.ch-holes {
+  position: absolute;
+  top: 1.2rem;
+  bottom: 1.2rem;
+  left: .75rem;
+  width: 1.1rem;
+  border-right: 2px dashed rgba(184, 29, 51, .28);
+  background-image: radial-gradient(circle at .35rem 50%, var(--cream) .32rem, #C9B293 .34rem, transparent .4rem);
+  background-size: 100% 3.2rem;
+}
+
+.ch-when {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .4rem .75rem;
+  margin-bottom: .9rem;
+  color: var(--ink-soft);
+  font-weight: 700;
+  font-size: 1rem;
+}
+.ch-season {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.1rem;
+  padding: 0 .95rem;
+  border-radius: .35rem 1rem 1rem .35rem;
+  font: 500 1rem/1 var(--f-hand);
+  letter-spacing: .06em;
+  border: 1.5px dashed currentColor;
+}
+#ch-spring .ch-season { background: #FCE2EA; color: var(--jam); }
+#ch-early .ch-season { background: #D7ECC2; color: #1E4A26; }
+#ch-harvest .ch-season { background: #FFE099; color: #522900; }
+#ch-jam .ch-season { background: var(--jam); color: var(--paper); border-color: rgba(255,253,248,.5); }
+
+.ch h3 {
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  color: var(--ink);
+}
+.ch p + p { margin-top: .9rem; }
+
+/* テープで貼った作業日誌の端書きメモ */
+.diary {
+  position: relative;
+  margin-top: 1.65rem;
+  padding: 1.15rem 1.15rem 1rem;
+  border-radius: .35rem;
+  background: #FDF7E7;
+  border: 1.5px dashed #C9B293;
+  box-shadow: 0 8px 18px -12px rgba(54, 28, 24, .35);
+  transform: rotate(.6deg);
+}
+.diary-tape {
+  position: absolute;
+  top: -.55rem;
+  left: 50%;
+  width: 5.2rem;
+  height: 1.15rem;
+  margin-left: -2.6rem;
+  background: rgba(242, 162, 182, .62);
+  border-left: 1px dashed rgba(184, 29, 51, .3);
+  border-right: 1px dashed rgba(184, 29, 51, .3);
+  transform: rotate(-1.8deg);
+}
+.diary-t {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--leaf);
+  margin-bottom: .35rem;
+}
+.diary ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: 400 1.05rem/1.85 var(--f-hand);
+}
+.diary li {
+  border-bottom: 1px dashed rgba(127, 166, 201, .45);
+  padding: .15rem 0;
+}
+.diary .d {
+  display: inline-block;
+  min-width: 3.3rem;
+  margin-right: .4rem;
+  color: var(--beni);
+  font-weight: 700;
+}
+
+@media (max-width: 33.99rem), (max-width: 51.99rem) and (min-height: 32.01rem) {
+  .story { --stage-h: min(54svh, 29rem); }
+  .story-body { grid-template-columns: minmax(0, 1fr); padding: 0; }
+  .stage {
+    z-index: 3;
+    top: var(--soegi-bar-h, 2.5rem);
+    height: var(--stage-h);
+    background: var(--cream);
+    padding: 0 .5rem;
+  }
+  .stage-win {
+    border-radius: 3.5rem 3.5rem 1.5rem 1.5rem;
+    box-shadow: 0 10px 22px -16px rgba(54, 28, 24, .55);
+  }
+  .almanac-dial {
+    top: .45rem;
+    height: 1.85rem;
+    min-width: 8rem;
+  }
+  .dial-badge { font-size: .82rem; }
+  .steps { top: 2.55rem; left: .6rem; right: .6rem; }
+  .steps ol { display: flex; width: 100%; justify-content: space-between; }
+  .steps li { flex: 1; }
+  .steps a { width: 100%; justify-content: center; padding: 0 .35rem; min-height: 2.15rem; font-size: .86rem; }
+  .stage-svg { inset: 4.8rem 0 auto 0; height: calc(100% - 5rem); }
+  .months { right: .9rem; bottom: -.1em; font-size: clamp(3.4rem, 15vw, 5rem); }
+  .chapters { position: relative; z-index: 1; }
+  .ch {
+    min-height: calc(100svh - var(--soegi-bar-h, 2.5rem) - var(--stage-h));
+    display: block;
+    padding: 1.5rem var(--gut) 2rem;
+    scroll-margin-top: calc(var(--stage-h) - 2rem);
+  }
+  .ch:nth-child(odd) .ch-card,
+  .ch:nth-child(even) .ch-card {
+    transform: none;
+    margin: 0 auto;
+    padding: 1.45rem 1.15rem 1.35rem 2.15rem;
+  }
+  .ch-holes { left: .45rem; width: .85rem; }
+  .diary { transform: none; }
+}
+
+/* ---------- ジャム工房の張り紙バナー ---------- */
+.jamcta {
+  position: relative;
+  background: var(--jam);
+  color: var(--paper);
+  padding: 0;
+}
+.wave-top, .wave-btm {
+  width: 100%;
+  height: clamp(1.5rem, 3.2vw, 2.5rem);
+  display: block;
+}
+.jamcta-in {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) var(--gut);
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 2.5rem 4rem;
+  align-items: center;
+}
+.jam-kicker {
+  display: inline-block;
+  padding: .2rem .8rem;
+  border-radius: 999px;
+  border: 1.5px dashed rgba(255, 253, 248, .55);
+  font: 700 .88rem/1.4 var(--f-round);
+  color: #FFEAEF;
+  margin-bottom: .75rem;
+}
+.jamcta h2 {
+  font-size: clamp(2rem, 4.4vw, 3.2rem);
+  margin-bottom: 1.1rem;
+  color: #FFFDF8;
+}
+.jamcta p { max-width: 30em; color: #FFF7E8; }
+.jamcta .btn { margin-top: 1.75rem; }
+.shelf {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(.5rem, 2vw, 1.25rem);
+  padding: 0 1rem 1.1rem;
+}
+.shelf::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1.1rem;
+  border-radius: .4rem;
+  background: #B9784F;
+  box-shadow: inset 0 -.35rem 0 #93583A;
+}
+.shelf svg { width: clamp(5rem, 11vw, 8.5rem); height: auto; }
+.shelf svg:nth-child(2) { width: clamp(5.8rem, 13vw, 10rem); }
+@media (max-width: 47.99rem) {
+  .jamcta-in { grid-template-columns: minmax(0, 1fr); }
+  .shelf { order: -1; }
+}
+
+/* ---------- 園のこと・直売所 ---------- */
+.about { padding: clamp(4rem, 8vw, 6.5rem) var(--gut); }
+.about-in {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 2.5rem clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+}
+.about-text {
+  position: relative;
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  background: var(--paper);
+  border: 2px dashed var(--line);
+  border-radius: 1.25rem;
+  box-shadow: 0 12px 28px -18px rgba(54, 28, 24, .38);
+}
+.about h2 {
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  color: var(--beni);
+  margin: .35rem 0 1.25rem;
+}
+.about-text p + p { margin-top: 1rem; }
+
+.farm-stamps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+  margin: 1.5rem 0 0;
+  padding: 1rem;
+  background: var(--cream);
+  border: 1.5px dashed var(--craft-dk);
+  border-radius: .85rem;
+}
+.farm-stamps > div {
+  display: flex;
+  flex-direction: column;
+  padding: .35rem .6rem;
+  background: var(--paper);
+  border-radius: .5rem;
+  border: 1px solid var(--line);
+}
+.farm-stamps dt {
+  font: 700 .85rem/1.4 var(--f-round);
+  color: var(--leaf);
+}
+.farm-stamps dd {
+  margin: 0;
+  font: 500 1.15rem/1.5 var(--f-hand);
+  color: var(--ink);
+}
+
+.about-side { display: grid; gap: 1.35rem; }
+.sign svg { width: 9.5rem; height: auto; margin: 0 auto -.35rem; }
+.sign-board {
+  position: relative;
+  padding: 1.4rem 1.5rem 1.5rem;
+  border-radius: .9rem;
+  text-align: center;
+  color: var(--paper);
+  background: #6E4124 repeating-linear-gradient(176deg, rgba(255, 255, 255, .05) 0 2px, transparent 2px 13px);
+  box-shadow: inset 0 0 0 .35rem #59331B, 0 12px 24px -18px rgba(54, 28, 24, .6);
+}
+.sign-board h3 { font-size: 1.4rem; margin-bottom: .6rem; color: #FFFDF8; }
+.sign-lines { display: grid; gap: .1rem; font: 500 1.08rem/1.8 var(--f-hand); }
+.sign-addr { margin-top: .75rem; font-size: 1rem; color: #F7E8DA; }
+
+.notice {
+  position: relative;
+  padding: 1.9rem 1.5rem 1.4rem;
+  background: #FFFDF2;
+  border: 1.5px dashed #D6C1A0;
+  border-radius: .35rem;
+  transform: rotate(.6deg);
+  box-shadow: 0 14px 24px -18px rgba(54, 28, 24, .5);
+}
+.notice::before {
+  content: "";
+  position: absolute;
+  top: .6rem;
+  left: 50%;
+  width: .95rem;
+  height: .95rem;
+  margin-left: -.475rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #F2416A, #B81D33 60%, #6E0E23);
+  box-shadow: 0 2px 3px rgba(54, 28, 24, .35);
+}
+.notice h3 { font-size: 1.35rem; margin-bottom: .6rem; text-align: center; }
+.notice ul { margin: 0; padding-left: 1.2em; }
+.notice li { line-height: 1.82; }
+.notice li + li { margin-top: .35rem; }
+@media (max-width: 51.99rem) {
+  .about-in { grid-template-columns: minmax(0, 1fr); }
+  .notice { transform: none; }
+}
+@media (max-width: 28rem) {
+  .farm-stamps { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- トップページ末尾：お取り寄せと頼みかた早見案内 ---------- */
+.home-digest {
+  padding: 0 var(--gut) clamp(4rem, 8vw, 6.5rem);
+}
+.digest-in {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  background: var(--craft);
+  border: 2px dashed var(--bark);
+  border-radius: 1.5rem;
+  box-shadow: inset 0 0 0 4px var(--cream);
+}
+.digest-head {
+  text-align: center;
+  max-width: 44rem;
+  margin: 0 auto 1.75rem;
+  display: grid;
+  justify-items: center;
+  gap: .5rem;
+}
+.digest-head h2 {
+  font-size: clamp(1.85rem, 3.8vw, 2.7rem);
+  color: var(--beni);
+}
+.digest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+.digest-card {
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: 1rem;
+  padding: 1.35rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  box-shadow: 0 6px 16px -12px rgba(54, 28, 24, .35);
+}
+.digest-badge {
+  align-self: flex-start;
+  padding: .15rem .65rem;
+  border-radius: 999px;
+  background: var(--leaf);
+  color: var(--paper);
+  font: 700 .82rem/1.4 var(--f-round);
+}
+.digest-card h3 {
+  font-size: 1.3rem;
+  color: var(--ink);
+}
+.digest-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin-top: auto;
+  padding-top: .5rem;
+}
+.digest-actions .btn {
+  min-height: 2.75rem;
+  padding: .35rem 1rem;
+  font-size: .92rem;
+}
+@media (max-width: 58rem) {
+  .digest-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ============ 4. 商品ページ（お取り寄せと発送の暦・荷札・FAX用紙） ============ */
+.p-hero {
+  background: linear-gradient(180deg, #FDEBC2 0%, #FBF0D9 100%);
+  padding: clamp(1.75rem, 4vw, 3.25rem) var(--gut) clamp(2rem, 4vw, 3rem);
+  border-bottom: 2px dashed var(--craft-dk);
+  overflow: hidden;
+}
+.p-hero-in {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(18rem, 25rem) minmax(16rem, 1fr) auto;
+  gap: 1.5rem 2rem;
+  align-items: center;
+}
+.p-hero-text {
+  transform: rotate(-.5deg);
+}
+.p-lead-strong {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--beni);
+  margin-bottom: .45rem;
+}
+.p-hero-art svg {
+  width: 100%;
+  max-width: 32rem;
+  height: auto;
+  margin: 0 auto;
+}
+.p-title-plate .title-plate-inner {
+  min-height: 18rem;
+}
+@media (max-width: 63.99rem) {
+  .p-hero-in {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .p-hero-art {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .p-title-plate {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .p-hero-text {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    transform: none;
+  }
+}
+
+.sec { padding: clamp(3.25rem, 7vw, 5.5rem) var(--gut); }
+.sec-in { max-width: var(--max); margin: 0 auto; }
+.sec h2 {
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  color: var(--beni);
+  margin: .3rem 0 .75rem;
+}
+.sec-lead { max-width: 38em; margin-bottom: 1.75rem; }
+
+/* 十二ヶ月の畑ごよみ絵巻（発送の暦） */
+.almanac-scroll {
+  position: relative;
+  padding: clamp(1.5rem, 4vw, 2.75rem);
+  background: var(--paper);
+  border-top: 8px solid var(--bark);
+  border-bottom: 8px solid var(--bark);
+  border-left: 2px dashed var(--craft-dk);
+  border-right: 2px dashed var(--craft-dk);
+  border-radius: .6rem;
+  box-shadow: 0 16px 32px -20px rgba(54, 28, 24, .45);
+}
+.almanac-head {
+  margin-bottom: 1.25rem;
+}
+.cal { margin-top: 1rem; }
+.cal-scale, .cal-row {
+  display: grid;
+  grid-template-columns: 16rem minmax(0, 1fr);
+  gap: .35rem 1.25rem;
+  align-items: center;
+}
+.cal-scale-label {
+  font: 700 .88rem/1.4 var(--f-round);
+  color: var(--ink-soft);
+}
+.cal-months {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  margin: 0;
+  padding: .25rem 0;
+  list-style: none;
+  font-size: .84rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+  background: var(--craft);
+  border-radius: .45rem;
+  border: 1px solid var(--line);
+}
+.cal-months li {
+  border-left: 1px dashed #C8AE8D;
+  line-height: 1.8;
+}
+.cal-months li:first-child { border-left: 0; }
+.cal-list { margin: .35rem 0 0; padding: 0; list-style: none; }
+.cal-row {
+  padding: .75rem 0;
+  border-top: 1.5px dashed var(--line);
+}
+.cal-name { font-weight: 700; line-height: 1.55; font-size: 1.05rem; }
+.cal-name small {
+  display: block;
+  font-weight: 400;
+  font-size: .92rem;
+  color: var(--ink-soft);
+  margin-top: .15rem;
+}
+.cal-track {
+  position: relative;
+  height: 2rem;
+  border-radius: 999px;
+  background:
+    repeating-linear-gradient(90deg, rgba(220, 199, 172, .6) 0 1px, transparent 1px calc(100% / 12)),
+    var(--cream);
+  border: 1px solid var(--line);
+}
+.cal-bar {
+  position: absolute;
+  top: .28rem;
+  bottom: .28rem;
+  left: calc((var(--a) - 1) / 12 * 100%);
+  width: calc((var(--b) - var(--a)) / 12 * 100%);
+  border-radius: 999px;
+  background: var(--c, var(--beni));
+}
+@media (max-width: 51.99rem) {
+  .cal-scale, .cal-row { grid-template-columns: minmax(0, 1fr); }
+  .cal-scale-label { display: none; }
+  .cal-months { font-size: .75rem; }
+}
+
+/* 鳩目穴つきの荷札（商品の札） */
+.items-head { margin-bottom: 2rem; }
+.group + .group { margin-top: clamp(3rem, 6vw, 4.5rem); }
+.group-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .35rem 1rem;
+  margin-bottom: 1.85rem;
+  padding-bottom: .5rem;
+  border-bottom: 2px dashed var(--craft-dk);
+}
+.group-head h3 { font-size: clamp(1.5rem, 2.8vw, 2rem); color: var(--beni); }
+.group-head p { color: var(--ink-soft); }
+
+.tags {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.5rem), 1fr));
+  gap: 2.35rem 1.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* 荷札の形：上部に麻ひもとハトメ穴、角を落とした荷札シルエット */
+.tag {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 2.65rem 1.25rem 1.35rem;
+  border-radius: 1.65rem 1.65rem .75rem .75rem;
+  background: var(--paper);
+  border: 2px solid #C9B293;
+  box-shadow:
+    inset 0 0 0 3px var(--cream),
+    0 12px 24px -16px rgba(54, 28, 24, .48);
+  transform-origin: 50% 1.05rem;
+}
+/* ハトメ穴（鳩目穴） */
+.tag::before {
+  content: "";
+  position: absolute;
+  top: .65rem;
+  left: 50%;
+  width: 1rem;
+  height: 1rem;
+  margin-left: -.5rem;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 3.5px solid #B6824C;
+  box-shadow: 0 0 0 2px #8F5E2E;
+}
+/* 麻ひも */
+.tag::after {
+  content: "";
+  position: absolute;
+  top: -1.2rem;
+  left: 50%;
+  width: 3px;
+  height: 2.15rem;
+  margin-left: -1.5px;
+  background: #9E6E3C;
+  border-radius: 2px;
+}
+
+.tag-top-badges {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  margin-bottom: .65rem;
+}
+.tag-order {
+  display: inline-flex;
+  align-items: center;
+  padding: .12rem .6rem;
+  border-radius: 999px;
+  background: var(--leaf);
+  color: var(--paper);
+  font: 700 .8rem/1.3 var(--f-round);
+  letter-spacing: .06em;
+}
+.tag-no {
+  display: inline-flex;
+  align-items: center;
+  padding: .12rem .6rem;
+  border-radius: .35rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 700;
+  font-size: .84rem;
+  letter-spacing: .08em;
+}
+.tag-art {
+  display: grid;
+  place-items: center;
+  height: 9.25rem;
+  margin: 0 0 .9rem;
+  border-radius: .75rem;
+  background: var(--tint, var(--blossom));
+  border: 1px dashed rgba(94, 60, 53, .2);
+}
+.tag-art svg { height: 82%; width: auto; max-width: 90%; }
+.nb { display: inline-block; }
+.tag h4 {
+  margin: .2rem 0 .45rem;
+  font: 500 1.32rem/1.45 var(--f-hand);
+  letter-spacing: .02em;
+  color: var(--ink);
+}
+.tag p { font-size: 1rem; line-height: 1.82; }
+.tag-spec {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .15rem .8rem;
+  margin: .85rem 0 0;
+  padding: .55rem .7rem;
+  background: var(--cream);
+  border-radius: .45rem;
+  font-size: 1rem;
+}
+.tag-spec dt { color: var(--ink-soft); font-weight: 700; }
+.tag-spec dd { margin: 0; }
+.tag-price {
+  margin-top: auto;
+  padding-top: 1rem;
+  display: flex;
+  align-items: baseline;
+  gap: .45rem;
+  flex-wrap: wrap;
+}
+.tag-price strong {
+  font: 500 1.75rem/1.2 var(--f-hand);
+  color: var(--beni);
+  letter-spacing: .02em;
+}
+.tag-price span { font-size: 1rem; color: var(--ink-soft); }
+
+/* 荷札の裏書き（ミシン目の切り返し） */
+.tag-back {
+  position: relative;
+  margin-top: .95rem;
+  padding-top: .75rem;
+  border-top: 2px dashed #C9B293;
+  font: 400 1rem/1.75 var(--f-hand);
+  color: var(--ink-soft);
+}
+.tag-back::before {
+  content: "裏書き　";
+  font-weight: 700;
+  color: var(--beni);
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .tag:hover { animation: swing 1.3s cubic-bezier(.3, .6, .4, 1); }
+  .is-still .tag:hover { animation: none; }
+}
+@keyframes swing {
+  0% { transform: rotate(0); }
+  18% { transform: rotate(2.8deg); }
+  40% { transform: rotate(-2deg); }
+  62% { transform: rotate(1deg); }
+  82% { transform: rotate(-.4deg); }
+  100% { transform: rotate(0); }
+}
+
+/* 詰め合わせ＋のし紙案内 */
+.gift {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.5rem), 1fr));
+  gap: 2.2rem 1.35rem;
+}
+.gift > .tags { display: block; }
+.gift > .group-head { grid-column: 1 / -1; margin-bottom: 0; }
+.gift-note { align-self: start; }
+.noshi {
+  position: relative;
+  padding: 2.2rem 1.5rem 1.45rem;
+  background: var(--paper);
+  border: 2px solid var(--line);
+  border-radius: .5rem;
+  box-shadow: 0 10px 22px -18px rgba(54, 28, 24, .5);
+}
+.noshi::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: .9rem;
+  height: 6px;
+  background: linear-gradient(to bottom, #B81D33 0 2px, transparent 2px 4px, #B81D33 4px 6px);
+  opacity: .85;
+}
+.noshi ul { margin: .25rem 0 0; padding-left: 1.2em; }
+.noshi li + li { margin-top: .35rem; }
+.gift-h { font: 500 1.35rem/1.45 var(--f-hand); margin: 0 0 .6rem; }
+@media (min-width: 60rem) { .gift-note { grid-column: span 2; } }
+
+/* お取り寄せの前に */
+.before-box {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  background: var(--craft);
+  border: 2px dashed var(--bark);
+  border-radius: 1.25rem;
+}
+.before-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem 2.5rem;
+  margin: 1.25rem 0 0;
+}
+.before-list > div {
+  display: grid;
+  grid-template-columns: 3.8rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  background: var(--paper);
+  padding: 1rem;
+  border-radius: .85rem;
+  border: 1.5px solid var(--line);
+}
+.before-list dt {
+  display: grid;
+  place-items: center;
+  width: 3.8rem;
+  height: 3.8rem;
+  border-radius: 50%;
+  background: var(--blossom);
+  border: 2px dashed var(--beni);
+  color: var(--jam);
+  font: 500 1.05rem/1.2 var(--f-hand);
+  text-align: center;
+}
+.before-list dd { margin: 0; padding-top: .2rem; }
+@media (max-width: 51.99rem) { .before-list { grid-template-columns: minmax(0, 1fr); } }
+
+/* 頼みかた：電話横のメモ＋うかがうこと */
+.order {
+  background: var(--paper);
+  border-top: 2px dashed var(--line);
+  border-bottom: 2px dashed var(--line);
+}
+.order-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 2.5rem clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+  margin-top: 1.5rem;
+}
+.memo {
+  position: relative;
+  padding: 2.1rem 1.6rem 1.4rem;
+  background: #FFFDF2;
+  border: 1.5px solid #DFCBB0;
+  border-radius: .4rem;
+  box-shadow: 0 12px 26px -20px rgba(54, 28, 24, .55);
+  transform: rotate(-.5deg);
+}
+.memo::before {
+  content: "";
+  position: absolute;
+  top: -.7rem;
+  left: 50%;
+  width: 6.5rem;
+  height: 1.45rem;
+  margin-left: -3.25rem;
+  background: rgba(242, 162, 182, .7);
+  transform: rotate(2deg);
+}
+.memo-row {
+  display: grid;
+  grid-template-columns: 4.2rem minmax(0, 1fr);
+  gap: 0 .9rem;
+  align-items: baseline;
+  padding: .55rem 0;
+}
+.memo-row + .memo-row { border-top: 1px dashed #DFCBB0; }
+.memo-k { font: 500 1.05rem/1.4 var(--f-hand); color: var(--ink-soft); }
+.memo-num {
+  font: 500 clamp(1.35rem, 2.3vw, 1.7rem)/1.35 var(--f-hand);
+  letter-spacing: .03em;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+a.memo-num {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  justify-self: start;
+  color: var(--beni);
+  text-decoration-thickness: 2px;
+}
+.memo-sub { grid-column: 2; font-size: 1rem; line-height: 1.8; }
+.ask {
+  padding: 1.5rem;
+  background: var(--cream);
+  border: 2px dashed var(--craft-dk);
+  border-radius: 1rem;
+}
+.ask h3 { font-size: 1.4rem; margin-bottom: .75rem; color: var(--leaf); }
+.checks { margin: 0 0 1.25rem; padding: 0; list-style: none; }
+.checks li { position: relative; padding: .35rem 0 .35rem 2.1rem; }
+.checks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .72rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 2px solid var(--beni);
+  border-radius: .3rem;
+  background: var(--paper);
+}
+@media (max-width: 51.99rem) {
+  .order-grid { grid-template-columns: minmax(0, 1fr); }
+  .memo { transform: none; }
+}
+
+/* 切り取り線つきのFAX注文用紙 */
+.print-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.sheet {
+  max-width: 48rem;
+  margin: 1.75rem auto 0;
+  padding: clamp(1.25rem, 4vw, 2.35rem);
+  background: #fff;
+  color: #222;
+  border: 2px solid #B8AEA0;
+  border-radius: .5rem;
+  box-shadow: 0 14px 30px -20px rgba(54, 28, 24, .5);
+  font-size: 1rem;
+}
+.tear-line {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin: -.4rem 0 1.1rem;
+  padding-bottom: .75rem;
+  border-bottom: 2px dashed #5E3C35;
+  color: var(--ink-soft);
+  font: 700 .88rem/1.4 var(--f-round);
+  letter-spacing: .06em;
+}
+.tear-scissors { width: 1.65rem; height: 1.2rem; flex: none; }
+.sheet-head-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem 1rem;
+  padding-bottom: .75rem;
+  border-bottom: 2.5px solid #222;
+}
+.sheet-title {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  font-weight: 700;
+}
+.sheet-title span:first-child { font: 500 1.35rem/1.4 var(--f-hand); }
+.sheet-fax-no { font-size: 1.05rem; color: #222; }
+.sheet-stamp-box {
+  width: 3.4rem;
+  height: 3.4rem;
+  border: 1.5px dashed #777;
+  border-radius: .25rem;
+  display: grid;
+  place-items: center;
+  font-size: .78rem;
+  color: #555;
+}
+.sheet table { width: 100%; margin-top: 1.15rem; border-collapse: collapse; }
+.sheet caption { text-align: left; font-weight: 700; padding-bottom: .4rem; font-size: 1rem; }
+.sheet th, .sheet td { border: 1px solid #787067; padding: .4rem .6rem; text-align: left; height: 2.6rem; }
+.sheet th { white-space: nowrap; background: #F4EFE8; font-weight: 700; font-size: .95rem; height: auto; }
+.sheet .c-no { width: 24%; }
+.sheet .c-qty { width: 16%; }
+.sheet-fields {
+  display: grid;
+  grid-template-columns: minmax(0, min(9.8rem, 40%)) minmax(0, 1fr);
+  margin: 1.25rem 0 0;
+  border-top: 1px solid #787067;
+}
+.sheet-fields dt, .sheet-fields dd {
+  margin: 0;
+  padding: .55rem .65rem;
+  border-bottom: 1px solid #787067;
+  min-height: 2.9rem;
+}
+.sheet-fields dt { font-weight: 700; font-size: .95rem; background: #F4EFE8; }
+.sheet-foot { margin-top: 1rem; font-size: 1rem; color: #3B3530; }
+
+/* ---------- フッター ---------- */
+.site-foot {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 3.5rem var(--gut) 2.5rem;
+  font-size: 1rem;
+  border-top: 4px dashed var(--craft-dk);
+}
+.foot-in {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2rem 3rem;
+}
+.site-foot .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  color: var(--cream);
+  text-decoration: none;
+}
+.site-foot .logo svg { width: 2.4rem; height: 2.4rem; }
+.site-foot .logo-sub { color: #EBD6D0; }
+.site-foot a { color: var(--cream); }
+.site-foot address { font-style: normal; margin-top: .9rem; line-height: 1.8; }
+.foot-nav { display: grid; gap: .15rem; align-content: start; margin: 0; padding: 0; list-style: none; }
+.foot-nav a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.foot-tel { font: 500 1.6rem/1.3 var(--f-hand); letter-spacing: .04em; }
+.foot-tel a { text-decoration: none; display: inline-flex; min-height: 2.75rem; align-items: center; white-space: nowrap; }
+.foot-note {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed rgba(251, 246, 238, .28);
+  color: #EBD6D0;
+  font-size: 1rem;
+}
+@media (max-width: 47.99rem) { .foot-in { grid-template-columns: minmax(0, 1fr); } }
+@media (min-width: 48rem) and (max-width: 59.99rem) { .foot-in { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.6fr) auto; } }
+
+/* ---------- 小物 ---------- */
+.story-note { margin-top: .25rem; font-size: 1rem; color: var(--ink-soft); }
+.hand-note { margin-top: 1.25rem; font: 400 1rem/1.8 var(--f-hand); color: var(--ink-soft); }
+.hand-note.tight { margin: -1rem 0 1.5rem; }
+.memo-foot { margin-top: .6rem; padding-top: .55rem; border-top: 1px dashed #DFCBB0; font: 400 1rem/1.75 var(--f-hand); color: var(--ink-soft); }
+.cal-key { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; margin: -.5rem 0 1rem; font-size: 1rem; color: var(--ink-soft); }
+.cal-key span { display: inline-block; width: 2.2rem; height: .9rem; border-radius: 999px; margin-right: -.6rem; vertical-align: middle; }
+.cal-key .k-pre, .cal-bar.is-pre { background: repeating-linear-gradient(135deg, rgba(184, 29, 51, .5) 0 4px, rgba(184, 29, 51, .14) 4px 8px); }
+.cal-key .k-ship { background: var(--beni); margin-left: .6rem; }
+
+/* ---------- ページ切り替えの演出 ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .35s; }
+
+/* ---------- 動きを減らす設定：遷移もアニメーションも完全に止める ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
+/* ---------- 印刷：FAX注文用紙だけを出す ---------- */
+@media print {
+  @page { margin: 12mm; }
+  body { padding-top: 0 !important; background: #fff !important; }
+  .soegi-bar, .skip, .site-head, .site-foot, main > :not(#fax), #fax .sec-kicker, #fax h2, #fax .print-row, .soegi-memo { display: none !important; }
+  #fax { padding: 0 !important; }
+  .sheet { margin: 0 !important; max-width: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; }
+}
