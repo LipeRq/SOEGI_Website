@@ -1,4 +1,4 @@
-/* ソエギ サイト共通の動き（全ページ）。ページにあるものだけが動く */
+/* Nodus Consulting サイト共通の動き（全ページ）。ページにあるものだけが動く */
 (function () {
   'use strict';
   var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

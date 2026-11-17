@@ -946,3 +946,15 @@ h1, h2, h3, .hero-sub, .scene-t { text-wrap: balance; }
 
 .hero-sub { margin-bottom: 1rem; }
 .nw { display: inline-block; }
+
+/* ---- 屋号：Nodus Consulting のロゴ ----
+   画像（img/nodus-wordmark.png）は形の型として使い、色は文字色で塗る（ダークモードでも読める） */
+.brand b.wordmark { width: 10.5rem; height: 1.72rem; letter-spacing: 0; background: currentColor;
+  -webkit-mask: url(/img/nodus-wordmark.png) left center / contain no-repeat; mask: url(/img/nodus-wordmark.png) left center / contain no-repeat; }
+.brand b.wordmark + small { margin-top: .15rem; }
+@media (max-width: 26rem) { .brand b.wordmark { width: 9.25rem; height: 1.52rem; } }
+@media (forced-colors: active) { .brand b.wordmark { background: CanvasText; } }
+.origin.one { grid-template-columns: minmax(0, 1fr); max-width: 46rem; }
+/* ヘッダーのボタンは1行に保つ（.btn の text-wrap: balance より強く）。ロゴが長くなった分は、狭めの PC 幅でナビの間を詰める */
+.hd .hd-cta { flex: none; white-space: nowrap; text-wrap: nowrap; }
+@media (min-width: 64rem) and (max-width: 79.99rem) { .gnav a { padding: 0 .5rem; } .gnav a::after { left: .5rem; right: .5rem; } }
