@@ -1,4 +1,4 @@
-# ソエギ（SOEGI）事業紹介サイト
+# Nodus Consulting 事業紹介サイト（旧：ソエギ）
 
 https://withsoegi.jp/ で公開している静的サイトです（複数ページ）。
 
