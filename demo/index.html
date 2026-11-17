@@ -26,6 +26,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Maru+Gothic:wght@500;700&display=swap">
 <link rel="stylesheet" href="/css/site.css">
+<style>
+/* ホームページの見本：名前の下に最初の画面の画像を置く */
+.smp-fig { display: block; margin-top: 1rem; max-width: 30rem; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--line); }
+.smp-fig img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; transition: transform .3s ease; }
+@media (hover: hover) { .smp-fig:hover img { transform: scale(1.03); } }
+@media (prefers-reduced-motion: reduce) { .smp-fig img { transition: none; } }
+</style>
 </head>
 <body>
 <span id="top"></span>
@@ -118,42 +125,54 @@
       </div>
       <ul class="fields">
         <li class="field">
-          <div><h3>最新・AI</h3><span class="cat">ミツミル（見積書の下書きサービス）</span></div>
+          <div><h3>最新・AI</h3><span class="cat">ミツミル（見積書の下書きサービス）</span>
+            <a class="smp-fig" href="/demo/samples/a-mitsumiru/" tabindex="-1" aria-hidden="true"><img src="/demo/samples/a-mitsumiru/thumb.webp" width="1200" height="750" loading="lazy" decoding="async" alt=""></a>
+          </div>
           <div>
             <p>暗い地に光る画面で、見積書の下書きができていく様子と、料金の計算機。ITのサービスを新しく見せたいとき向けです。</p>
           </div>
           <p class="price"><a class="btn btn-cta btn-sm" href="/demo/samples/a-mitsumiru/">見本を開く</a><small></small></p>
         </li>
         <li class="field">
-          <div><h3>テクノロジー・ものづくり</h3><span class="cat">月山テクノワークス（精密部品の加工工場）</span></div>
+          <div><h3>テクノロジー・ものづくり</h3><span class="cat">月山テクノワークス（精密部品の加工工場）</span>
+            <a class="smp-fig" href="/demo/samples/b-gassan-techno/" tabindex="-1" aria-hidden="true"><img src="/demo/samples/b-gassan-techno/thumb.webp" width="1200" height="750" loading="lazy" decoding="async" alt=""></a>
+          </div>
           <div>
             <p>ページ全体を1枚の図面に見立て、線で描かれる部品図、検査成績書、設備の一覧と絞り込み。技術の確かさを数字で伝えたいとき向けです。</p>
           </div>
           <p class="price"><a class="btn btn-cta btn-sm" href="/demo/samples/b-gassan-techno/">見本を開く</a><small></small></p>
         </li>
         <li class="field">
-          <div><h3>動き・物語</h3><span class="cat">べにさや農園（さくらんぼ園とジャム工房）</span></div>
+          <div><h3>動き・物語</h3><span class="cat">べにさや農園（さくらんぼ園とジャム工房）</span>
+            <a class="smp-fig" href="/demo/samples/c-benisaya/" tabindex="-1" aria-hidden="true"><img src="/demo/samples/c-benisaya/thumb.webp" width="1200" height="750" loading="lazy" decoding="async" alt=""></a>
+          </div>
           <div>
             <p>スクロールに合わせて、花から実、ジャムへと季節が進む畑の暦。商品の札とお取り寄せの案内。物語で伝えたいとき向けです。</p>
           </div>
           <p class="price"><a class="btn btn-cta btn-sm" href="/demo/samples/c-benisaya/">見本を開く</a><small></small></p>
         </li>
         <li class="field">
-          <div><h3>スタイリッシュ</h3><span class="cat">hair studio NAGORI（美容室）</span></div>
+          <div><h3>スタイリッシュ</h3><span class="cat">hair studio NAGORI（美容室）</span>
+            <a class="smp-fig" href="/demo/samples/d-nagori/" tabindex="-1" aria-hidden="true"><img src="/demo/samples/d-nagori/thumb.webp" width="1200" height="750" loading="lazy" decoding="async" alt=""></a>
+          </div>
           <div>
             <p>大きな文字と髪の線画、ドット線でつないだメニュー表、横に流れるスタイルの見本。お店の雰囲気を伝えたいとき向けです。</p>
           </div>
           <p class="price"><a class="btn btn-cta btn-sm" href="/demo/samples/d-nagori/">見本を開く</a><small></small></p>
         </li>
         <li class="field">
-          <div><h3>自然・和</h3><span class="cat">湯の宿 しづく庵（温泉旅館）</span></div>
+          <div><h3>自然・和</h3><span class="cat">湯の宿 しづく庵（温泉旅館）</span>
+            <a class="smp-fig" href="/demo/samples/e-shizukuan/" tabindex="-1" aria-hidden="true"><img src="/demo/samples/e-shizukuan/thumb.webp" width="1200" height="750" loading="lazy" decoding="async" alt=""></a>
+          </div>
           <div>
             <p>窓の外の山が季節ごとに切り替わる、縦書きの和の見た目。ご宿泊の栞とお品書き。やすらぎを伝えたいとき向けです。</p>
           </div>
           <p class="price"><a class="btn btn-cta btn-sm" href="/demo/samples/e-shizukuan/">見本を開く</a><small></small></p>
         </li>
         <li class="field">
-          <div><h3>堅実・読みやすさ</h3><span class="cat">木のいえ 稲穂工務店（工務店）</span></div>
+          <div><h3>堅実・読みやすさ</h3><span class="cat">木のいえ 稲穂工務店（工務店）</span>
+            <a class="smp-fig" href="/demo/samples/f-inaho/" tabindex="-1" aria-hidden="true"><img src="/demo/samples/f-inaho/thumb.webp" width="1200" height="750" loading="lazy" decoding="async" alt=""></a>
+          </div>
           <div>
             <p>大きめの文字と文字の大きさの切り替え、間取り図、見積書の形のお金の内訳。年配の方にも読みやすく見せたいとき向けです。</p>
           </div>
